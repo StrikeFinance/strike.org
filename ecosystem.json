@@ -1,0 +1,15 @@
+{
+    "apps": [],
+  
+    "deploy" : {
+      "landing" : {
+        "user" : "ubuntu",
+        "host" : "3.14.25.54",
+        "ref"  : "origin/master",
+        "repo" : "https://github.com/StrikeFinance/strike.org.git",
+        "path" : "/home/ubuntu/repos/strike.org",
+        "post-deploy" : "npm install && npm run build && cp .htaccess build/.htaccess"
+      }
+    }
+}
+  
