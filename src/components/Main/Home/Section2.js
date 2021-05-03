@@ -3,9 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
+import { BigNumber } from 'bignumber.js';
 import ethImg from 'assets/img/eth.png';
-import btcImg from 'assets/img/btc.png';
+import wbtcImg from 'assets/img/wbtc.png';
 import usdcImg from 'assets/img/usdc.png';
+import busdImg from 'assets/img/busd.png';
+import compImg from 'assets/img/comp.png';
+import linkImg from 'assets/img/link.png';
+import strkImg from 'assets/img/strk.png';
+import uniImg from 'assets/img/uni.png';
+import usdtImg from 'assets/img/usdt.png';
+
 import bg1Img from 'assets/img/bg1.png';
 import arrowRightImg from 'assets/img/arrow-right.png';
 import vector2Img from 'assets/img/vector2.png';
@@ -209,67 +217,61 @@ const Section2Wrapper = styled.div`
   }
 `;
 
+const ICONS = {
+  UNI: uniImg,
+  ETH: ethImg,
+  USDT: usdtImg,
+  USDC: usdcImg,
+  LINK: linkImg,
+  BUSD: busdImg,
+  COMP: compImg,
+  WBTC: wbtcImg,
+  STRK: strkImg
+}
+
 function Section2({ history, markets, refProp }) {
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
-
+  console.log('markets', markets);
   return (
     <Section2Wrapper ref={refProp}>
       <div className="earn-section">
         <div className="apy-info">
           <div className="info-item-list">
-            <div className="info-item">
-              <span className="info-item-icon">
-                <img src={ethImg} alt="coin img" />
-              </span>
-              <span className="info-item-content">
-                <span className="info-item-head">
-                  <span className="info-item-title">Ether</span>
-                  <span className="info-item-prop">ETH</span>
-                </span>
-                <span className="info-item-data">
-                  <span className="info-item-data-value green">
-                    {markets.eth ? Number(markets.eth.supplyApy).toFixed(2) : '0.00'}%
-                  </span>
-                  <span className="info-item-data-prop">APY</span>
-                </span>
-              </span>
-            </div>
-            <div className="info-item">
-              <span className="info-item-icon">
-                <img src={btcImg} alt="coin img" />
-              </span>
-              <span className="info-item-content">
-                <span className="info-item-head">
-                  <span className="info-item-title">Bitcoin</span>
-                  <span className="info-item-prop">BTC</span>
-                </span>
-                <span className="info-item-data">
-                  <span className="info-item-data-value green">
-                    {markets.btc ? Number(markets.btc.supplyApy).toFixed(2) : '0.00'}%
-                  </span>
-                  <span className="info-item-data-prop">APY</span>
-                </span>
-              </span>
-            </div>
-            <div className="info-item">
-              <span className="info-item-icon">
-                <img src={usdcImg} alt="coin img" />
-              </span>
-              <span className="info-item-content">
-                <span className="info-item-head">
-                  <span className="info-item-title">USD Coin</span>
-                  <span className="info-item-prop">USDC</span>
-                </span>
-                <span className="info-item-data">
-                  <span className="info-item-data-value green">
-                    {markets.usdc ? Number(markets.usdc.supplyApy).toFixed(2) : '0.00'}%
-                  </span>
-                  <span className="info-item-data-prop">APY</span>
-                </span>
-              </span>
-            </div>
+            {markets.sort((a, b) => {
+                if (new BigNumber(a.supplyApy).isGreaterThan(b.supplyApy)) {
+                  return -1;
+                }
+                if (new BigNumber(a.supplyApy).isLessThan(b.supplyApy)) {
+                  return 1;
+                }
+                return 0;
+              })
+              .map((m, index) => {
+                if (index < 3) {
+                  return (
+                    <div className="info-item" key={index}>
+                      <span className="info-item-icon">
+                        <img src={ICONS[m.underlyingSymbol]} alt="coin img" />
+                      </span>
+                      <span className="info-item-content">
+                        <span className="info-item-head">
+                          <span className="info-item-title">{m.underlyingName}</span>
+                          <span className="info-item-prop">{m.underlyingSymbol}</span>
+                        </span>
+                        <span className="info-item-data">
+                          <span className="info-item-data-value green">
+                            {m.supplyApy ? Number(m.supplyApy).toFixed(2) : '0.00'}%
+                          </span>
+                          <span className="info-item-data-prop">APY</span>
+                        </span>
+                      </span>
+                    </div>
+                  )
+                }
+              })
+            }
           </div>
         </div>
         <div className="earn-content">

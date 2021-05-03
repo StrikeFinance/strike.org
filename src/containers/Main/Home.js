@@ -18,7 +18,7 @@ const HomeWrapper = styled.div`
 `;
 
 function Home({ history, getGovernanceStrike }) {
-  const [markets, setMarkets] = useState({});
+  const [markets, setMarkets] = useState([]);
   const earnRef = useRef(null);
   const developersRef = useRef(null);
 
@@ -29,15 +29,7 @@ function Home({ history, getGovernanceStrike }) {
     if (!res.status) {
       return;
     }
-
-    const eth = res.data.markets.find(ele => ele.underlyingSymbol === 'ETH');
-    const btc = res.data.markets.find(ele => ele.underlyingSymbol === 'BTC');
-    const usdc = res.data.markets.find(ele => ele.underlyingSymbol === 'USDC');
-    setMarkets({
-      eth,
-      btc,
-      usdc
-    });
+    setMarkets(res.data.markets);
   };
 
   const moveToEarn = () => {
