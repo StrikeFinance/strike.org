@@ -13,6 +13,7 @@ import linkImg from 'assets/img/link.png';
 import strkImg from 'assets/img/strk.png';
 import uniImg from 'assets/img/uni.png';
 import usdtImg from 'assets/img/usdt.png';
+import sxpImg from 'assets/img/sxp.png';
 
 import bg2Img from 'assets/img/bg2.png';
 import bg3Img from 'assets/img/bg3.png';
@@ -253,7 +254,8 @@ const ICONS = {
   BUSD: busdImg,
   COMP: compImg,
   WBTC: wbtcImg,
-  STRK: strkImg
+  STRK: strkImg,
+  SXP: sxpImg
 }
 
 function Section3({ history, markets, refProp }) {
