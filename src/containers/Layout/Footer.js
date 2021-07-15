@@ -260,6 +260,13 @@ function Footer({ settings }) {
             >
               Github
             </a>
+            <a
+              href="https://defipulse.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              DeFi Pulse
+            </a>
           </div>
           <div className="link-list">
             <div
