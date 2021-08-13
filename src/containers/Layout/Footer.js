@@ -282,7 +282,7 @@ function Footer({ settings }) {
       </div>
       <div className="latest-block-wrapper">
         <p className="copyright">
-          © {new Date().getUTCFullYear()} Strike.org All Rights Reserved
+          © {new Date().getUTCFullYear()} Strike.org All Rights Reserved. Teh Strike Decentralized App does not support US based users.
         </p>
       </div>
     </FooterWrapper>
