@@ -282,7 +282,7 @@ function Terms({ history, getGovernanceStrike }) {
           <div className="terms-header">13. Indemnity</div>
           <div className="terms-body">
             You agree to hold harmless, release, defend, and indemnify us and
-            our officers, directors, employees, contractors, agents, affiliates,
+            our contractors, agents, affiliates,
             and subsidiaries from and against all claims, damages, obligations,
             losses, liabilities, costs, and expenses arising from: (a) your
             access and use of the Interface; (b) your violation of any term or
@@ -315,7 +315,7 @@ function Terms({ history, getGovernanceStrike }) {
             damage incurred as a result of the use of, any content made
             available through the Interface; and (g) the defamatory, offensive,
             or illegal conduct of any third party. Under no circumstances shall
-            we or any of our officers, directors, employees, contractors,
+            we or any of our contractors,
             agents, affiliates, or subsidiaries be liable to you for any claims,
             proceedings, liabilities, obligations, damages, losses, or costs in
             an amount exceeding the amount you paid to us in exchange for access
@@ -354,7 +354,7 @@ function Terms({ history, getGovernanceStrike }) {
             damage incurred as a result of the use of, any content made
             available through the Interface; and (g) the defamatory, offensive,
             or illegal conduct of any third party. Under no circumstances shall
-            we or any of our officers, directors, employees, contractors,
+            we or any of our contractors,
             agents, affiliates, or subsidiaries be liable to you for any claims,
             proceedings, liabilities, obligations, damages, losses, or costs in
             an amount exceeding the amount you paid to us in exchange for access
@@ -412,11 +412,10 @@ function Terms({ history, getGovernanceStrike }) {
             available in other jurisdictions, its availability does not give
             rise to general or specific personal jurisdiction in any forum
             outside Singapore. Any arbitration conducted pursuant to this
-            Agreement shall be governed by the Federal Arbitration Act. You
-            agree that San Francisco, California is the proper forum for any
-            appeals of an arbitration award or for court proceedings in the
-            event that this Agreement’s binding arbitration clause is found to
-            be unenforceable.
+            Agreement shall be governed by the Federal Arbitration Act.
+            
+            
+            
           </div>
         </div>
         <div className="terms-section">
