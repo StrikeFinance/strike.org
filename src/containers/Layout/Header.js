@@ -168,17 +168,8 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-function Header({ history, moveToEarn, moveToDevelopers }) {
+function Header({ history }) {
   const [isOpened, setIsOpened] = useState(false);
-  const content = document.documentElement || document.body;
-
-  const moveToHome = () => {
-    setIsOpened(false);
-    content.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
 
   const handleLink = url => {
     setIsOpened(false);
@@ -196,37 +187,30 @@ function Header({ history, moveToEarn, moveToDevelopers }) {
         <div className={`header-menu ${isOpened ? 'active' : ''}`}>
           <ul className="header-menu__list">
             <li className="header-menu__item">
-              <div
+              <NavLink
                 className="header-menu__link"
-                onClick={() => {
-                  setIsOpened(false);
-                  moveToHome();
-                }}
+                to="/"
               >
                 Home
-              </div>
+              </NavLink>
             </li>
             <li className="header-menu__item">
-              <div
+              <NavLink
+                exact
                 className="header-menu__link"
-                onClick={() => {
-                  setIsOpened(false);
-                  moveToEarn();
-                }}
+                to="/#earn"
               >
                 Earn
-              </div>
+              </NavLink>
             </li>
             <li className="header-menu__item">
-              <div
+              <NavLink
+                exact
                 className="header-menu__link"
-                onClick={() => {
-                  setIsOpened(false);
-                  moveToDevelopers();
-                }}
+                to="/#developer"
               >
                 Developers
-              </div>
+              </NavLink>
             </li>
             <li className="header-menu__item">
               <div
@@ -258,13 +242,11 @@ function Header({ history, moveToEarn, moveToDevelopers }) {
 }
 
 Header.propTypes = {
-  history: PropTypes.object,
+  history: PropTypes.object
 };
 
 Header.defaultProps = {
   history: {}
 };
 
-export default compose(
-  withRouter,
-)(Header);
+export default compose(withRouter)(Header);

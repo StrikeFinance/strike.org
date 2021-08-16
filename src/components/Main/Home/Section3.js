@@ -258,13 +258,13 @@ const ICONS = {
   SXP: sxpImg
 }
 
-function Section3({ history, markets, refProp }) {
+function Section3({ history, markets }) {
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
 
   return (
-    <Section3Wrapper ref={refProp}>
+    <Section3Wrapper id="developer">
       <DevelopersWrapper className="flex flex-column align-center">
         <p>Developers</p>
         <h4 className="center">

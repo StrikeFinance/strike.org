@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { compose } from 'recompose';
 import { connectAccount } from 'core';
 import logoImg from 'assets/img/footer-logo.png';
+import { useHistory } from 'react-router-dom';
 
 const FooterWrapper = styled.div`
   padding: 75px 75px 44px;
@@ -172,6 +173,7 @@ const FooterWrapper = styled.div`
 `;
 
 function Footer({ settings }) {
+  const history = useHistory();
   // if (!settings.selectedAddress) {
   //   return null;
   // }
@@ -202,7 +204,7 @@ function Footer({ settings }) {
             <a href="https://docs.strike.org/" target="_blank" rel="noreferrer">
               Documentation
             </a>
-            <a href="https://strike.org/terms" target="_blank" rel="noreferrer">
+            <a onClick={() => history.push("/terms")}>
               Terms
             </a>
           </div>

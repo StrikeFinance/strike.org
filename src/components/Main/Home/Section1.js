@@ -101,7 +101,7 @@ const Section1Wrapper = styled.div`
 
 function Section1({ history }) {
   return (
-    <Section1Wrapper className="flex align-center just-between">
+    <Section1Wrapper id="hero" className="flex align-center just-between">
       <div className="content">
         <h4>Strike Finance Money Markets</h4>
         <div className="flex align-center btn-wrapper">

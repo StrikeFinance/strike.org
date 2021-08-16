@@ -53,7 +53,7 @@ function MainLayout({ title, children, moveToEarn, moveToDevelopers }) {
     <MainLayoutWrapper>
       <Row>
         <Column xs="12" sm="12">
-          <Header moveToEarn={moveToEarn} moveToDevelopers={moveToDevelopers} />
+          <Header />
         </Column>
         <Column xs="12" sm="12" className="main">
           <Row>

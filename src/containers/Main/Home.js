@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useLocation } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connectAccount, accountActionCreators } from 'core';
 import { promisify } from 'utilities';
@@ -19,10 +19,21 @@ const HomeWrapper = styled.div`
 
 function Home({ history, getGovernanceStrike }) {
   const [markets, setMarkets] = useState([]);
-  const earnRef = useRef(null);
-  const developersRef = useRef(null);
+  const location = useLocation();
 
-  const content = document.documentElement || document.body;
+  useEffect(() => {
+    if (location.hash) {
+      let elem = document.getElementById(location.hash.slice(1));
+      if (elem) {
+        window.scrollTo({
+          top: elem.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   const getMarkets = async () => {
     const res = await promisify(getGovernanceStrike, {});
@@ -32,30 +43,16 @@ function Home({ history, getGovernanceStrike }) {
     setMarkets(res.data.markets);
   };
 
-  const moveToEarn = () => {
-    content.scrollTo({
-      top: earnRef.current.offsetTop - 100,
-      behavior: 'smooth'
-    });
-  };
-
-  const moveToDevelopers = () => {
-    content.scrollTo({
-      top: developersRef.current.offsetTop - 100,
-      behavior: 'smooth'
-    });
-  };
-
   useEffect(() => {
     getMarkets();
   }, []);
 
   return (
-    <MainLayout moveToEarn={moveToEarn} moveToDevelopers={moveToDevelopers}>
+    <MainLayout>
       <HomeWrapper>
         <Section1 />
-        <Section2 markets={markets} refProp={earnRef} />
-        <Section3 markets={markets} refProp={developersRef} />
+        <Section2 markets={markets} />
+        <Section3 markets={markets} />
         <Section4 />
       </HomeWrapper>
     </MainLayout>

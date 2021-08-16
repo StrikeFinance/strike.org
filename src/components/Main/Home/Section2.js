@@ -231,13 +231,12 @@ const ICONS = {
   SXP: sxpImg
 }
 
-function Section2({ history, markets, refProp }) {
+function Section2({ history, markets }) {
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
-  console.log('markets', markets);
   return (
-    <Section2Wrapper ref={refProp}>
+    <Section2Wrapper id="earn">
       <div className="earn-section">
         <div className="apy-info">
           <div className="info-item-list">

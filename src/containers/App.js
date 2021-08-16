@@ -7,6 +7,7 @@ import en from 'react-intl/locale-data/en';
 import enMessages from 'lang/en';
 import { store } from 'core';
 import Home from 'containers/Main/Home';
+import Terms from 'containers/Main/Terms';
 import Theme from './Theme';
 
 import 'assets/styles/App.scss';
@@ -41,6 +42,7 @@ class App extends React.Component {
                 className="switch-wrapper"
               >
                 <Route exact path="/" component={Home} />
+                <Route exact path="/terms" component={Terms} />
                 <Redirect from="/" to="/" />
               </Switch>
             </BrowserRouter>
