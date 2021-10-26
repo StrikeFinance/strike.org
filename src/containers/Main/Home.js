@@ -51,7 +51,7 @@ function Home({ history, getGovernanceStrike }) {
     <MainLayout>
       <HomeWrapper>
         <Section1 />
-        {/* <Section2 markets={markets} /> */}
+        <Section2 markets={markets} />
         {/* <Section3 markets={markets} /> */}
         {/* <Section4 /> */}
       </HomeWrapper>

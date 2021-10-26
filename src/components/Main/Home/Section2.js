@@ -14,19 +14,21 @@ import strkImg from 'assets/img/strk.png';
 import uniImg from 'assets/img/uni.png';
 import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
-
 import bg1Img from 'assets/img/bg1.png';
 import arrowRightImg from 'assets/img/arrow-right.png';
 import vector2Img from 'assets/img/vector2.png';
+import { Divider } from '@material-ui/core';
 
 const Section2Wrapper = styled.div`
   width: 100%;
   background-color: var(--color-bg-main);
-  margin-top: 100px;
+  margin-top: 300px;
   display: flex;
   flex-direction: column;
   padding-left: 84px;
   position: relative;
+  margin-left: 120px;
+  margin-right: 120px;
 
   @media only screen and (max-width: 768px) {
     padding: 0 20px;
@@ -43,6 +45,7 @@ const Section2Wrapper = styled.div`
 
     .apy-info {
       flex: 1 1 0%;
+      margin-right: 120px;
 
       @media only screen and (max-width: 768px) {
         width: 100%;
@@ -54,6 +57,41 @@ const Section2Wrapper = styled.div`
         border-radius: 5px;
         box-shadow: 0px 13px 32px 0 rgba(6, 12, 63, 0.1);
         background-color: #ffffff;
+
+        h3 {
+          display: block;
+          border-bottom: 1px solid #eef1fa;
+          font-size: 20px;
+          font-weight: 800;
+          color: #0b0f23;
+          padding-top: 25px;
+          padding-left: 40px;
+          padding-bottom: 8px;
+        }
+
+        .money-market {
+          padding-top: 25px;
+          padding-left: 40px;
+          padding-bottom: 8px;
+          border-bottom: 1px solid #eef1fa;
+
+          .money {
+            color: #0b0f23;
+            display: inline-block;
+            font-size: 25px;
+            font-weight: 800;
+            margin-right: 12px;
+            
+          }
+          .percent {
+            font-size: 20px;
+            font-weight: 800;
+            background: #F84960;
+            border-radius: 5px;
+            color: #ffffff;
+            padding: 5px 7px 1px 7px;
+          }
+        }
 
         @media only screen and (max-width: 768px) {
           width: 100%;
@@ -127,6 +165,23 @@ const Section2Wrapper = styled.div`
 
     .earn-content {
       flex: 1 1 0%;
+
+      p {
+        font-size: 25px;
+        font-weight: 500;
+        color: #107def;
+      }
+      h4 {
+        font-size: 49px;
+        font-weight: 500;
+        color: #0b0f23;
+      }
+
+      h5 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #6d6f7b;
+      }
     }
   }
 
@@ -214,7 +269,6 @@ const Section2Wrapper = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-   
   }
 `;
 
@@ -229,77 +283,46 @@ const ICONS = {
   WBTC: wbtcImg,
   STRK: strkImg,
   SXP: sxpImg
-}
+};
 
 function Section2({ history, markets }) {
+  console.log(markets, 'markets?');
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
   return (
     <Section2Wrapper id="earn">
       <div className="earn-section">
-        <div className="apy-info">
-          <div className="info-item-list">
-            {markets.sort((a, b) => {
-                if (new BigNumber(a.supplyApy).isGreaterThan(b.supplyApy)) {
-                  return -1;
-                }
-                if (new BigNumber(a.supplyApy).isLessThan(b.supplyApy)) {
-                  return 1;
-                }
-                return 0;
-              })
-              .map((m, index) => {
-                if (index < 3) {
-                  return (
-                    <div className="info-item" key={index}>
-                      <span className="info-item-icon">
-                        <img src={ICONS[m.underlyingSymbol]} alt="coin img" />
-                      </span>
-                      <span className="info-item-content">
-                        <span className="info-item-head">
-                          <span className="info-item-title">{m.underlyingName}</span>
-                          <span className="info-item-prop">{m.underlyingSymbol}</span>
-                        </span>
-                        <span className="info-item-data">
-                          <span className="info-item-data-value green">
-                            {m.supplyApy ? Number(m.supplyApy).toFixed(2) : '0.00'}%
-                          </span>
-                          <span className="info-item-data-prop">APY</span>
-                        </span>
-                      </span>
-                    </div>
-                  )
-                }
-              })
-            }
-          </div>
-        </div>
         <div className="earn-content">
-          <p>Earn</p>
+          <p>Market</p>
           <h4>Supply Collateral to Strike while controlling your keys</h4>
           <h5>
             Strike users control all of their digital assets on a non-custodial
             protocol while earning a variable rate based on market demands of
             that asset. Rates are earned per Ethereum block mined
           </h5>
-          <div className="flex align-center pointer">
-            <p>View Markets</p>
-            <img src={arrowRightImg} className="arrow-right" alt="arrow img" />
+        </div>
+        <div className="apy-info">
+          <div className="info-item-list">
+            <h3>Total Supply</h3>
+            <div className="money-market">
+              <span className="money">$20,395,867,666.22</span>
+              <span className="percent">+5.88%</span>
+            </div>
           </div>
         </div>
       </div>
       <div className="decentralized-section">
         <div className="decentralized-image">
-          <img src={bg1Img} alt="app img" />
+          {/* <img src={bg1Img} alt="app img" /> */}
         </div>
         <div className="decentralized-wrapper">
           <p>Decentralized Application</p>
           <h4>Access Strike through a friendly user interface</h4>
           <h5>
             The Strike App enables users access to a fully decentralized money
-            market powered on Ethereum 24/7/365 with a user-interface, api,
-            or smart contracts.
+            market powered on Ethereum 24/7/365 with a user-interface, api, or
+            smart contracts.
           </h5>
           <div
             className="flex align-center pointer"
@@ -311,20 +334,18 @@ function Section2({ history, markets }) {
         </div>
       </div>
       <div className="vector-section">
-        <img src={vector2Img} alt="vector img" />
+        {/* <img src={vector2Img} alt="vector img" /> */}
       </div>
     </Section2Wrapper>
   );
 }
 
 Section2.propTypes = {
-  history: PropTypes.object,
+  history: PropTypes.object
 };
 
 Section2.defaultProps = {
   history: {}
 };
 
-export default compose(
-  withRouter,
-)(Section2);
+export default compose(withRouter)(Section2);

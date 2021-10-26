@@ -152,10 +152,10 @@ const Section1Wrapper = styled.div`
         transform: translateY(0);
       }
       40% {
-        transform: translateY(-20px);
+        transform: translateY(-10px);
       }
       60% {
-        transform: translateY(-10px);
+        transform: translateY(-5px);
       }
     }
   }

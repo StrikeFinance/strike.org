@@ -13,7 +13,6 @@ const MainLayoutWrapper = styled.div`
   position: relative;
 
   .main {
-    overflow-x: hidden;
     background-color: var(--color-bg-main);
 
     .main-content {
