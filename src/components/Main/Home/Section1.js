@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import vector1 from 'assets/img/vector1-1.png';
 import vector2 from 'assets/img/vector1-2.png';
+import vector from 'assets/img/landingpage/rectangle-opacity-1.png';
+import vector3 from 'assets/img/landingpage/rectangle.png';
+import vector4 from 'assets/img/landingpage/rectangle-opacity-2.png';
+import mouse from 'assets/img/landingpage/mouse.png';
+import arrowDown from 'assets/img/landingpage/arrow-down.png';
 
 const Section1Wrapper = styled.div`
   width: 100%;
@@ -17,8 +21,22 @@ const Section1Wrapper = styled.div`
   }
 
   .content {
-    width: 60%;
+    width: 75%;
     padding-left: 120px;
+
+    .content-img {
+      position: absolute;
+      z-index: 0;
+      left: 457px;
+      top: 149px;
+    }
+    .content-img-bottom {
+      position: absolute;
+      top: 516px;
+      left: 284px;
+      z-index: 0;
+    }
+
     h1 {
       max-width: 788px;
       margin-bottom: 39px;
@@ -85,7 +103,7 @@ const Section1Wrapper = styled.div`
     position: relative;
     width: 60%;
     height: 100%;
-    right: -234px;
+    right: -141px;
     padding-left: 80px;
 
     @media only screen and (max-width: 768px) {
@@ -93,7 +111,10 @@ const Section1Wrapper = styled.div`
     }
 
     .vector-image {
-      max-width: 100%;
+      position: absolute;
+      top: -113px;
+      z-index: 0;
+      left: 368px;
     }
 
     .coin-image {
@@ -102,10 +123,39 @@ const Section1Wrapper = styled.div`
       left: 0;
       width: 60%;
       margin: auto;
-
       @media only screen and (max-width: 768px) {
         width: 80%;
         top: 0;
+      }
+    }
+  }
+  .mouse {
+    position: absolute;
+    z-index: 0;
+    top: 67%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+
+    .icon-mouse {
+      padding-bottom: 14px;
+    }
+    .icon-arrow {
+      animation: bounce 3s infinite;
+    }
+    @keyframes bounce {
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
       }
     }
   }
@@ -115,15 +165,21 @@ function Section1({ history }) {
   return (
     <Section1Wrapper id="hero" className="flex align-center just-between">
       <div className="content">
+        <img className="content-img" src={vector} />
         <h1>
           The Strike protocol currently has{' '}
           <span className="money-content">$18,456,998</span> TVL across 10
           sToken markets
         </h1>
+        <img className="content-img-bottom" src={vector3} />
       </div>
       <div className="imgs">
-        {/* <img src={vector1} className="vector-image" alt="" /> */}
+        <img src={vector4} className="vector-image" alt="" />
         <img src={vector2} className="coin-image" alt="" />
+      </div>
+      <div className="mouse">
+        <img src={mouse} className="icon-mouse" />
+        <img src={arrowDown} className="icon-arrow" />
       </div>
     </Section1Wrapper>
   );
