@@ -81,8 +81,8 @@ const HeaderWrapper = styled.div`
       }
 
       .header-menu__link {
-        font-size: 19px;
-        font-weight: 900;
+        font-size: 20px;
+        font-weight: 500;
         color: #aaaeb5;
         text-decoration: none;
         cursor: pointer;
@@ -187,29 +187,18 @@ function Header({ history }) {
         <div className={`header-menu ${isOpened ? 'active' : ''}`}>
           <ul className="header-menu__list">
             <li className="header-menu__item">
-              <NavLink
-                className="header-menu__link"
-                to="/"
-              >
+              <NavLink className="header-menu__link" to="/">
                 Home
               </NavLink>
             </li>
             <li className="header-menu__item">
-              <NavLink
-                exact
-                className="header-menu__link"
-                to="/#earn"
-              >
-                Earn
+              <NavLink exact className="header-menu__link" to="/#earn">
+                Market
               </NavLink>
             </li>
             <li className="header-menu__item">
-              <NavLink
-                exact
-                className="header-menu__link"
-                to="/#developer"
-              >
-                Developers
+              <NavLink exact className="header-menu__link" to="/#developer">
+                Governance
               </NavLink>
             </li>
             <li className="header-menu__item">
@@ -217,7 +206,7 @@ function Header({ history }) {
                 className="header-menu__link"
                 onClick={() => handleLink('https://app.strike.org/vote')}
               >
-                Governance
+                Developers
               </div>
             </li>
           </ul>
@@ -225,7 +214,13 @@ function Header({ history }) {
             className="header-menu__btn"
             onClick={() => handleLink('https://app.strike.org/')}
           >
-            App
+            Whitepaper
+          </div>
+          <div
+            className="header-menu__btn"
+            onClick={() => handleLink('https://app.strike.org/')}
+          >
+            Launch App
           </div>
         </div>
         <div
