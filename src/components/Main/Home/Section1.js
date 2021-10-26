@@ -114,7 +114,7 @@ const Section1Wrapper = styled.div`
       position: absolute;
       top: -113px;
       z-index: 0;
-      left: 368px;
+      left: 346px;
     }
 
     .coin-image {
@@ -142,6 +142,11 @@ const Section1Wrapper = styled.div`
     }
     .icon-arrow {
       animation: bounce 3s infinite;
+      width: 14px;
+      height: 20.82px;
+      position: absolute;
+      top: 93%;
+      left: 17%;
     }
     @keyframes bounce {
       0%,

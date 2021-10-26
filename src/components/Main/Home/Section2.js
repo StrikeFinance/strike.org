@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import { BigNumber } from 'bignumber.js';
 import ethImg from 'assets/img/eth.png';
 import wbtcImg from 'assets/img/wbtc.png';
 import usdcImg from 'assets/img/usdc.png';
@@ -14,10 +13,30 @@ import strkImg from 'assets/img/strk.png';
 import uniImg from 'assets/img/uni.png';
 import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
-import bg1Img from 'assets/img/bg1.png';
-import arrowRightImg from 'assets/img/arrow-right.png';
-import vector2Img from 'assets/img/vector2.png';
-import { Divider } from '@material-ui/core';
+import vector3 from 'assets/img/landingpage/Vector-3.png';
+import vector4 from 'assets/img/landingpage/Vector-4.png';
+import vector14 from 'assets/img/landingpage/Vector-14.png';
+import vector15 from 'assets/img/landingpage/Vector-15.png';
+import vector5 from 'assets/img/landingpage/rectangle-opacity-2.png';
+import { LinearProgress, Divider } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const BorderLinearProgress = withStyles(theme => ({
+  root: {
+    height: 10,
+    borderRadius: 5
+  },
+  colorPrimary: {
+    width: '450px',
+    marginLeft: '40px',
+    backgroundColor:
+      theme.palette.grey[theme.palette.type === 'light' ? 200 : 700]
+  },
+  bar: {
+    borderRadius: 5,
+    backgroundColor: '#1a90ff'
+  }
+}))(LinearProgress);
 
 const Section2Wrapper = styled.div`
   width: 100%;
@@ -38,32 +57,74 @@ const Section2Wrapper = styled.div`
     display: flex;
     align-items: center;
     z-index: 3;
+    margin-bottom: 163px;
 
     @media only screen and (max-width: 768px) {
       flex-direction: column-reverse;
     }
 
-    .apy-info {
+    .apy-info,
+    .apy-info-section-2 {
       flex: 1 1 0%;
-      margin-right: 120px;
-
+      margin-right: 105px;
       @media only screen and (max-width: 768px) {
         width: 100%;
         margin-top: 100px;
       }
 
+      .vector3 {
+        position: absolute;
+        left: 1283px;
+        top: -89px;
+        z-index: -1;
+      }
+
+      .vector4 {
+        position: absolute;
+        left: 1216px;
+        top: 361px;
+        z-index: -1;
+      }
+      .vector5 {
+        position: absolute;
+        left: 1466px;
+        z-index: -1;
+        top: 274px;
+      }
+
+      .vector14 {
+        position: absolute;
+        top: 58%;
+        left: 1.75%;
+        z-index: -1;
+      }
+
+      .vector15 {
+        position: absolute;
+        left: -1%;
+        top: 72%;
+        z-index: -1;
+      }
+
       .info-item-list {
-        width: 80%;
-        border-radius: 5px;
-        box-shadow: 0px 13px 32px 0 rgba(6, 12, 63, 0.1);
-        background-color: #ffffff;
+        width: 530px;
+        border-radius: 20px;
+        box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+        background: rgba(255, 255, 255, 0.5);
 
         h3 {
           display: block;
-          border-bottom: 1px solid #eef1fa;
           font-size: 20px;
           font-weight: 800;
           color: #0b0f23;
+          padding-top: 25px;
+          padding-left: 40px;
+          padding-bottom: 8px;
+        }
+
+        p {
+          font-size: 20px;
+          font-weight: 400;
           padding-top: 25px;
           padding-left: 40px;
           padding-bottom: 8px;
@@ -73,23 +134,24 @@ const Section2Wrapper = styled.div`
           padding-top: 25px;
           padding-left: 40px;
           padding-bottom: 8px;
-          border-bottom: 1px solid #eef1fa;
 
           .money {
             color: #0b0f23;
-            display: inline-block;
             font-size: 25px;
             font-weight: 800;
             margin-right: 12px;
-            
           }
-          .percent {
+          .percent,
+          .percent-section-2 {
             font-size: 20px;
             font-weight: 800;
-            background: #F84960;
+            background: #f84960;
             border-radius: 5px;
             color: #ffffff;
             padding: 5px 7px 1px 7px;
+          }
+          .percent-section-2 {
+            background: #06c270;
           }
         }
 
@@ -163,9 +225,10 @@ const Section2Wrapper = styled.div`
       }
     }
 
-    .earn-content {
+    .earn-content,
+    .earn-content-section-2 {
       flex: 1 1 0%;
-
+      margin-right: 85px;
       p {
         font-size: 25px;
         font-weight: 500;
@@ -185,45 +248,13 @@ const Section2Wrapper = styled.div`
     }
   }
 
-  .decentralized-section {
-    display: flex;
-    margin-top: 200px;
-    z-index: 3;
-
-    @media only screen and (max-width: 768px) {
-      flex-direction: column-reverse;
-    }
-
-    .decentralized-image {
-      flex: 1 1 0%;
-
-      img {
-        width: 80%;
-        transform: scale(1.1);
-
-        @media only screen and (max-width: 768px) {
-          width: 100%;
-          transform: scale(1);
-        }
-      }
-    }
-
-    .decentralized-wrapper {
-      flex: 1 1 0%;
-
-      @media only screen and (max-width: 768px) {
-        margin: 80px 0;
-      }
-    }
-  }
-
   p {
     font-size: 22px;
     font-weight: 900;
     color: #277ee6;
   }
   h4 {
-    max-width: 580px;
+    max-width: 560px;
     margin-top: 24px;
 
     @media only screen and (max-width: 768px) {
@@ -232,7 +263,8 @@ const Section2Wrapper = styled.div`
     }
   }
 
-  h5 {
+  h5,
+  .h5-section-2 {
     max-width: 580px;
     margin: 28px 0;
 
@@ -242,33 +274,77 @@ const Section2Wrapper = styled.div`
     }
   }
 
-  .arrow-right {
-    width: 26px;
-    height: 16px;
-    margin-left: 11px;
-  }
-
-  .vector-section {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    left: 0;
-    margin: auto;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-
-    @media only screen and (max-width: 768px) {
-      width: 100%;
-    }
-
-    img {
-      max-width: 50%;
-      transform: scale(3);
-    }
+  .h5-section-2 {
+    max-width: 437px;
   }
 
   @media only screen and (max-width: 768px) {
+  }
+
+  .divider {
+    margin-left: 40px;
+    width: 450px;
+  }
+
+  .progress-bar {
+    .eth {
+      padding-bottom: 21px;
+      .market-name {
+        margin-left: 40px;
+
+        .name {
+          font-size: 14px;
+          font-weight: 800;
+          color: #6d6f7b;
+        }
+        .percent-progress {
+          font-size: 16px;
+          font-weight: 800;
+          color: #6d6f7b;
+          float: right;
+          margin-right: 49px;
+        }
+      }
+    }
+  }
+
+  .supply {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px 27px 40px;
+
+    .supply-volume {
+      .supply-volume-text {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: #9d9fa7;
+      }
+      .supply-volume-money {
+        font-size: 20px;
+        font-weight: 500;
+        color: #0b0f23;
+      }
+    }
+    .supplier {
+      .supplier-text {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: #9d9fa7;
+      }
+      .supplier-number,
+      .supplier-number-section-2 {
+        font-size: 20px;
+        font-weight: 500;
+        color: #0b0f23;
+      }
+      .supplier-number-section-2 {
+        text-align: right;
+        padding-right: 3px;
+        display: block;
+      }
+    }
   }
 `;
 
@@ -284,6 +360,12 @@ const ICONS = {
   STRK: strkImg,
   SXP: sxpImg
 };
+
+const valueProgress = [
+  { name: 'ETH', value: 40.22 },
+  { name: 'DAI', value: 50.23 },
+  { name: 'USDC', value: 9.88 }
+];
 
 function Section2({ history, markets }) {
   console.log(markets, 'markets?');
@@ -303,38 +385,102 @@ function Section2({ history, markets }) {
           </h5>
         </div>
         <div className="apy-info">
+          <img src={vector3} className="vector3" />
           <div className="info-item-list">
             <h3>Total Supply</h3>
+            <Divider className="divider" />
             <div className="money-market">
               <span className="money">$20,395,867,666.22</span>
               <span className="percent">+5.88%</span>
             </div>
+            <Divider className="divider" />
+            <p>Top 3 Markets</p>
+            <div className="progress-bar">
+              {valueProgress.map((item, index) => {
+                return (
+                  <div className="eth" key={index}>
+                    <div className="market-name">
+                      <span className="name">{item.name}</span>
+                      <span className="percent-progress">{item.value}%</span>
+                    </div>
+                    <BorderLinearProgress
+                      variant="determinate"
+                      value={item.value}
+                    />
+                  </div>
+                );
+              })}
+              <img src={vector5} className="vector5" />
+
+              <img src={vector4} className="vector4" />
+
+              <Divider className="divider" />
+            </div>
+            <div className="supply">
+              <div className="supply-volume">
+                <span className="supply-volume-text">24h Supply Volume</span>
+                <span className="supply-volume-money">$95,867,666.22</span>
+              </div>
+              <div className="supplier">
+                <span className="supplier-text"># of Suppliers</span>
+                <span className="supplier-number">1384393</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="decentralized-section">
-        <div className="decentralized-image">
-          {/* <img src={bg1Img} alt="app img" /> */}
+      <div className="earn-section">
+        <div className="apy-info-section-2">
+          <img src={vector14} className="vector14" />
+          <div className="info-item-list">
+            <h3>Total Borrow</h3>
+            <Divider className="divider" />
+            <div className="money-market">
+              <span className="money">$20,395,867,666.22</span>
+              <span className="percent-section-2">-5.88%</span>
+            </div>
+            <Divider className="divider" />
+            <p>Top 3 Markets</p>
+            <div className="progress-bar">
+              {valueProgress.map((item, index) => {
+                return (
+                  <div className="eth" key={index}>
+                    <div className="market-name">
+                      <span className="name">{item.name}</span>
+                      <span className="percent-progress">{item.value}%</span>
+                    </div>
+                    <BorderLinearProgress
+                      variant="determinate"
+                      value={item.value}
+                    />
+                  </div>
+                );
+              })}
+
+              <img src={vector15} className="vector15" />
+
+              <Divider className="divider" />
+            </div>
+            <div className="supply">
+              <div className="supply-volume">
+                <span className="supply-volume-text">24h Borrow Volume</span>
+                <span className="supply-volume-money">16790</span>
+              </div>
+              <div className="supplier">
+                <span className="supplier-text"># of Borrowers</span>
+                <span className="supplier-number-section-2">502</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="decentralized-wrapper">
-          <p>Decentralized Application</p>
-          <h4>Access Strike through a friendly user interface</h4>
-          <h5>
-            The Strike App enables users access to a fully decentralized money
-            market powered on Ethereum 24/7/365 with a user-interface, api, or
-            smart contracts.
+        <div className="earn-content-section-2">
+          <p>Market</p>
+          <h4>Access Liquidity from Strike on-demand on any asset</h4>
+          <h5 className="h5-section-2">
+            With the Strike protocols decentralized nature, users and developers
+            can access liquidity on-demand from their supplied collateral
           </h5>
-          <div
-            className="flex align-center pointer"
-            onClick={() => handleLink()}
-          >
-            <p>Launch App</p>
-            <img src={arrowRightImg} className="arrow-right" alt="arrow img" />
-          </div>
         </div>
-      </div>
-      <div className="vector-section">
-        {/* <img src={vector2Img} alt="vector img" /> */}
       </div>
     </Section2Wrapper>
   );
