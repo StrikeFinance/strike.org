@@ -9,9 +9,9 @@ import { connectAccount, accountActionCreators } from 'core';
 import { promisify } from 'utilities';
 import MainLayout from 'containers/Layout/MainLayout';
 import Section1 from 'components/Main/Home/Section1';
-import Section2 from 'components/Main/Home/Section2';
-import Section3 from 'components/Main/Home/Section3';
-import Section4 from 'components/Main/Home/Section4';
+// import Section2 from 'components/Main/Home/Section2';
+// import Section3 from 'components/Main/Home/Section3';
+// import Section4 from 'components/Main/Home/Section4';
 
 const HomeWrapper = styled.div`
   height: 100%;
@@ -51,9 +51,9 @@ function Home({ history, getGovernanceStrike }) {
     <MainLayout>
       <HomeWrapper>
         <Section1 />
-        <Section2 markets={markets} />
-        <Section3 markets={markets} />
-        <Section4 />
+        {/* <Section2 markets={markets} /> */}
+        {/* <Section3 markets={markets} /> */}
+        {/* <Section4 /> */}
       </HomeWrapper>
     </MainLayout>
   );

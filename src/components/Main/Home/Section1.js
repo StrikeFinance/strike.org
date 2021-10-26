@@ -17,14 +17,26 @@ const Section1Wrapper = styled.div`
   }
 
   .content {
-    width: 55%;
-    h4 {
-      max-width: 350px;
+    width: 60%;
+    padding-left: 120px;
+    h1 {
+      max-width: 788px;
       margin-bottom: 39px;
+      font-weight: 500;
+      font-size: 61px;
+      color: #0b0f23;
 
       @media only screen and (max-width: 768px) {
         font-size: 24px;
         padding-top: 40px;
+      }
+      .money-content {
+        color: #107def;
+        border: 1px;
+        outline: none;
+        background: rgba(216, 225, 250, 255);
+        border-radius: 13px;
+        padding: 9px 10px 3px 10px;
       }
     }
 
@@ -73,7 +85,7 @@ const Section1Wrapper = styled.div`
     position: relative;
     width: 60%;
     height: 100%;
-    right: 0;
+    right: -234px;
     padding-left: 80px;
 
     @media only screen and (max-width: 768px) {
@@ -86,9 +98,9 @@ const Section1Wrapper = styled.div`
 
     .coin-image {
       position: absolute;
-      top: 5%;
+      top: -210px;
       left: 0;
-      width: 45%;
+      width: 60%;
       margin: auto;
 
       @media only screen and (max-width: 768px) {
@@ -103,28 +115,14 @@ function Section1({ history }) {
   return (
     <Section1Wrapper id="hero" className="flex align-center just-between">
       <div className="content">
-        <h4>Strike Finance Money Markets</h4>
-        <div className="flex align-center btn-wrapper">
-          <div
-            className="flex align-center just-center app-btn pointer"
-            onClick={() => {
-              window.open('https://app.strike.org', '_blank');
-            }}
-          >
-            App
-          </div>
-          <div
-            className="flex align-center just-center whitepaper-btn pointer"
-            onClick={() => {
-              window.open('/Whitepaper.pdf', '_blank');
-            }}
-          >
-            WHITEPAPER
-          </div>
-        </div>
+        <h1>
+          The Strike protocol currently has{' '}
+          <span className="money-content">$18,456,998</span> TVL across 10
+          sToken markets
+        </h1>
       </div>
       <div className="imgs">
-        <img src={vector1} className="vector-image" alt="" />
+        {/* <img src={vector1} className="vector-image" alt="" /> */}
         <img src={vector2} className="coin-image" alt="" />
       </div>
     </Section1Wrapper>
@@ -132,7 +130,7 @@ function Section1({ history }) {
 }
 
 Section1.propTypes = {
-  history: PropTypes.object,
+  history: PropTypes.object
 };
 
 Section1.defaultProps = {

@@ -6,22 +6,22 @@ import { NavLink, withRouter } from 'react-router-dom';
 import logoImg from 'assets/img/logo.png';
 
 const HeaderWrapper = styled.div`
-  position: fixed;
   z-index: 20;
   top: 0px;
   left: 0;
   right: 0;
   background-color: var(--color-bg-main);
+ 
 
   .header-container {
     display: flex;
     align-items: center;
     padding: 40px 84px 20px;
     position: relative;
-
     .logo {
       img {
         height: 40px;
+        margin-left: 120px;
       }
     }
 
@@ -97,28 +97,52 @@ const HeaderWrapper = styled.div`
     }
 
     .header-menu__btn {
-      width: 150px;
-      height: 32px;
-      border-radius: 5px;
-      box-shadow: 0px 4px 13px 0 rgba(39, 126, 230, 0.64);
-      background-color: #277ee6;
-      font-size: 13.5px;
-      font-weight: 500;
+      width: 160px;
+      height: 50px;
+      border-radius: 8px;
+      background-color: #107DEF;
+      font-size: 18px;
+      font-weight: 800;
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-left: 40px;
       cursor: pointer;
+      margin-right: 120px;
       &:hover {
-        background-color: #477ee6;
-        color: #ffffff;
+        background-color: #ffffff;
+        color: #477ee6 ;
       }
       @media only screen and (max-width: 768px) {
         margin-left: 0;
       }
     }
   }
+
+  .header-menu__btn_white {
+    width: 160px;
+    height: 50px;
+    border-radius: 8px;
+    background-color:  #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    color: #277ee6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+    cursor: pointer;
+    &:hover {
+      background-color: #477ee6;
+      color: #ffffff;
+    }
+    @media only screen and (max-width: 768px) {
+      margin-left: 0;
+    }
+  }
+    
+  } 
 
   .header-burger {
     display: none;
@@ -211,7 +235,7 @@ function Header({ history }) {
             </li>
           </ul>
           <div
-            className="header-menu__btn"
+            className="header-menu__btn_white"
             onClick={() => handleLink('https://app.strike.org/')}
           >
             Whitepaper
