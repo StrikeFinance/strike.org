@@ -15,15 +15,12 @@ import uniImg from 'assets/img/uni.png';
 import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
 
-import bg2Img from 'assets/img/bg2.png';
 import bg3Img from 'assets/img/bg3.png';
-import solutionImg from 'assets/img/solution.png';
 import arrowRightImg from 'assets/img/arrow-right.png';
 import vector3Img from 'assets/img/vector3.png';
 
 const Section3Wrapper = styled.div`
   width: 100%;
-  background-color: white;
   padding: 65px 0px 117px 0px;
 
   @media only screen and (max-width: 768px) {
@@ -244,7 +241,6 @@ const ProtocolWrapper = styled.div`
   }
 `;
 
-
 const ICONS = {
   UNI: uniImg,
   ETH: ethImg,
@@ -256,7 +252,7 @@ const ICONS = {
   WBTC: wbtcImg,
   STRK: strkImg,
   SXP: sxpImg
-}
+};
 
 function Section3({ history, markets }) {
   const handleLink = () => {
@@ -266,32 +262,13 @@ function Section3({ history, markets }) {
   return (
     <Section3Wrapper id="developer">
       <DevelopersWrapper className="flex flex-column align-center">
-        <p>Developers</p>
-        <h4 className="center">
-          Comprehensive Developer API & SDK to build your custom application.
-        </h4>
-        <img className="bg2-Img" src={bg2Img} alt="bg2 img" />
-        <img className="solution-img" src={solutionImg} alt="solution img" />
-        <p>Solutions</p>
-        <h5 className="center">
-          Build your own custom application by accessing a non-custodial
-          moneymarket with our developer APIs and SDKs. This will enable
-          developersto quickly build their own application tailored to fit the
-          Strike protocol.
-        </h5>
-        <div
-          className="flex align-center just-center doc-btn pointer"
-          onClick={() => {
-            window.open('https://docs.strike.org', '_blank');
-          }}
-        >
-          Developer Docs
-        </div>
+        <h4 className="center">10 markets available</h4>
       </DevelopersWrapper>
       <PortableWrapper className="flex">
         <div className="column1">
           <div className="info-item-list">
-            {markets.sort((a, b) => {
+            {markets
+              .sort((a, b) => {
                 if (new BigNumber(a.liquidity).isGreaterThan(b.liquidity)) {
                   return -1;
                 }
@@ -309,12 +286,19 @@ function Section3({ history, markets }) {
                       </span>
                       <span className="info-item-content">
                         <span className="info-item-head">
-                          <span className="info-item-title">{m.underlyingName}</span>
-                          <span className="info-item-prop">{m.underlyingSymbol}</span>
+                          <span className="info-item-title">
+                            {m.underlyingName}
+                          </span>
+                          <span className="info-item-prop">
+                            {m.underlyingSymbol}
+                          </span>
                         </span>
                         <span className="info-item-data">
                           <span className="info-item-data-value">
-                            ${m.liquidity ? Number(m.liquidity).toFixed(2) : '0.00'}
+                            $
+                            {m.liquidity
+                              ? Number(m.liquidity).toFixed(2)
+                              : '0.00'}
                           </span>
                           <span className="info-item-data-prop">
                             Available Liquidity
@@ -322,17 +306,17 @@ function Section3({ history, markets }) {
                         </span>
                       </span>
                     </div>
-                  )
+                  );
                 }
-              })
-              }
+              })}
           </div>
         </div>
         <div className="column2">
           <p>Portable Liquidity</p>
           <h4>Access Liquidity from Strike on-demand on any asset.</h4>
           <h5>
-            With the Strike protocols decentralized nature, users and developers can access liquidity on-demand from their supplied collateral.
+            With the Strike protocols decentralized nature, users and developers
+            can access liquidity on-demand from their supplied collateral.
           </h5>
           <div
             className="flex align-center pointer"
@@ -351,7 +335,10 @@ function Section3({ history, markets }) {
           <p>Strike Protocol</p>
           <h4>How does Strike Work?</h4>
           <h5>
-            Strike enables users and developers to supply digital assets onto the platform to earn from dyanmic rates provided by the protocol and use that supplied asset as collateral to borrow other supported digital assets all on-chain.
+            Strike enables users and developers to supply digital assets onto
+            the platform to earn from dyanmic rates provided by the protocol and
+            use that supplied asset as collateral to borrow other supported
+            digital assets all on-chain.
           </h5>
           <div
             className="flex align-center pointer"
@@ -372,13 +359,11 @@ function Section3({ history, markets }) {
 }
 
 Section3.propTypes = {
-  history: PropTypes.object,
+  history: PropTypes.object
 };
 
 Section3.defaultProps = {
   history: {}
 };
 
-export default compose(
-  withRouter,
-)(Section3);
+export default compose(withRouter)(Section3);
