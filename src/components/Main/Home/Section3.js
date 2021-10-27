@@ -14,10 +14,22 @@ import strkImg from 'assets/img/strk.png';
 import uniImg from 'assets/img/uni.png';
 import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
-
-import bg3Img from 'assets/img/bg3.png';
-import arrowRightImg from 'assets/img/arrow-right.png';
-import vector3Img from 'assets/img/vector3.png';
+import completed from 'assets/img/landingpage/Shape.png';
+import dailogo from 'assets/img/landingpage/image-8.png';
+import nextCarret from 'assets/img/landingpage/Vector.png';
+import prevCarret from 'assets/img/landingpage/Vector-1.png';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+  Divider,
+  TableFooter
+} from '@material-ui/core';
 
 const Section3Wrapper = styled.div`
   width: 100%;
@@ -61,181 +73,301 @@ const Section3Wrapper = styled.div`
 `;
 
 const DevelopersWrapper = styled.div`
-  margin-bottom: 62px;
-
-  .bg2-Img {
-    max-width: 100%;
-  }
-
-  .solution-img {
-    width: 90px;
-    margin-top: 50px;
-    margin-bottom: 26px;
-  }
-
-  .doc-btn {
-    width: 150px;
-    height: 32px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 13px 0 rgba(39, 126, 230, 0.64);
-    background-color: #277ee6;
-    font-size: 13.5px;
+  h4.center {
+    font-size: 49px;
     font-weight: 500;
-    color: #ffffff;
-    margin-right: 22px;
-    &:hover {
-      background-color: #477ee6;
-      color: #ffffff;
+    color: #0b0f23;
+    margin-bottom: 45px;
+    position: absolute;
+    z-index: 21;
+    margin-top: -91px;
+  }
+  .paper-root {
+    position: absolute;
+    z-index: 20;
+    border-radius: 20px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.05);
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1 !important;
+      top: 60px;
+      left: -68px;
+      width: 1233px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+    }
+
+    .typography {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0b0f23;
+      margin-top: 30px;
+      margin-left: 40px;
+      margin-bottom: 20px;
+    }
+
+    .dividerMarket {
+      width: 968px;
+      margin-left: 40px;
+    }
+
+    .tableCellHead {
+      font-size: 16px;
+      font-weight: 500;
+      color: #9d9fa7;
+    }
+
+    .tablecell1 {
+      padding-left: 40px;
+    }
+
+    .tablecell2 {
+      padding-right: 75px;
+    }
+
+    .tablecell3 {
+      padding-right: 66px;
+    }
+
+    .tablecell4 {
+      padding-right: 68px;
+    }
+
+    .tablecell5 {
+      padding-right: 63px;
+    }
+
+    .tableCellBody {
+      display: flex;
+      padding-left: 40px;
+
+      img {
+        margin-right: 15px;
+        width: 37px;
+        height: 36px;
+      }
+      .content-table {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-right: 212px;
+
+        .Dai {
+          font-size: 18px;
+          font-weight: 500;
+          color: #000000;
+        }
+
+        .dai {
+          font-size: 16px;
+          font-weight: 500;
+          color: #9d9fa7;
+        }
+      }
+    }
+
+    .earn {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      margin-right: 57px;
+
+      .money {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000000;
+      }
+      .percent {
+        text-align: right;
+        padding-left: 33px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #f84960;
+      }
+    }
+
+    .pagination {
+      border-bottom: none !important;
+      padding-right: 50px;
+      padding-top: 22px;
+      padding-bottom: 27px;
+
+      .numberPage {
+        .page {
+          font-size: 16px;
+          font-weight: 800px;
+          color: #0b0f23;
+          padding: 8px 16px;
+          margin-right: 12px;
+          border: 1px solid black;
+          text-align: center;
+          box-sizing: border-box;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        span.icon {
+          padding: 8px 16px;
+          border: 1px solid black;
+          box-sizing: border-box;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
     }
   }
 `;
 
 const PortableWrapper = styled.div`
-  margin: 150px 0 150px 84px;
   position: relative;
+  background: #3b54b5;
+  margin-top: 408px;
 
   @media only screen and (max-width: 768px) {
-    flex-direction: column-reverse;
-    margin: 100px 0;
   }
 
   .column1 {
-    flex: 1 1 0%;
-    z-index: 3;
+    z-index: 4;
+    margin-top: 402px;
+    margin-left: 190px;
+    margin-bottom: 369px;
 
     @media only screen and (max-width: 768px) {
-      margin-top: 30px;
     }
 
-    .info-item-list {
-      width: 70%;
-      border-radius: 5px;
-      box-shadow: 0px 13px 32px 0 rgba(6, 12, 63, 0.1);
-      background-color: #ffffff;
+    .button-governance {
+      margin-bottom: 25px;
+      span {
+        color: #0b0f23;
+        padding: 6.67px 13.74px 6.34px 13.67px;
+        background: #eceff9;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 800;
+      }
+    }
 
-      @media only screen and (max-width: 768px) {
-        width: 100%;
+    .content-governance {
+      color: #ffffff;
+      font-size: 39px;
+      font-weight: 500;
+      width: 474px;
+      display: block;
+    }
+  }
+  .column2 {
+    z-index: 4;
+    margin-top: 402px;
+    margin-left: 288px;
+
+    .content-column2 {
+      background: rgba(11, 15, 35, 0.5);
+      border-radius: 20px;
+
+      .proposals {
+        font-size: 20px;
+        font-weight: 800;
+        color: #ffffff;
+        padding-top: 30px;
+        padding-left: 40px;
+        padding-bottom: 20px;
+      }
+      .divider {
+        background: #e5e5e5;
+        width: 683px;
+        margin-left: 40px;
+      }
+    }
+
+    .pagination {
+      text-align: right;
+      padding-right: 22px;
+      padding-top: 22px;
+      padding-bottom: 27px;
+
+      .icon {
+        color: #3b54b5;
       }
 
-      .info-item {
-        border-bottom: 1px solid #eef1fa;
-        padding: 25px;
+      .page {
+        color: #107def;
+        border: 1px solid #107def;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .iconPrev,
+      .nextPrev {
+        margin-right: 12px;
+        color: #107def;
+        border: 1px solid #107def;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+    }
+
+    .gorvernance-program {
+      display: flex;
+
+      .program {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        padding-right: 282px;
+        margin-left: -30px;
+        margin-top: 15px;
 
-        .info-item-icon {
-          width: 60px;
-          height: 60px;
-          display: flex;
-          align-items: center;
-          margin-right: 32px;
-          img {
-            display: inline-block;
-            vertical-align: top;
-            max-width: 100%;
-            max-height: 100%;
-          }
+        .progam-name {
+          font-size: 20px;
+          font-weight: 500;
+          color: #ffffff;
+          margin-bottom: 2px;
+          margin-left: -14px;
         }
-        .info-item-content {
-          width: calc(100% - 66px);
+
+        .date-passed {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          padding-left: 70px;
+          padding-bottom: 16px;
 
-          .info-item-title {
-            display: flex;
-            margin-bottom: 3px;
-            font-size: 18px;
-            font-weight: 900;
-            color: #39496a;
+          .passed {
+            margin-right: 6px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 1px 5px 1px 6px;
+            background: #06c270;
+            border-radius: 5px;
           }
 
-          .info-item-prop {
-            font-size: 18px;
-            font-weight: 600;
-            color: #39496a;
-          }
-
-          .info-item-data-value {
-            display: flex;
-            justify-content: flex-end;
-            text-align: right;
-            font-size: 20px;
-            font-weight: 600;
-            color: #39496a;
-          }
-
-          .info-item-data-prop {
-            display: flex;
-            justify-content: flex-end;
-            color: #c5cbd4;
-            text-align: right;
-            font-size: 19px;
-            font-weight: 600;
+          .date {
+            font-size: 14px;
+            font-weight: 500;
+            color: #9d9fa7;
           }
         }
       }
-    }
-  }
-  .column2 {
-    flex: 1;
-    z-index: 3;
 
-    img {
-      width: 26px;
-      height: 16px;
-      margin-left: 11px;
-    }
-  }
+      .completed {
+        padding-right: 39.67px;
+        padding-top: 28px;
 
-  .vector-section {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    left: 0;
-    margin: auto;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-
-    img {
-      max-width: 50%;
-      transform: scale(1.8);
-    }
-  }
-`;
-
-const ProtocolWrapper = styled.div`
-  display: flex;
-  padding: 0 82px;
-
-  @media only screen and (max-width: 768px) {
-    padding: 0;
-    flex-direction: column;
-  }
-
-  .column1 {
-    flex: 1;
-
-    img {
-      width: 26px;
-      height: 16px;
-      margin-left: 11px;
-    }
-  }
-  .column2 {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .bg3-img {
-      max-width: 100%;
-      padding: 50px 0;
-
-      @media only screen and (max-width: 768px) {
-        max-width: 50%;
+        img {
+          margin-right: 15.33px;
+          margin-bottom: 7px;
+        }
+        span {
+          font-size: 20px;
+          font-weight: 500;
+          color: #ffffff;
+        }
       }
     }
   }
@@ -254,6 +386,52 @@ const ICONS = {
   SXP: sxpImg
 };
 
+const data = [
+  {
+    name: 'Strike Grants Program',
+    passed: 'Passed',
+    date: '003 - Executed October 20th, 2021',
+    excuted: 'Excuted',
+    icon: completed
+  },
+  {
+    name: 'Strike Grants Program',
+    passed: 'Passed',
+    date: '003 - Executed October 20th, 2021',
+    excuted: 'Excuted',
+    icon: completed
+  },
+  {
+    name: 'Strike Grants Program',
+    passed: 'Passed',
+    date: '003 - Executed October 20th, 2021',
+    excuted: 'Excuted',
+    icon: completed
+  },
+  {
+    name: 'Strike Grants Program',
+    passed: 'Passed',
+    date: '003 - Executed October 20th, 2021',
+    excuted: 'Excuted',
+    icon: completed
+  },
+  {
+    name: 'Strike Grants Program',
+    passed: 'Passed',
+    date: '003 - Executed October 20th, 2021',
+    excuted: 'Excuted',
+    icon: completed
+  }
+];
+
+const dataMarket = [
+  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' },
+  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' },
+  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' },
+  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' },
+  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' }
+];
+
 function Section3({ history, markets }) {
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
@@ -263,97 +441,138 @@ function Section3({ history, markets }) {
     <Section3Wrapper id="developer">
       <DevelopersWrapper className="flex flex-column align-center">
         <h4 className="center">10 markets available</h4>
+        <Paper className="paper-root">
+          <Typography className="typography">All Markets</Typography>
+          <Divider className="dividerMarket" />
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell className="tableCellHead tablecell1" align="left">
+                    Market
+                  </TableCell>
+                  <TableCell className="tableCellHead tablecell2" align="right">
+                    Total Supply
+                  </TableCell>
+                  <TableCell className="tableCellHead tablecell3" align="right">
+                    Supply APY
+                  </TableCell>
+                  <TableCell className="tableCellHead tablecell4" align="right">
+                    Total Borrow
+                  </TableCell>
+                  <TableCell className="tableCellHead tablecell5" align="right">
+                    Borrow APY
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                {dataMarket.map((item, index) => {
+                  return (
+                    <TableRow key={index}>
+                      <TableCell className="tableCellBody">
+                        <img src={item.logo} />
+                        <div className="content-table">
+                          <span className="Dai">{item.name}</span>
+                          <span className="dai">{item.name}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell align="center">
+                        <div className="earn">
+                          <span className="money">{item.money}</span>
+                          <span className="percent">{item.percent}</span>
+                        </div>
+                      </TableCell>
+
+                      <TableCell align="center">
+                        <div className="earn">
+                          <span className="money">{item.money}</span>
+                          <span className="percent">{item.percent}</span>
+                        </div>
+                      </TableCell>
+
+                      <TableCell align="center">
+                        <div className="earn">
+                          <span className="money">{item.money}</span>
+                          <span className="percent">{item.percent}</span>
+                        </div>
+                      </TableCell>
+
+                      <TableCell align="center">
+                        <div className="earn">
+                          <span className="money">{item.money}</span>
+                          <span className="percent">{item.percent}</span>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell className="pagination" align="right" colSpan={5}>
+                    <div className="numberPage">
+                      <span className="page">1</span>
+                      <span className="page">2</span>
+                      <span className="icon">
+                        <img src={nextCarret} />
+                      </span>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              </TableFooter>
+            </Table>
+          </TableContainer>
+        </Paper>
       </DevelopersWrapper>
       <PortableWrapper className="flex">
         <div className="column1">
-          <div className="info-item-list">
-            {markets
-              .sort((a, b) => {
-                if (new BigNumber(a.liquidity).isGreaterThan(b.liquidity)) {
-                  return -1;
-                }
-                if (new BigNumber(a.liquidity).isLessThan(b.liquidity)) {
-                  return 1;
-                }
-                return 0;
-              })
-              .map((m, index) => {
-                if (index < 3) {
-                  return (
-                    <div className="info-item" key={index}>
-                      <span className="info-item-icon">
-                        <img src={ICONS[m.underlyingSymbol]} alt="coin img" />
-                      </span>
-                      <span className="info-item-content">
-                        <span className="info-item-head">
-                          <span className="info-item-title">
-                            {m.underlyingName}
-                          </span>
-                          <span className="info-item-prop">
-                            {m.underlyingSymbol}
-                          </span>
-                        </span>
-                        <span className="info-item-data">
-                          <span className="info-item-data-value">
-                            $
-                            {m.liquidity
-                              ? Number(m.liquidity).toFixed(2)
-                              : '0.00'}
-                          </span>
-                          <span className="info-item-data-prop">
-                            Available Liquidity
-                          </span>
-                        </span>
-                      </span>
-                    </div>
-                  );
-                }
-              })}
+          <div className="button-governance">
+            <span>Gorvernance</span>
           </div>
+          <span className="content-governance">
+            Strike is managed by a decentralized community of Strike
+            token-holders and their delegates, who propose and vote on upgrades
+            to the protocol.
+          </span>
         </div>
         <div className="column2">
-          <p>Portable Liquidity</p>
-          <h4>Access Liquidity from Strike on-demand on any asset.</h4>
-          <h5>
-            With the Strike protocols decentralized nature, users and developers
-            can access liquidity on-demand from their supplied collateral.
-          </h5>
-          <div
-            className="flex align-center pointer"
-            onClick={() => handleLink()}
-          >
-            <p>Launch App</p>
-            <img src={arrowRightImg} className="arrow-right" alt="arrow img" />
+          <div className="content-column2">
+            <Typography className="proposals">Recent Proposals</Typography>
+            <Divider className="divider" />
+            {data.map((item, index) => {
+              return (
+                <>
+                  <div className="gorvernance-program" key={index}>
+                    <div className="program">
+                      <span className="progam-name">{item.name}</span>
+                      <span className="date-passed">
+                        <span className="passed">{item.passed}</span>
+                        <span className="date">{item.date}</span>
+                      </span>
+                    </div>
+                    <div className="completed">
+                      <img src={item.icon} />
+                      <span>{item.excuted}</span>
+                    </div>
+                  </div>
+                  <Divider className="divider" />
+                </>
+              );
+            })}
+            <div className="pagination">
+              <span className="icon iconPrev">
+                <img src={prevCarret} />
+              </span>
+              <span className="page">1</span>
+              <span className="page">2</span>
+              <span className="icon nextPrev">
+                <img src={nextCarret} />
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="vector-section">
-          <img src={vector3Img} alt="vector img" />
         </div>
       </PortableWrapper>
-      <ProtocolWrapper className="flex">
-        <div className="column1">
-          <p>Strike Protocol</p>
-          <h4>How does Strike Work?</h4>
-          <h5>
-            Strike enables users and developers to supply digital assets onto
-            the platform to earn from dyanmic rates provided by the protocol and
-            use that supplied asset as collateral to borrow other supported
-            digital assets all on-chain.
-          </h5>
-          <div
-            className="flex align-center pointer"
-            onClick={() => {
-              window.open('/Whitepaper.pdf', '_blank');
-            }}
-          >
-            <p>READ THE WHITEPAPER</p>
-            <img src={arrowRightImg} className="arrow-right" alt="arrow img" />
-          </div>
-        </div>
-        <div className="flex align-center just-center column2">
-          <img className="bg3-img" src={bg3Img} alt="bg3 img" />
-        </div>
-      </ProtocolWrapper>
     </Section3Wrapper>
   );
 }
