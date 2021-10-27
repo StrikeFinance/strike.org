@@ -39,7 +39,7 @@ const BorderLinearProgress = withStyles(theme => ({
 }))(LinearProgress);
 
 const Section2Wrapper = styled.div`
-  width: 100%;
+   width: 100%;
   background-color: var(--color-bg-main);
   margin-top: 300px;
   display: flex;

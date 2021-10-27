@@ -11,10 +11,11 @@ const MainLayoutWrapper = styled.div`
   display: flex;
   background-color: var(--color-bg-main);
   position: relative;
+ 
 
   .main {
     background-color: var(--color-bg-main);
-
+    overflow-x: hidden;
     .main-content {
       display: flex;
       flex-direction: column;

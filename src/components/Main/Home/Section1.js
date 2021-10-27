@@ -15,6 +15,7 @@ const Section1Wrapper = styled.div`
   padding-left: 84px;
   background-color: var(--color-bg-main);
   margin: 100px 0;
+  
 
   @media only screen and (max-width: 768px) {
     padding-left: 20px;
