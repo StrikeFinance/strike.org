@@ -298,8 +298,14 @@ const PortableWrapper = styled.div`
       .page {
         color: #107def;
         border: 1px solid #107def;
-        cursor: pointer;
+        font-size: 16px;
+        font-weight: 800px;
+        padding: 8px 16px;
+        margin-right: 12px;
+        text-align: center;
+        box-sizing: border-box;
         border-radius: 4px;
+        cursor: pointer;
       }
 
       .iconPrev,
@@ -309,6 +315,7 @@ const PortableWrapper = styled.div`
         border: 1px solid #107def;
         cursor: pointer;
         border-radius: 4px;
+        padding: 8px 16px;
       }
     }
 
