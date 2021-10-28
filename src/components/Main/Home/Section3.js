@@ -20,6 +20,11 @@ import nextCarret from 'assets/img/landingpage/Vector.png';
 import prevCarret from 'assets/img/landingpage/Vector-1.png';
 import vector9 from 'assets/img/landingpage/Vector-9.png';
 import vector10 from 'assets/img/landingpage/Vector-10.png';
+import V5b from 'assets/img/landingpage/Vector-5-b.png';
+import V6b from 'assets/img/landingpage/Vector-6-b.png';
+import V7b from 'assets/img/landingpage/Vector-7-b.png';
+import V8b from 'assets/img/landingpage/Vector-8-b.png';
+import V16b from 'assets/img/landingpage/Vector-16-b.png';
 import {
   Table,
   TableBody,
@@ -258,6 +263,19 @@ const PortableWrapper = styled.div`
     @media only screen and (max-width: 768px) {
     }
 
+    img.V16b {
+      position: absolute;
+      z-index: -1;
+      left: 221px;
+      top: 369px;
+    }
+
+    img.V6b {
+      position: absolute;
+      left: 21%;
+      top: 66%;
+    }
+
     .button-governance {
       margin-bottom: 25px;
       span {
@@ -287,6 +305,25 @@ const PortableWrapper = styled.div`
     .content-column2 {
       background: rgba(11, 15, 35, 0.5);
       border-radius: 20px;
+
+      img.V5b {
+        position: absolute;
+        top: 23%;
+        right: 10%;
+      }
+
+      img.V8b {
+        position: absolute;
+        top: 63%;
+        right: 3%;
+        z-index: -1;
+      }
+
+      img.V7b {
+        position: absolute;
+        top: 80%;
+        right: 33%;
+      }
 
       .proposals {
         font-size: 20px;
@@ -554,6 +591,7 @@ function Section3({ history, markets }) {
       </DevelopersWrapper>
       <PortableWrapper className="flex">
         <div className="column1">
+          <img src={V16b} className="V16b" />
           <div className="button-governance">
             <span>Gorvernance</span>
           </div>
@@ -562,9 +600,11 @@ function Section3({ history, markets }) {
             token-holders and their delegates, who propose and vote on upgrades
             to the protocol.
           </span>
+          <img src={V6b} className="V6b" />
         </div>
         <div className="column2">
           <div className="content-column2">
+            <img src={V5b} className="V5b" />
             <Typography className="proposals">Recent Proposals</Typography>
             <Divider className="divider" />
             {data.map((item, index) => {
@@ -587,6 +627,7 @@ function Section3({ history, markets }) {
                 </>
               );
             })}
+            <img src={V8b} className="V8b" />
             <div className="pagination">
               <span className="icon iconPrev">
                 <img src={prevCarret} />
@@ -597,6 +638,7 @@ function Section3({ history, markets }) {
                 <img src={nextCarret} />
               </span>
             </div>
+            <img src={V7b} className="V7b" />
           </div>
         </div>
       </PortableWrapper>

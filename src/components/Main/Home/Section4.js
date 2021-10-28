@@ -7,6 +7,13 @@ import { Typography } from 'antd';
 import imageApi from 'assets/img/landingpage/Group-379.png';
 import vector from 'assets/img/landingpage/Vector-379.png';
 import imgMac from 'assets/img/landingpage/Group-1006.png';
+import imgBlock from 'assets/img/landingpage/Group-384.png';
+import V10b from 'assets/img/landingpage/Vector-10-b.png';
+import V4b from 'assets/img/landingpage/Vector-4-b.png';
+import V14b from 'assets/img/landingpage/Vector-14-b.png';
+import V17b from 'assets/img/landingpage/Vector-17-b.png';
+import V19b from 'assets/img/landingpage/Vector-19-b.png';
+import V21b from 'assets/img/landingpage/Vector-21-b.png';
 
 const Section4Wrapper = styled.div`
   width: 100%;
@@ -84,10 +91,46 @@ const Section4Wrapper = styled.div`
     .imageApi {
       margin-top: 0;
     }
+
+    img.V10b {
+        position: absolute;
+        right: 20%;
+        top: -8%;
+    }
+
+    img.V4b {
+      position: absolute;
+      top: 23%;
+    }
+
+    img.V14b {
+      position: absolute;
+      top: 62%;
+      right: 12%;
+      z-index: 20;
+    }
   }
 
   .column6 {
     padding-bottom: 215px;
+
+    img.V17b {
+      position: absolute;
+      top: 21%;
+      right: 60%;
+    }
+
+    img.V19b {
+      position: absolute;
+      top: 57%;
+      right: 71%;
+    }
+
+    img.V21b{
+      position: absolute;
+      top: 53%;
+      left: 52%
+    }
   }
 
   }
@@ -117,7 +160,10 @@ function Section4({ history }) {
       </div>
       <div className="flex">
         <div className="column3">
+          <img src={V10b} className="V10b" />
           <img className="imageApi" src={imgMac} />
+          <img src={V4b} className="V4b" />
+          <img src={V14b} className="V14b" />
         </div>
         <div className="column4">
           <Typography className="typography">Try Strike Finance</Typography>
@@ -143,8 +189,10 @@ function Section4({ history }) {
           <button className="btn-docs">Read The Whitepaper</button>
         </div>
         <div className="column6">
-          <img className="imageApi" src={imageApi} />
-          <img className="vector" src={vector} />
+          <img src={V17b} className="V17b" />
+          <img className="imageApi" src={imgBlock} />
+          <img src={V19b} className="V19b" />
+          <img src={V21b} className="V21b" />
         </div>
       </div>
     </Section4Wrapper>
