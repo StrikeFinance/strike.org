@@ -207,9 +207,6 @@ function Footer({ settings }) {
             <a onClick={() => history.push("/terms")}>
               Terms
             </a>
-            <a href="https://www.immunefi.com/bounty/strikefinance">
-              Bug Bounty
-            </a>
           </div>
           <div className="link-list">
             <p>Governance</p>
