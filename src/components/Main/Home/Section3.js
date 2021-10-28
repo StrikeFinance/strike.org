@@ -18,6 +18,8 @@ import completed from 'assets/img/landingpage/Shape.png';
 import dailogo from 'assets/img/landingpage/image-8.png';
 import nextCarret from 'assets/img/landingpage/Vector.png';
 import prevCarret from 'assets/img/landingpage/Vector-1.png';
+import vector9 from 'assets/img/landingpage/Vector-9.png';
+import vector10 from 'assets/img/landingpage/Vector-10.png';
 import {
   Table,
   TableBody,
@@ -73,6 +75,7 @@ const Section3Wrapper = styled.div`
 `;
 
 const DevelopersWrapper = styled.div`
+  position: relative;
   h4.center {
     font-size: 49px;
     font-weight: 500;
@@ -82,6 +85,21 @@ const DevelopersWrapper = styled.div`
     z-index: 21;
     margin-top: -91px;
   }
+
+  img.vector9 {
+    position: absolute;
+    z-index: 21;
+    top: 304px;
+    left: 273px;
+  }
+
+  img.vector10 {
+    position: absolute;
+    z-index: 20;
+    top: 111px;
+    right: 200px;
+  }
+
   .paper-root {
     position: absolute;
     z-index: 20;
@@ -448,6 +466,8 @@ function Section3({ history, markets }) {
     <Section3Wrapper id="developer">
       <DevelopersWrapper className="flex flex-column align-center">
         <h4 className="center">10 markets available</h4>
+        <img src={vector9} className="vector9" />
+        <img src={vector10} className="vector10" />
         <Paper className="paper-root">
           <Typography className="typography">All Markets</Typography>
           <Divider className="dividerMarket" />
