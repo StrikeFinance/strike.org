@@ -136,7 +136,7 @@ const Section1Wrapper = styled.div`
     right: -170px;
     padding-left: 80px;
     top: 45px;
-     @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 768px) {
       padding: 0;
     }
 
@@ -207,8 +207,8 @@ const Section1Wrapper = styled.div`
   }
 `;
 
-function Section1({ history,markets }) {
-  console.log(markets,"markets")
+function Section1({ history, markets }) {
+  console.log(markets, 'markets');
   const dataFake = [
     {
       cryptoName: 'ETH',
@@ -235,13 +235,12 @@ function Section1({ history,markets }) {
     }
   };
 
-
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
       () =>
         setIndex(prevIndex =>
-          prevIndex === dataFake.length - 1 ? 0 : prevIndex + 1
+          prevIndex === markets.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -263,8 +262,14 @@ function Section1({ history,markets }) {
               <div className="slide-show" key={i}>
                 <h4>The Strike protocol currently</h4>
                 <h4>
-                  has <span>${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(data.totalSupply)
-                  }</span> {data.underlyingName} across
+                  has{' '}
+                  <span>
+                    $
+                    {new Intl.NumberFormat({
+                      maximumSignificantDigits: 3
+                    }).format(data.totalSupply)}
+                  </span>{' '}
+                  {data.underlyingName} across
                 </h4>
                 <h4>{data.supplyApy}% sToken markets</h4>
               </div>
