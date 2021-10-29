@@ -530,13 +530,6 @@ const data = Array.from(Array(5)).map(_ => ({
   icon: completed
 }));
 
-const dataMarket = Array.from(Array(5)).map(_ => ({
-  logo: dailogo,
-  name: 'Dai',
-  money: '$6,194.34M',
-  percent: '-0.55%'
-}));
-
 function Section3({ history, markets }) {
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
@@ -574,40 +567,40 @@ function Section3({ history, markets }) {
               </TableHead>
 
               <TableBody>
-                {dataMarket.map((item, index) => {
+                {markets.slice(0, 5).map((item, index) => {
                   return (
                     <TableRow key={index}>
                       <TableCell className="tableCellBody">
-                        <img src={item.logo} />
+                        <img src={ICONS[item.underlyingSymbol]} />
                         <div className="content-table">
-                          <span className="Dai">{item.name}</span>
-                          <span className="dai">{item.name}</span>
+                          <span className="Dai">{item.underlyingName}</span>
+                          <span className="dai">{item.underlyingName}</span>
                         </div>
                       </TableCell>
                       <TableCell align="center">
                         <div className="earn">
-                          <span className="money">{item.money}</span>
+                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalSupply)}</span>
                           <span className="percent">{item.percent}</span>
                         </div>
                       </TableCell>
 
                       <TableCell align="center">
                         <div className="earn">
-                          <span className="money">{item.money}</span>
+                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.supplyApy)}</span>
                           <span className="percent">{item.percent}</span>
                         </div>
                       </TableCell>
 
                       <TableCell align="center">
                         <div className="earn">
-                          <span className="money">{item.money}</span>
+                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalBorrows)}</span>
                           <span className="percent">{item.percent}</span>
                         </div>
                       </TableCell>
 
                       <TableCell align="center">
                         <div className="earn">
-                          <span className="money">{item.money}</span>
+                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.borrowApy)}</span>
                           <span className="percent">{item.percent}</span>
                         </div>
                       </TableCell>

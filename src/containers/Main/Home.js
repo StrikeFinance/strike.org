@@ -4,7 +4,7 @@ import Section2 from 'components/Main/Home/Section2';
 import Section3 from 'components/Main/Home/Section3';
 import Section4 from 'components/Main/Home/Section4';
 import MainLayout from 'containers/Layout/MainLayout';
-import { accountActionCreators, connectAccount } from 'core';
+import { accountActionCreators, connectAccount, getGovernance } from 'core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation, withRouter } from 'react-router-dom';
@@ -46,11 +46,12 @@ const SpinnerWrapper = styled.div`
   }
 `;
 
-function Home({ history, getGovernanceStrike, getDecimals, setSetting }) {
+function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovernance }) {
   const [markets, setMarkets] = useState([]);
   const location = useLocation();
   const [isLoading, setisLoading] = useState(true);
-
+  const [data, setdata] = useState();
+  const [governance, setgovernance] = useState();
 
   useEffect(() => {
     if (location.hash) {
@@ -71,8 +72,23 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting }) {
     if (!res.status) {
       return;
     }
+    setisLoading(false);
+    setdata(() => res.data);
     setMarkets(res.data.markets);
   };
+
+  const getGovernanceFunc = async () => {
+    console.log('AAAAAAAAA: ');
+    const res = await promisify(getGovernance, { limit: 5, offset: 0 });
+    if (!res.status) {
+      return;
+    }
+    setgovernance(res);
+  };
+
+  useEffect(() => {
+    getGovernanceFunc();
+  }, []);
 
   useEffect(() => {
     getMarkets();
@@ -93,12 +109,18 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting }) {
 
   return (
     <MainLayout>
-      <HomeWrapper>
-        <Section1 markets={markets} />
-        <Section2 markets={markets} />
-        <Section3 markets={markets} />
-        <Section4 />
-      </HomeWrapper>
+      {data ? (
+        <HomeWrapper>
+          <Section1 markets={markets} />
+          <Section2 data={data} />
+          <Section3 markets={markets} governance={governance}/>
+          <Section4 />
+        </HomeWrapper>
+      ) : (
+        <SpinnerWrapper>
+          <LoadingSpinner />
+        </SpinnerWrapper>
+      )}
     </MainLayout>
   );
 }
@@ -118,14 +140,16 @@ const mapDispatchToProps = dispatch => {
   const {
     getGovernanceStrike,
     getDecimals,
-    getInterateModel
+    getInterateModel,
+    getGovernance
   } = accountActionCreators;
 
   return bindActionCreators(
     {
       getGovernanceStrike,
       getInterateModel,
-      getDecimals
+      getDecimals,
+      getGovernance
     },
     dispatch
   );

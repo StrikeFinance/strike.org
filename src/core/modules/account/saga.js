@@ -9,7 +9,7 @@ import {
 } from 'core/modules/account/actions';
 
 import { restService } from 'utilities';
-import { GET_INTERATE_MODEL } from './actions';
+import { GET_GOVERNANCE_REQUEST, GET_INTERATE_MODEL } from './actions';
 
 export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
   const { asset, type } = payload;
@@ -29,6 +29,7 @@ export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
 }
 
 export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
+  console.log('SAGA: ', payload);
   try {
     const response = yield call(restService, {
       api: `/governance/strike`,
@@ -42,7 +43,27 @@ export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
     reject(e);
   }
 }
+export function* asyncGetGovernanceRequest({ payload, resolve, reject }) {
+  try {
+    const response = yield call(restService, {
+      api: `/proposals`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
 
+export function* watchasyncGetGovernanceRequest() {
+  while (true) {
+    const action = yield take(GET_GOVERNANCE_REQUEST);
+    yield* asyncGetGovernanceRequest(action);
+  }
+}
 export function* watchGetMarketHistoryRequest() {
   while (true) {
     const action = yield take(GET_MARKET_HISTORY_REQUEST);

@@ -230,6 +230,7 @@ function Section1({ history, markets }) {
     }
   };
 
+
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(

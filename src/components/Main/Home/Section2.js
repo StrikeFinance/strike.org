@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
@@ -171,15 +171,13 @@ const Section2Wrapper = styled.div`
             width: 100%;
           }
           .percent-style {
-            background: #F84960;
+            background: #f84960;
             border-radius: 5px;
             padding: 5px;
             color: #fff;
             font-size: 20px;
             height: 27px;
           }
-
-
 
           .info-item-icon {
             width: 60px;
@@ -603,8 +601,9 @@ const valueProgress = [
   { name: 'USDC', value: 9.88 }
 ];
 
-function Section2({ history, markets }) {
-  console.log(markets, 'markets?');
+function Section2({ history, data }) {
+  console.log(data, 'data: ');
+
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
@@ -626,22 +625,22 @@ function Section2({ history, markets }) {
             <h3>Total Supply</h3>
             <Divider className="divider" />
             <div className="money-market">
-              <span className="money">$20,395,867,666.22</span>
+              <span className="money">${data.supplierCount}</span>
               <span className="percent">+5.88%</span>
             </div>
             <Divider className="divider" />
             <p>Top 3 Markets</p>
             <div className="progress-bar">
-              {valueProgress.map((item, index) => {
+              {data.markets.slice(0, 3).map((item, index) => {
                 return (
                   <div className="eth" key={index}>
                     <div className="market-name">
-                      <span className="name">{item.name}</span>
-                      <span className="percent-progress">{item.value}%</span>
+                      <span className="name">{item.underlyingName}</span>
+                      <span className="percent-progress">{item.tokenPrice}%</span>
                     </div>
                     <BorderLinearProgress
                       variant="determinate"
-                      value={item.value}
+                      value={item.tokenPrice}
                     />
                   </div>
                 );
@@ -655,11 +654,11 @@ function Section2({ history, markets }) {
             <div className="supply">
               <div className="supply-volume">
                 <span className="supply-volume-text">24h Supply Volume</span>
-                <span className="supply-volume-money">$95,867,666.22</span>
+                <span className="supply-volume-money">{data.marketVolumeLog ? data.marketVolumeLog.totalSupplyUsd24h : 0}</span>
               </div>
               <div className="supplier">
                 <span className="supplier-text"># of Suppliers</span>
-                <span className="supplier-number">1384393</span>
+                <span className="supplier-number">{data.supplierCount}</span>
               </div>
             </div>
           </div>
@@ -678,21 +677,20 @@ function Section2({ history, markets }) {
             <Divider className="divider" />
             <p>Top 3 Markets</p>
             <div className="progress-bar">
-              {valueProgress.map((item, index) => {
+              {data.markets.slice(0, 3).map((item, index) => {
                 return (
                   <div className="eth" key={index}>
                     <div className="market-name">
-                      <span className="name">{item.name}</span>
-                      <span className="percent-progress">{item.value}%</span>
+                      <span className="name">{item.underlyingName}</span>
+                      <span className="percent-progress">{item.tokenPrice}%</span>
                     </div>
                     <BorderLinearProgress
                       variant="determinate"
-                      value={item.value}
+                      value={item.tokenPrice}
                     />
                   </div>
                 );
               })}
-
               <img src={vector15} className="vector15" />
 
               <Divider className="divider" />
@@ -700,11 +698,11 @@ function Section2({ history, markets }) {
             <div className="supply">
               <div className="supply-volume">
                 <span className="supply-volume-text">24h Borrow Volume</span>
-                <span className="supply-volume-money">16790</span>
+                <span className="supply-volume-money">{data.marketVolumeLog ? data.marketVolumeLog.totalSupplyUsd24h : 0}</span>
               </div>
               <div className="supplier">
                 <span className="supplier-text"># of Borrowers</span>
-                <span className="supplier-number-section-2">502</span>
+                <span className="supplier-number-section-2">{data.supplierCount}</span>
               </div>
             </div>
           </div>
@@ -723,11 +721,13 @@ function Section2({ history, markets }) {
 }
 
 Section2.propTypes = {
-  history: PropTypes.object
+  history: PropTypes.object,
+  data: PropTypes.object
 };
 
 Section2.defaultProps = {
-  history: {}
+  history: {},
+  data: {}
 };
 
 export default compose(withRouter)(Section2);
