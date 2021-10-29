@@ -124,6 +124,24 @@ const HeaderWrapper = styled.div`
         margin-left: 120px;
       }
     }
+    .header-menu_whitepaper__btn {
+      width: 160px;
+      height: 50px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 13px 0 rgba(39, 126, 230, 0.64);
+      background-color: #ffff;
+      font-size: 18px;
+      font-weight: 800;
+      color: #277ee6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 40px;
+      cursor: pointer;
+      @media only screen and (max-width: 768px) {
+        margin-left: 0;
+      }
+    }
   }
 
   .header-menu__btn_white {
@@ -239,6 +257,15 @@ function Header({ history }) {
               >
                 Developers
               </div>
+            </li>
+            <li className="header-menu__item">
+              <NavLink
+                exact
+                className="header-menu__link"
+                to="/#developer"
+              >
+                Developers
+              </NavLink>
             </li>
           </ul>
           <div

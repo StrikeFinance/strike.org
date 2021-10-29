@@ -4,6 +4,7 @@ import styled, { withTheme } from 'styled-components';
 import Header from 'containers/Layout/Header';
 import Footer from 'containers/Layout/Footer';
 import { Row, Column } from 'components/Basic/Style';
+import SubHeader from './SubHeader';
 
 const MainLayoutWrapper = styled.div`
   width: 100%;
@@ -66,6 +67,9 @@ function MainLayout({ title, children, moveToEarn, moveToDevelopers }) {
         </Column>
         <Column xs="12" sm="12" className="main">
           <Row>
+            {/* <Column xs="12">
+              <SubHeader title={title} />
+            </Column> */}
             <Column xs="12">
               <div className="main-content">{children}</div>
             </Column>
