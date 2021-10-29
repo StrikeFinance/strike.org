@@ -15,6 +15,7 @@ import uniImg from 'assets/img/uni.png';
 import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
 import completed from 'assets/img/landingpage/Shape.png';
+import cancel from 'assets/img/landingpage/cancel.png';
 import dailogo from 'assets/img/landingpage/image-8.png';
 import nextCarret from 'assets/img/landingpage/Vector.png';
 import prevCarret from 'assets/img/landingpage/Vector-1.png';
@@ -37,6 +38,8 @@ import {
   Divider,
   TableFooter
 } from '@material-ui/core';
+import moment from 'moment';
+import commaNumber from 'comma-number';
 
 const Section3Wrapper = styled.div`
   width: 100%;
@@ -225,7 +228,7 @@ const DevelopersWrapper = styled.div`
         padding-left: 33px;
         font-size: 16px;
         font-weight: 500;
-        color: #f84960;
+        color: var(--color-green);
       }
     }
 
@@ -521,16 +524,20 @@ const ICONS = {
   STRK: strkImg,
   SXP: sxpImg
 };
-
-const data = Array.from(Array(5)).map(_ => ({
-  name: 'Strike Grants Program',
-  passed: 'Passed',
-  date: '003 - Executed October 20th, 2021',
-  excuted: 'Excuted',
-  icon: completed
-}));
-
-function Section3({ history, markets }) {
+const format = commaNumber.bindWith(',', '.');
+function Section3({ history, markets, governance }) {
+  const getStatus = p => {
+    if (p.state === 'Executed') {
+      return 'Passed';
+    }
+    if (p.state === 'Active') {
+      return 'Active';
+    }
+    if (p.state === 'Defeated') {
+      return 'Failed';
+    }
+    return p.state;
+  };
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
@@ -580,28 +587,46 @@ function Section3({ history, markets }) {
                       <TableCell align="center">
                         <div className="earn">
                           <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalSupply)}</span>
-                          <span className="percent">{item.percent}</span>
+                          <span className="percent">{format(
+                              new BigNumber(item.totalSupplyUsd)
+                                .div(new BigNumber(item.tokenPrice))
+                                .dp(0, 1)
+                                .toString(10)
+                            )}{' '}
+                            {item.underlyingSymbol}</span>
                         </div>
                       </TableCell>
 
                       <TableCell align="center">
                         <div className="earn">
                           <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.supplyApy)}</span>
-                          <span className="percent">{item.percent}</span>
+                          <span className="percent">{new BigNumber(item.supplyStrikeApy)
+                              .dp(2, 1)
+                              .toString(10)}
+                            %</span>
                         </div>
                       </TableCell>
 
                       <TableCell align="center">
                         <div className="earn">
                           <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalBorrows)}</span>
-                          <span className="percent">{item.percent}</span>
+                          <span className="percent">{format(
+                              new BigNumber(item.totalBorrowsUsd)
+                                .div(new BigNumber(item.tokenPrice))
+                                .dp(0, 1)
+                                .toString(10)
+                            )}{' '}
+                            {item.underlyingSymbol}</span>
                         </div>
                       </TableCell>
 
                       <TableCell align="center">
                         <div className="earn">
                           <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.borrowApy)}</span>
-                          <span className="percent">{item.percent}</span>
+                          <span className="percent">{new BigNumber(item.borrowStrikeApy)
+                              .dp(2, 1)
+                              .toString(10)}
+                            %</span>
                         </div>
                       </TableCell>
                     </TableRow>
@@ -643,20 +668,20 @@ function Section3({ history, markets }) {
             <img src={V5b} className="V5b" />
             <Typography className="proposals">Recent Proposals</Typography>
             <Divider className="divider" />
-            {data.map((item, index) => {
+            {governance.map((item, index) => {
               return (
                 <div key={index}>
                   <div className="gorvernance-program">
                     <div className="program">
-                      <span className="progam-name">{item.name}</span>
+                      <span className="progam-name">{item.description.split('\n')[0]}</span>
                       <span className="date-passed">
-                        <span className="passed">{item.passed}</span>
-                        <span className="date">{item.date}</span>
+                        <span className={`passed ${getStatus(item)}`}>{getStatus(item)}</span>
+                        <span className="date">{moment(item.createdAt).format('MMMM Do, YYYY')}</span>
                       </span>
                     </div>
                     <div className="completed">
-                      <img src={item.icon} />
-                      <span>{item.excuted}</span>
+                      <img src={`${item.canceled ? completed : cancel}`} />
+                      <span>{item.state}</span>
                     </div>
                   </div>
                   <Divider className="divider" />

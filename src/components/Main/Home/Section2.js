@@ -20,6 +20,8 @@ import vector15 from 'assets/img/landingpage/Vector-15.png';
 import vector5 from 'assets/img/landingpage/rectangle-opacity-2.png';
 import { LinearProgress, Divider } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import BigNumber from 'bignumber.js';
+import commaNumber from 'comma-number';
 
 const BorderLinearProgress = withStyles(theme => ({
   root: {
@@ -595,18 +597,49 @@ const ICONS = {
   SXP: sxpImg
 };
 
-const valueProgress = [
-  { name: 'ETH', value: 40.22 },
-  { name: 'DAI', value: 50.23 },
-  { name: 'USDC', value: 9.88 }
-];
+const format = commaNumber.bindWith(',', '.');
 
 function Section2({ history, data }) {
-  console.log(data, 'data: ');
-
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
+
+  const [supplyVolume, setSupplyVolume] = useState(0);
+  const [borrowVolume, setBorrowVolume] = useState(0);
+  const [totalSupply, setTotalSupply] = useState('0');
+  const [supplierCount, setSupplierCount] = useState(0);
+  const [totalBorrow, setTotalBorrow] = useState('0');
+  const [borrowerCount, setBorrowerCount] = useState(0);
+  // const [supplyVolume, setSupplyVolume] = useState(0);
+  // const [borrowVolume, setBorrowVolume] = useState(0);
+
+  useEffect(() => {
+    if (data.markets && data.marketVolumeLog && data.dailyStrike) {
+      const tempTS = (data.markets || []).reduce((accumulator, market) => {
+        return new BigNumber(accumulator).plus(
+          new BigNumber(market.totalSupplyUsd)
+        );
+      }, 0);
+      const tempSC = (data.markets || []).reduce((accumulator, market) => {
+        return accumulator + market.supplierCount;
+      }, 0);
+      const tempTB = (data.markets || []).reduce((accumulator, market) => {
+        return new BigNumber(accumulator).plus(
+          new BigNumber(market.totalBorrowsUsd)
+        );
+      }, 0);
+      const tempBC = (data.markets || []).reduce((accumulator, market) => {
+        return accumulator + market.borrowerCount;
+      }, 0);
+      setTotalSupply(tempTS.dp(2, 1).toString(10));
+      setSupplierCount(tempSC);
+      setTotalBorrow(tempTB.dp(2, 1).toString(10));
+      setBorrowerCount(tempBC);
+      setSupplyVolume(data.marketVolumeLog.totalSupplyUsd24h);
+      setBorrowVolume(data.marketVolumeLog.totalBorrowsUsd24h);
+    }
+  }, [data.markets]);
+
   return (
     <Section2Wrapper id="earn">
       <div className="earn-section">
@@ -625,7 +658,7 @@ function Section2({ history, data }) {
             <h3>Total Supply</h3>
             <Divider className="divider" />
             <div className="money-market">
-              <span className="money">${data.supplierCount}</span>
+              <span className="money">${format(totalSupply)}</span>
               <span className="percent">+5.88%</span>
             </div>
             <Divider className="divider" />
@@ -636,29 +669,41 @@ function Section2({ history, data }) {
                   <div className="eth" key={index}>
                     <div className="market-name">
                       <span className="name">{item.underlyingName}</span>
-                      <span className="percent-progress">{item.tokenPrice}%</span>
+                      <span className="percent-progress">{!new BigNumber(item.totalSupply).isZero()
+                          ? new BigNumber(item.totalSupplyUsd)
+                              .div(new BigNumber(item.totalSupply))
+                              .times(100)
+                              .dp(2, 1)
+                              .toNumber()
+                          : 0}%</span>
                     </div>
                     <BorderLinearProgress
                       variant="determinate"
-                      value={item.tokenPrice}
+                      value={
+                        !new BigNumber(item.totalSupply).isZero()
+                          ? new BigNumber(item.totalSupplyUsd)
+                              .div(new BigNumber(item.totalSupply))
+                              .times(100)
+                              .dp(2, 1)
+                              .toNumber()
+                          : 0
+                      }
                     />
                   </div>
                 );
               })}
               <img src={vector5} className="vector5" />
-
               <img src={vector4} className="vector4" />
-
               <Divider className="divider" />
             </div>
             <div className="supply">
               <div className="supply-volume">
                 <span className="supply-volume-text">24h Supply Volume</span>
-                <span className="supply-volume-money">{data.marketVolumeLog ? data.marketVolumeLog.totalSupplyUsd24h : 0}</span>
+                <span className="supply-volume-money">${format(new BigNumber(supplyVolume).toFormat(2))}</span>
               </div>
               <div className="supplier">
                 <span className="supplier-text"># of Suppliers</span>
-                <span className="supplier-number">{data.supplierCount}</span>
+                <span className="supplier-number">{supplierCount}</span>
               </div>
             </div>
           </div>
@@ -671,7 +716,7 @@ function Section2({ history, data }) {
             <h3>Total Borrow</h3>
             <Divider className="divider" />
             <div className="money-market">
-              <span className="money">$20,395,867,666.22</span>
+              <span className="money">${format(totalBorrow)}</span>
               <span className="percent-section-2">-5.88%</span>
             </div>
             <Divider className="divider" />
@@ -682,11 +727,27 @@ function Section2({ history, data }) {
                   <div className="eth" key={index}>
                     <div className="market-name">
                       <span className="name">{item.underlyingName}</span>
-                      <span className="percent-progress">{item.tokenPrice}%</span>
+                      <span className="percent-progress">{
+                        !new BigNumber(item.totalBorrows).isZero()
+                        ? new BigNumber(item.totalBorrowsUsd)
+                            .div(new BigNumber(item.totalBorrows))
+                            .times(100)
+                            .dp(2, 1)
+                            .toNumber()
+                        : 0
+                      }%</span>
                     </div>
                     <BorderLinearProgress
                       variant="determinate"
-                      value={item.tokenPrice}
+                      value={
+                        !new BigNumber(item.totalBorrows).isZero()
+                          ? new BigNumber(item.totalBorrowsUsd)
+                              .div(new BigNumber(item.totalBorrows))
+                              .times(100)
+                              .dp(2, 1)
+                              .toNumber()
+                          : 0
+                      }
                     />
                   </div>
                 );
@@ -698,11 +759,11 @@ function Section2({ history, data }) {
             <div className="supply">
               <div className="supply-volume">
                 <span className="supply-volume-text">24h Borrow Volume</span>
-                <span className="supply-volume-money">{data.marketVolumeLog ? data.marketVolumeLog.totalSupplyUsd24h : 0}</span>
+                <span className="supply-volume-money">${format(new BigNumber(supplyVolume).toFormat(2))}</span>
               </div>
               <div className="supplier">
                 <span className="supplier-text"># of Borrowers</span>
-                <span className="supplier-number-section-2">{data.supplierCount}</span>
+                <span className="supplier-number-section-2">{borrowerCount}</span>
               </div>
             </div>
           </div>

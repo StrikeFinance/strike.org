@@ -78,12 +78,11 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
   };
 
   const getGovernanceFunc = async () => {
-    console.log('AAAAAAAAA: ');
     const res = await promisify(getGovernance, { limit: 5, offset: 0 });
     if (!res.status) {
       return;
     }
-    setgovernance(res);
+    setgovernance(res.data.result);
   };
 
   useEffect(() => {
@@ -113,7 +112,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
         <HomeWrapper>
           <Section1 markets={markets} />
           <Section2 data={data} />
-          <Section3 markets={markets} governance={governance}/>
+          <Section3 markets={markets} governance={governance} />
           <Section4 />
         </HomeWrapper>
       ) : (

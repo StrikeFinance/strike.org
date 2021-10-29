@@ -12,7 +12,7 @@ import arrowDown from 'assets/img/landingpage/arrow-down.png';
 
 const Section1Wrapper = styled.div`
   width: 100%;
-  padding-left: 84px;
+  padding: 40px 84px 20px;
   background-color: var(--color-bg-main);
   margin: 100px 0;
   height: 500px;
@@ -149,15 +149,11 @@ const Section1Wrapper = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
-    right: -170px;
-    padding-left: 80px;
-    top: 45px;
-     @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 768px) {
       padding: 0;
     }
     .vector-image {
       position: absolute;
-      top: -113px;
       z-index: 0;
       left: 359px;
       @media only screen and (max-width: 768px) {
@@ -168,10 +164,9 @@ const Section1Wrapper = styled.div`
     }
     .coin-image {
       position: absolute;
-      top: -210px;
       left: 0;
-      width: 60%;
-      margin: auto;
+      width: 415px;
+      margin: 0 auto;
       @media only screen and (max-width: 768px) {
         width: 87%;
         top: -151px;
@@ -229,8 +224,6 @@ function Section1({ history, markets }) {
       clearTimeout(timeoutRef.current);
     }
   };
-
-
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
@@ -247,30 +240,32 @@ function Section1({ history, markets }) {
   }, [index]);
   return (
     <Section1Wrapper id="hero" className="flex align-center just-between">
-      <div className="content">
-        <img className="content-img" src={vector} />
-        <div
-          className="slideshowSlider"
-          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-        >
-          {markets.map((data, i) => {
-            return (
-              <div className="slide-show" key={i}>
-                <h4>The Strike protocol currently</h4>
-                <h4>
-                  has <span>${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(data.totalSupply)
-                  }</span> {data.underlyingName} across
-                </h4>
-                <h4>{data.supplyApy}% sToken markets</h4>
-              </div>
-            );
-          })}
+      <div className="header-section">
+        <div className="content">
+          <img className="content-img" src={vector} />
+          <div
+            className="slideshowSlider"
+            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+          >
+            {markets.map((data, i) => {
+              return (
+                <div className="slide-show" key={i}>
+                  <h4>The Strike protocol currently</h4>
+                  <h4>
+                    has <span>${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(data.totalSupply)
+                    }</span> {data.underlyingName} across
+                  </h4>
+                  <h4>{data.supplyApy}% sToken markets</h4>
+                </div>
+              );
+            })}
+          </div>
+          <img className="content-img-bottom" src={vector3} />
         </div>
-        <img className="content-img-bottom" src={vector3} />
-      </div>
-      <div className="imgs">
-        <img src={vector4} className="vector-image" alt="" />
-        <img src={vector2} className="coin-image" alt="" />
+        <div className="imgs">
+          <img src={vector4} className="vector-image" alt="" />
+          <img src={vector2} className="coin-image" alt="" />
+        </div>
       </div>
       <div className="mouse">
         <img src={mouse} className="icon-mouse" />

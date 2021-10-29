@@ -29,7 +29,6 @@ export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
 }
 
 export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
-  console.log('SAGA: ', payload);
   try {
     const response = yield call(restService, {
       api: `/governance/strike`,
@@ -46,7 +45,7 @@ export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
 export function* asyncGetGovernanceRequest({ payload, resolve, reject }) {
   try {
     const response = yield call(restService, {
-      api: `/proposals`,
+      api: `/proposals?limit=${payload.limit}&offset=${payload.offset}`,
       method: 'GET',
       params: {}
     });
@@ -151,6 +150,7 @@ export default function*() {
     fork(watchGetMarketHistoryRequest),
     fork(watchGetGovernanceStrikeRequest),
     fork(watchGetDecimalRequest),
-    fork(watchGetInterateModelRequest)
+    fork(watchGetInterateModelRequest),
+    fork(watchasyncGetGovernanceRequest)
   ]);
 }
