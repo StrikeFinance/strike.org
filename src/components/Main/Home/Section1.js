@@ -28,6 +28,15 @@ height: 500px;
   overflow: hidden;
   margin-left: 120px;
   flex: 2;
+
+  img.vector {
+    position: absolute;
+    top: 31%;
+    left: 19%;
+  }
+  img.rectangle {
+    margin-left: 7%;
+  }
   h4 {
     font-family: 'Avenir'
     font-size: 61px;
@@ -112,14 +121,42 @@ height: 500px;
     position: absolute;
     top: 5%;
     left: 0;
-    width: 45%;
+   width: 416px;
     margin: auto;
     @media only screen and (max-width: 768px) {
       width: 80%;
       top: 0;
     }
   }
+  img.rectangle-opacity {
+    margin-left: 45%;
+    margin-top: 15%;
 }
+}
+`;
+
+const MouseWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  .mouse-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    .mouse {
+      width: 20px;
+      height: 30px;
+    }
+  
+    .icon-arrow {
+      width: 14.14px;
+      height: 20.82px;
+      margin-top: 5px;
+      margin-left: 3px;
+    }
+  }
+
+ 
 `;
 
 function Section1({ history, markets }) {
@@ -164,38 +201,50 @@ function Section1({ history, markets }) {
     };
   }, [index]);
   return (
-    <Section1Wrapper
-      id="hero"
-      className="test-123 flex align-center just-between"
-    >
-      <div className="content">
-        <div
-          className="slideshowSlider"
-          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-        >
-          {markets.map((data, i) => {
-            return (
-              <div className="slide-show" key={i}>
-                <h4>The Strike protocol currently</h4>
-                <h4>
-                  has <span>${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(data.totalSupply)
-                  }</span> {data.underlyingName} across
-                </h4>
-                <h4>{data.supplyApy}% sToken markets</h4>
-              </div>
-            );
-          })}
+    <>
+      <Section1Wrapper
+        id="hero"
+        className="test-123 flex align-center just-between"
+      >
+        <div className="content">
+          <img src={vector} className="vector" />
+          <div
+            className="slideshowSlider"
+            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+          >
+            {markets.map((data, i) => {
+              return (
+                <div className="slide-show" key={i}>
+                  <h4>The Strike protocol currently</h4>
+                  <h4>
+                    has{' '}
+                    <span>
+                      $
+                      {new Intl.NumberFormat({
+                        maximumSignificantDigits: 3
+                      }).format(data.totalSupply)}
+                    </span>{' '}
+                    {data.underlyingName} across
+                  </h4>
+                  <h4>{data.supplyApy}% sToken markets</h4>
+                </div>
+              );
+            })}
+          </div>
+          <img src={vector3} className="rectangle" />
         </div>
-      </div>
-      <div className="imgs">
-        <img src={vector2} className="coin-image" alt="" />
-      </div>
-
-      {/* <div className="mouse">
-        <img src={mouse} className="icon-mouse" />
-        <img src={arrowDown} className="icon-arrow" />
-      </div> */}
-    </Section1Wrapper>
+        <div className="imgs">
+          <img src={vector2} className="coin-image" alt="" />
+          <img src={vector4} className="rectangle-opacity" alt="" />
+        </div>
+      </Section1Wrapper>
+      <MouseWrapper>
+        <div className="mouse-wrapper">
+          <img src={mouse} className="icon-mouse" />
+          <img src={arrowDown} className="icon-arrow" />
+        </div>
+      </MouseWrapper>
+    </>
   );
 }
 
