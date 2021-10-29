@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
@@ -541,6 +541,9 @@ function Section3({ history, markets, governance }) {
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
+
+  const [current, setCurrent] = useState();
+  const [pageSize, setPageSize] = useState(5);
 
   return (
     <Section3Wrapper id="developer">
