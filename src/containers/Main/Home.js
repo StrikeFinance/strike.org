@@ -5,6 +5,7 @@ import Section3 from 'components/Main/Home/Section3';
 import Section4 from 'components/Main/Home/Section4';
 import MainLayout from 'containers/Layout/MainLayout';
 import { accountActionCreators, connectAccount, getGovernance } from 'core';
+import { off } from 'npm';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation, withRouter } from 'react-router-dom';
@@ -46,12 +47,25 @@ const SpinnerWrapper = styled.div`
   }
 `;
 
-function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovernance }) {
+function Home({
+  history,
+  getGovernanceStrike,
+  getDecimals,
+  setSetting,
+  getGovernance
+}) {
   const [markets, setMarkets] = useState([]);
   const location = useLocation();
   const [isLoading, setisLoading] = useState(true);
   const [data, setdata] = useState();
-  const [governance, setgovernance] = useState();
+  const [governance, setgovernance] = useState([]);
+  const [current, setCurrent] = useState(1);
+  const [currentGor, setCurrentGor] = useState(1);
+  const [updateListData, setUpdateListData] = useState(false);
+
+  // const handleUpdateListData = () => {
+  //   setUpdateListData(prevUpdateListData => !prevUpdateListData);
+  // };
 
   useEffect(() => {
     if (location.hash) {
@@ -68,13 +82,47 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
   }, [location]);
 
   const getMarkets = async () => {
-    const res = await promisify(getGovernanceStrike, {});
+    const res = await promisify(getGovernanceStrike, {
+      offset: 0,
+      limit: 4
+    });
     if (!res.status) {
       return;
     }
     setisLoading(false);
     setdata(() => res.data);
     setMarkets(res.data.markets);
+  };
+
+  const handleChangePageStrike = (pageNumber, offset, limit) => {
+    setCurrent(pageNumber);
+    setisLoading(true);
+    promisify(getGovernanceStrike, {
+      offset,
+      limit
+    })
+      .then(res => {
+        setdata(res.data);
+        setMarkets(res.data.markets);
+        setisLoading(false);
+        // handleUpdateListData();
+      })
+      .catch(() => {
+        setisLoading(false);
+      });
+  };
+
+  const handleChangePageStrikeGor = (pageNumber, offset, limit) => {
+    setCurrentGor(pageNumber);
+    setisLoading(true);
+    promisify(getGovernance, { limit, offset })
+      .then(res => {
+        setgovernance(res.data.result);
+        setisLoading(false);
+      })
+      .catch(() => {
+        setisLoading(false);
+      });
   };
 
   const getGovernanceFunc = async () => {
@@ -91,7 +139,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
 
   useEffect(() => {
     getMarkets();
-  }, []);
+  }, [updateListData]);
 
   const getDecimal = async () => {
     const res = await promisify(getDecimals, {});
@@ -112,7 +160,13 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
         <HomeWrapper>
           <Section1 markets={markets} />
           <Section2 data={data} />
-          <Section3 markets={markets} governance={governance} />
+          <Section3
+            markets={markets}
+            governance={governance}
+            handleChangePageStrike={handleChangePageStrike}
+            total={data.total || 0}
+            isLoading={isLoading}
+          />
           <Section4 />
         </HomeWrapper>
       ) : (

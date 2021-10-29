@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { BigNumber } from 'bignumber.js';
+import { Pagination } from 'antd';
 import ethImg from 'assets/img/eth.png';
 import wbtcImg from 'assets/img/wbtc.png';
 import usdcImg from 'assets/img/usdc.png';
@@ -26,6 +27,7 @@ import V6b from 'assets/img/landingpage/Vector-6-b.png';
 import V7b from 'assets/img/landingpage/Vector-7-b.png';
 import V8b from 'assets/img/landingpage/Vector-8-b.png';
 import V16b from 'assets/img/landingpage/Vector-16-b.png';
+import arrowRightImg from 'assets/img/arrow-right.png';
 import {
   Table,
   TableBody,
@@ -40,6 +42,7 @@ import {
 } from '@material-ui/core';
 import moment from 'moment';
 import commaNumber from 'comma-number';
+import LoadingSpinner from '../../Basic/LoadingSpinner';
 
 const Section3Wrapper = styled.div`
   width: 100%;
@@ -330,7 +333,7 @@ const PortableWrapper = styled.div`
     margin-top: 402px;
     margin-left: 288px;
     margin-bottom: 64px;
-     @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 768px) {
       margin-top: 60px;
       margin-left: 109px;
     }
@@ -512,6 +515,14 @@ const PortableWrapper = styled.div`
   }
 `;
 
+const SpinnerWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  @media only screen and (max-width: 1440px) {
+    height: 70vh;
+  }
+`;
+
 const ICONS = {
   UNI: uniImg,
   ETH: ethImg,
@@ -525,7 +536,14 @@ const ICONS = {
   SXP: sxpImg
 };
 const format = commaNumber.bindWith(',', '.');
-function Section3({ history, markets, governance }) {
+function Section3({
+  history,
+  markets,
+  governance,
+  handleChangePageStrike,
+  total,
+  isLoading
+}) {
   const getStatus = p => {
     if (p.state === 'Executed') {
       return 'Passed';
@@ -542,8 +560,22 @@ function Section3({ history, markets, governance }) {
     window.open('https://app.strike.org', '_blank');
   };
 
-  const [current, setCurrent] = useState();
+  const [current, setCurrent] = useState(0);
   const [pageSize, setPageSize] = useState(5);
+
+  const handleChangePage = (page, size) => {
+    setCurrent(page);
+    setPageSize(size);
+    handleChangePageStrike(page, (page - 1) * size, size);
+  };
+
+  const onNext = () => {
+    handleChangePage(current + 1, 4);
+  };
+
+  const onPrev = () => {
+    handleChangePage(current - 1, 4);
+  };
 
   return (
     <Section3Wrapper id="developer">
@@ -577,74 +609,137 @@ function Section3({ history, markets, governance }) {
               </TableHead>
 
               <TableBody>
-                {markets.slice(0, 5).map((item, index) => {
-                  return (
-                    <TableRow key={index}>
-                      <TableCell className="tableCellBody">
-                        <img src={ICONS[item.underlyingSymbol]} />
-                        <div className="content-table">
-                          <span className="Dai">{item.underlyingName}</span>
-                          <span className="dai">{item.underlyingName}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell align="center">
-                        <div className="earn">
-                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalSupply)}</span>
-                          <span className="percent">{format(
-                              new BigNumber(item.totalSupplyUsd)
-                                .div(new BigNumber(item.tokenPrice))
-                                .dp(0, 1)
-                                .toString(10)
-                            )}{' '}
-                            {item.underlyingSymbol}</span>
-                        </div>
-                      </TableCell>
+                {!isLoading ? (
+                  markets.length > 0 &&
+                  markets.map((item, index) => {
+                    return (
+                      <TableRow key={index}>
+                        <TableCell className="tableCellBody">
+                          <img src={ICONS[item.underlyingSymbol]} />
+                          <div className="content-table">
+                            <span className="Dai">{item.underlyingName}</span>
+                            <span className="dai">{item.underlyingName}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell align="center">
+                          <div className="earn">
+                            <span className="money">
+                              $
+                              {new Intl.NumberFormat({
+                                maximumSignificantDigits: 3
+                              }).format(item.totalSupply)}
+                            </span>
+                            <span className="percent">
+                              {format(
+                                new BigNumber(item.totalSupplyUsd)
+                                  .div(new BigNumber(item.tokenPrice))
+                                  .dp(0, 1)
+                                  .toString(10)
+                              )}{' '}
+                              {item.underlyingSymbol}
+                            </span>
+                          </div>
+                        </TableCell>
 
-                      <TableCell align="center">
-                        <div className="earn">
-                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.supplyApy)}</span>
-                          <span className="percent">{new BigNumber(item.supplyStrikeApy)
-                              .dp(2, 1)
-                              .toString(10)}
-                            %</span>
-                        </div>
-                      </TableCell>
+                        <TableCell align="center">
+                          <div className="earn">
+                            <span className="money">
+                              $
+                              {new Intl.NumberFormat({
+                                maximumSignificantDigits: 3
+                              }).format(item.supplyApy)}
+                            </span>
+                            <span className="percent">
+                              {new BigNumber(item.supplyStrikeApy)
+                                .dp(2, 1)
+                                .toString(10)}
+                              %
+                            </span>
+                          </div>
+                        </TableCell>
 
-                      <TableCell align="center">
-                        <div className="earn">
-                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalBorrows)}</span>
-                          <span className="percent">{format(
-                              new BigNumber(item.totalBorrowsUsd)
-                                .div(new BigNumber(item.tokenPrice))
-                                .dp(0, 1)
-                                .toString(10)
-                            )}{' '}
-                            {item.underlyingSymbol}</span>
-                        </div>
-                      </TableCell>
+                        <TableCell align="center">
+                          <div className="earn">
+                            <span className="money">
+                              $
+                              {new Intl.NumberFormat({
+                                maximumSignificantDigits: 3
+                              }).format(item.totalBorrows)}
+                            </span>
+                            <span className="percent">
+                              {format(
+                                new BigNumber(item.totalBorrowsUsd)
+                                  .div(new BigNumber(item.tokenPrice))
+                                  .dp(0, 1)
+                                  .toString(10)
+                              )}{' '}
+                              {item.underlyingSymbol}
+                            </span>
+                          </div>
+                        </TableCell>
 
-                      <TableCell align="center">
-                        <div className="earn">
-                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.borrowApy)}</span>
-                          <span className="percent">{new BigNumber(item.borrowStrikeApy)
-                              .dp(2, 1)
-                              .toString(10)}
-                            %</span>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
+                        <TableCell align="center">
+                          <div className="earn">
+                            <span className="money">
+                              $
+                              {new Intl.NumberFormat({
+                                maximumSignificantDigits: 3
+                              }).format(item.borrowApy)}
+                            </span>
+                            <span className="percent">
+                              {new BigNumber(item.borrowStrikeApy)
+                                .dp(2, 1)
+                                .toString(10)}
+                              %
+                            </span>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={5}>
+                      <LoadingSpinner />
+                    </TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
+                  </TableRow>
+                )}
               </TableBody>
               <TableFooter>
                 <TableRow>
                   <TableCell className="pagination" align="right" colSpan={5}>
                     <div className="numberPage">
-                      <span className="page">1</span>
-                      <span className="page">2</span>
-                      <span className="icon">
-                        <img src={nextCarret} />
-                      </span>
+                      <Pagination
+                        size="small"
+                        defaultCurrent={0}
+                        defaultPageSize={4}
+                        current={current}
+                        pageSize={pageSize}
+                        total={total}
+                        onChange={handleChangePage}
+                      />
+                      <div className="flex just-between align-center button">
+                        {current * pageSize < total && (
+                          <div
+                            className="flex align-center button-next"
+                            onClick={onNext}
+                          >
+                            <span>Next</span>
+                          </div>
+                        )}
+                        {current > 1 && (
+                          <div
+                            className="flex align-center button-prev"
+                            onClick={onPrev}
+                          >
+                            <span>Prev</span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </TableCell>
                 </TableRow>
@@ -671,36 +766,62 @@ function Section3({ history, markets, governance }) {
             <img src={V5b} className="V5b" />
             <Typography className="proposals">Recent Proposals</Typography>
             <Divider className="divider" />
-            {governance.map((item, index) => {
-              return (
-                <div key={index}>
-                  <div className="gorvernance-program">
-                    <div className="program">
-                      <span className="progam-name">{item.description.split('\n')[0]}</span>
-                      <span className="date-passed">
-                        <span className={`passed ${getStatus(item)}`}>{getStatus(item)}</span>
-                        <span className="date">{moment(item.createdAt).format('MMMM Do, YYYY')}</span>
-                      </span>
+            {governance.length > 0 &&
+              governance.map((item, index) => {
+                return (
+                  <div key={index}>
+                    <div className="gorvernance-program">
+                      <div className="program">
+                        <span className="progam-name">
+                          {item.description.split('\n')[0]}
+                        </span>
+                        <span className="date-passed">
+                          <span className={`passed ${getStatus(item)}`}>
+                            {getStatus(item)}
+                          </span>
+                          <span className="date">
+                            {moment(item.createdAt).format('MMMM Do, YYYY')}
+                          </span>
+                        </span>
+                      </div>
+                      <div className="completed">
+                        <img src={`${item.canceled ? completed : cancel}`} />
+                        <span>{item.state}</span>
+                      </div>
                     </div>
-                    <div className="completed">
-                      <img src={`${item.canceled ? completed : cancel}`} />
-                      <span>{item.state}</span>
-                    </div>
+                    <Divider className="divider" />
                   </div>
-                  <Divider className="divider" />
-                </div>
-              );
-            })}
+                );
+              })}
             <img src={V8b} className="V8b" />
             <div className="pagination">
-              <span className="icon iconPrev">
-                <img src={prevCarret} />
-              </span>
-              <span className="page">1</span>
-              <span className="page">2</span>
-              <span className="icon nextPrev">
-                <img src={nextCarret} />
-              </span>
+              <Pagination
+                size="small"
+                defaultCurrent={0}
+                defaultPageSize={4}
+                current={current}
+                pageSize={pageSize}
+                total={total}
+                onChange={handleChangePage}
+              />
+              <div className="flex just-between align-center button">
+                {current * pageSize < total && (
+                  <div
+                    className="flex align-center button-next"
+                    onClick={onNext}
+                  >
+                    <span>Next</span>
+                  </div>
+                )}
+                {current > 1 && (
+                  <div
+                    className="flex align-center button-prev"
+                    onClick={onPrev}
+                  >
+                    <span>Prev</span>
+                  </div>
+                )}
+              </div>
             </div>
             <img src={V7b} className="V7b" />
           </div>
