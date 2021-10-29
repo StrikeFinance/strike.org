@@ -207,7 +207,8 @@ const Section1Wrapper = styled.div`
   }
 `;
 
-function Section1({ history }) {
+function Section1({ history,markets }) {
+  console.log(markets,"markets")
   const dataFake = [
     {
       cryptoName: 'ETH',
@@ -234,6 +235,7 @@ function Section1({ history }) {
     }
   };
 
+
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
@@ -256,14 +258,15 @@ function Section1({ history }) {
           className="slideshowSlider"
           style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
         >
-          {dataFake.map((data, i) => {
+          {markets.map((data, i) => {
             return (
               <div className="slide-show" key={i}>
                 <h4>The Strike protocol currently</h4>
                 <h4>
-                  has <span>{data.amount}</span> {data.cryptoName} across
+                  has <span>${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(data.totalSupply)
+                  }</span> {data.underlyingName} across
                 </h4>
-                <h4>{data.size} sToken markets</h4>
+                <h4>{data.supplyApy}% sToken markets</h4>
               </div>
             );
           })}

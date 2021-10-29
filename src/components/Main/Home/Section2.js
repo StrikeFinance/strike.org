@@ -594,9 +594,10 @@ const valueProgress = [
   { name: 'DAI', value: 50.23 },
   { name: 'USDC', value: 9.88 }
 ];
+console.log(valueProgress[0].value)
 
 function Section2({ history, markets }) {
-  console.log(markets, 'markets?');
+
   const handleLink = () => {
     window.open('https://app.strike.org', '_blank');
   };
