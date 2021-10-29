@@ -16,6 +16,10 @@ const Section1Wrapper = styled.div`
   background-color: var(--color-bg-main);
   margin: 100px 0;
 
+  @media only screen and (min-width: 768px) {
+    display: unset;
+  }
+
   .content {
     width: 75%;
     padding-left: 120px;
@@ -23,8 +27,9 @@ const Section1Wrapper = styled.div`
 
     @media only screen and (max-width: 768px) {
       padding-left: 22px;
+      width: 100%;
     }
-    
+
     .slideshowSlider {
       white-space: nowrap;
       transition: ease 1000ms;
@@ -32,14 +37,15 @@ const Section1Wrapper = styled.div`
 
     .slide-show {
       display: inline-block;
-      width: 903px;
+      width: 900px;
     }
 
     .content-img {
       position: absolute;
       z-index: 0;
-      left: 457px;
-      top: 149px;
+      top: 145px;
+      left: 299px;
+      margin-left: 86px;
 
       @media only screen and (max-width: 768px) {
         left: 141px;
@@ -47,13 +53,15 @@ const Section1Wrapper = styled.div`
     }
     .content-img-bottom {
       position: absolute;
-      top: 516px;
+      top: 408px;
       left: 284px;
       z-index: 0;
 
       @media only screen and (max-width: 768px) {
-        top: 478px;
-        left: 155px;
+        top: 387 px;
+        left: 140 px;
+        position: static;
+        margin-left: 86px;
       }
     }
 
@@ -125,10 +133,10 @@ const Section1Wrapper = styled.div`
     position: relative;
     width: 60%;
     height: 100%;
-    right: -141px;
+    right: -170px;
     padding-left: 80px;
-
-    @media only screen and (max-width: 768px) {
+    top: 45px;
+     @media only screen and (max-width: 768px) {
       padding: 0;
     }
 
@@ -136,7 +144,7 @@ const Section1Wrapper = styled.div`
       position: absolute;
       top: -113px;
       z-index: 0;
-      left: 346px;
+      left: 359px;
       @media only screen and (max-width: 768px) {
         left: 37px;
         top: -135px;
@@ -161,7 +169,7 @@ const Section1Wrapper = styled.div`
   .mouse {
     position: absolute;
     z-index: 0;
-    top: 67%;
+    top: 61%;
     left: 50%;
     display: flex;
     flex-direction: column;

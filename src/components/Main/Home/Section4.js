@@ -211,7 +211,7 @@ const Section4Wrapper = styled.div`
     img.V21b{
       position: absolute;
       top: 53%;
-      left: 52%;
+      left: 48%;
       @media only screen and (max-width: 768px) {
         top: 110%;
         left: 71%;
