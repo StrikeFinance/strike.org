@@ -71,12 +71,19 @@ const Section4Wrapper = styled.div`
       box-shadow: 0px 3px 20px rgba(18, 114, 236, 0.4);
       cursor: pointer;
       @media only screen and (max-width: 768px) {
-        margin-bottom: 91px;
+        margin-bottom: 31px;
       }
     }
   }
 
   .column1 {
+    @media only screen and (max-width: 768px) {
+      padding-left:120px;
+      padding-bottom : 10px;
+    }
+  }
+
+  .column4 {
     @media only screen and (max-width: 768px) {
       padding-left:120px;
       padding-bottom : 10px;
@@ -89,7 +96,6 @@ const Section4Wrapper = styled.div`
       @media only screen and (max-width: 768px) {
         position: static!important;
         margin-top: 0px!important;
-       
       }
     }
     .vector {
@@ -107,6 +113,7 @@ const Section4Wrapper = styled.div`
       margin-top: 134px;
       position: absolute;
       z-index: 5;
+      
     }
 
     .vector{
@@ -119,8 +126,15 @@ const Section4Wrapper = styled.div`
 
   .column3 {
     padding-left: 70px;
+    padding-bototm: 120px;
+    @media only screen and (max-width: 768px) {
+      
+    }
     .imageApi {
       margin-top: 0;
+      @media only screen and (max-width: 768px) {
+        left: 0%!important
+      }
     }
 
     img.V10b {
@@ -132,6 +146,11 @@ const Section4Wrapper = styled.div`
     img.V4b {
       position: absolute;
       top: 23%;
+      @media only screen and (max-width: 768px) {
+        position: absolute;
+        top: 167px;
+        left: 10px;
+      }
     }
 
     img.V14b {
@@ -139,28 +158,64 @@ const Section4Wrapper = styled.div`
       top: 62%;
       right: 12%;
       z-index: 20;
+      @media only screen and (max-width: 768px) {
+        left: 78%!important;
+        top: 404px;
+      }
+    }
+  }
+
+  .column3-flex {
+    @media only screen and (max-width: 768px) {
+      flex-direction: column-reverse
+    }
+  }
+
+  .column5 {
+    @media only screen and (max-width: 768px) {
+      padding-top: 90%!important;
+      padding-left: 120px
     }
   }
 
   .column6 {
     padding-bottom: 215px;
 
+    .imageApi {
+      @media only screen and (max-width: 768px) {
+        margin-top: 26px;
+        padding-left: 120px;
+      }
+    }
+
     img.V17b {
       position: absolute;
       top: 21%;
       right: 60%;
+      @media only screen and (max-width: 768px) {
+        right: 39%;
+      }
+     
     }
 
     img.V19b {
       position: absolute;
       top: 57%;
       right: 71%;
+      @media only screen and (max-width: 768px) {
+        top: 99%;
+        right: 60%;
+      }
     }
 
     img.V21b{
       position: absolute;
       top: 53%;
-      left: 52%
+      left: 52%;
+      @media only screen and (max-width: 768px) {
+        top: 110%;
+        left: 71%;
+      }
     }
   }
 

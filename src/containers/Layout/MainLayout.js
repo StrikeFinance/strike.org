@@ -7,7 +7,7 @@ import { Row, Column } from 'components/Basic/Style';
 
 const MainLayoutWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: vh;
   display: flex;
   background-color: var(--color-bg-main);
   position: relative;

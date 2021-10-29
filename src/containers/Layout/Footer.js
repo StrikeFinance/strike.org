@@ -12,6 +12,7 @@ const FooterWrapper = styled.div`
 
   @media (max-width: 768px) {
     padding: 35px;
+    margin-top: 119px;
   }
 
   .footer-content {
