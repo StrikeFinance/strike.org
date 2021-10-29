@@ -240,15 +240,6 @@ function Section2({ history, markets }) {
   return (
     <Section2Wrapper id="earn">
       <div className="earn-section">
-        <div className="earn-content">
-          <p>Market</p>
-          <h4>Supply Collateral to Strike while controlling your keys</h4>
-          <h5>
-            Strike users control all of their digital assets on a non-custodial
-            protocol while earning a variable rate based on market demands of
-            that asset. Rates are earned per Ethereum block mined
-          </h5>
-        </div>
         <div className="apy-info">
           <div className="info-item-list">
             <div className="info-item">
@@ -289,6 +280,15 @@ function Section2({ history, markets }) {
               </span>
             </div>
           </div>
+        </div>
+        <div className="earn-content">
+          <p>Market</p>
+          <h4>Supply Collateral to Strike while controlling your keys</h4>
+          <h5>
+            Strike users control all of their digital assets on a non-custodial
+            protocol while earning a variable rate based on market demands of
+            that asset. Rates are earned per Ethereum block mined
+          </h5>
         </div>
       </div>
     </Section2Wrapper>
