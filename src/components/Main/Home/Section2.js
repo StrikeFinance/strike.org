@@ -39,7 +39,7 @@ const BorderLinearProgress = withStyles(theme => ({
 }))(LinearProgress);
 
 const Section2Wrapper = styled.div`
-   width: 100%;
+  width: 100%;
   background-color: var(--color-bg-main);
   margin-top: 300px;
   display: flex;
@@ -48,9 +48,10 @@ const Section2Wrapper = styled.div`
   position: relative;
   margin-left: 120px;
   margin-right: 120px;
-
+  margin-bottom: 163px;
   @media only screen and (max-width: 768px) {
     padding: 0 20px;
+    margin-bottom: 0;
   }
 
   .earn-section {
@@ -60,15 +61,15 @@ const Section2Wrapper = styled.div`
     margin-bottom: 163px;
 
     @media only screen and (max-width: 768px) {
-      flex-direction: column-reverse;
+      flex-direction: column;
+      margin-top: -17%;
+      padding-right: 119px;
     }
 
-    .apy-info,
-    .apy-info-section-2 {
+    .apy-info {
       flex: 1 1 0%;
       margin-right: 105px;
       @media only screen and (max-width: 768px) {
-        width: 100%;
         margin-top: 100px;
       }
 
@@ -156,7 +157,7 @@ const Section2Wrapper = styled.div`
         }
 
         @media only screen and (max-width: 768px) {
-          width: 100%;
+          margin-top: -72px;
         }
 
         .info-item {
@@ -225,25 +226,252 @@ const Section2Wrapper = styled.div`
       }
     }
 
-    .earn-content,
-    .earn-content-section-2 {
+    .earn-content {
       flex: 1 1 0%;
       margin-right: 85px;
       p {
         font-size: 25px;
         font-weight: 500;
         color: #107def;
+        @media only screen and (max-width: 768px) {
+          font-size: 20px;
+        }
       }
       h4 {
         font-size: 49px;
         font-weight: 500;
         color: #0b0f23;
+        @media only screen and (max-width: 768px) {
+          font-size: 25px;
+        }
       }
 
       h5 {
         font-size: 18px;
         font-weight: 500;
         color: #6d6f7b;
+        @media only screen and (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .earn-section-2 {
+    display: flex;
+    align-items: center;
+    z-index: 3;
+    @media only screen and (max-width: 768px) {
+      flex-direction: column-reverse;
+      margin-top: -17%;
+      padding-right: 119px;
+      padding-bottom: 12%;
+    }
+    .apy-info-section-2 {
+      flex: 1 1 0%;
+      margin-right: 105px;
+      @media only screen and (max-width: 768px) {
+        margin-top: 100px;
+      }
+
+      .vector3 {
+        position: absolute;
+        left: 1283px;
+        top: -89px;
+        z-index: -1;
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .vector4 {
+        position: absolute;
+        left: 1216px;
+        top: 361px;
+        z-index: -1;
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+      .vector5 {
+        position: absolute;
+        left: 1466px;
+        z-index: -1;
+        top: 274px;
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .vector14 {
+        position: absolute;
+        top: 58%;
+        left: 1.75%;
+        z-index: -1;
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .vector15 {
+        position: absolute;
+        left: -1%;
+        top: 72%;
+        z-index: -1;
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .info-item-list {
+        width: 530px;
+        border-radius: 20px;
+        box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+        background: rgba(255, 255, 255, 0.5);
+
+        h3 {
+          display: block;
+          font-size: 20px;
+          font-weight: 800;
+          color: #0b0f23;
+          padding-top: 25px;
+          padding-left: 40px;
+          padding-bottom: 8px;
+        }
+
+        p {
+          font-size: 20px;
+          font-weight: 400;
+          padding-top: 25px;
+          padding-left: 40px;
+          padding-bottom: 8px;
+        }
+
+        .money-market {
+          padding-top: 25px;
+          padding-left: 40px;
+          padding-bottom: 8px;
+
+          .money {
+            color: #0b0f23;
+            font-size: 25px;
+            font-weight: 800;
+            margin-right: 12px;
+          }
+          .percent,
+          .percent-section-2 {
+            font-size: 20px;
+            font-weight: 800;
+            background: #f84960;
+            border-radius: 5px;
+            color: #ffffff;
+            padding: 5px 7px 1px 7px;
+          }
+          .percent-section-2 {
+            background: #06c270;
+          }
+        }
+
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+          margin-top: -72px;
+        }
+
+        .info-item {
+          border-bottom: 1px solid #eef1fa;
+          padding: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .info-item-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            margin-right: 32px;
+            img {
+              display: inline-block;
+              vertical-align: top;
+              max-width: 100%;
+              max-height: 100%;
+            }
+          }
+          .info-item-content {
+            width: calc(100% - 66px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .info-item-title {
+              display: flex;
+              margin-bottom: 3px;
+              font-size: 18px;
+              font-weight: 900;
+              color: #39496a;
+            }
+
+            .info-item-prop {
+              font-size: 18px;
+              font-weight: 600;
+              color: #39496a;
+            }
+
+            .info-item-data-value {
+              display: flex;
+              justify-content: flex-end;
+              text-align: right;
+              font-size: 20px;
+              font-weight: 600;
+              color: #39496a;
+
+              &.green {
+                color: #10741c;
+              }
+            }
+
+            .info-item-data-prop {
+              display: flex;
+              justify-content: flex-end;
+              color: #c5cbd4;
+              text-align: right;
+              font-size: 19px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    .earn-content-section-2 {
+      @media only screen and (max-width: 768px) {
+      }
+      flex: 1 1 0%;
+      margin-right: 85px;
+      p {
+        font-size: 25px;
+        font-weight: 500;
+        color: #107def;
+        @media only screen and (max-width: 768px) {
+          font-size: 20px;
+        }
+      }
+      h4 {
+        font-size: 49px;
+        font-weight: 500;
+        color: #0b0f23;
+        @media only screen and (max-width: 768px) {
+          font-size: 25px;
+        }
+      }
+
+      h5 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #6d6f7b;
+        @media only screen and (max-width: 768px) {
+          font-size: 16px;
+        }
       }
     }
   }
@@ -429,7 +657,7 @@ function Section2({ history, markets }) {
           </div>
         </div>
       </div>
-      <div className="earn-section">
+      <div className="earn-section-2">
         <div className="apy-info-section-2">
           <img src={vector14} className="vector14" />
           <div className="info-item-list">

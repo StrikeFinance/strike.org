@@ -29,6 +29,11 @@ const HeaderWrapper = styled.div`
       padding: 35px 0 15px;
       margin: 0 20px;
       width: calc(100% - 40px);
+      .logo {
+        img {
+          margin-left: 30px;
+        }
+      }
     }
   }
 
@@ -39,6 +44,7 @@ const HeaderWrapper = styled.div`
 
     @media only screen and (max-width: 768px) {
       display: none;
+      z-index: 5;
       position: absolute;
       top: calc(100% + 20px);
       left: 0;
@@ -47,13 +53,13 @@ const HeaderWrapper = styled.div`
       background: rgba(255, 255, 255, 0.95);
       box-shadow: 0px 48px 48px -16px rgba(0, 0, 0, 0.04);
       backdrop-filter: blur(8px);
-      border-radius: 16px;
       text-align: center;
       padding: 30px 0;
 
       &.active {
         display: flex;
         flex-direction: column;
+        
       }
     }
 
@@ -115,7 +121,7 @@ const HeaderWrapper = styled.div`
         color: #477ee6 ;
       }
       @media only screen and (max-width: 768px) {
-        margin-left: 0;
+        margin-left: 120px;
       }
     }
   }
@@ -153,6 +159,7 @@ const HeaderWrapper = styled.div`
     cursor: pointer;
     @media only screen and (max-width: 768px) {
       display: block;
+      margin-right: 30px;
     }
 
     &.active {

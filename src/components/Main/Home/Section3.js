@@ -81,6 +81,7 @@ const Section3Wrapper = styled.div`
 
 const DevelopersWrapper = styled.div`
   position: relative;
+
   h4.center {
     font-size: 49px;
     font-weight: 500;
@@ -89,6 +90,10 @@ const DevelopersWrapper = styled.div`
     position: absolute;
     z-index: 21;
     margin-top: -91px;
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 50px;
+      font-size: 25px;
+    }
   }
 
   img.vector9 {
@@ -96,6 +101,9 @@ const DevelopersWrapper = styled.div`
     z-index: 21;
     top: 304px;
     left: 273px;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   img.vector10 {
@@ -111,6 +119,10 @@ const DevelopersWrapper = styled.div`
     border-radius: 20px;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.05);
 
+    @media only screen and (max-width: 768px) {
+      width: 91%;
+    }
+
     &::after {
       content: '';
       position: absolute;
@@ -121,6 +133,10 @@ const DevelopersWrapper = styled.div`
       height: 500px;
       background: rgba(255, 255, 255, 0.5);
       border-radius: 20px;
+
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
     }
 
     .typography {
@@ -252,6 +268,7 @@ const PortableWrapper = styled.div`
   margin-top: 408px;
 
   @media only screen and (max-width: 768px) {
+    flex-direction: column;
   }
 
   .column1 {
@@ -261,6 +278,8 @@ const PortableWrapper = styled.div`
     margin-bottom: 369px;
 
     @media only screen and (max-width: 768px) {
+      margin-left: 120px;
+      margin-bottom: 0;
     }
 
     img.V16b {
@@ -278,6 +297,8 @@ const PortableWrapper = styled.div`
 
     .button-governance {
       margin-bottom: 25px;
+      @media only screen and (max-width: 768px) {
+      }
       span {
         color: #0b0f23;
         padding: 6.67px 13.74px 6.34px 13.67px;
@@ -295,16 +316,29 @@ const PortableWrapper = styled.div`
       font-weight: 500;
       width: 474px;
       display: block;
+      @media only screen and (max-width: 768px) {
+        font-size: 25px;
+        font-weight: 500;
+      }
     }
   }
   .column2 {
     z-index: 4;
     margin-top: 402px;
     margin-left: 288px;
+    margin-bottom: 64px;
+     @media only screen and (max-width: 768px) {
+      margin-top: 60px;
+      margin-left: 109px;
+    }
 
     .content-column2 {
       background: rgba(11, 15, 35, 0.5);
       border-radius: 20px;
+
+      @media only screen and (max-width: 768px) {
+        width: 491px;
+      }
 
       img.V5b {
         position: absolute;
@@ -323,6 +357,9 @@ const PortableWrapper = styled.div`
         position: absolute;
         top: 80%;
         right: 33%;
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
       }
 
       .proposals {
@@ -337,6 +374,9 @@ const PortableWrapper = styled.div`
         background: #e5e5e5;
         width: 683px;
         margin-left: 40px;
+        @media only screen and (max-width: 768px) {
+          width: 407px;
+        }
       }
     }
 
@@ -384,13 +424,25 @@ const PortableWrapper = styled.div`
         padding-right: 282px;
         margin-left: -30px;
         margin-top: 15px;
+        @media only screen and (max-width: 768px) {
+          margin-bottom: 0px;
+          margin-left: 0px;
+          padding-right: 200px;
+        }
 
         .progam-name {
-          font-size: 20px;
+          font-size: 16px;
           font-weight: 500;
           color: #ffffff;
           margin-bottom: 2px;
           margin-left: -14px;
+          @media only screen and (max-width: 768px) {
+            margin-bottom: 0px;
+            margin-left: 111px;
+            margin-top: 15px;
+            margin-bottom: 3px;
+            width: 118%;
+          }
         }
 
         .date-passed {
@@ -398,6 +450,11 @@ const PortableWrapper = styled.div`
           align-items: center;
           padding-left: 70px;
           padding-bottom: 16px;
+          @media only screen and (max-width: 768px) {
+            width: 274%;
+            padding-left: 58%;
+            flex-direction: column-reverse;
+          }
 
           .passed {
             margin-right: 6px;
@@ -407,10 +464,14 @@ const PortableWrapper = styled.div`
             padding: 1px 5px 1px 6px;
             background: #06c270;
             border-radius: 5px;
+
+            @media only screen and (max-width: 768px) {
+              margin-right: 38%;
+            }
           }
 
           .date {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             color: #9d9fa7;
           }
@@ -421,12 +482,25 @@ const PortableWrapper = styled.div`
         padding-right: 39.67px;
         padding-top: 28px;
 
+        @media only screen and (max-width: 768px) {
+          padding-right: 39.67px;
+          padding-top: 28px;
+          display: flex;
+          align-item: center;
+          margin-top: 16px;
+        }
+
         img {
           margin-right: 15.33px;
           margin-bottom: 7px;
+          @media only screen and (max-width: 768px) {
+            width: 12.44px;
+            height: 9.78px;
+            margin-top: 4px;
+          }
         }
         span {
-          font-size: 20px;
+          font-size: 14px;
           font-weight: 500;
           color: #ffffff;
         }
@@ -448,51 +522,20 @@ const ICONS = {
   SXP: sxpImg
 };
 
-const data = [
-  {
-    name: 'Strike Grants Program',
-    passed: 'Passed',
-    date: '003 - Executed October 20th, 2021',
-    excuted: 'Excuted',
-    icon: completed
-  },
-  {
-    name: 'Strike Grants Program',
-    passed: 'Passed',
-    date: '003 - Executed October 20th, 2021',
-    excuted: 'Excuted',
-    icon: completed
-  },
-  {
-    name: 'Strike Grants Program',
-    passed: 'Passed',
-    date: '003 - Executed October 20th, 2021',
-    excuted: 'Excuted',
-    icon: completed
-  },
-  {
-    name: 'Strike Grants Program',
-    passed: 'Passed',
-    date: '003 - Executed October 20th, 2021',
-    excuted: 'Excuted',
-    icon: completed
-  },
-  {
-    name: 'Strike Grants Program',
-    passed: 'Passed',
-    date: '003 - Executed October 20th, 2021',
-    excuted: 'Excuted',
-    icon: completed
-  }
-];
+const data = Array.from(Array(5)).map(_ => ({
+  name: 'Strike Grants Program',
+  passed: 'Passed',
+  date: '003 - Executed October 20th, 2021',
+  excuted: 'Excuted',
+  icon: completed
+}));
 
-const dataMarket = [
-  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' },
-  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' },
-  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' },
-  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' },
-  { logo: dailogo, name: 'Dai', money: '$6,194.34M', percent: '-0.55%' }
-];
+const dataMarket = Array.from(Array(5)).map(_ => ({
+  logo: dailogo,
+  name: 'Dai',
+  money: '$6,194.34M',
+  percent: '-0.55%'
+}));
 
 function Section3({ history, markets }) {
   const handleLink = () => {
@@ -609,8 +652,8 @@ function Section3({ history, markets }) {
             <Divider className="divider" />
             {data.map((item, index) => {
               return (
-                <>
-                  <div className="gorvernance-program" key={index}>
+                <div key={index}>
+                  <div className="gorvernance-program">
                     <div className="program">
                       <span className="progam-name">{item.name}</span>
                       <span className="date-passed">
@@ -624,7 +667,7 @@ function Section3({ history, markets }) {
                     </div>
                   </div>
                   <Divider className="divider" />
-                </>
+                </div>
               );
             })}
             <img src={V8b} className="V8b" />

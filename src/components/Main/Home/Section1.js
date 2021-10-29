@@ -15,27 +15,35 @@ const Section1Wrapper = styled.div`
   padding-left: 84px;
   background-color: var(--color-bg-main);
   margin: 100px 0;
-  
-
-  @media only screen and (max-width: 768px) {
-    padding-left: 20px;
-  }
 
   .content {
     width: 75%;
     padding-left: 120px;
+
+    @media only screen and (max-width: 768px) {
+      padding-left: 22px;
+    }
 
     .content-img {
       position: absolute;
       z-index: 0;
       left: 457px;
       top: 149px;
+
+      @media only screen and (max-width: 768px) {
+        left: 141px;
+      }
     }
     .content-img-bottom {
       position: absolute;
       top: 516px;
       left: 284px;
       z-index: 0;
+
+      @media only screen and (max-width: 768px) {
+        top: 478px;
+        left: 155px;
+      }
     }
 
     h1 {
@@ -46,8 +54,10 @@ const Section1Wrapper = styled.div`
       color: #0b0f23;
 
       @media only screen and (max-width: 768px) {
-        font-size: 24px;
-        padding-top: 40px;
+        font-size: 39px;
+        font-weight: 500;
+        color: #0b0f23;
+        width: 351px;
       }
       .money-content {
         color: #107def;
@@ -116,6 +126,11 @@ const Section1Wrapper = styled.div`
       top: -113px;
       z-index: 0;
       left: 346px;
+      @media only screen and (max-width: 768px) {
+        left: 37px;
+        top: -135px;
+        width: 26%;
+      }
     }
 
     .coin-image {
@@ -124,9 +139,11 @@ const Section1Wrapper = styled.div`
       left: 0;
       width: 60%;
       margin: auto;
+
       @media only screen and (max-width: 768px) {
-        width: 80%;
-        top: 0;
+        width: 87%;
+        top: -151px;
+        left: -138px;
       }
     }
   }
@@ -137,6 +154,10 @@ const Section1Wrapper = styled.div`
     left: 50%;
     display: flex;
     flex-direction: column;
+
+    @media only screen and (max-width: 768px) {
+      top: 100%
+    }
 
     .icon-mouse {
       padding-bottom: 14px;

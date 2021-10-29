@@ -21,6 +21,7 @@ function Home({ history, getGovernanceStrike }) {
   const [markets, setMarkets] = useState([]);
   const location = useLocation();
 
+
   useEffect(() => {
     if (location.hash) {
       let elem = document.getElementById(location.hash.slice(1));
