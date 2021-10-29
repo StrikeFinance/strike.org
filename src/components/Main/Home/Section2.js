@@ -41,7 +41,7 @@ const BorderLinearProgress = withStyles(theme => ({
 const Section2Wrapper = styled.div`
   width: 100%;
   background-color: var(--color-bg-main);
-  margin-top: 300px;
+  margin-top: 314px;
   display: flex;
   flex-direction: column;
   padding-left: 84px;

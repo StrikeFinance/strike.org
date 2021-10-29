@@ -20,8 +20,13 @@ const Section4Wrapper = styled.div`
 
   background-color: var(--color-bg-main);
 
-  @media only screen and (max-width: 768px) {
+  .flex {
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
   }
+
+  
 
   .column1,.column4,.column5 {
     flex: 1 1 0%;
@@ -64,7 +69,33 @@ const Section4Wrapper = styled.div`
       border: none;
       border-radius: 8px;
       box-shadow: 0px 3px 20px rgba(18, 114, 236, 0.4);
-      cursor: pointer
+      cursor: pointer;
+      @media only screen and (max-width: 768px) {
+        margin-bottom: 91px;
+      }
+    }
+  }
+
+  .column1 {
+    @media only screen and (max-width: 768px) {
+      padding-left:120px;
+      padding-bottom : 10px;
+    }
+  }
+
+  .column2 {
+    padding-left: 120px;
+    .imageApi {
+      @media only screen and (max-width: 768px) {
+        position: static!important;
+        margin-top: 0px!important;
+       
+      }
+    }
+    .vector {
+      width: 44%;
+      left: 26%!important;
+      top: 4%!important;
     }
   }
 
@@ -158,7 +189,7 @@ function Section4({ history }) {
           <img className="vector" src={vector} />
         </div>
       </div>
-      <div className="flex">
+      <div className="flex column3-flex">
         <div className="column3">
           <img src={V10b} className="V10b" />
           <img className="imageApi" src={imgMac} />

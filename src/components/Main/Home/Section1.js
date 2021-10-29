@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
@@ -19,9 +19,20 @@ const Section1Wrapper = styled.div`
   .content {
     width: 75%;
     padding-left: 120px;
+    overflow: hidden;
 
     @media only screen and (max-width: 768px) {
       padding-left: 22px;
+    }
+    
+    .slideshowSlider {
+      white-space: nowrap;
+      transition: ease 1000ms;
+    }
+
+    .slide-show {
+      display: inline-block;
+      width: 903px;
     }
 
     .content-img {
@@ -156,7 +167,7 @@ const Section1Wrapper = styled.div`
     flex-direction: column;
 
     @media only screen and (max-width: 768px) {
-      top: 100%
+      top: 100%;
     }
 
     .icon-mouse {
@@ -189,15 +200,66 @@ const Section1Wrapper = styled.div`
 `;
 
 function Section1({ history }) {
+  const dataFake = [
+    {
+      cryptoName: 'ETH',
+      amount: '$12,123,652',
+      size: 100
+    },
+    {
+      cryptoName: 'BTC',
+      amount: '$65,123,652',
+      size: 152
+    },
+    {
+      cryptoName: 'ELM',
+      amount: '$82,123,652',
+      size: 104
+    }
+  ];
+  const [index, setIndex] = useState(0);
+  const timeoutRef = React.useRef(null);
+  const delay = 2500;
+  const resetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex(prevIndex =>
+          prevIndex === dataFake.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index]);
   return (
     <Section1Wrapper id="hero" className="flex align-center just-between">
       <div className="content">
         <img className="content-img" src={vector} />
-        <h1>
-          The Strike protocol currently has{' '}
-          <span className="money-content">$18,456,998</span> TVL across 10
-          sToken markets
-        </h1>
+        <div
+          className="slideshowSlider"
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+        >
+          {dataFake.map((data, i) => {
+            return (
+              <div className="slide-show" key={i}>
+                <h4>The Strike protocol currently</h4>
+                <h4>
+                  has <span>{data.amount}</span> {data.cryptoName} across
+                </h4>
+                <h4>{data.size} sToken markets</h4>
+              </div>
+            );
+          })}
+        </div>
         <img className="content-img-bottom" src={vector3} />
       </div>
       <div className="imgs">
