@@ -6,22 +6,22 @@ import { NavLink, withRouter } from 'react-router-dom';
 import logoImg from 'assets/img/logo.png';
 
 const HeaderWrapper = styled.div`
-  position: fixed;
   z-index: 20;
   top: 0px;
   left: 0;
   right: 0;
   background-color: var(--color-bg-main);
+ 
 
   .header-container {
     display: flex;
     align-items: center;
     padding: 40px 84px 20px;
     position: relative;
-
     .logo {
       img {
         height: 40px;
+        margin-left: 120px;
       }
     }
 
@@ -29,6 +29,11 @@ const HeaderWrapper = styled.div`
       padding: 35px 0 15px;
       margin: 0 20px;
       width: calc(100% - 40px);
+      .logo {
+        img {
+          margin-left: 30px;
+        }
+      }
     }
   }
 
@@ -39,6 +44,7 @@ const HeaderWrapper = styled.div`
 
     @media only screen and (max-width: 768px) {
       display: none;
+      z-index: 5;
       position: absolute;
       top: calc(100% + 20px);
       left: 0;
@@ -47,13 +53,13 @@ const HeaderWrapper = styled.div`
       background: rgba(255, 255, 255, 0.95);
       box-shadow: 0px 48px 48px -16px rgba(0, 0, 0, 0.04);
       backdrop-filter: blur(8px);
-      border-radius: 16px;
       text-align: center;
       padding: 30px 0;
 
       &.active {
         display: flex;
         flex-direction: column;
+        
       }
     }
 
@@ -81,8 +87,8 @@ const HeaderWrapper = styled.div`
       }
 
       .header-menu__link {
-        font-size: 19px;
-        font-weight: 900;
+        font-size: 20px;
+        font-weight: 500;
         color: #aaaeb5;
         text-decoration: none;
         cursor: pointer;
@@ -99,9 +105,8 @@ const HeaderWrapper = styled.div`
     .header-menu__btn {
       width: 160px;
       height: 50px;
-      border-radius: 5px;
-      box-shadow: 0px 4px 13px 0 rgba(39, 126, 230, 0.64);
-      background-color: #277ee6;
+      border-radius: 8px;
+      background-color: #107DEF;
       font-size: 18px;
       font-weight: 800;
       color: #ffffff;
@@ -110,12 +115,13 @@ const HeaderWrapper = styled.div`
       justify-content: center;
       margin-left: 40px;
       cursor: pointer;
+      margin-right: 120px;
       &:hover {
-        background-color: #477ee6;
-        color: #ffffff;
+        background-color: #ffffff;
+        color: #477ee6 ;
       }
       @media only screen and (max-width: 768px) {
-        margin-left: 0;
+        margin-left: 120px;
       }
     }
     .header-menu_whitepaper__btn {
@@ -138,6 +144,30 @@ const HeaderWrapper = styled.div`
     }
   }
 
+  .header-menu__btn_white {
+    width: 160px;
+    height: 50px;
+    border-radius: 8px;
+    background-color:  #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    color: #277ee6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+    cursor: pointer;
+    &:hover {
+      background-color: #477ee6;
+      color: #ffffff;
+    }
+    @media only screen and (max-width: 768px) {
+      margin-left: 0;
+    }
+  }
+    
+  } 
+
   .header-burger {
     display: none;
     width: 24px;
@@ -147,6 +177,7 @@ const HeaderWrapper = styled.div`
     cursor: pointer;
     @media only screen and (max-width: 768px) {
       display: block;
+      margin-right: 30px;
     }
 
     &.active {
@@ -205,29 +236,18 @@ function Header({ history }) {
         <div className={`header-menu ${isOpened ? 'active' : ''}`}>
           <ul className="header-menu__list">
             <li className="header-menu__item">
-              <NavLink
-                className="header-menu__link"
-                to="/"
-              >
+              <NavLink className="header-menu__link" to="/">
                 Home
               </NavLink>
             </li>
-            {/* <li className="header-menu__item">
-              <NavLink
-                exact
-                className="header-menu__link"
-                to="/#earn"
-              >
-                Earn
-              </NavLink>
-            </li> */}
             <li className="header-menu__item">
-              <NavLink
-                exact
-                className="header-menu__link"
-                to="/#market"
-              >
+              <NavLink exact className="header-menu__link" to="/#earn">
                 Market
+              </NavLink>
+            </li>
+            <li className="header-menu__item">
+              <NavLink exact className="header-menu__link" to="/#developer">
+                Governance
               </NavLink>
             </li>
             <li className="header-menu__item">
@@ -235,7 +255,7 @@ function Header({ history }) {
                 className="header-menu__link"
                 onClick={() => handleLink('https://app.strike.org/vote')}
               >
-                Governance
+                Developers
               </div>
             </li>
             <li className="header-menu__item">
@@ -249,7 +269,7 @@ function Header({ history }) {
             </li>
           </ul>
           <div
-            className="header-menu_whitepaper__btn"
+            className="header-menu__btn_white"
             onClick={() => handleLink('https://app.strike.org/')}
           >
             Whitepaper

@@ -13,19 +13,28 @@ const MainLayoutWrapper = styled.div`
   background-color: var(--color-bg-main);
   position: relative;
 
-  .main {
-    overflow-x: hidden;
-    background-color: var(--color-bg-main);
 
+  @media only screern and (max-width: 769px){
+    width: 1120px;
+  }
+ 
+
+  .main {
+    background-color: var(--color-bg-main);
+    overflow-x: hidden;
     .main-content {
       display: flex;
       flex-direction: column;
       min-height: calc(100vh - 150px);
     }
 
+    
+
     @media only screen and (max-width: 768px) {
       padding: 0px;
+      width: 100%
     }
+   
   }
 
   /* width */
@@ -58,9 +67,9 @@ function MainLayout({ title, children, moveToEarn, moveToDevelopers }) {
         </Column>
         <Column xs="12" sm="12" className="main">
           <Row>
-            <Column xs="12">
+            {/* <Column xs="12">
               <SubHeader title={title} />
-            </Column>
+            </Column> */}
             <Column xs="12">
               <div className="main-content">{children}</div>
             </Column>

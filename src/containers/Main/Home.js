@@ -51,6 +51,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting }) {
   const location = useLocation();
   const [isLoading, setisLoading] = useState(true);
 
+
   useEffect(() => {
     if (location.hash) {
       let elem = document.getElementById(location.hash.slice(1));
@@ -93,16 +94,8 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting }) {
   return (
     <MainLayout>
       <HomeWrapper>
-        <Section1 />
-        <div className="blink">
-          <img src={mouse} alt="scroll" />
-        </div>
-        <div className="blink">
-          <img src={arrow_down} alt="scroll" />
-        </div>
+        <Section1 markets={markets} />
         <Section2 markets={markets} />
-        <Section5 markets={markets} />
-        <Section6 />
         <Section3 markets={markets} />
         <Section4 />
       </HomeWrapper>

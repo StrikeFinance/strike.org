@@ -12,6 +12,7 @@ const FooterWrapper = styled.div`
 
   @media (max-width: 768px) {
     padding: 35px;
+    margin-top: 119px;
   }
 
   .footer-content {
@@ -206,6 +207,9 @@ function Footer({ settings }) {
             </a>
             <a onClick={() => history.push("/terms")}>
               Terms
+            </a>
+            <a href="https://www.immunefi.com/bounty/strikefinance">
+              Bug Bounty
             </a>
           </div>
           <div className="link-list">
