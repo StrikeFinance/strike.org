@@ -133,7 +133,7 @@ const DevelopersWrapper = styled.div`
       z-index: -1 !important;
       top: 60px;
       left: -68px;
-      width: 1233px;
+      width: 1120px;
       height: 500px;
       background: rgba(255, 255, 255, 0.5);
       border-radius: 20px;
@@ -161,27 +161,11 @@ const DevelopersWrapper = styled.div`
       font-size: 16px;
       font-weight: 500;
       color: #9d9fa7;
+      max-width: 200px;
+      min-width: 60px;
+      text-align: center;
     }
 
-    .tablecell1 {
-      padding-left: 40px;
-    }
-
-    .tablecell2 {
-      padding-right: 75px;
-    }
-
-    .tablecell3 {
-      padding-right: 66px;
-    }
-
-    .tablecell4 {
-      padding-right: 68px;
-    }
-
-    .tablecell5 {
-      padding-right: 63px;
-    }
 
     .tableCellBody {
       display: flex;
@@ -196,7 +180,6 @@ const DevelopersWrapper = styled.div`
         display: flex;
         align-items: center;
         flex-direction: column;
-        padding-right: 212px;
 
         .Dai {
           font-size: 18px;
@@ -615,7 +598,9 @@ function Section3({
                   return (
                     <TableRow key={index}>
                       <TableCell width="20%" className="tableCellBody">
-                        <img src={ICONS[item.underlyingSymbol]} />
+                        <div>
+                          <img src={ICONS[item.underlyingSymbol]} />
+                        </div>
                         <div className="content-table">
                           <span className="Dai">{item.underlyingName}</span>
                           <span className="dai">{item.underlyingName}</span>

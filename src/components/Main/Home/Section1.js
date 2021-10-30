@@ -24,10 +24,19 @@ height: 500px;
   display: flex;
   justify-content: space-between;
 }
+.fix-class-hero {
+  @media only screen and (max-width: 768px) {
+    display: inline-block;
+  }
+}
 .content {
   overflow: hidden;
   margin-left: 120px;
   flex: 2;
+
+  @media only screen and (max-width: 768px) {
+    margin-left: 30px;
+  }
 
   img.vector {
     position: absolute;
@@ -112,7 +121,7 @@ height: 500px;
   padding-left: 80px;
   flex: 1;
   @media only screen and (max-width: 768px) {
-    padding: 0;
+    position: relative;
   }
   .vector-image {
     max-width: 100%;
@@ -121,11 +130,12 @@ height: 500px;
     position: absolute;
     top: 5%;
     left: 0;
-   width: 416px;
+    width: 416px;
     margin: auto;
     @media only screen and (max-width: 768px) {
-      width: 80%;
-      top: 0;
+      width: 50%;
+      position: absolute;
+      right: 0;
     }
   }
   img.rectangle-opacity {
@@ -138,6 +148,9 @@ height: 500px;
 const MouseWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 768px) {
+    padding: 50px 0px;
+  }
 
   .mouse-wrapper{
     display: flex;
@@ -184,7 +197,7 @@ function Section1({ markets }) {
     <>
       <Section1Wrapper
         id="hero"
-        className="test-123 flex align-center just-between"
+        className="test-123 flex align-center just-between fix-class-hero"
       >
         <div className="content">
           <img src={vector} className="vector" />
