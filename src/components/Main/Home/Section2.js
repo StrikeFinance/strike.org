@@ -463,7 +463,6 @@ const Section2Wrapper = styled.div`
     }
 
     .earn-content-section-2 {
-      
       flex: 1 1 0%;
       margin-right: 85px;
       @media only screen and (max-width: 768px) {
@@ -595,6 +594,8 @@ const Section2Wrapper = styled.div`
         font-size: 20px;
         font-weight: 500;
         color: #0b0f23;
+        text-align: right;
+        display: block;
       }
       .supplier-number-section-2 {
         text-align: right;
@@ -684,35 +685,51 @@ function Section2({ history, data }) {
             <Divider className="divider" />
             <p>Top 3 Markets</p>
             <div className="progress-bar">
-              {data.markets.slice(0, 3).map((item, index) => {
-                return (
-                  <div className="eth" key={index}>
-                    <div className="market-name">
-                      <span className="name">{item.underlyingSymbol}</span>
-                      <span className="percent-progress">{!new BigNumber(item.totalSupply).isZero()
-                        ? new BigNumber(item.totalSupplyUsd)
-                          .div(new BigNumber(item.totalSupply))
-                          .times(100)
-                          .dp(2, 1)
-                          .toNumber()
-                        : 0}%</span>
-                    </div>
-                    <BorderLinearProgress
-                      variant="determinate"
-                      value={
-                        !new BigNumber(item.totalSupply).isZero()
-                          ? new BigNumber(item.totalSupplyUsd)
-                            .div(new BigNumber(item.totalSupply))
-                            .times(100)
-                            .dp(2, 1)
-                            .toNumber()
-                          : 0
-                      }
-                      className="liner-progress"
-                    />
-                  </div>
-                );
-              })}
+              {data.markets &&
+                (data.markets || [])
+                  .filter(
+                    m =>
+                      m.underlyingSymbol !== 'ZRX' &&
+                      m.underlyingSymbol !== 'BAT'
+                  )
+                  .sort((a, b) => {
+                    return +new BigNumber(b.totalBorrowsUsd)
+                      .minus(new BigNumber(a.totalBorrowsUsd))
+                      .toString(10);
+                  })
+                  .slice(0, 3)
+                  .map((item, index) => {
+                    return (
+                      <div className="eth" key={index}>
+                        <div className="market-name">
+                          <span className="name">{item.underlyingSymbol}</span>
+                          <span className="percent-progress">
+                            {!new BigNumber(totalSupply).isZero()
+                              ? new BigNumber(item.totalSupplyUsd)
+                                  .div(new BigNumber(totalSupply))
+                                  .times(100)
+                                  .dp(2, 1)
+                                  .toNumber()
+                              : 0}
+                            %
+                          </span>
+                        </div>
+                        <BorderLinearProgress
+                          variant="determinate"
+                          value={
+                            !new BigNumber(totalSupply).isZero()
+                              ? new BigNumber(item.totalSupplyUsd)
+                                  .div(new BigNumber(totalSupply))
+                                  .times(100)
+                                  .dp(2, 1)
+                                  .toNumber()
+                              : 0
+                          }
+                          className="liner-progress"
+                        />
+                      </div>
+                    );
+                  })}
               <img src={vector5} className="vector5" />
               <img src={vector4} className="vector4" />
               <Divider className="divider" />
@@ -720,7 +737,9 @@ function Section2({ history, data }) {
             <div className="supply">
               <div className="supply-volume">
                 <span className="supply-volume-text">24h Supply Volume</span>
-                <span className="supply-volume-money">${format(new BigNumber(supplyVolume).toFormat(2))}</span>
+                <span className="supply-volume-money">
+                  ${format(new BigNumber(supplyVolume).toFormat(2))}
+                </span>
               </div>
               <div className="supplier">
                 <span className="supplier-text"># of Suppliers</span>
@@ -742,37 +761,51 @@ function Section2({ history, data }) {
             <Divider className="divider" />
             <p>Top 3 Markets</p>
             <div className="progress-bar">
-              {data.markets.slice(0, 3).map((item, index) => {
-                return (
-                  <div className="eth" key={index}>
-                    <div className="market-name">
-                      <span className="name">{item.underlyingName}</span>
-                      <span className="percent-progress">{
-                        !new BigNumber(item.totalBorrows).isZero()
-                          ? new BigNumber(item.totalBorrowsUsd)
-                            .div(new BigNumber(item.totalBorrows))
-                            .times(100)
-                            .dp(2, 1)
-                            .toNumber()
-                          : 0
-                      }%</span>
-                    </div>
-                    <BorderLinearProgress
-                      variant="determinate"
-                      value={
-                        !new BigNumber(item.totalBorrows).isZero()
-                          ? new BigNumber(item.totalBorrowsUsd)
-                            .div(new BigNumber(item.totalBorrows))
-                            .times(100)
-                            .dp(2, 1)
-                            .toNumber()
-                          : 0
-                      }
-                      className="liner-progress"
-                    />
-                  </div>
-                );
-              })}
+              {data.markets &&
+                (data.markets || [])
+                  .filter(
+                    m =>
+                      m.underlyingSymbol !== 'ZRX' &&
+                      m.underlyingSymbol !== 'BAT'
+                  )
+                  .sort((a, b) => {
+                    return +new BigNumber(b.totalBorrowsUsd)
+                      .minus(new BigNumber(a.totalBorrowsUsd))
+                      .toString(10);
+                  })
+                  .slice(0, 3)
+                  .map((item, index) => {
+                    return (
+                      <div className="eth" key={index}>
+                        <div className="market-name">
+                          <span className="name">{item.underlyingSymbol}</span>
+                          <span className="percent-progress">
+                            {!new BigNumber(totalBorrow).isZero()
+                              ? new BigNumber(item.totalBorrowsUsd)
+                                  .div(new BigNumber(totalBorrow))
+                                  .times(100)
+                                  .dp(2, 1)
+                                  .toNumber()
+                              : 0}
+                            %
+                          </span>
+                        </div>
+                        <BorderLinearProgress
+                          variant="determinate"
+                          value={
+                            !new BigNumber(totalBorrow).isZero()
+                              ? new BigNumber(item.totalBorrowsUsd)
+                                  .div(new BigNumber(totalBorrow))
+                                  .times(100)
+                                  .dp(2, 1)
+                                  .toNumber()
+                              : 0
+                          }
+                          className="liner-progress"
+                        />
+                      </div>
+                    );
+                  })}
               <img src={vector15} className="vector15" />
 
               <Divider className="divider" />
@@ -780,11 +813,15 @@ function Section2({ history, data }) {
             <div className="supply">
               <div className="supply-volume">
                 <span className="supply-volume-text">24h Borrow Volume</span>
-                <span className="supply-volume-money">${format(new BigNumber(supplyVolume).toFormat(2))}</span>
+                <span className="supply-volume-money">
+                  ${format(new BigNumber(borrowVolume).toFormat(2))}
+                </span>
               </div>
               <div className="supplier">
                 <span className="supplier-text"># of Borrowers</span>
-                <span className="supplier-number-section-2">{borrowerCount}</span>
+                <span className="supplier-number-section-2">
+                  {borrowerCount}
+                </span>
               </div>
             </div>
           </div>
