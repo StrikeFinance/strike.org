@@ -345,6 +345,7 @@ const PortableWrapper = styled.div`
       @media only screen and (max-width: 768px) {
         width: 100%;
         padding: 20px;
+        margin-bottom: 64px;
       }
 
       img.V5b {
@@ -439,6 +440,10 @@ const PortableWrapper = styled.div`
     .gorvernance-program {
       display: flex;
       margin: 0 40px;
+
+      @media only screen and (max-width: 768px) {
+        margin: 0;
+      }
 
       .program {
         display: flex;
