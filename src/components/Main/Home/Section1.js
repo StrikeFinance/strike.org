@@ -9,6 +9,7 @@ import vector3 from 'assets/img/landingpage/rectangle.png';
 import vector4 from 'assets/img/landingpage/rectangle-opacity-2.png';
 import mouse from 'assets/img/landingpage/mouse.png';
 import arrowDown from 'assets/img/landingpage/arrow-down.png';
+import BigNumber from 'bignumber.js';
 
 const Section1Wrapper = styled.div`
 width: 100%;
@@ -203,36 +204,20 @@ function Section1({ markets }) {
           <img src={vector} className="vector" />
           <div
             className="slideshowSlider"
-          // style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
           >
-            {/* {markets.map((data, i) => {
-              return (
-                <div className="slide-show" key={i}>
-                  <h4>The Strike protocol currently</h4>
-                  <h4>
-                    has{' '}
-                    <span>
-                      $
-                      {new Intl.NumberFormat({
-                        maximumSignificantDigits: 3
-                      }).format(data.totalSupply)}
-                    </span>{' '}
-                    {data.underlyingName} across
-                  </h4>
-                  <h4>{data.supplyApy} sToken markets</h4>
-                </div>
-              );
-            })} */}
             <div className="slide-show">
               <h4>The Strike protocol currently</h4>
               <h4>
                 has{' '}
                 <span>
-                  $18,456,998
+                  $
+                  {new Intl.NumberFormat({
+                    maximumSignificantDigits: 3
+                  }).format(markets.reduce((a,b) => a.plus(new BigNumber(b.totalSupply)), new BigNumber('0')))}
                 </span>{' '}
                 TVL across
               </h4>
-              <h4>10 sToken markets</h4>
+              <h4>{markets.length} sToken markets</h4>
             </div>
           </div>
           <img src={vector3} className="rectangle" />
