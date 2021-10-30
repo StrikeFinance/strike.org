@@ -112,7 +112,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
       .then(res => {
         setSection3Market(res.data);
       })
-      .catch(() => {});
+      .catch(() => { });
   };
 
   return (
@@ -121,7 +121,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
         <HomeWrapper>
           <Section1 markets={markets} />
           <Section2 data={data} />
-          <Section3 markets={section3Market} governance={governance} total={data.total} onChangePage={handleChangePage} setSetting={setSetting}/>
+          <Section3 markets={section3Market} governance={governance} total={data.total} onChangePage={handleChangePage} setSetting={setSetting} />
           <Section4 />
         </HomeWrapper>
       ) : (

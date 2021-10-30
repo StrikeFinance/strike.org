@@ -29,7 +29,7 @@ const BorderLinearProgress = withStyles(theme => ({
     borderRadius: 5
   },
   colorPrimary: {
-    width: '450px',
+    // width: '450px',
     marginLeft: '40px',
     backgroundColor:
       theme.palette.grey[theme.palette.type === 'light' ? 200 : 700]
@@ -54,6 +54,8 @@ const Section2Wrapper = styled.div`
   @media only screen and (max-width: 768px) {
     padding: 0 20px;
     margin-bottom: 0;
+    margin-left: 0;
+    margin-top: 0;
   }
 
   .earn-section {
@@ -65,7 +67,6 @@ const Section2Wrapper = styled.div`
     @media only screen and (max-width: 768px) {
       flex-direction: column;
       margin-top: -17%;
-      padding-right: 119px;
     }
 
     .apy-info {
@@ -73,6 +74,7 @@ const Section2Wrapper = styled.div`
       margin-right: 105px;
       @media only screen and (max-width: 768px) {
         margin-top: 100px;
+        margin-right: 0;
       }
 
       .vector3 {
@@ -116,7 +118,7 @@ const Section2Wrapper = styled.div`
         background: rgba(255, 255, 255, 0.5);
 
         @media only screen and (max-width: 768px) {
-          width: 350px;
+          width: 100%;
         }
 
         h3 {
@@ -241,6 +243,10 @@ const Section2Wrapper = styled.div`
     .earn-content {
       flex: 1 1 0%;
       margin-right: 85px;
+
+      @media only screen and (max-width: 768px) {
+        margin-right: 0;
+      }
       p {
         font-size: 25px;
         font-weight: 500;
@@ -276,7 +282,6 @@ const Section2Wrapper = styled.div`
     @media only screen and (max-width: 768px) {
       flex-direction: column-reverse;
       margin-top: -17%;
-      padding-right: 119px;
       padding-bottom: 12%;
     }
     .apy-info-section-2 {
@@ -284,6 +289,8 @@ const Section2Wrapper = styled.div`
       margin-right: 105px;
       @media only screen and (max-width: 768px) {
         margin-top: 100px;
+        margin-right: 0;
+        width: 100%;
       }
 
       .vector3 {
@@ -456,10 +463,12 @@ const Section2Wrapper = styled.div`
     }
 
     .earn-content-section-2 {
-      @media only screen and (max-width: 768px) {
-      }
+      
       flex: 1 1 0%;
       margin-right: 85px;
+      @media only screen and (max-width: 768px) {
+        margin-right: 0;
+      }
       p {
         font-size: 25px;
         font-weight: 500;
@@ -509,6 +518,7 @@ const Section2Wrapper = styled.div`
     margin: 28px 0;
 
     @media only screen and (max-width: 768px) {
+      max-width: auto;
       font-size: 14px;
       margin: 10px 0;
     }
@@ -523,7 +533,7 @@ const Section2Wrapper = styled.div`
     width: 450px;
 
     @media only screen and (max-width: 768px) {
-      width: 290px;
+      width: 85%;
     }
   }
 
@@ -550,7 +560,7 @@ const Section2Wrapper = styled.div`
 
     .liner-progress {
       @media only screen and (max-width: 768px) {
-        width: 290px;
+        width: 84%;
       }
     }
   }
@@ -680,22 +690,22 @@ function Section2({ history, data }) {
                     <div className="market-name">
                       <span className="name">{item.underlyingName}</span>
                       <span className="percent-progress">{!new BigNumber(item.totalSupply).isZero()
-                          ? new BigNumber(item.totalSupplyUsd)
-                              .div(new BigNumber(item.totalSupply))
-                              .times(100)
-                              .dp(2, 1)
-                              .toNumber()
-                          : 0}%</span>
+                        ? new BigNumber(item.totalSupplyUsd)
+                          .div(new BigNumber(item.totalSupply))
+                          .times(100)
+                          .dp(2, 1)
+                          .toNumber()
+                        : 0}%</span>
                     </div>
                     <BorderLinearProgress
                       variant="determinate"
                       value={
                         !new BigNumber(item.totalSupply).isZero()
                           ? new BigNumber(item.totalSupplyUsd)
-                              .div(new BigNumber(item.totalSupply))
-                              .times(100)
-                              .dp(2, 1)
-                              .toNumber()
+                            .div(new BigNumber(item.totalSupply))
+                            .times(100)
+                            .dp(2, 1)
+                            .toNumber()
                           : 0
                       }
                       className="liner-progress"
@@ -739,12 +749,12 @@ function Section2({ history, data }) {
                       <span className="name">{item.underlyingName}</span>
                       <span className="percent-progress">{
                         !new BigNumber(item.totalBorrows).isZero()
-                        ? new BigNumber(item.totalBorrowsUsd)
+                          ? new BigNumber(item.totalBorrowsUsd)
                             .div(new BigNumber(item.totalBorrows))
                             .times(100)
                             .dp(2, 1)
                             .toNumber()
-                        : 0
+                          : 0
                       }%</span>
                     </div>
                     <BorderLinearProgress
@@ -752,12 +762,13 @@ function Section2({ history, data }) {
                       value={
                         !new BigNumber(item.totalBorrows).isZero()
                           ? new BigNumber(item.totalBorrowsUsd)
-                              .div(new BigNumber(item.totalBorrows))
-                              .times(100)
-                              .dp(2, 1)
-                              .toNumber()
+                            .div(new BigNumber(item.totalBorrows))
+                            .times(100)
+                            .dp(2, 1)
+                            .toNumber()
                           : 0
                       }
+                      className="liner-progress"
                     />
                   </div>
                 );
