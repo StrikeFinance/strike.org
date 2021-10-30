@@ -670,7 +670,6 @@ function Section2({ history, data }) {
             <Divider className="divider" />
             <div className="money-market">
               <span className="money">${format(totalSupply)}</span>
-              <span className="percent">+5.88%</span>
             </div>
             <Divider className="divider" />
             <p>Top 3 Markets</p>
@@ -729,7 +728,6 @@ function Section2({ history, data }) {
             <Divider className="divider" />
             <div className="money-market">
               <span className="money">${format(totalBorrow)}</span>
-              <span className="percent-section-2">-5.88%</span>
             </div>
             <Divider className="divider" />
             <p>Top 3 Markets</p>

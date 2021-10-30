@@ -247,7 +247,6 @@ function Section2({ history, markets }) {
             </div>
             <div className="info-item">
               <div className="info-item-prop">
-                $20,123,654 <span className="percent-style">+5.88%</span>
               </div>
             </div>
             <div className="info-item">
