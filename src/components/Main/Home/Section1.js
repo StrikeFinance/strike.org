@@ -40,7 +40,8 @@ display: flex;
   flex: 2;
 
   @media only screen and (max-width: 768px) {
-    margin-left: 30px;
+    margin-left: 0;
+    overflow: auto;
   }
 
   img.vector {
@@ -56,8 +57,7 @@ display: flex;
     font-size: 61px;
     font-weight: 600;
     @media only screen and (max-width: 768px) {
-      font-size: 24px;
-      padding-top: 40px;
+      font-size: 39px;
     }
     span {
       color: #107DEF;
@@ -65,7 +65,7 @@ display: flex;
       background: #c5d8f6;
       padding: 2px;
       height: 65px;
-      display: inline-block;
+      white-space: normal;
     }
   }
   .slideshowSlider {
@@ -111,10 +111,9 @@ display: flex;
   }
   .slide-show {
     display: inline-block;
-    width: 100%
+    width: 100%;
     h4 {
       word-wrap: break-word;
-
     }
   }
 }
@@ -204,9 +203,9 @@ function Section1({ markets }) {
           <img src={vector} className="vector" />
           <div
             className="slideshowSlider"
-            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+          // style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
           >
-            {markets.map((data, i) => {
+            {/* {markets.map((data, i) => {
               return (
                 <div className="slide-show" key={i}>
                   <h4>The Strike protocol currently</h4>
@@ -223,7 +222,18 @@ function Section1({ markets }) {
                   <h4>{data.supplyApy} sToken markets</h4>
                 </div>
               );
-            })}
+            })} */}
+            <div className="slide-show">
+              <h4>The Strike protocol currently</h4>
+              <h4>
+                has{' '}
+                <span>
+                  $18,456,998
+                </span>{' '}
+                TVL across
+              </h4>
+              <h4>10 sToken markets</h4>
+            </div>
           </div>
           <img src={vector3} className="rectangle" />
         </div>
