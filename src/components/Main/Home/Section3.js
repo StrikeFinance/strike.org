@@ -603,8 +603,8 @@ function Section3({
     <Section3Wrapper>
       <DevelopersWrapper className="flex flex-column align-center">
         <h4 className="center">10 markets available</h4>
-        <img src={vector9} className="vector9" alt="" />
-        <img src={vector10} className="vector10" alt="" />
+        {/* <img src={vector9} className="vector9" alt="" /> */}
+        {/* <img src={vector10} className="vector10" alt="" /> */}
         <Paper className="paper-root">
           <Typography className="typography">All Markets</Typography>
           <Divider className="dividerMarket" />
