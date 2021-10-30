@@ -97,6 +97,7 @@ const DevelopersWrapper = styled.div`
     @media only screen and (max-width: 768px) {
       margin-bottom: 50px;
       font-size: 25px;
+      font-weight: 500;
     }
   }
 
@@ -165,7 +166,6 @@ const DevelopersWrapper = styled.div`
       min-width: 60px;
       text-align: center;
     }
-
 
     .tableCellBody {
       display: flex;
@@ -267,7 +267,6 @@ const PortableWrapper = styled.div`
     border: solid 1px;
   }
 
-
   .column1 {
     z-index: 4;
     margin-top: 402px;
@@ -275,8 +274,12 @@ const PortableWrapper = styled.div`
     margin-bottom: 369px;
 
     @media only screen and (max-width: 768px) {
-      margin-left: 120px;
+      margin-left: 20px;
       margin-bottom: 0;
+      margin-right: 20px;
+    }
+    @media only screen and (max-width: 680px) {
+      margin-left: 20px;
     }
 
     img.V16b {
@@ -316,6 +319,7 @@ const PortableWrapper = styled.div`
       @media only screen and (max-width: 768px) {
         font-size: 25px;
         font-weight: 500;
+        width: 100%;
       }
     }
   }
@@ -324,17 +328,23 @@ const PortableWrapper = styled.div`
     margin-top: 402px;
     margin-left: 288px;
     margin-bottom: 64px;
-     @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 768px) {
       margin-top: 60px;
-      margin-left: 109px;
+      margin-left: 15px;
+      margin-right: 15px;
     }
-
+    @media only screen and (max-width: 680px) {
+      margin-top: 60px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
     .content-column2 {
       background: rgba(11, 15, 35, 0.5);
       border-radius: 20px;
 
       @media only screen and (max-width: 768px) {
-        width: 491px;
+        width: 100%;
+        padding: 20px;
       }
 
       img.V5b {
@@ -366,13 +376,23 @@ const PortableWrapper = styled.div`
         padding-top: 30px;
         padding-left: 40px;
         padding-bottom: 20px;
+
+        @media only screen and (max-width: 768px) {
+          padding: 0;
+          margin-bottom: 15px;
+        }
       }
       .divider {
         background: #e5e5e5;
         width: 683px;
         margin-left: 40px;
         @media only screen and (max-width: 768px) {
-          width: 407px;
+          width: 100%;
+          margin-left: 0;
+        }
+        @media only screen and (max-width: 680px) {
+          width: 100%;
+          margin-left: 0;
         }
       }
 
@@ -430,6 +450,12 @@ const PortableWrapper = styled.div`
           margin-left: 0px;
           padding-right: 200px;
         }
+        @media only screen and (max-width: 680px) {
+          padding-right: 150px;
+        }
+        @media only screen and (max-width: 450px) {
+          padding-right: 50px;
+        }
 
         .progam-name {
           font-size: 16px;
@@ -439,24 +465,30 @@ const PortableWrapper = styled.div`
           margin-left: -14px;
           @media only screen and (max-width: 768px) {
             margin-bottom: 0px;
-            margin-left: 111px;
-            margin-top: 15px;
-            margin-bottom: 3px;
-            width: 118%;
+            margin-left: 0;
+            width: 100%;
+          }
+          @media only screen and (max-width: 680px) {
+            margin-bottom: 0px;
+            margin-left: 0;
+            width: 100%;
           }
         }
 
         .date-passed {
           display: flex;
-          align-items: center;
+          /* align-items: center; */
           padding-left: 70px;
           padding-bottom: 16px;
           @media only screen and (max-width: 768px) {
-            width: 274%;
-            padding-left: 58%;
+            /* width: 274%; */
+            padding-left: 0;
             flex-direction: column-reverse;
           }
-
+          @media only screen and (max-width: 680px) {
+            /* width: 274%; */
+            padding-left: 0;
+          }
           .passed {
             margin-right: 6px;
             color: #ffffff;
@@ -468,6 +500,9 @@ const PortableWrapper = styled.div`
 
             @media only screen and (max-width: 768px) {
               margin-right: 38%;
+            }
+            @media only screen and (max-width: 450px) {
+              margin-right: 50%;
             }
           }
 
@@ -484,26 +519,30 @@ const PortableWrapper = styled.div`
         padding-top: 28px;
 
         @media only screen and (max-width: 768px) {
-          padding-right: 39.67px;
+          padding-right: 10px;
           padding-top: 28px;
           display: flex;
           align-item: center;
           margin-top: 16px;
         }
+        @media only screen and (max-width: 680px) {
+          padding-right: 0px;
+        }
 
         img {
-          margin-right: 15.33px;
+          margin-right: 10px;
           margin-bottom: 7px;
           @media only screen and (max-width: 768px) {
-            width: 12.44px;
-            height: 9.78px;
-            margin-top: 4px;
+            width: 30px;
+            height: 30px;
+            margin-top: 0;
           }
         }
         span {
           font-size: 14px;
           font-weight: 500;
           color: #ffffff;
+          padding-top: 5px;
         }
       }
     }
@@ -566,28 +605,48 @@ function Section3({
     <Section3Wrapper id="developer">
       <DevelopersWrapper className="flex flex-column align-center">
         <h4 className="center">10 markets available</h4>
-        <img src={vector9} className="vector9" />
-        <img src={vector10} className="vector10" />
+        <img src={vector9} className="vector9" alt="" />
+        <img src={vector10} className="vector10" alt="" />
         <Paper className="paper-root">
           <Typography className="typography">All Markets</Typography>
           <Divider className="dividerMarket" />
-          <TableContainer style={{cursor: 'pointer'}}>
-            <Table style={{minWidth: "340px"}}>
+          <TableContainer style={{ cursor: 'pointer' }}>
+            <Table style={{ minWidth: '340px' }}>
               <TableHead>
                 <TableRow>
-                  <TableCell width="20%" className="tableCellHead tablecell1" align="left">
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell1"
+                    align="left"
+                  >
                     Market
                   </TableCell>
-                  <TableCell width="20%" className="tableCellHead tablecell2" align="right">
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell2"
+                    align="right"
+                  >
                     Total Supply
                   </TableCell>
-                  <TableCell width="20%" className="tableCellHead tablecell3" align="right">
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell3"
+                    align="right"
+                  >
                     Supply APY
                   </TableCell>
-                  <TableCell width="20%" className="tableCellHead tablecell4" align="right">
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell4"
+                    align="right"
+                  >
                     Total Borrow
                   </TableCell>
-                  <TableCell width="20%" className="tableCellHead tablecell5" align="right">
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell5"
+                    align="right"
+                  >
                     Borrow APY
                   </TableCell>
                 </TableRow>
@@ -608,47 +667,75 @@ function Section3({
                       </TableCell>
                       <TableCell width="20%" align="center">
                         <div className="earn">
-                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalSupply)}</span>
-                          <span className="percent">{format(
+                          <span className="money">
+                            $
+                            {new Intl.NumberFormat({
+                              maximumSignificantDigits: 3
+                            }).format(item.totalSupply)}
+                          </span>
+                          <span className="percent">
+                            {format(
                               new BigNumber(item.totalSupplyUsd)
                                 .div(new BigNumber(item.tokenPrice))
                                 .dp(0, 1)
                                 .toString(10)
                             )}{' '}
-                            {item.underlyingSymbol}</span>
+                            {item.underlyingSymbol}
+                          </span>
                         </div>
                       </TableCell>
 
                       <TableCell width="20%" align="center">
                         <div className="earn">
-                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.supplyApy)}</span>
-                          <span className="percent">{new BigNumber(item.supplyStrikeApy)
+                          <span className="money">
+                            $
+                            {new Intl.NumberFormat({
+                              maximumSignificantDigits: 3
+                            }).format(item.supplyApy)}
+                          </span>
+                          <span className="percent">
+                            {new BigNumber(item.supplyStrikeApy)
                               .dp(2, 1)
                               .toString(10)}
-                            %</span>
+                            %
+                          </span>
                         </div>
                       </TableCell>
 
                       <TableCell width="20%" align="center">
                         <div className="earn">
-                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalBorrows)}</span>
-                          <span className="percent">{format(
+                          <span className="money">
+                            $
+                            {new Intl.NumberFormat({
+                              maximumSignificantDigits: 3
+                            }).format(item.totalBorrows)}
+                          </span>
+                          <span className="percent">
+                            {format(
                               new BigNumber(item.totalBorrowsUsd)
                                 .div(new BigNumber(item.tokenPrice))
                                 .dp(0, 1)
                                 .toString(10)
                             )}{' '}
-                            {item.underlyingSymbol}</span>
+                            {item.underlyingSymbol}
+                          </span>
                         </div>
                       </TableCell>
 
                       <TableCell width="20%" align="center">
                         <div className="earn">
-                          <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.borrowApy)}</span>
-                          <span className="percent">{new BigNumber(item.borrowStrikeApy)
+                          <span className="money">
+                            $
+                            {new Intl.NumberFormat({
+                              maximumSignificantDigits: 3
+                            }).format(item.borrowApy)}
+                          </span>
+                          <span className="percent">
+                            {new BigNumber(item.borrowStrikeApy)
                               .dp(2, 1)
                               .toString(10)}
-                            %</span>
+                            %
+                          </span>
                         </div>
                       </TableCell>
                     </TableRow>
@@ -678,7 +765,7 @@ function Section3({
       </DevelopersWrapper>
       <PortableWrapper className="flex">
         <div className="column1">
-          <img src={V16b} className="V16b" />
+          <img src={V16b} className="V16b" alt="" />
           <div className="button-governance">
             <span>Gorvernance</span>
           </div>
@@ -687,11 +774,11 @@ function Section3({
             token-holders and their delegates, who propose and vote on upgrades
             to the protocol.
           </span>
-          <img src={V6b} className="V6b" />
+          <img src={V6b} className="V6b" alt="" />
         </div>
         <div className="column2">
           <div className="content-column2">
-            <img src={V5b} className="V5b" />
+            <img src={V5b} className="V5b" alt="" />
             <Typography className="proposals">Recent Proposals</Typography>
             <Divider className="divider" />
             {governance.map((item, index) => {
@@ -699,14 +786,23 @@ function Section3({
                 <div key={index} className="padding-style">
                   <div className="gorvernance-program">
                     <div className="program">
-                      <span className="progam-name">{item.description.split('\n')[0]}</span>
+                      <span className="progam-name">
+                        {item.description.split('\n')[0]}
+                      </span>
                       <span className="date-passed">
-                        <span className={`passed ${getStatus(item)}`}>{getStatus(item)}</span>
-                        <span className="date">{moment(item.createdAt).format('MMMM Do, YYYY')}</span>
+                        <span className={`passed ${getStatus(item)}`}>
+                          {getStatus(item)}
+                        </span>
+                        <span className="date">
+                          {moment(item.createdAt).format('MMMM Do, YYYY')}
+                        </span>
                       </span>
                     </div>
                     <div className="completed">
-                      <img src={`${item.canceled ? completed : cancel}`} />
+                      <img
+                        src={`${item.canceled ? completed : cancel}`}
+                        alt=""
+                      />
                       <span>{item.state}</span>
                     </div>
                   </div>
