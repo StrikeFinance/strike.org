@@ -43,7 +43,7 @@ const BorderLinearProgress = withStyles(theme => ({
 const Section2Wrapper = styled.div`
   width: 100%;
   background-color: var(--color-bg-main);
-  margin-top: 314px;
+  margin-top: 83px;
   display: flex;
   flex-direction: column;
   padding-left: 84px;
@@ -66,7 +66,7 @@ const Section2Wrapper = styled.div`
 
     @media only screen and (max-width: 768px) {
       flex-direction: column;
-      margin-top: -17%;
+      margin-top: 60px;
     }
 
     .apy-info {
