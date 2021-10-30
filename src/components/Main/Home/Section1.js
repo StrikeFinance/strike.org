@@ -15,13 +15,13 @@ const Section1Wrapper = styled.div`
 width: 100%;
 padding-left: 84px;
 background-color: var(--color-bg-main);
-margin: 50px 0;
-height: 500px;
+margin: 164px 0;
 display: flex;
 
 @media only screen and (max-width: 768px) {
   padding-left: 20px;
   display: inline-block;
+  margin: 50px 0;
 }
 
 #hero {
@@ -70,7 +70,7 @@ display: flex;
     }
   }
   .slideshowSlider {
-    white-space: nowrap;
+    white-space: normal;
     transition: ease 1000ms;
   }
   .btn-wrapper {
@@ -160,6 +160,10 @@ const MouseWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: auto;
+    margin-top: 83px;
+    @media only screen and (max-width: 768px) {
+      margin-top: 0;
+    }
     .mouse {
       width: 20px;
       height: 30px;
@@ -214,7 +218,7 @@ function Section1({ markets }) {
                   $
                   {new Intl.NumberFormat({
                     maximumSignificantDigits: 3
-                  }).format(markets.reduce((a,b) => a.plus(new BigNumber(b.totalSupply)), new BigNumber('0')))}
+                  }).format(markets.reduce((a, b) => a.plus(new BigNumber(b.totalSupply)), new BigNumber('0')))}
                 </span>{' '}
                 TVL across
               </h4>
