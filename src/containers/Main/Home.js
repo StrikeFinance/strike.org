@@ -120,9 +120,9 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
       {data && governance ? (
         <HomeWrapper>
           <Section1 markets={markets} />
-          {/* <Section2 data={data} />
-          <Section3 markets={section3Market} governance={governance} total={data.total} onChangePage={handleChangePage} setSetting={setSetting}/>
-          <Section4 /> */}
+          <Section2 data={data} />
+          <Section3 markets={section3Market} governance={governance} total={data.total} onChangePage={handleChangePage} setSetting={setSetting} />
+          <Section4 />
         </HomeWrapper>
       ) : (
         <SpinnerWrapper>
