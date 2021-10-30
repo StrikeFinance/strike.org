@@ -147,7 +147,6 @@ const MouseWrapper = styled.div`
       width: 20px;
       height: 30px;
     }
-  
     .icon-arrow {
       width: 14.14px;
       height: 20.82px;
@@ -155,28 +154,9 @@ const MouseWrapper = styled.div`
       margin-left: 3px;
     }
   }
-
- 
 `;
 
-function Section1({ history, markets }) {
-  const dataFake = [
-    {
-      cryptoName: 'ETH',
-      amount: '$12,123,652',
-      size: 100
-    },
-    {
-      cryptoName: 'BTC',
-      amount: '$65,123,652',
-      size: 152
-    },
-    {
-      cryptoName: 'ELM',
-      amount: '$82,123,652',
-      size: 104
-    }
-  ];
+function Section1({ markets }) {
   const [index, setIndex] = useState(0);
   const timeoutRef = React.useRef(null);
   const delay = 2500;
@@ -226,7 +206,7 @@ function Section1({ history, markets }) {
                     </span>{' '}
                     {data.underlyingName} across
                   </h4>
-                  <h4>{data.supplyApy}% sToken markets</h4>
+                  <h4>{data.supplyApy} sToken markets</h4>
                 </div>
               );
             })}
@@ -249,12 +229,10 @@ function Section1({ history, markets }) {
 }
 
 Section1.propTypes = {
-  history: PropTypes.object,
   markets: PropTypes.object
 };
 
 Section1.defaultProps = {
-  history: {},
   markets: {}
 };
 

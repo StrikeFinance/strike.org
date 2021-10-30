@@ -40,6 +40,7 @@ import {
 } from '@material-ui/core';
 import moment from 'moment';
 import commaNumber from 'comma-number';
+import { Pagination } from 'antd';
 
 const Section3Wrapper = styled.div`
   width: 100%;
@@ -274,6 +275,16 @@ const PortableWrapper = styled.div`
     flex-direction: column;
   }
 
+  .MuiTableCell-footer ul {
+    height: 50px;
+    line-height: 50px;
+  }
+
+  .MuiTableCell-footer ul li {
+    border: solid 1px;
+  }
+
+
   .column1 {
     z-index: 4;
     margin-top: 402px;
@@ -380,6 +391,10 @@ const PortableWrapper = styled.div`
         @media only screen and (max-width: 768px) {
           width: 407px;
         }
+      }
+
+      .padding-style {
+        padding-bottom: 35px;
       }
     }
 
@@ -525,7 +540,14 @@ const ICONS = {
   SXP: sxpImg
 };
 const format = commaNumber.bindWith(',', '.');
-function Section3({ history, markets, governance }) {
+function Section3({
+  history,
+  markets,
+  governance,
+  total,
+  onChangePage,
+  setSetting
+}) {
   const getStatus = p => {
     if (p.state === 'Executed') {
       return 'Passed';
@@ -538,12 +560,24 @@ function Section3({ history, markets, governance }) {
     }
     return p.state;
   };
-  const handleLink = () => {
-    window.open('https://app.strike.org', '_blank');
-  };
 
   const [current, setCurrent] = useState();
   const [pageSize, setPageSize] = useState(5);
+
+  const handleChangePage = (page, size) => {
+    setCurrent(page);
+    setPageSize(size);
+    onChangePage(page, (page - 1) * size, size);
+  };
+
+  const callMarketDetail = item => {
+    setSetting({
+      ...setSetting,
+      selectedAddress: item.address,
+      markets: markets.markets
+    });
+    history.push(`/market/${item.underlyingSymbol}`);
+  };
 
   return (
     <Section3Wrapper id="developer">
@@ -554,40 +588,40 @@ function Section3({ history, markets, governance }) {
         <Paper className="paper-root">
           <Typography className="typography">All Markets</Typography>
           <Divider className="dividerMarket" />
-          <TableContainer>
-            <Table>
+          <TableContainer style={{cursor: 'pointer'}}>
+            <Table style={{minWidth: "340px"}}>
               <TableHead>
                 <TableRow>
-                  <TableCell className="tableCellHead tablecell1" align="left">
+                  <TableCell width="20%" className="tableCellHead tablecell1" align="left">
                     Market
                   </TableCell>
-                  <TableCell className="tableCellHead tablecell2" align="right">
+                  <TableCell width="20%" className="tableCellHead tablecell2" align="right">
                     Total Supply
                   </TableCell>
-                  <TableCell className="tableCellHead tablecell3" align="right">
+                  <TableCell width="20%" className="tableCellHead tablecell3" align="right">
                     Supply APY
                   </TableCell>
-                  <TableCell className="tableCellHead tablecell4" align="right">
+                  <TableCell width="20%" className="tableCellHead tablecell4" align="right">
                     Total Borrow
                   </TableCell>
-                  <TableCell className="tableCellHead tablecell5" align="right">
+                  <TableCell width="20%" className="tableCellHead tablecell5" align="right">
                     Borrow APY
                   </TableCell>
                 </TableRow>
               </TableHead>
 
               <TableBody>
-                {markets.slice(0, 5).map((item, index) => {
+                {markets.markets.map((item, index) => {
                   return (
                     <TableRow key={index}>
-                      <TableCell className="tableCellBody">
+                      <TableCell width="20%" className="tableCellBody">
                         <img src={ICONS[item.underlyingSymbol]} />
                         <div className="content-table">
                           <span className="Dai">{item.underlyingName}</span>
                           <span className="dai">{item.underlyingName}</span>
                         </div>
                       </TableCell>
-                      <TableCell align="center">
+                      <TableCell width="20%" align="center">
                         <div className="earn">
                           <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalSupply)}</span>
                           <span className="percent">{format(
@@ -600,7 +634,7 @@ function Section3({ history, markets, governance }) {
                         </div>
                       </TableCell>
 
-                      <TableCell align="center">
+                      <TableCell width="20%" align="center">
                         <div className="earn">
                           <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.supplyApy)}</span>
                           <span className="percent">{new BigNumber(item.supplyStrikeApy)
@@ -610,7 +644,7 @@ function Section3({ history, markets, governance }) {
                         </div>
                       </TableCell>
 
-                      <TableCell align="center">
+                      <TableCell width="20%" align="center">
                         <div className="earn">
                           <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.totalBorrows)}</span>
                           <span className="percent">{format(
@@ -623,7 +657,7 @@ function Section3({ history, markets, governance }) {
                         </div>
                       </TableCell>
 
-                      <TableCell align="center">
+                      <TableCell width="20%" align="center">
                         <div className="earn">
                           <span className="money">${new Intl.NumberFormat({ maximumSignificantDigits: 3 }).format(item.borrowApy)}</span>
                           <span className="percent">{new BigNumber(item.borrowStrikeApy)
@@ -640,11 +674,15 @@ function Section3({ history, markets, governance }) {
                 <TableRow>
                   <TableCell className="pagination" align="right" colSpan={5}>
                     <div className="numberPage">
-                      <span className="page">1</span>
-                      <span className="page">2</span>
-                      <span className="icon">
-                        <img src={nextCarret} />
-                      </span>
+                      <Pagination
+                        size="larger"
+                        defaultCurrent={0}
+                        defaultPageSize={4}
+                        current={current}
+                        pageSize={pageSize}
+                        total={total}
+                        onChange={handleChangePage}
+                      />
                     </div>
                   </TableCell>
                 </TableRow>
@@ -673,7 +711,7 @@ function Section3({ history, markets, governance }) {
             <Divider className="divider" />
             {governance.map((item, index) => {
               return (
-                <div key={index}>
+                <div key={index} className="padding-style">
                   <div className="gorvernance-program">
                     <div className="program">
                       <span className="progam-name">{item.description.split('\n')[0]}</span>
@@ -691,18 +729,6 @@ function Section3({ history, markets, governance }) {
                 </div>
               );
             })}
-            <img src={V8b} className="V8b" />
-            <div className="pagination">
-              <span className="icon iconPrev">
-                <img src={prevCarret} />
-              </span>
-              <span className="page">1</span>
-              <span className="page">2</span>
-              <span className="icon nextPrev">
-                <img src={nextCarret} />
-              </span>
-            </div>
-            <img src={V7b} className="V7b" />
           </div>
         </div>
       </PortableWrapper>
@@ -711,7 +737,8 @@ function Section3({ history, markets, governance }) {
 }
 
 Section3.propTypes = {
-  history: PropTypes.object
+  history: PropTypes.object,
+  setSetting: PropTypes.func.isRequired
 };
 
 Section3.defaultProps = {

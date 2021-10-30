@@ -13,12 +13,9 @@ const MainLayoutWrapper = styled.div`
   background-color: var(--color-bg-main);
   position: relative;
 
-
-  @media only screern and (max-width: 769px){
+  @media only screern and (max-width: 769px) {
     width: 1120px;
   }
- 
-
   .main {
     background-color: var(--color-bg-main);
     overflow-x: hidden;
@@ -28,13 +25,10 @@ const MainLayoutWrapper = styled.div`
       min-height: calc(100vh - 150px);
     }
 
-    
-
     @media only screen and (max-width: 768px) {
       padding: 0px;
-      width: 100%
+      width: 100%;
     }
-   
   }
 
   /* width */
@@ -58,7 +52,7 @@ const MainLayoutWrapper = styled.div`
   }
 `;
 
-function MainLayout({ title, children, moveToEarn, moveToDevelopers }) {
+function MainLayout({ title, children, moveToEarn, moveToDevelopers, isHeader }) {
   return (
     <MainLayoutWrapper>
       <Row>
@@ -67,9 +61,11 @@ function MainLayout({ title, children, moveToEarn, moveToDevelopers }) {
         </Column>
         <Column xs="12" sm="12" className="main">
           <Row>
-            {/* <Column xs="12">
-              <SubHeader title={title} />
-            </Column> */}
+            {isHeader && (
+              <Column xs="12">
+                <SubHeader title={title} />
+              </Column>
+            )}
             <Column xs="12">
               <div className="main-content">{children}</div>
             </Column>
@@ -85,6 +81,7 @@ function MainLayout({ title, children, moveToEarn, moveToDevelopers }) {
 
 MainLayout.propTypes = {
   title: PropTypes.string,
+  isHeader: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
@@ -93,7 +90,8 @@ MainLayout.propTypes = {
 
 MainLayout.defaultProps = {
   title: '',
-  children: null
+  children: null,
+  isHeader: true
 };
 
 export default withTheme(MainLayout);

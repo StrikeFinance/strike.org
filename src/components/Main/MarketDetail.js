@@ -19,11 +19,9 @@ import * as constants from 'utilities/constants';
 
 const MarketDetailWrapper = styled.div`
   height: 100%;
-
+  padding: 40px 84px 20px;
   .market-detail-content {
     width: 100%;
-    padding: 20px 40px 20px 0px;
-    padding: 40px 84px 20px;
 
     @media only screen and (max-width: 1440px) {
       flex-direction: column;
@@ -126,51 +124,6 @@ function MarketDetail({ match, settings, getMarketHistory }) {
   const [marketInfo, setMarketInfo] = useState({});
   const [currentAPY, setCurrentAPY] = useState(0);
 
-  const dataFake = [
-    {
-      createdAt: '2021-10-26T10:26:36.000Z',
-      supplyApy: 0.421396976,
-      borrowApy: 1.8264803697,
-      totalSupply: 24893100.1111998,
-      totalBorrow: 7229480.98807704
-    },
-    {
-      createdAt: '2021-09-16T09:56:29.000Z',
-      supplyApy: 0.415121377976,
-      borrowApy: 1.8127349,
-      totalSupply: 27566705.79439152,
-      totalBorrow: 7229498.988098714
-    },
-    {
-      createdAt: '2021-09-04T09:47:59.000Z',
-      supplyApy: 0.654987,
-      borrowApy: 1.98703697,
-      totalSupply: 2698136.1111998,
-      totalBorrow: 987415.98807704
-    },
-    {
-      createdAt: '2021-08-07T23:01:48.000Z',
-      supplyApy: 0.421396976,
-      borrowApy: 1.8264803697,
-      totalSupply: 14524587.1111998,
-      totalBorrow: 5214568.98807704
-    },
-    {
-      createdAt: '2021-07-12T14:09:48.000Z',
-      supplyApy: 0.421396976,
-      borrowApy: 1.8264803697,
-      totalSupply: 98754268.1111998,
-      totalBorrow: 12458796.98807704
-    },
-    {
-      createdAt: '2021-04-15T22:27:34.000Z',
-      supplyApy: 0.421396976,
-      borrowApy: 1.8264803697,
-      totalSupply: 12456587.1111998,
-      totalBorrow: 46798125.98807704
-    }
-  ];
-
   useEffect(() => {
     if (match.params && match.params.asset) {
       setCurrentAsset(match.params.asset.toLowerCase());
@@ -190,8 +143,7 @@ function MarketDetail({ match, settings, getMarketHistory }) {
             totalBorrow: +(new BigNumber(m.totalBorrow || 0).dp(8, 1).toString(10))
           });
         });
-        // setData([...tempData.reverse()]);
-        setData([...dataFake.reverse()]);
+        setData([...tempData.reverse()]);
       });
     },
     [getMarketHistory]
@@ -201,7 +153,7 @@ function MarketDetail({ match, settings, getMarketHistory }) {
     if (settings.markets && settings.markets.length > 0 && currentAsset) {
       const info = settings.markets.find(
         item => item.underlyingSymbol.toLowerCase() === currentAsset
-        );
+      );
       setMarketInfo(info || {});
     }
   }, [settings.markets, currentAsset]);
@@ -256,6 +208,7 @@ function MarketDetail({ match, settings, getMarketHistory }) {
         {(!settings.selectedAddress ||
           !settings.markets ||
           !currentAsset ||
+          !settings.decimals ||
           settings.accountLoading) && (
           <SpinnerWrapper>
             <LoadingSpinner />

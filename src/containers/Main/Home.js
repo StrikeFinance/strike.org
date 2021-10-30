@@ -4,7 +4,7 @@ import Section2 from 'components/Main/Home/Section2';
 import Section3 from 'components/Main/Home/Section3';
 import Section4 from 'components/Main/Home/Section4';
 import MainLayout from 'containers/Layout/MainLayout';
-import { accountActionCreators, connectAccount, getGovernance } from 'core';
+import { accountActionCreators, connectAccount } from 'core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useLocation, withRouter } from 'react-router-dom';
@@ -12,11 +12,7 @@ import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { promisify } from 'utilities';
-import arrow_down from '../../assets/img/arrow_down.svg';
-import mouse from '../../assets/img/mouse.svg';
 import LoadingSpinner from '../../components/Basic/LoadingSpinner';
-import Section5 from '../../components/Main/Home/Section5';
-import Section6 from '../../components/Main/Home/Section6';
 
 const HomeWrapper = styled.div`
   height: 100%;
@@ -48,6 +44,7 @@ const SpinnerWrapper = styled.div`
 
 function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovernance }) {
   const [markets, setMarkets] = useState([]);
+  const [section3Market, setSection3Market] = useState();
   const location = useLocation();
   const [isLoading, setisLoading] = useState(true);
   const [data, setdata] = useState();
@@ -68,13 +65,14 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
   }, [location]);
 
   const getMarkets = async () => {
-    const res = await promisify(getGovernanceStrike, {});
+    const res = await promisify(getGovernanceStrike, { offset: 0, limit: 5 });
     if (!res.status) {
       return;
     }
     setisLoading(false);
-    setdata(() => res.data);
+    setSection3Market(res.data);
     setMarkets(res.data.markets);
+    setdata(() => res.data);
   };
 
   const getGovernanceFunc = async () => {
@@ -98,21 +96,32 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
     if (!res.status) {
       return;
     }
-    setisLoading(false);
     setSetting({ decimals: res.data.decimal });
+    setisLoading(false);
   };
 
   useEffect(() => {
     getDecimal();
   }, []);
 
+  const handleChangePage = (pageNumber, offset, limit) => {
+    promisify(getGovernanceStrike, {
+      offset,
+      limit
+    })
+      .then(res => {
+        setSection3Market(res.data);
+      })
+      .catch(() => {});
+  };
+
   return (
-    <MainLayout>
-      {data ? (
+    <MainLayout isHeader={false}>
+      {data && governance ? (
         <HomeWrapper>
           <Section1 markets={markets} />
           <Section2 data={data} />
-          <Section3 markets={markets} governance={governance} />
+          <Section3 markets={section3Market} governance={governance} total={data.total} onChangePage={handleChangePage} setSetting={setSetting}/>
           <Section4 />
         </HomeWrapper>
       ) : (

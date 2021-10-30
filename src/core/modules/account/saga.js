@@ -31,7 +31,7 @@ export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
 export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
   try {
     const response = yield call(restService, {
-      api: `/governance/strike`,
+      api: `/governance/strike?offset=${payload.offset}&limit=${payload.limit}`,
       method: 'GET',
       params: {}
     });
