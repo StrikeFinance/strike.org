@@ -1,25 +1,54 @@
 /* eslint-disable no-useless-escape */
-import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { compose } from 'recompose';
-import { withRouter, useLocation } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import { connectAccount, accountActionCreators } from 'core';
-import { promisify } from 'utilities';
-import MainLayout from 'containers/Layout/MainLayout';
 import Section1 from 'components/Main/Home/Section1';
 import Section2 from 'components/Main/Home/Section2';
 import Section3 from 'components/Main/Home/Section3';
 import Section4 from 'components/Main/Home/Section4';
+import MainLayout from 'containers/Layout/MainLayout';
+import { accountActionCreators, connectAccount } from 'core';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import { useLocation, withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
+import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
+import { promisify } from 'utilities';
+import LoadingSpinner from '../../components/Basic/LoadingSpinner';
 
 const HomeWrapper = styled.div`
   height: 100%;
+  .blink {
+    text-align: center;
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
 `;
 
-function Home({ history, getGovernanceStrike }) {
+const SpinnerWrapper = styled.div`
+  height: 85vh;
+  width: 100%;
+
+  @media only screen and (max-width: 1440px) {
+    height: 70vh;
+  }
+`;
+
+function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovernance, getGovernanceStrikeWithParam }) {
   const [markets, setMarkets] = useState([]);
+  const [section3Market, setSection3Market] = useState();
   const location = useLocation();
+  const [isLoading, setisLoading] = useState(true);
+  const [data, setdata] = useState();
+  const [governance, setgovernance] = useState();
 
   useEffect(() => {
     if (location.hash) {
@@ -36,6 +65,16 @@ function Home({ history, getGovernanceStrike }) {
   }, [location]);
 
   const getMarkets = async () => {
+    const res = await promisify(getGovernanceStrikeWithParam, { offset: 0, limit: 5 });
+    if (!res.status) {
+      return;
+    }
+    setisLoading(false);
+    setSection3Market(res.data);
+    setdata(() => res.data);
+  };
+
+  const getMarketsSection1 = async () => {
     const res = await promisify(getGovernanceStrike, {});
     if (!res.status) {
       return;
@@ -43,25 +82,66 @@ function Home({ history, getGovernanceStrike }) {
     setMarkets(res.data.markets);
   };
 
+  const getGovernanceFunc = async () => {
+    const res = await promisify(getGovernance, { limit: 5, offset: 0 });
+    if (!res.status) {
+      return;
+    }
+    setgovernance(res.data.result);
+  };
   useEffect(() => {
+    getMarketsSection1();
     getMarkets();
+    getGovernanceFunc();
   }, []);
 
+  const getDecimal = async () => {
+    const res = await promisify(getDecimals, {});
+    if (!res.status) {
+      return;
+    }
+    setSetting({ decimals: res.data.decimal });
+    setisLoading(false);
+  };
+
+  useEffect(() => {
+    getDecimal();
+  }, []);
+
+  const handleChangePage = (pageNumber, offset, limit) => {
+    promisify(getGovernanceStrike, {
+      offset,
+      limit
+    })
+      .then(res => {
+        setSection3Market(res.data);
+      })
+      .catch(() => { });
+  };
+
   return (
-    <MainLayout>
-      <HomeWrapper>
-        <Section1 />
-        <Section2 markets={markets} />
-        <Section3 markets={markets} />
-        <Section4 />
-      </HomeWrapper>
+    <MainLayout isHeader={false}>
+      {data && governance && markets ? (
+        <HomeWrapper>
+          <Section1 markets={markets} />
+          <Section2 data={data} />
+          <Section3 markets={section3Market} governance={governance} total={data.total} onChangePage={handleChangePage} setSetting={setSetting} />
+          <Section4 />
+        </HomeWrapper>
+      ) : (
+        <SpinnerWrapper>
+          <LoadingSpinner />
+        </SpinnerWrapper>
+      )}
     </MainLayout>
   );
 }
 
 Home.propTypes = {
   history: PropTypes.object,
-  getGovernanceStrike: PropTypes.func.isRequired
+  getGovernanceStrike: PropTypes.func.isRequired,
+  getDecimals: PropTypes.func.isRequired,
+  setSetting: PropTypes.func.isRequired
 };
 
 Home.defaultProps = {
@@ -69,11 +149,21 @@ Home.defaultProps = {
 };
 
 const mapDispatchToProps = dispatch => {
-  const { getGovernanceStrike } = accountActionCreators;
+  const {
+    getGovernanceStrike,
+    getDecimals,
+    getInterateModel,
+    getGovernance,
+    getGovernanceStrikeWithParam
+  } = accountActionCreators;
 
   return bindActionCreators(
     {
-      getGovernanceStrike
+      getGovernanceStrike,
+      getInterateModel,
+      getDecimals,
+      getGovernance,
+      getGovernanceStrikeWithParam
     },
     dispatch
   );

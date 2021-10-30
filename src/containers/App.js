@@ -11,6 +11,7 @@ import Terms from 'containers/Main/Terms';
 import Theme from './Theme';
 
 import 'assets/styles/App.scss';
+import MarketDetail from '../components/Main/MarketDetail';
 
 addLocaleData([...en]);
 const initialLang = 'en';
@@ -43,6 +44,7 @@ class App extends React.Component {
               >
                 <Route exact path="/" component={Home} />
                 <Route exact path="/terms" component={Terms} />
+                <Route exact path="/market/:asset" component={MarketDetail} />
                 <Redirect from="/" to="/" />
               </Switch>
             </BrowserRouter>

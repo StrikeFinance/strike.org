@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
@@ -14,16 +14,36 @@ import strkImg from 'assets/img/strk.png';
 import uniImg from 'assets/img/uni.png';
 import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
-
-import bg2Img from 'assets/img/bg2.png';
-import bg3Img from 'assets/img/bg3.png';
-import solutionImg from 'assets/img/solution.png';
-import arrowRightImg from 'assets/img/arrow-right.png';
-import vector3Img from 'assets/img/vector3.png';
+import completed from 'assets/img/landingpage/Shape.png';
+import cancel from 'assets/img/landingpage/cancel.png';
+import dailogo from 'assets/img/landingpage/image-8.png';
+import nextCarret from 'assets/img/landingpage/Vector.png';
+import prevCarret from 'assets/img/landingpage/Vector-1.png';
+import vector9 from 'assets/img/landingpage/Vector-9.png';
+import vector10 from 'assets/img/landingpage/Vector-10.png';
+import V5b from 'assets/img/landingpage/Vector-5-b.png';
+import V6b from 'assets/img/landingpage/Vector-6-b.png';
+import V7b from 'assets/img/landingpage/Vector-7-b.png';
+import V8b from 'assets/img/landingpage/Vector-8-b.png';
+import V16b from 'assets/img/landingpage/Vector-16-b.png';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+  Divider,
+  TableFooter
+} from '@material-ui/core';
+import moment from 'moment';
+import commaNumber from 'comma-number';
+import { Pagination } from 'antd';
 
 const Section3Wrapper = styled.div`
   width: 100%;
-  background-color: white;
   padding: 65px 0px 117px 0px;
 
   @media only screen and (max-width: 768px) {
@@ -64,186 +84,471 @@ const Section3Wrapper = styled.div`
 `;
 
 const DevelopersWrapper = styled.div`
-  margin-bottom: 62px;
+  position: relative;
 
-  .bg2-Img {
-    max-width: 100%;
-  }
-
-  .solution-img {
-    width: 90px;
-    margin-top: 50px;
-    margin-bottom: 26px;
-  }
-
-  .doc-btn {
-    width: 150px;
-    height: 32px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 13px 0 rgba(39, 126, 230, 0.64);
-    background-color: #277ee6;
-    font-size: 13.5px;
+  h4.center {
+    font-size: 49px;
     font-weight: 500;
-    color: #ffffff;
-    margin-right: 22px;
-    &:hover {
-      background-color: #477ee6;
-      color: #ffffff;
+    color: #0b0f23;
+    margin-bottom: 45px;
+    position: absolute;
+    z-index: 21;
+    margin-top: -91px;
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 50px;
+      font-size: 25px;
+      font-weight: 500;
+    }
+  }
+
+  img.vector9 {
+    position: absolute;
+    z-index: 21;
+    top: 304px;
+    left: 273px;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  img.vector10 {
+    position: absolute;
+    z-index: 20;
+    top: 111px;
+    right: 200px;
+  }
+
+  .paper-root {
+    position: absolute;
+    z-index: 20;
+    border-radius: 20px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.05);
+
+    @media only screen and (max-width: 768px) {
+      width: 91%;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1 !important;
+      top: 60px;
+      left: -68px;
+      width: 1120px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .typography {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0b0f23;
+      margin-top: 30px;
+      margin-left: 40px;
+      margin-bottom: 20px;
+    }
+
+    .dividerMarket {
+      width: 968px;
+      margin-left: 40px;
+    }
+
+    .tableCellHead {
+      font-size: 16px;
+      font-weight: 500;
+      color: #9d9fa7;
+      max-width: 200px;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .tableCellBody {
+      display: flex;
+      padding-left: 40px;
+
+      img {
+        margin-right: 15px;
+        width: 37px;
+        height: 36px;
+      }
+      .content-table {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .Dai {
+          font-size: 18px;
+          font-weight: 500;
+          color: #000000;
+        }
+
+        .dai {
+          font-size: 16px;
+          font-weight: 500;
+          color: #9d9fa7;
+        }
+      }
+    }
+
+    .earn {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      margin-right: 57px;
+
+      .money {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000000;
+      }
+      .percent {
+        text-align: right;
+        padding-left: 33px;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--color-green);
+      }
+    }
+
+    .pagination {
+      border-bottom: none !important;
+      padding-right: 50px;
+      padding-top: 22px;
+      padding-bottom: 27px;
+
+      .numberPage {
+        .page {
+          font-size: 16px;
+          font-weight: 800px;
+          color: #0b0f23;
+          padding: 8px 16px;
+          margin-right: 12px;
+          border: 1px solid black;
+          text-align: center;
+          box-sizing: border-box;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+
+        span.icon {
+          padding: 8px 16px;
+          border: 1px solid black;
+          box-sizing: border-box;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
     }
   }
 `;
 
 const PortableWrapper = styled.div`
-  margin: 150px 0 150px 84px;
   position: relative;
+  background: #3b54b5;
+  margin-top: 408px;
 
   @media only screen and (max-width: 768px) {
-    flex-direction: column-reverse;
-    margin: 100px 0;
-  }
-
-  .column1 {
-    flex: 1 1 0%;
-    z-index: 3;
-
-    @media only screen and (max-width: 768px) {
-      margin-top: 30px;
-    }
-
-    .info-item-list {
-      width: 70%;
-      border-radius: 5px;
-      box-shadow: 0px 13px 32px 0 rgba(6, 12, 63, 0.1);
-      background-color: #ffffff;
-
-      @media only screen and (max-width: 768px) {
-        width: 100%;
-      }
-
-      .info-item {
-        border-bottom: 1px solid #eef1fa;
-        padding: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .info-item-icon {
-          width: 60px;
-          height: 60px;
-          display: flex;
-          align-items: center;
-          margin-right: 32px;
-          img {
-            display: inline-block;
-            vertical-align: top;
-            max-width: 100%;
-            max-height: 100%;
-          }
-        }
-        .info-item-content {
-          width: calc(100% - 66px);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          .info-item-title {
-            display: flex;
-            margin-bottom: 3px;
-            font-size: 18px;
-            font-weight: 900;
-            color: #39496a;
-          }
-
-          .info-item-prop {
-            font-size: 18px;
-            font-weight: 600;
-            color: #39496a;
-          }
-
-          .info-item-data-value {
-            display: flex;
-            justify-content: flex-end;
-            text-align: right;
-            font-size: 20px;
-            font-weight: 600;
-            color: #39496a;
-          }
-
-          .info-item-data-prop {
-            display: flex;
-            justify-content: flex-end;
-            color: #c5cbd4;
-            text-align: right;
-            font-size: 19px;
-            font-weight: 600;
-          }
-        }
-      }
-    }
-  }
-  .column2 {
-    flex: 1;
-    z-index: 3;
-
-    img {
-      width: 26px;
-      height: 16px;
-      margin-left: 11px;
-    }
-  }
-
-  .vector-section {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    left: 0;
-    margin: auto;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-
-    img {
-      max-width: 50%;
-      transform: scale(1.8);
-    }
-  }
-`;
-
-const ProtocolWrapper = styled.div`
-  display: flex;
-  padding: 0 82px;
-
-  @media only screen and (max-width: 768px) {
-    padding: 0;
     flex-direction: column;
   }
 
-  .column1 {
-    flex: 1;
+  .MuiTableCell-footer ul {
+    height: 50px;
+    line-height: 50px;
+  }
 
-    img {
-      width: 26px;
-      height: 16px;
-      margin-left: 11px;
+  .MuiTableCell-footer ul li {
+    border: solid 1px;
+  }
+
+  .column1 {
+    z-index: 4;
+    margin-top: 402px;
+    margin-left: 190px;
+    margin-bottom: 369px;
+
+    @media only screen and (max-width: 768px) {
+      margin-left: 20px;
+      margin-bottom: 0;
+      margin-right: 20px;
+      padding-top: 90px;
+    }
+    @media only screen and (max-width: 680px) {
+      margin-left: 20px;
+    }
+
+    img.V16b {
+      position: absolute;
+      z-index: -1;
+      left: 221px;
+      top: 369px;
+    }
+
+    img.V6b {
+      position: absolute;
+      left: 21%;
+      top: 66%;
+    }
+
+    .button-governance {
+      margin-bottom: 25px;
+      @media only screen and (max-width: 768px) {
+      }
+      span {
+        color: #0b0f23;
+        padding: 6.67px 13.74px 6.34px 13.67px;
+        background: #eceff9;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 800;
+      }
+    }
+
+    .content-governance {
+      color: #ffffff;
+      font-size: 39px;
+      font-weight: 500;
+      width: 474px;
+      display: block;
+      @media only screen and (max-width: 768px) {
+        font-size: 25px;
+        font-weight: 500;
+        width: 100%;
+      }
     }
   }
   .column2 {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .bg3-img {
-      max-width: 100%;
-      padding: 50px 0;
+    z-index: 4;
+    margin-top: 402px;
+    margin-left: 288px;
+    margin-bottom: 64px;
+    @media only screen and (max-width: 768px) {
+      margin-top: 60px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    @media only screen and (max-width: 680px) {
+      margin-top: 60px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    .content-column2 {
+      background: rgba(11, 15, 35, 0.5);
+      border-radius: 20px;
 
       @media only screen and (max-width: 768px) {
-        max-width: 50%;
+        width: 100%;
+        padding: 20px;
+      }
+
+      img.V5b {
+        position: absolute;
+        top: 23%;
+        right: 10%;
+      }
+
+      img.V8b {
+        position: absolute;
+        top: 63%;
+        right: 3%;
+        z-index: -1;
+      }
+
+      img.V7b {
+        position: absolute;
+        top: 80%;
+        right: 33%;
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      .proposals {
+        font-size: 20px;
+        font-weight: 800;
+        color: #ffffff;
+        padding-top: 30px;
+        padding-left: 40px;
+        padding-bottom: 20px;
+
+        @media only screen and (max-width: 768px) {
+          padding: 0;
+          margin-bottom: 15px;
+        }
+      }
+      .divider {
+        background: #e5e5e5;
+        width: 683px;
+        margin-left: 40px;
+        @media only screen and (max-width: 768px) {
+          width: 100%;
+          margin-left: 0;
+        }
+        @media only screen and (max-width: 680px) {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+
+      .padding-style {
+        padding-bottom: 35px;
+      }
+    }
+
+    .pagination {
+      text-align: right;
+      padding-right: 22px;
+      padding-top: 22px;
+      padding-bottom: 27px;
+
+      .icon {
+        color: #3b54b5;
+      }
+
+      .page {
+        color: #107def;
+        border: 1px solid #107def;
+        font-size: 16px;
+        font-weight: 800px;
+        padding: 8px 16px;
+        margin-right: 12px;
+        text-align: center;
+        box-sizing: border-box;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .iconPrev,
+      .nextPrev {
+        margin-right: 12px;
+        color: #107def;
+        border: 1px solid #107def;
+        cursor: pointer;
+        border-radius: 4px;
+        padding: 8px 16px;
+      }
+    }
+
+    .gorvernance-program {
+      display: flex;
+
+      .program {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-right: 282px;
+        margin-left: -30px;
+        margin-top: 15px;
+        @media only screen and (max-width: 768px) {
+          margin-bottom: 0px;
+          margin-left: 0px;
+          padding-right: 200px;
+        }
+        @media only screen and (max-width: 680px) {
+          padding-right: 150px;
+        }
+        @media only screen and (max-width: 450px) {
+          padding-right: 50px;
+        }
+
+        .progam-name {
+          font-size: 16px;
+          font-weight: 500;
+          color: #ffffff;
+          margin-bottom: 2px;
+          margin-left: -14px;
+          @media only screen and (max-width: 768px) {
+            margin-bottom: 0px;
+            margin-left: 0;
+            width: 100%;
+          }
+          @media only screen and (max-width: 680px) {
+            margin-bottom: 0px;
+            margin-left: 0;
+            width: 100%;
+          }
+        }
+
+        .date-passed {
+          display: flex;
+          /* align-items: center; */
+          padding-left: 70px;
+          padding-bottom: 16px;
+          @media only screen and (max-width: 768px) {
+            /* width: 274%; */
+            padding-left: 0;
+            flex-direction: column-reverse;
+          }
+          @media only screen and (max-width: 680px) {
+            /* width: 274%; */
+            padding-left: 0;
+          }
+          .passed {
+            margin-right: 6px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 1px 5px 1px 6px;
+            background: #06c270;
+            border-radius: 5px;
+
+            @media only screen and (max-width: 768px) {
+              margin-right: 38%;
+            }
+            @media only screen and (max-width: 450px) {
+              margin-right: 50%;
+            }
+          }
+
+          .date {
+            font-size: 12px;
+            font-weight: 500;
+            color: #9d9fa7;
+          }
+        }
+      }
+
+      .completed {
+        padding-right: 39.67px;
+        padding-top: 28px;
+
+        @media only screen and (max-width: 768px) {
+          padding-right: 10px;
+          padding-top: 28px;
+          display: flex;
+          align-item: center;
+          margin-top: 16px;
+        }
+        @media only screen and (max-width: 680px) {
+          padding-right: 0px;
+        }
+
+        img {
+          margin-right: 10px;
+          margin-bottom: 7px;
+          @media only screen and (max-width: 768px) {
+            width: 30px;
+            height: 30px;
+            margin-top: 0;
+          }
+        }
+        span {
+          font-size: 14px;
+          font-weight: 500;
+          color: #ffffff;
+          padding-top: 5px;
+        }
       }
     }
   }
 `;
-
 
 const ICONS = {
   UNI: uniImg,
@@ -256,129 +561,270 @@ const ICONS = {
   WBTC: wbtcImg,
   STRK: strkImg,
   SXP: sxpImg
-}
+};
+const format = commaNumber.bindWith(',', '.');
+function Section3({
+  history,
+  markets,
+  governance,
+  total,
+  onChangePage,
+  setSetting
+}) {
+  const getStatus = p => {
+    if (p.state === 'Executed') {
+      return 'Passed';
+    }
+    if (p.state === 'Active') {
+      return 'Active';
+    }
+    if (p.state === 'Defeated') {
+      return 'Failed';
+    }
+    return p.state;
+  };
 
-function Section3({ history, markets }) {
-  const handleLink = () => {
-    window.open('https://app.strike.org', '_blank');
+  const [current, setCurrent] = useState();
+  const [pageSize, setPageSize] = useState(5);
+
+  const handleChangePage = (page, size) => {
+    setCurrent(page);
+    setPageSize(size);
+    onChangePage(page, (page - 1) * size, size);
+  };
+
+  const callMarketDetail = item => {
+    setSetting({
+      ...setSetting,
+      selectedAddress: item.address,
+      markets: markets.markets
+    });
+    history.push(`/market/${item.underlyingSymbol}`);
   };
 
   return (
-    <Section3Wrapper id="developer">
+    <Section3Wrapper>
       <DevelopersWrapper className="flex flex-column align-center">
-        <p>Developers</p>
-        <h4 className="center">
-          Comprehensive Developer API & SDK to build your custom application.
-        </h4>
-        <img className="bg2-Img" src={bg2Img} alt="bg2 img" />
-        <img className="solution-img" src={solutionImg} alt="solution img" />
-        <p>Solutions</p>
-        <h5 className="center">
-          Build your own custom application by accessing a non-custodial
-          moneymarket with our developer APIs and SDKs. This will enable
-          developersto quickly build their own application tailored to fit the
-          Strike protocol.
-        </h5>
-        <div
-          className="flex align-center just-center doc-btn pointer"
-          onClick={() => {
-            window.open('https://docs.strike.org', '_blank');
-          }}
-        >
-          Developer Docs
-        </div>
-      </DevelopersWrapper>
-      <PortableWrapper className="flex">
-        <div className="column1">
-          <div className="info-item-list">
-            {markets.sort((a, b) => {
-                if (new BigNumber(a.liquidity).isGreaterThan(b.liquidity)) {
-                  return -1;
-                }
-                if (new BigNumber(a.liquidity).isLessThan(b.liquidity)) {
-                  return 1;
-                }
-                return 0;
-              })
-              .map((m, index) => {
-                if (index < 3) {
+        <h4 className="center">10 markets available</h4>
+        <img src={vector9} className="vector9" alt="" />
+        <img src={vector10} className="vector10" alt="" />
+        <Paper className="paper-root">
+          <Typography className="typography">All Markets</Typography>
+          <Divider className="dividerMarket" />
+          <TableContainer style={{ cursor: 'pointer' }}>
+            <Table style={{ minWidth: '340px' }}>
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell1"
+                    align="left"
+                  >
+                    Market
+                  </TableCell>
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell2"
+                    align="right"
+                  >
+                    Total Supply
+                  </TableCell>
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell3"
+                    align="right"
+                  >
+                    Supply APY
+                  </TableCell>
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell4"
+                    align="right"
+                  >
+                    Total Borrow
+                  </TableCell>
+                  <TableCell
+                    width="20%"
+                    className="tableCellHead tablecell5"
+                    align="right"
+                  >
+                    Borrow APY
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                {markets.markets.map((item, index) => {
                   return (
-                    <div className="info-item" key={index}>
-                      <span className="info-item-icon">
-                        <img src={ICONS[m.underlyingSymbol]} alt="coin img" />
+                    <TableRow key={index}>
+                      <TableCell width="20%" className="tableCellBody">
+                        <div>
+                          <img src={ICONS[item.underlyingSymbol]} />
+                        </div>
+                        <div className="content-table">
+                          <span className="Dai">{item.underlyingName}</span>
+                          <span className="dai">{item.underlyingName}</span>
+                        </div>
+                      </TableCell>
+                      <TableCell width="20%" align="center">
+                        <div className="earn">
+                          <span className="money">
+                            $
+                            {new Intl.NumberFormat({
+                              maximumSignificantDigits: 3
+                            }).format(item.totalSupply)}
+                          </span>
+                          <span className="percent">
+                            {format(
+                              new BigNumber(item.totalSupplyUsd)
+                                .div(new BigNumber(item.tokenPrice))
+                                .dp(0, 1)
+                                .toString(10)
+                            )}{' '}
+                            {item.underlyingSymbol}
+                          </span>
+                        </div>
+                      </TableCell>
+
+                      <TableCell width="20%" align="center">
+                        <div className="earn">
+                          <span className="money">
+                            $
+                            {new Intl.NumberFormat({
+                              maximumSignificantDigits: 3
+                            }).format(item.supplyApy)}
+                          </span>
+                          <span className="percent">
+                            {new BigNumber(item.supplyStrikeApy)
+                              .dp(2, 1)
+                              .toString(10)}
+                            %
+                          </span>
+                        </div>
+                      </TableCell>
+
+                      <TableCell width="20%" align="center">
+                        <div className="earn">
+                          <span className="money">
+                            $
+                            {new Intl.NumberFormat({
+                              maximumSignificantDigits: 3
+                            }).format(item.totalBorrows)}
+                          </span>
+                          <span className="percent">
+                            {format(
+                              new BigNumber(item.totalBorrowsUsd)
+                                .div(new BigNumber(item.tokenPrice))
+                                .dp(0, 1)
+                                .toString(10)
+                            )}{' '}
+                            {item.underlyingSymbol}
+                          </span>
+                        </div>
+                      </TableCell>
+
+                      <TableCell width="20%" align="center">
+                        <div className="earn">
+                          <span className="money">
+                            $
+                            {new Intl.NumberFormat({
+                              maximumSignificantDigits: 3
+                            }).format(item.borrowApy)}
+                          </span>
+                          <span className="percent">
+                            {new BigNumber(item.borrowStrikeApy)
+                              .dp(2, 1)
+                              .toString(10)}
+                            %
+                          </span>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell className="pagination" align="right" colSpan={5}>
+                    <div className="numberPage">
+                      <Pagination
+                        size="larger"
+                        defaultCurrent={0}
+                        defaultPageSize={4}
+                        current={current}
+                        pageSize={pageSize}
+                        total={total}
+                        onChange={handleChangePage}
+                      />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              </TableFooter>
+            </Table>
+          </TableContainer>
+        </Paper>
+      </DevelopersWrapper>
+      <PortableWrapper className="flex" id="gorvernance">
+        <div className="column1">
+          <img src={V16b} className="V16b" alt="" />
+          <div className="button-governance">
+            <span>Gorvernance</span>
+          </div>
+          <span className="content-governance">
+            Strike is managed by a decentralized community of Strike
+            token-holders and their delegates, who propose and vote on upgrades
+            to the protocol.
+          </span>
+          <img src={V6b} className="V6b" alt="" />
+        </div>
+        <div className="column2">
+          <div className="content-column2">
+            <img src={V5b} className="V5b" alt="" />
+            <Typography className="proposals">Recent Proposals</Typography>
+            <Divider className="divider" />
+            {governance.map((item, index) => {
+              return (
+                <div key={index} className="padding-style">
+                  <div className="gorvernance-program">
+                    <div className="program">
+                      <span className="progam-name">
+                        {item.description.split('\n')[0]}
                       </span>
-                      <span className="info-item-content">
-                        <span className="info-item-head">
-                          <span className="info-item-title">{m.underlyingName}</span>
-                          <span className="info-item-prop">{m.underlyingSymbol}</span>
+                      <span className="date-passed">
+                        <span className={`passed ${getStatus(item)}`}>
+                          {getStatus(item)}
                         </span>
-                        <span className="info-item-data">
-                          <span className="info-item-data-value">
-                            ${m.liquidity ? Number(m.liquidity).toFixed(2) : '0.00'}
-                          </span>
-                          <span className="info-item-data-prop">
-                            Available Liquidity
-                          </span>
+                        <span className="date">
+                          {moment(item.createdAt).format('MMMM Do, YYYY')}
                         </span>
                       </span>
                     </div>
-                  )
-                }
-              })
-              }
+                    <div className="completed">
+                      <img
+                        src={`${item.canceled ? completed : cancel}`}
+                        alt=""
+                      />
+                      <span>{item.state}</span>
+                    </div>
+                  </div>
+                  <Divider className="divider" />
+                </div>
+              );
+            })}
           </div>
-        </div>
-        <div className="column2">
-          <p>Portable Liquidity</p>
-          <h4>Access Liquidity from Strike on-demand on any asset.</h4>
-          <h5>
-            With the Strike protocols decentralized nature, users and developers can access liquidity on-demand from their supplied collateral.
-          </h5>
-          <div
-            className="flex align-center pointer"
-            onClick={() => handleLink()}
-          >
-            <p>Launch App</p>
-            <img src={arrowRightImg} className="arrow-right" alt="arrow img" />
-          </div>
-        </div>
-        <div className="vector-section">
-          <img src={vector3Img} alt="vector img" />
         </div>
       </PortableWrapper>
-      <ProtocolWrapper className="flex">
-        <div className="column1">
-          <p>Strike Protocol</p>
-          <h4>How does Strike Work?</h4>
-          <h5>
-            Strike enables users and developers to supply digital assets onto the platform to earn from dyanmic rates provided by the protocol and use that supplied asset as collateral to borrow other supported digital assets all on-chain.
-          </h5>
-          <div
-            className="flex align-center pointer"
-            onClick={() => {
-              window.open('/Whitepaper.pdf', '_blank');
-            }}
-          >
-            <p>READ THE WHITEPAPER</p>
-            <img src={arrowRightImg} className="arrow-right" alt="arrow img" />
-          </div>
-        </div>
-        <div className="flex align-center just-center column2">
-          <img className="bg3-img" src={bg3Img} alt="bg3 img" />
-        </div>
-      </ProtocolWrapper>
     </Section3Wrapper>
   );
 }
 
 Section3.propTypes = {
   history: PropTypes.object,
+  setSetting: PropTypes.func.isRequired
 };
 
 Section3.defaultProps = {
   history: {}
 };
 
-export default compose(
-  withRouter,
-)(Section3);
+export default compose(withRouter)(Section3);

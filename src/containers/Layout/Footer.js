@@ -12,6 +12,7 @@ const FooterWrapper = styled.div`
 
   @media (max-width: 768px) {
     padding: 35px;
+    margin-top: 119px;
   }
 
   .footer-content {
@@ -32,18 +33,29 @@ const FooterWrapper = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      width: 100%;
+      margin-right: 15%;
       img {
         height: 31px;
+      }
+      @media only screen and (max-width: 768px) {
+        margin-right: 0;
       }
     }
 
     .link-wrapper {
       display: flex;
+      justify-content: flex-end;
+      flex-grow: 1;
 
       @media (max-width: 768px) {
-        flex-direction: column;
-        align-items: flex-start;
+       flex-direction: column;
+      }
+
+      .link-wrapper__row {
+        display: flex;
+        @media (max-width: 768px) {
+          margin-top: 40px;
+        }
       }
 
       p {
@@ -77,25 +89,11 @@ const FooterWrapper = styled.div`
       .link-list {
         display: flex;
         flex-direction: column;
-
-        &:not(:last-child) {
-          margin-right: 97px;
-
-          @media (max-width: 1024px) {
-            margin-right: 50px;
-          }
-
-          @media (max-width: 768px) {
-            margin-right: 30px;
-          }
-
-          @media (max-width: 576px) {
-            margin-right: 20px;
-          }
-        }
+        margin-right: 97px;
 
         @media (max-width: 768px) {
-          margin-top: 40px;
+          min-width: 25%;
+          margin-right: 50px;
         }
       }
     }
@@ -114,14 +112,6 @@ const FooterWrapper = styled.div`
     &:hover {
       background-color: #477ee6;
       color: #ffffff;
-    }
-
-    &.desktop-view {
-      opacity: 1;
-
-      @media (max-width: 768px) {
-        opacity: 0;
-      }
     }
 
     &.mobile-view {
@@ -182,105 +172,102 @@ function Footer({ settings }) {
       <div className="footer-content">
         <div className="logo-wrapper">
           <img src={logoImg} alt="logo" />
-          <div
-            className="flex align-center just-center app-btn mobile-view"
-            onClick={() => {
-              window.open('https://app.strike.org/', '_blank');
-            }}
-          >
-            App
-          </div>
         </div>
+
         <div className="link-wrapper">
-          <div className="link-list">
-            <p>Protocol</p>
-            <a
-              href="https://app.strike.org/market"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Markets
-            </a>
-            <a href="https://docs.strike.org/" target="_blank" rel="noreferrer">
-              Documentation
-            </a>
-            <a onClick={() => history.push("/terms")}>
-              Terms
-            </a>
-            <a href="https://www.immunefi.com/bounty/strikefinance">
-              Bug Bounty
-            </a>
+          <div className="link-wrapper__row">
+            <div className="link-list">
+              <p>Protocol</p>
+              <a
+                href="https://app.strike.org/market"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Markets
+              </a>
+              <a href="https://docs.strike.org/" target="_blank" rel="noreferrer">
+                Documentation
+              </a>
+              <a onClick={() => history.push("/terms")}>
+                Terms
+              </a>
+              <a href="https://www.immunefi.com/bounty/strikefinance">
+                Bug Bounty
+              </a>
+            </div>
+            <div className="link-list">
+              <p>Governance</p>
+              <a
+                href="https://app.strike.org/vote"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Proposals
+              </a>
+              <a
+                href="https://app.strike.org/strk"
+                target="_blank"
+                rel="noreferrer"
+              >
+                STRK
+              </a>
+              <a
+                href="https://app.strike.org/vote/leaderboard"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Leaderboard
+              </a>
+            </div>
           </div>
-          <div className="link-list">
-            <p>Governance</p>
-            <a
-              href="https://app.strike.org/vote"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Proposals
-            </a>
-            <a
-              href="https://app.strike.org/strk"
-              target="_blank"
-              rel="noreferrer"
-            >
-              STRK
-            </a>
-            <a
-              href="https://app.strike.org/vote/leaderboard"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Leaderboard
-            </a>
-          </div>
-          <div className="link-list">
-            <p>Community</p>
-            <a
-              href="https://community.strike.org/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Forums
-            </a>
-            <a
-              href="https://twitter.com/StrikeFinance"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Twitter
-            </a>
-            <a
-              href="https://t.me/StrikeFinance"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Telegram
-            </a>
-            <a
-              href="https://github.com/StrikeFinance"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Github
-            </a>
-            <a
-              href="https://defipulse.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              DeFi Pulse
-            </a>
-          </div>
-          <div className="link-list">
-            <div
-              className="flex align-center just-center app-btn desktop-view"
-              onClick={() => {
-                window.open('https://app.strike.org', '_blank');
-              }}
-            >
-              App
+          <div className="link-wrapper__row">
+            <div className="link-list">
+              <p>Community</p>
+              <a
+                href="https://community.strike.org/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Forums
+              </a>
+              <a
+                href="https://twitter.com/StrikeFinance"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Twitter
+              </a>
+              <a
+                href="https://t.me/StrikeFinance"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Telegram
+              </a>
+              <a
+                href="https://github.com/StrikeFinance"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Github
+              </a>
+              <a
+                href="https://defipulse.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                DeFi Pulse
+              </a>
+            </div>
+            <div className="link-list">
+              <div
+                className="flex align-center just-center app-btn"
+                onClick={() => {
+                  window.open('https://app.strike.org', '_blank');
+                }}
+              >
+                App
+              </div>
             </div>
           </div>
         </div>
