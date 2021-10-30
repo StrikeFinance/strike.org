@@ -161,6 +161,9 @@ const MouseWrapper = styled.div`
     flex-direction: column;
     margin: auto;
     margin-top: 83px;
+    @media only screen and (max-width: 768px) {
+      margin-top: 0;
+    }
     .mouse {
       width: 20px;
       height: 30px;
