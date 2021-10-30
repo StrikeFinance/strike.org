@@ -30,7 +30,7 @@ export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
 
 export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
   let url;
-  if (payload.offset && payload.limit) {
+  if (typeof (payload.offset) === 'number' && payload.limit) {
     url = `/governance/strike?offset=${payload.offset}&limit=${payload.limit}`;
   } else {
     url = `/governance/strike`;
@@ -157,7 +157,7 @@ export function* asyncGetFaucetRequest({ payload, resolve, reject }) {
   }
 }
 
-export default function*() {
+export default function* () {
   yield all([
     fork(watchGetMarketHistoryRequest),
     fork(watchGetGovernanceStrikeRequest),

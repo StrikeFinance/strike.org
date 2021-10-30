@@ -324,8 +324,7 @@ const PortableWrapper = styled.div`
   .column2 {
     z-index: 4;
     margin-top: 402px;
-    margin-left: 288px;
-    margin-bottom: 64px;
+    margin-left: 76px;
     @media only screen and (max-width: 768px) {
       margin-top: 60px;
       margin-left: 15px;
@@ -343,6 +342,7 @@ const PortableWrapper = styled.div`
       @media only screen and (max-width: 768px) {
         width: 100%;
         padding: 20px;
+        margin-bottom: 64px;
       }
 
       img.V5b {
@@ -384,6 +384,7 @@ const PortableWrapper = styled.div`
         background: #e5e5e5;
         width: 683px;
         margin-left: 40px;
+        margin-right: 40px;
         @media only screen and (max-width: 768px) {
           width: 100%;
           margin-left: 0;
@@ -435,13 +436,18 @@ const PortableWrapper = styled.div`
 
     .gorvernance-program {
       display: flex;
+      margin: 0 40px;
+
+      @media only screen and (max-width: 768px) {
+        margin: 0;
+      }
 
       .program {
         display: flex;
         align-items: center;
         flex-direction: column;
-        padding-right: 282px;
-        margin-left: -30px;
+        flex-grow: 1;
+      
         margin-top: 15px;
         @media only screen and (max-width: 768px) {
           margin-bottom: 0px;
@@ -460,7 +466,7 @@ const PortableWrapper = styled.div`
           font-weight: 500;
           color: #ffffff;
           margin-bottom: 2px;
-          margin-left: -14px;
+          width: 100%;
           @media only screen and (max-width: 768px) {
             margin-bottom: 0px;
             margin-left: 0;
@@ -476,8 +482,8 @@ const PortableWrapper = styled.div`
         .date-passed {
           display: flex;
           /* align-items: center; */
-          padding-left: 70px;
           padding-bottom: 16px;
+          width: 100%;
           @media only screen and (max-width: 768px) {
             /* width: 274%; */
             padding-left: 0;
@@ -513,9 +519,7 @@ const PortableWrapper = styled.div`
       }
 
       .completed {
-        padding-right: 39.67px;
-        padding-top: 28px;
-
+        padding-top: 15px;
         @media only screen and (max-width: 768px) {
           padding-right: 10px;
           padding-top: 28px;
@@ -528,8 +532,6 @@ const PortableWrapper = styled.div`
         }
 
         img {
-          margin-right: 10px;
-          margin-bottom: 7px;
           @media only screen and (max-width: 768px) {
             width: 30px;
             height: 30px;
