@@ -688,7 +688,7 @@ function Section2({ history, data }) {
                 return (
                   <div className="eth" key={index}>
                     <div className="market-name">
-                      <span className="name">{item.underlyingName}</span>
+                      <span className="name">{item.underlyingSymbol}</span>
                       <span className="percent-progress">{!new BigNumber(item.totalSupply).isZero()
                         ? new BigNumber(item.totalSupplyUsd)
                           .div(new BigNumber(item.totalSupply))

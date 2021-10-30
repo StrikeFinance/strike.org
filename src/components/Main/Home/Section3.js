@@ -123,6 +123,7 @@ const DevelopersWrapper = styled.div`
     z-index: 20;
     border-radius: 20px;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.05);
+    padding: 0 20px;
 
     @media only screen and (max-width: 768px) {
       width: 91%;
@@ -164,12 +165,10 @@ const DevelopersWrapper = styled.div`
       color: #9d9fa7;
       max-width: 200px;
       min-width: 60px;
-      text-align: center;
     }
 
     .tableCellBody {
       display: flex;
-      padding-left: 40px;
 
       img {
         margin-right: 15px;
@@ -197,10 +196,8 @@ const DevelopersWrapper = styled.div`
 
     .earn {
       display: flex;
-      align-items: center;
+      align-items: right;
       flex-direction: column;
-      text-align: center;
-      margin-right: 57px;
 
       .money {
         font-size: 18px;
@@ -662,11 +659,11 @@ function Section3({
                           <img src={ICONS[item.underlyingSymbol]} />
                         </div>
                         <div className="content-table">
-                          <span className="Dai">{item.underlyingName}</span>
+                          <span className="Dai">{item.underlyingSymbol}</span>
                           <span className="dai">{item.underlyingName}</span>
                         </div>
                       </TableCell>
-                      <TableCell width="20%" align="center">
+                      <TableCell width="20%" align="right">
                         <div className="earn">
                           <span className="money">
                             $
@@ -686,7 +683,7 @@ function Section3({
                         </div>
                       </TableCell>
 
-                      <TableCell width="20%" align="center">
+                      <TableCell width="20%" align="right">
                         <div className="earn">
                           <span className="money">
                             $
@@ -703,7 +700,7 @@ function Section3({
                         </div>
                       </TableCell>
 
-                      <TableCell width="20%" align="center">
+                      <TableCell width="20%" align="right">
                         <div className="earn">
                           <span className="money">
                             $
@@ -723,7 +720,7 @@ function Section3({
                         </div>
                       </TableCell>
 
-                      <TableCell width="20%" align="center">
+                      <TableCell width="20%" align="right">
                         <div className="earn">
                           <span className="money">
                             $
