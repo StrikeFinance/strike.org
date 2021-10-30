@@ -9,7 +9,7 @@ import {
 } from 'core/modules/account/actions';
 
 import { restService } from 'utilities';
-import { GET_GOVERNANCE_REQUEST, GET_INTERATE_MODEL } from './actions';
+import { GET_GOVERNANCE_REQUEST, GET_GOVERNANCE_STRIKE_PARAM_REQUEST, GET_INTERATE_MODEL } from './actions';
 
 export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
   const { asset, type } = payload;
@@ -29,9 +29,15 @@ export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
 }
 
 export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
+  let url;
+  if (payload.offset && payload.limit) {
+    url = `/governance/strike?offset=${payload.offset}&limit=${payload.limit}`;
+  } else {
+    url = `/governance/strike`;
+  }
   try {
     const response = yield call(restService, {
-      api: `/governance/strike?offset=${payload.offset}&limit=${payload.limit}`,
+      api: url,
       method: 'GET',
       params: {}
     });
@@ -73,6 +79,12 @@ export function* watchGetMarketHistoryRequest() {
 export function* watchGetGovernanceStrikeRequest() {
   while (true) {
     const action = yield take(GET_GOVERNANCE_STRIKE_REQUEST);
+    yield* asyncGetGovernanceStrikeRequest(action);
+  }
+}
+export function* watchGetGovernanceStrikeWithParamRequest() {
+  while (true) {
+    const action = yield take(GET_GOVERNANCE_STRIKE_PARAM_REQUEST);
     yield* asyncGetGovernanceStrikeRequest(action);
   }
 }
@@ -151,6 +163,7 @@ export default function*() {
     fork(watchGetGovernanceStrikeRequest),
     fork(watchGetDecimalRequest),
     fork(watchGetInterateModelRequest),
-    fork(watchasyncGetGovernanceRequest)
+    fork(watchasyncGetGovernanceRequest),
+    fork(watchGetGovernanceStrikeWithParamRequest)
   ]);
 }

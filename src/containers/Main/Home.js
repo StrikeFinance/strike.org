@@ -42,7 +42,7 @@ const SpinnerWrapper = styled.div`
   }
 `;
 
-function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovernance }) {
+function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovernance, getGovernanceStrikeWithParam }) {
   const [markets, setMarkets] = useState([]);
   const [section3Market, setSection3Market] = useState();
   const location = useLocation();
@@ -65,14 +65,21 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
   }, [location]);
 
   const getMarkets = async () => {
-    const res = await promisify(getGovernanceStrike, { offset: 0, limit: 5 });
+    const res = await promisify(getGovernanceStrikeWithParam, { offset: 0, limit: 5 });
     if (!res.status) {
       return;
     }
     setisLoading(false);
     setSection3Market(res.data);
-    setMarkets(res.data.markets);
     setdata(() => res.data);
+  };
+
+  const getMarketsSection1 = async () => {
+    const res = await promisify(getGovernanceStrike, {});
+    if (!res.status) {
+      return;
+    }
+    setMarkets(res.data.markets);
   };
 
   const getGovernanceFunc = async () => {
@@ -82,13 +89,10 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
     }
     setgovernance(res.data.result);
   };
-
   useEffect(() => {
-    getGovernanceFunc();
-  }, []);
-
-  useEffect(() => {
+    getMarketsSection1();
     getMarkets();
+    getGovernanceFunc();
   }, []);
 
   const getDecimal = async () => {
@@ -117,7 +121,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
 
   return (
     <MainLayout isHeader={false}>
-      {data && governance ? (
+      {data && governance && markets ? (
         <HomeWrapper>
           <Section1 markets={markets} />
           <Section2 data={data} />
@@ -149,7 +153,8 @@ const mapDispatchToProps = dispatch => {
     getGovernanceStrike,
     getDecimals,
     getInterateModel,
-    getGovernance
+    getGovernance,
+    getGovernanceStrikeWithParam
   } = accountActionCreators;
 
   return bindActionCreators(
@@ -157,7 +162,8 @@ const mapDispatchToProps = dispatch => {
       getGovernanceStrike,
       getInterateModel,
       getDecimals,
-      getGovernance
+      getGovernance,
+      getGovernanceStrikeWithParam
     },
     dispatch
   );

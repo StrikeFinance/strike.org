@@ -174,6 +174,7 @@ const MouseWrapper = styled.div`
 `;
 
 function Section1({ markets }) {
+  console.log('SECTION1: ', markets);
   const [index, setIndex] = useState(0);
   const timeoutRef = React.useRef(null);
   const delay = 2500;

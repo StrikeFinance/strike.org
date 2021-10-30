@@ -277,6 +277,7 @@ const PortableWrapper = styled.div`
       margin-left: 20px;
       margin-bottom: 0;
       margin-right: 20px;
+      padding-top: 90px;
     }
     @media only screen and (max-width: 680px) {
       margin-left: 20px;
@@ -602,7 +603,7 @@ function Section3({
   };
 
   return (
-    <Section3Wrapper id="developer">
+    <Section3Wrapper>
       <DevelopersWrapper className="flex flex-column align-center">
         <h4 className="center">10 markets available</h4>
         <img src={vector9} className="vector9" alt="" />
@@ -763,7 +764,7 @@ function Section3({
           </TableContainer>
         </Paper>
       </DevelopersWrapper>
-      <PortableWrapper className="flex">
+      <PortableWrapper className="flex" id="gorvernance">
         <div className="column1">
           <img src={V16b} className="V16b" alt="" />
           <div className="button-governance">

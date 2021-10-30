@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { compose } from 'recompose';
@@ -267,8 +267,13 @@ const Section4Wrapper = styled.div`
 `;
 
 function Section4({ history }) {
+  const [isOpened, setIsOpened] = useState(false);
+  const handleLink = url => {
+    setIsOpened(false);
+    window.open(url, '_blank');
+  };
   return (
-    <Section4Wrapper className="flex flex-column">
+    <Section4Wrapper className="flex flex-column" id="developer">
       <div className="flex">
         <div className="column1">
           <Typography className="typography">Developers</Typography>
@@ -281,7 +286,7 @@ function Section4({ history }) {
             to quickly build their own application tailored to fit the Strike
             protocol.
           </span>
-          <button className="btn-docs" type="button">
+          <button className="btn-docs" type="button" onClick={() => handleLink('https://docs.strike.org/')}>
             Developer Docs
           </button>
         </div>
@@ -305,7 +310,7 @@ function Section4({ history }) {
             market powered on Ethereum 24/7/365 with a user-interface, api, or
             smart contracts.
           </span>
-          <button className="btn-docs" type="button">
+          <button className="btn-docs" type="button" onClick={() => handleLink('https://app.strike.org/')}>
             Launch App
           </button>
         </div>
@@ -320,7 +325,7 @@ function Section4({ history }) {
             use that supplied asset as collateral to borrow other supported
             digital assets all on-chain.
           </span>
-          <button className="btn-docs" type="button">
+          <button className="btn-docs" type="button" onClick={() => handleLink('https://strike.org/Whitepaper.pdf')}>
             Read The Whitepaper
           </button>
         </div>

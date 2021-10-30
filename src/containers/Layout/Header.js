@@ -246,17 +246,9 @@ function Header({ history }) {
               </NavLink>
             </li>
             <li className="header-menu__item">
-              <NavLink exact className="header-menu__link" to="/#developer">
+              <NavLink exact className="header-menu__link" to="/#gorvernance">
                 Governance
               </NavLink>
-            </li>
-            <li className="header-menu__item">
-              <div
-                className="header-menu__link"
-                onClick={() => handleLink('https://app.strike.org/vote')}
-              >
-                Developers
-              </div>
             </li>
             <li className="header-menu__item">
               <NavLink
@@ -270,7 +262,7 @@ function Header({ history }) {
           </ul>
           <div
             className="header-menu__btn_white"
-            onClick={() => handleLink('https://app.strike.org/')}
+            onClick={() => handleLink('https://strike.org/Whitepaper.pdf')}
           >
             Whitepaper
           </div>
