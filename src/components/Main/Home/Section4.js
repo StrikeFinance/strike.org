@@ -47,6 +47,13 @@ const Section4Wrapper = styled.div`
       width: 510px;
       display: block;
       padding-bottom: 30px;
+      @media only screen and (max-width: 768px) {
+        width: 90%;
+        font-size: 31px;
+      }
+      @media only screen and (max-width: 450px) {
+        width: 100%;
+      }
     }
 
     .content-2 {
@@ -56,6 +63,12 @@ const Section4Wrapper = styled.div`
       display:block;
       width: 510px;
       padding-bottom: 40px;
+      @media only screen and (max-width: 768px) {
+        width: 90%;
+      }
+      @media only screen and (max-width: 450px) {
+        width: 100%;
+      }
     }
 
     .btn-docs {
@@ -78,25 +91,34 @@ const Section4Wrapper = styled.div`
 
   .column1 {
     @media only screen and (max-width: 768px) {
-      padding-left:120px;
+      padding-left: 20px;
       padding-bottom : 10px;
+      padding-right: 20px;
     }
   }
 
   .column4 {
     @media only screen and (max-width: 768px) {
-      padding-left:120px;
-      padding-bottom : 10px;
+      padding-left: 20px;
+      padding-bottom: 10px;
+      padding-right: 20px;
     }
   }
 
   .column2 {
     padding-left: 120px;
+    @media only screen and (max-width: 768px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
     .imageApi {
       @media only screen and (max-width: 768px) {
         position: static!important;
         margin-top: 0px!important;
         width: 75%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
       }
     }
     .vector {
@@ -129,12 +151,13 @@ const Section4Wrapper = styled.div`
     padding-left: 70px;
     padding-bototm: 120px;
     @media only screen and (max-width: 768px) {
-      
+      padding-left: 0;
+      padding-right: 30px;
     }
     .imageApi {
       margin-top: 0;
       @media only screen and (max-width: 768px) {
-        width: 75%;
+        width: 100%;
         text-align: center;
       }
     }
@@ -150,8 +173,16 @@ const Section4Wrapper = styled.div`
       top: 23%;
       @media only screen and (max-width: 768px) {
         position: absolute;
-        top: 167px;
-        left: 10px;
+        top: 100px;
+        left: 0px;
+      }
+      @media only screen and (max-width: 670px) {
+        top: 70px;
+        width: 100px;
+        height: 170px;
+      }
+      @media only screen and (max-width: 450px) {
+        top: 40px;
       }
     }
 
@@ -163,6 +194,14 @@ const Section4Wrapper = styled.div`
       @media only screen and (max-width: 768px) {
         left: 78%!important;
         top: 404px;
+      }
+      @media only screen and (max-width: 670px) {
+        top: 280px;
+        right: 15%;
+      }
+      @media only screen and (max-width: 500px) {
+        top: 180px;
+        right: 15%;
       }
     }
   }
@@ -176,7 +215,8 @@ const Section4Wrapper = styled.div`
   .column5 {
     @media only screen and (max-width: 768px) {
       padding-top: 90%!important;
-      padding-left: 120px
+      padding-left: 20px;
+      padding-right: 15px;
     }
   }
 
@@ -186,7 +226,9 @@ const Section4Wrapper = styled.div`
     .imageApi {
       @media only screen and (max-width: 768px) {
         margin-top: 26px;
-        padding-left: 120px;
+        padding-left: 20px;
+        width: 100%;
+        padding-right: 20px;
       }
     }
 
@@ -239,19 +281,21 @@ function Section4({ history }) {
             to quickly build their own application tailored to fit the Strike
             protocol.
           </span>
-          <button className="btn-docs">Developer Docs</button>
+          <button className="btn-docs" type="button">
+            Developer Docs
+          </button>
         </div>
         <div className="column2">
-          <img className="imageApi" src={imageApi} />
-          <img className="vector" src={vector} />
+          <img className="imageApi" src={imageApi} alt="" />
+          <img className="vector" src={vector} alt="" />
         </div>
       </div>
       <div className="flex column3-flex">
         <div className="column3">
-          <img src={V10b} className="V10b" />
-          <img className="imageApi" src={imgMac} />
-          <img src={V4b} className="V4b" />
-          <img src={V14b} className="V14b" />
+          <img src={V10b} className="V10b" alt="" />
+          <img className="imageApi" src={imgMac} alt="" />
+          <img src={V4b} className="V4b" alt="" />
+          <img src={V14b} className="V14b" alt="" />
         </div>
         <div className="column4">
           <Typography className="typography">Try Strike Finance</Typography>
@@ -261,7 +305,9 @@ function Section4({ history }) {
             market powered on Ethereum 24/7/365 with a user-interface, api, or
             smart contracts.
           </span>
-          <button className="btn-docs">Launch App</button>
+          <button className="btn-docs" type="button">
+            Launch App
+          </button>
         </div>
       </div>
       <div className="flex">
@@ -274,13 +320,15 @@ function Section4({ history }) {
             use that supplied asset as collateral to borrow other supported
             digital assets all on-chain.
           </span>
-          <button className="btn-docs">Read The Whitepaper</button>
+          <button className="btn-docs" type="button">
+            Read The Whitepaper
+          </button>
         </div>
         <div className="column6">
-          <img src={V17b} className="V17b" />
-          <img className="imageApi" src={imgBlock} />
-          <img src={V19b} className="V19b" />
-          <img src={V21b} className="V21b" />
+          <img src={V17b} className="V17b" alt="" />
+          <img className="imageApi" src={imgBlock} alt="" />
+          <img src={V19b} className="V19b" alt="" />
+          <img src={V21b} className="V21b" alt="" />
         </div>
       </div>
     </Section4Wrapper>
