@@ -14,17 +14,22 @@ const Section1Wrapper = styled.div`
 width: 100%;
 padding-left: 84px;
 background-color: var(--color-bg-main);
-margin: 100px 0;
+margin: 50px 0;
 height: 500px;
+display: flex;
 
 @media only screen and (max-width: 768px) {
   padding-left: 20px;
+  display: inline-block;
 }
+
 #hero {
   display: flex;
   justify-content: space-between;
 }
 .fix-class-hero {
+  display: flex;
+  justify-content: space-between;
   @media only screen and (max-width: 768px) {
     display: inline-block;
   }
@@ -129,7 +134,6 @@ height: 500px;
   .coin-image {
     position: absolute;
     top: 5%;
-    left: 0;
     width: 416px;
     margin: auto;
     @media only screen and (max-width: 768px) {
@@ -149,7 +153,7 @@ const MouseWrapper = styled.div`
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: 768px) {
-    padding: 50px 0px;
+    padding: 100px 0px;
   }
 
   .mouse-wrapper{
@@ -195,10 +199,7 @@ function Section1({ markets }) {
   }, [index]);
   return (
     <>
-      <Section1Wrapper
-        id="hero"
-        className="test-123 flex align-center just-between fix-class-hero"
-      >
+      <Section1Wrapper id="hero" className="test-123 fix-class-hero">
         <div className="content">
           <img src={vector} className="vector" />
           <div

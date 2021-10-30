@@ -96,6 +96,7 @@ const Section4Wrapper = styled.div`
       @media only screen and (max-width: 768px) {
         position: static!important;
         margin-top: 0px!important;
+        width: 75%;
       }
     }
     .vector {
@@ -133,7 +134,8 @@ const Section4Wrapper = styled.div`
     .imageApi {
       margin-top: 0;
       @media only screen and (max-width: 768px) {
-        left: 0%!important
+        width: 75%;
+        text-align: center;
       }
     }
 

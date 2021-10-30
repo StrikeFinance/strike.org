@@ -115,6 +115,10 @@ const Section2Wrapper = styled.div`
         box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
         background: rgba(255, 255, 255, 0.5);
 
+        @media only screen and (max-width: 768px) {
+          width: 350px;
+        }
+
         h3 {
           display: block;
           font-size: 20px;
@@ -514,12 +518,13 @@ const Section2Wrapper = styled.div`
     max-width: 437px;
   }
 
-  @media only screen and (max-width: 768px) {
-  }
-
   .divider {
     margin-left: 40px;
     width: 450px;
+
+    @media only screen and (max-width: 768px) {
+      width: 290px;
+    }
   }
 
   .progress-bar {
@@ -540,6 +545,12 @@ const Section2Wrapper = styled.div`
           float: right;
           margin-right: 49px;
         }
+      }
+    }
+
+    .liner-progress {
+      @media only screen and (max-width: 768px) {
+        width: 290px;
       }
     }
   }
@@ -688,6 +699,7 @@ function Section2({ history, data }) {
                               .toNumber()
                           : 0
                       }
+                      className="liner-progress"
                     />
                   </div>
                 );
