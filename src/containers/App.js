@@ -8,8 +8,8 @@ import enMessages from 'lang/en';
 import { store } from 'core';
 import Home from 'containers/Main/Home';
 import Terms from 'containers/Main/Terms';
+import HomePage from 'containers/page/homepage/HomePage';
 import Theme from './Theme';
-
 import 'assets/styles/App.scss';
 import MarketDetail from '../components/Main/MarketDetail';
 
@@ -42,7 +42,7 @@ class App extends React.Component {
                 atActive={{ opacity: 1 }}
                 className="switch-wrapper"
               >
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={HomePage} />
                 <Route exact path="/terms" component={Terms} />
                 <Route exact path="/market/:asset" component={MarketDetail} />
                 <Redirect from="/" to="/" />
