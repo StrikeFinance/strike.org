@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { withTheme } from 'styled-components';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 const WrapLayout = ({ children }) => {
   useEffect(() => {}, []);
@@ -8,6 +10,7 @@ const WrapLayout = ({ children }) => {
     <div>
       <Header />
       <div>{children}</div>
+      <Footer />
     </div>
   );
 };
@@ -21,4 +24,4 @@ WrapLayout.propTypes = {
 WrapLayout.defaultProps = {
   children: null
 };
-export default WrapLayout;
+export default withTheme(WrapLayout);

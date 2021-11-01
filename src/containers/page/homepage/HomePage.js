@@ -1,12 +1,19 @@
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
 import React from 'react';
+import Banner from './elements/banner/Banner';
+import Governance from './elements/governance/Governance';
+import Market from './elements/market/Market';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <WrapLayout>
-      <div>fsdfa</div>
+      <Banner />
+      <Market />
+      <Governance />
     </WrapLayout>
   );
 };
 
-export default Home;
+export default compose(withRouter)(HomePage);
