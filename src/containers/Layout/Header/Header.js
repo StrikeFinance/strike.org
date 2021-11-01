@@ -4,13 +4,14 @@ import MenuTabImg from 'assets/img/homepage/menu-tab.svg';
 import CloseMenuImg from 'assets/img/homepage/close-menu.svg';
 import './Header.scss';
 import { compose } from 'recompose';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { useWindowResizeMobile } from 'utilities/hook';
 import { Drawer } from 'antd';
+import { NavHashLink as NavLink } from 'react-router-hash-link';
 
 const HomePageLink = [
   {
-    to: '/',
+    to: '/#',
     title: 'Home',
     altTitle: ''
   },
@@ -109,6 +110,7 @@ const Header = () => {
                     className="link-item"
                     to={link?.to}
                     exact
+                    smooth
                   >
                     {link?.title}
                   </NavLink>
