@@ -662,7 +662,7 @@ function Section2({ history, data }) {
   }, [data.markets]);
 
   return (
-    <Section2Wrapper id="earn">
+    <Section2Wrapper id="market">
       <div className="earn-section">
         <div className="earn-content">
           <p>Market</p>

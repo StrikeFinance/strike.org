@@ -238,7 +238,7 @@ const ICONS = {
 function Section2({ history, markets }) {
   
   return (
-    <Section2Wrapper id="earn">
+    <Section2Wrapper id="market">
       <div className="earn-section">
         <div className="apy-info">
           <div className="info-item-list">
