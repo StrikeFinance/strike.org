@@ -1,8 +1,11 @@
 
 .page-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   .header-content {
     .header__content {
-      padding: 30px 100px;
+      padding: 20px 100px;
       display: flex;
       justify-content: space-between;
       align-items: center;
