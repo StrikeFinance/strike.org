@@ -11,6 +11,9 @@ import completed from 'assets/img/landingpage/Shape.png';
 import cancel from 'assets/img/landingpage/cancel.png';
 import { Col, Row } from 'antd';
 import { useWindowResizeMobile } from 'utilities/hook';
+import ArrowCrossFillImg from 'assets/img/homepage/arrow-cross-fill.svg';
+import ArrowCrossBlackOpacity from 'assets/img/homepage/arrow-cross-black-opacity.png';
+import ArrowCrossBlack from 'assets/img/homepage/arrow-cross-black.png';
 import MarketsAvailable from '../market/markets-available/MarketsAvailable';
 
 const Governance = ({ getGovernance }) => {
@@ -100,6 +103,18 @@ const Governance = ({ getGovernance }) => {
                       </div>
                     </div>
                   ))}
+                </div>
+                <div className="arrow-cross">
+                  <img src={ArrowCrossFillImg} alt="arrow-cross" />
+                </div>
+                <div className="arrow-cross-black-opacity">
+                  <img
+                    src={ArrowCrossBlackOpacity}
+                    alt="arrow-cross-black-opacity"
+                  />
+                </div>
+                <div className="arrow-cross-black">
+                  <img alt="arrow-cross-black" src={ArrowCrossBlack} />
                 </div>
               </div>
             </Col>

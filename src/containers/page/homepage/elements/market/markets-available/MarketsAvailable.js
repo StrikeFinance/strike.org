@@ -150,18 +150,20 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
   const [markets, setMarkets] = useState([]);
   const [total, setTotal] = useState(0);
   const [current, setCurrent] = useState(1);
-  const getMarkets = async () => {
+  const getMarkets = async ({ offset, limit }) => {
     const res = await promisify(getGovernanceStrikeWithParam, {
-      offset: 0,
-      limit: 5
+      offset,
+      limit
     });
-    console.log(res?.data);
     setMarkets(res?.data);
     setTotal(res?.data?.total);
   };
-  const onChangePage = () => {};
+  const onChangePage = value => {
+    setCurrent(value);
+    getMarkets({ offset: (value - 1) * 5, limit: 5 });
+  };
   useEffect(() => {
-    getMarkets();
+    getMarkets({ offset: 0, limit: 5 });
   }, []);
   return (
     <div className="markets-available">

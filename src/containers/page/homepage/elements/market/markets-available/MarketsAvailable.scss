@@ -6,6 +6,10 @@
       color: #0b0f23;
       font-size: 50px;
       font-weight: 500;
+      @media screen and (max-width: 767px) {
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
     }
     .markets-table {
       // margin: 0 200px;
