@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import Borrow from './borrow/Borrow';
 import './Market.scss';
-import MarketsAvailable from './markets-available/MarketsAvailable';
+// import MarketsAvailable from './markets-available/MarketsAvailable';
 import TotalSupply from './total-supply/TotalSupply';
 
 const Market = ({ markets }) => {
@@ -56,7 +56,7 @@ const Market = ({ markets }) => {
         borrowerCount={borrowerCount}
         totalBorrow={totalBorrow}
       />
-      <MarketsAvailable />
+      {/* <MarketsAvailable /> */}
     </div>
   );
 };
