@@ -1,29 +1,74 @@
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { promisify } from 'utilities';
+import { accountActionCreators, connectAccount } from 'core';
+import { bindActionCreators } from 'redux';
 import Banner from './elements/banner/Banner';
 import Governance from './elements/governance/Governance';
 import Market from './elements/market/Market';
 import Developers from './elements/developers/Developers';
+import LoadingSpinner from '../../../components/Basic/LoadingSpinner';
 
-const HomePage = () => {
+const HomePage = ({ getGovernanceStrike }) => {
+  const [markets, setmarkets] = useState();
+  const getMarket = async () => {
+    const res = await promisify(getGovernanceStrike, {});
+    if (!res.status) {
+      return;
+    }
+    setmarkets(res.data);
+  };
+
+  useEffect(() => {
+    getMarket();
+  }, [getGovernanceStrike]);
+
   return (
     <WrapLayout>
-      <div style={{ backgroundColor: '#eceff9' }}>
-        <Banner />
-        <div>
-          <Market />
+      {markets ? (
+        <div style={{ backgroundColor: '#eceff9' }}>
+          <Banner markets={markets} />
+          <div>
+            <Market markets={markets} />
+          </div>
+          <div>
+            <Governance />
+          </div>
+          <div>
+            <Developers />
+          </div>
         </div>
-        <div>
-          <Governance />
-        </div>
-        <div>
-          <Developers />
-        </div>
-      </div>
+      ) : (
+        <LoadingSpinner />
+      )}
     </WrapLayout>
   );
 };
 
-export default compose(withRouter)(HomePage);
+const mapDispatchToProps = dispatch => {
+  const {
+    getGovernanceStrike,
+    getDecimals,
+    getInterateModel,
+    getGovernance,
+    getGovernanceStrikeWithParam
+  } = accountActionCreators;
+
+  return bindActionCreators(
+    {
+      getGovernanceStrike,
+      getInterateModel,
+      getDecimals,
+      getGovernance,
+      getGovernanceStrikeWithParam
+    },
+    dispatch
+  );
+};
+
+export default compose(
+  withRouter,
+  connectAccount(null, mapDispatchToProps)
+)(HomePage);

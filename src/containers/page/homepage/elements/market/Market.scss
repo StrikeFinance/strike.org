@@ -1,4 +1,7 @@
-
 .market-homepage {
     // min-height: 1000px;
+    padding: 0 100px;
+    @media screen and (max-width: 767px) {
+        padding: 10px 20px;
+    }
 }
