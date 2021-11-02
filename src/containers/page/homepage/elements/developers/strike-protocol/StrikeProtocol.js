@@ -1,31 +1,32 @@
 import React from 'react';
-import './StrikeProtocol.scss';
-import imgMacbook from 'assets/img/homepage/Macbook.png';
+import imgWhitepaper from 'assets/img/homepage/img-whitepaper.png';
+import './StrikeProtocol.scss'
 
-const StrikeProtocol = () => {
+function StrikeProtocol() {
   return (
-    <div className="strike-protocols">
-      <div className="strike-protocol-content flex just-between">
-        <div className="img-dev">
-          <img src={imgMacbook} className="img-macbook" />
-        </div>
+    <div className="strike-whitepaper">
+      <div className="strike-whitepaper-content flex just-between">
         <div className="content">
-          <span className="strike-finance">Try Strike Finance</span>
+          <span className="strike-whitepaper-text">Try Strike Finance</span>
           <div className="text-layer">
-            <span>Friendly user interface</span>
+            <span>Strike Protocol</span>
             <span>
-              The Strike App enables users access to a fully decentralized money
-              market powered on Ethereum 24/7/365 with a user-interface, api, or
-              smart contracts.
+              Strike enables users and developers to supply digital assets onto
+              the platform to earn from dynamic rates provided by the protocol
+              and use that supplied asset as collateral to borrow other
+              supported digital assets all on-chain.
             </span>
           </div>
-          <div className="btn-launchapp">
-            <span>Launch App</span>
+          <div className="btn-whitepaper">
+            <span>Read The Whitepaper</span>
           </div>
+        </div>
+        <div className="img-dev">
+          <img src={imgWhitepaper}/>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default StrikeProtocol;

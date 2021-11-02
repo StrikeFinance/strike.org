@@ -8,8 +8,8 @@ const Developers = () => {
   return (
     <div className="developers">
       <DeveloperDocs />
-      <StrikeProtocol />
       <UserInterface />
+      <StrikeProtocol />
     </div>
   );
 };

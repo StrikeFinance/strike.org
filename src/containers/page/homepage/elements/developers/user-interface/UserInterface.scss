@@ -1,0 +1,75 @@
+.strike-protocols {
+    @media screen and (max-width: 767px) {
+      padding-left: 20px;
+      padding-right: 12px;
+    }
+    .strike-protocol-content {
+      @media screen and (max-width: 767px) {
+        flex-direction: column-reverse;
+      }
+      .img-dev {
+        flex: 1;
+        .img-macbook {
+          width: 800px;
+          @media screen and (max-width: 767px) {
+            width: 100%;
+            margin: auto;
+          }
+        }
+      }
+      .content {
+        flex: 1 1 0%;
+        flex-basis: min-content;
+        padding-top: 5%;
+        margin-left: 389px;
+        padding-right: 8%;
+  
+        @media screen and (max-width: 767px) {
+          margin-left: 20px;
+          padding-right: 0;
+        }
+  
+        .strike-finance {
+          font-size: 25px;
+          font-weight: 500;
+          color: #107def;
+          display: block;
+        }
+  
+        .text-layer {
+          span:first-child {
+            font-size: 49px;
+            font-weight: 500;
+            color: #0b0f23;
+            display: block;
+            padding-bottom: 30px;
+            @media screen and (max-width: 767px) {
+              font-size: 31px;
+            }
+          }
+  
+          span:nth-child(2) {
+            font-size: 18px;
+            font-weight: 500;
+            color: #6d6f7b;
+            display: block;
+            padding-bottom: 40px;
+          }
+        }
+        .btn-launchapp {
+          width: 174px;
+          cursor: pointer;
+          span {
+            display: block;
+            padding: 10.5px 30px 10.5px 30px;
+            background: #107def;
+            color: #ffffff;
+            box-shadow: 0px 3px 20px rgba(18, 114, 236, 0.4);
+            border-radius: 8px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  
