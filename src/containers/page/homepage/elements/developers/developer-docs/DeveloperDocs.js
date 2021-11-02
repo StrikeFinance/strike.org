@@ -4,7 +4,7 @@ import imgBlockChain from 'assets/img/homepage/img-vector.png';
 
 const DeveloperDocs = () => {
   return (
-    <div className="developer-docs ">
+    <div className="developer-docs">
       <div className="developer-docs-content flex just-between">
         <div className="content">
           <span className="text-developers">Developers</span>
@@ -24,14 +24,13 @@ const DeveloperDocs = () => {
             </span>
           </div>
           <div className="button">
-              <span className="button-dev">Developer Docs</span>
+            <span className="button-dev">Developer Docs</span>
           </div>
         </div>
         <div className="img-dev">
           <img src={imgBlockChain} className="img-blockchain" />
         </div>
       </div>
-      
     </div>
   );
 };
