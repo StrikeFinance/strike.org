@@ -3,6 +3,9 @@ import './DeveloperDocs.scss';
 import imgBlockChain from 'assets/img/homepage/img-vector.png';
 
 const DeveloperDocs = () => {
+  const handleLink = url => {
+    window.open(url, '_blank');
+  };
   return (
     <div className="developer-docs">
       <div className="developer-docs-content flex just-between">
@@ -23,7 +26,7 @@ const DeveloperDocs = () => {
               the Strike protocol.
             </span>
           </div>
-          <div className="button">
+          <div   onClick={() => window.open('https://docs.strike.org/', '_blank')} className="button">
             <span className="button-dev">Developer Docs</span>
           </div>
         </div>

@@ -1,8 +1,11 @@
 import React from 'react';
 import imgWhitepaper from 'assets/img/homepage/img-whitepaper.png';
-import './StrikeProtocol.scss'
+import './StrikeProtocol.scss';
 
 function StrikeProtocol() {
+  const handleLink = url => {
+    window.open(url, '_blank');
+  };
   return (
     <div className="strike-whitepaper">
       <div className="strike-whitepaper-content flex just-between">
@@ -17,12 +20,17 @@ function StrikeProtocol() {
               supported digital assets all on-chain.
             </span>
           </div>
-          <div className="btn-whitepaper">
+          <div
+            onClick={() =>
+              window.open('https://strike.org/Whitepaper.pdf', '_blank')
+            }
+            className="btn-whitepaper"
+          >
             <span>Read The Whitepaper</span>
           </div>
         </div>
         <div className="img-dev">
-          <img src={imgWhitepaper}/>
+          <img src={imgWhitepaper} />
         </div>
       </div>
     </div>

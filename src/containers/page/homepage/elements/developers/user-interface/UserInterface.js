@@ -3,6 +3,9 @@ import './UserInterface.scss';
 import imgMacbook from 'assets/img/homepage/Macbook.png';
 
 const StrikeProtocol = () => {
+  const handleLink = url => {
+    window.open(url, '_blank');
+  };
   return (
     <div className="strike-protocols">
       <div className="strike-protocol-content flex just-between">
@@ -19,7 +22,10 @@ const StrikeProtocol = () => {
               smart contracts.
             </span>
           </div>
-          <div className="btn-launchapp">
+          <div
+            onClick={() => window.open('https://app.strike.org/', '_blank')}
+            className="btn-launchapp"
+          >
             <span>Launch App</span>
           </div>
         </div>
