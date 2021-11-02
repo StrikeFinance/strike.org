@@ -10,15 +10,17 @@ import Developers from './elements/developers/Developers';
 const HomePage = () => {
   return (
     <WrapLayout>
-      <Banner />
-      <div>
-        <Market />
-      </div>
-      <div>
-        <Governance />
-      </div>
-      <div>
-        <Developers />
+      <div style={{ backgroundColor: '#eceff9' }}>
+        <Banner />
+        <div>
+          <Market />
+        </div>
+        <div>
+          <Governance />
+        </div>
+        <div>
+          <Developers />
+        </div>
       </div>
     </WrapLayout>
   );
