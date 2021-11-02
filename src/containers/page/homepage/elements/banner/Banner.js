@@ -1,26 +1,41 @@
-import React from 'react';
-import './Banner.scss';
+import ArrowDownFill from 'assets/img/homepage/arrow-down-fill.svg';
+import ArrowDownImg from 'assets/img/homepage/arrow-down.svg';
+import BannerBlurImg from 'assets/img/homepage/banner-blur.png';
 import BannerImg from 'assets/img/homepage/banner-full.png';
 import MouseImg from 'assets/img/homepage/mouse.svg';
-import ArrowDownImg from 'assets/img/homepage/arrow-down.svg';
 import rectangleOpacityImg from 'assets/img/homepage/rectangle-opacity-1.png';
-import BannerBlurImg from 'assets/img/homepage/banner-blur.png';
-import ArrowDownFill from 'assets/img/homepage/arrow-down-fill.svg';
+import BigNumber from 'bignumber.js';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { withRouter } from 'react-router';
+import { compose } from 'recompose';
+import './Banner.scss';
 
-const Banner = () => {
+const Banner = ({ markets }) => {
+
   return (
     <div className="banner-homepage">
       <div className="banner-content flex just-between">
         <div className="description">
           <div>The Strike protocol currently has</div>
           <div>
-            <span className="text-highlight">$18,456,998</span>
+            <span className="text-highlight">
+              $
+              {new Intl.NumberFormat({
+                maximumSignificantDigits: 3
+              }).format(
+                markets.markets.reduce(
+                  (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
+                  new BigNumber('0')
+                )
+              )}
+            </span>
             <span> </span>
             <span>TVL across</span>
           </div>
           <div>
-            <span className="text-highlight">10</span>
-            <span>sToken markets</span>
+            <span className="text-highlight">{markets.markets.length}</span>
+            <span> sToken markets</span>
           </div>
           <div className="arrow-down-fill">
             <img src={ArrowDownFill} alt="arrow-down-fill" />
@@ -48,4 +63,8 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+Banner.propTypes = {
+  markets: PropTypes.object.isRequired
+};
+
+export default compose(withRouter)(Banner);
