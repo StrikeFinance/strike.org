@@ -18,6 +18,10 @@
       max-width: 1000px;
       margin: 0 auto;
       z-index: 2;
+      font-size: 16px;
+      @media screen and (max-width: 767px) {
+        margin: 0 20px;
+      }
       .title-table {
         color: #0B0F23;
         font-size: 20px;
@@ -34,6 +38,33 @@
             img {
               width: 36px;
               height: 36px;
+              @media screen and (max-width: 767px) {
+                width: 18px;
+                height: 18px;
+              }
+            }
+            @media screen and (max-width: 767px) {
+              margin-right: 5px;
+            }
+          }
+        }
+        td {
+          cursor: pointer;
+        }
+        @media screen and (max-width: 767px) {
+          .ant-table-column-title {
+            color: #9D9FA7;
+            font-size: 12px;
+            word-break: break-word;
+          }
+          .ant-table-tbody {
+            td {
+              padding: 16px 0;
+            }
+          }
+          .ant-table-thead {
+            th {
+              padding: 16px 5px 16px 0;
             }
           }
         }
@@ -54,6 +85,42 @@
         @media screen and (max-width: 767px) {
           display: none;
         }
+      }
+      .color-black {
+        color: #000000;
+        font-size: 18px;
+        @media screen and (max-width: 767px) {
+          font-size: 10px;
+        }
+      }
+      .text-ellipsis {
+        @media screen and (max-width: 767px) {
+          width: 90px;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        @media screen and (max-width: 500px) {
+          width: 60px;
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      
+      .sub-value {
+        font-size: 16px;
+        @media screen and (max-width: 767px) {
+          font-size: 10px;
+
+        }
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .ant-card-body {
+        padding: 12px;
       }
     }
   }

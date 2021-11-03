@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import { promisify } from 'utilities';
 import { BigNumber } from 'bignumber.js';
 // import moment from 'moment';
+import { useWindowResizeMobile } from 'utilities/hook';
 import commaNumber from 'comma-number';
 import { Table, Pagination, Card } from 'antd';
 import ethImg from 'assets/img/eth.png';
@@ -34,119 +35,9 @@ const ICONS = {
   STRK: strkImg,
   SXP: sxpImg
 };
-const columns = [
-  {
-    title: 'Market',
-    dataIndex: 'market',
-    key: 'market',
-    render: (action, record) => (
-      <div className="flex symbol">
-        <div className="token-type mr-1">
-          <img alt="symbol" src={ICONS[record?.underlyingSymbol]} />
-        </div>
-        <div className="mx-auto">
-          <div>{record?.underlyingSymbol}</div>
-          <div>{record?.underlyingName}</div>
-        </div>
-      </div>
-    )
-  },
-  {
-    title: 'Total Supply',
-    dataIndex: 'totalSuplly',
-    key: 'totalSupply',
-    render: (action, record) => (
-      <div className="total-supply">
-        <div>
-          <span>$</span>
-          <span>
-            {new Intl.NumberFormat({
-              maximumSignificantDigits: 3
-            }).format(record?.totalSupply)}
-          </span>
-        </div>
-        <div>
-          {format(
-            new BigNumber(record?.totalSupplyUsd)
-              .div(new BigNumber(record?.tokenPrice))
-              .dp(0, 1)
-              .toString(10)
-          )}{' '}
-          {record?.underlyingSymbol}
-        </div>
-      </div>
-    )
-  },
-  {
-    title: 'Supply APY',
-    dataImdex: 'supplyAPY',
-    key: 'supplyAPY',
-    render: (action, record) => (
-      <div className="total-supply">
-        <div>
-          <span>$</span>
-          <span>
-            {new Intl.NumberFormat({
-              maximumSignificantDigits: 3
-            }).format(record?.supplyApy)}
-          </span>
-        </div>
-        <div>
-          {new BigNumber(record?.supplyStrikeApy).dp(2, 1).toString(10)}
-          {`%`}
-        </div>
-      </div>
-    )
-  },
-  {
-    title: 'Total Borrow',
-    dataIndex: 'totalBorrow',
-    key: 'totalBorrow',
-    render: (action, record) => (
-      <div className="total-supply">
-        <div>
-          <span>$</span>
-          <span>
-            {new Intl.NumberFormat({
-              maximumSignificantDigits: 3
-            }).format(record?.totalBorrows)}
-          </span>
-        </div>
-        <div>
-          {format(
-            new BigNumber(record?.totalBorrowsUsd)
-              .div(new BigNumber(record?.tokenPrice))
-              .dp(0, 1)
-              .toString(10)
-          )}{' '}
-          {record?.underlyingSymbol}
-        </div>
-      </div>
-    )
-  },
-  {
-    title: 'Borrow APY',
-    dataIndex: 'borrowAPY',
-    key: 'borrowAPY',
-    render: (action, record) => (
-      <div className="total-supply">
-        <div>
-          <span>$</span>
-          <span>
-            {new Intl.NumberFormat({
-              maximumSignificantDigits: 3
-            }).format(record?.borrowApy)}
-          </span>
-        </div>
-        <div>
-          {new BigNumber(record?.borrowStrikeApy).dp(2, 1).toString(10)}
-          {`%`}
-        </div>
-      </div>
-    )
-  }
-];
+
 const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
+  const [isMobile] = useWindowResizeMobile(768);
   const [markets, setMarkets] = useState([]);
   const [total, setTotal] = useState(0);
   const [current, setCurrent] = useState(1);
@@ -165,6 +56,123 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
   useEffect(() => {
     getMarkets({ offset: 0, limit: 5 });
   }, []);
+  const columns = [
+    {
+      title: 'Market',
+      dataIndex: 'market',
+      key: 'market',
+      render: (action, record) => (
+        <div className="flex symbol">
+          <div className="token-type mr-1">
+            <img alt="symbol" src={ICONS[record?.underlyingSymbol]} />
+          </div>
+          <div className="mx-auto">
+            <div className="color-black">{record?.underlyingSymbol}</div>
+            <div className="sub-value">{record?.underlyingName}</div>
+          </div>
+        </div>
+      ),
+      width: isMobile ? '20%' : 'auto'
+    },
+    {
+      title: 'Total Supply',
+      dataIndex: 'totalSuplly',
+      key: 'totalSupply',
+      render: (action, record) => (
+        <div className="record-table">
+          <div className="color-black text-ellipsis">
+            <span>$</span>
+            <span>
+              {new Intl.NumberFormat({
+                maximumSignificantDigits: 3
+              }).format(record?.totalSupply)}
+            </span>
+          </div>
+          <div className="sub-value">
+            {format(
+              new BigNumber(record?.totalSupplyUsd)
+                .div(new BigNumber(record?.tokenPrice))
+                .dp(0, 1)
+                .toString(10)
+            )}{' '}
+            {record?.underlyingSymbol}
+          </div>
+        </div>
+      ),
+      width: isMobile ? '20%' : 'auto'
+    },
+    {
+      title: 'Supply APY',
+      dataImdex: 'supplyAPY',
+      key: 'supplyAPY',
+      render: (action, record) => (
+        <div className="record-table">
+          <div className="color-black text-ellipsis">
+            <span>$</span>
+            <span>
+              {new Intl.NumberFormat({
+                maximumSignificantDigits: 3
+              }).format(record?.supplyApy)}
+            </span>
+          </div>
+          <div className="sub-value">
+            {new BigNumber(record?.supplyStrikeApy).dp(2, 1).toString(10)}
+            {`%`}
+          </div>
+        </div>
+      ),
+      width: isMobile ? '20%' : 'auto'
+    },
+    {
+      title: 'Total Borrow',
+      dataIndex: 'totalBorrow',
+      key: 'totalBorrow',
+      render: (action, record) => (
+        <div className="record-table">
+          <div className="color-black text-ellipsis">
+            <span>$</span>
+            <span>
+              {new Intl.NumberFormat({
+                maximumSignificantDigits: 3
+              }).format(record?.totalBorrows)}
+            </span>
+          </div>
+          <div className="sub-value">
+            {format(
+              new BigNumber(record?.totalBorrowsUsd)
+                .div(new BigNumber(record?.tokenPrice))
+                .dp(0, 1)
+                .toString(10)
+            )}{' '}
+            {record?.underlyingSymbol}
+          </div>
+        </div>
+      ),
+      width: isMobile ? '20%' : 'auto'
+    },
+    {
+      title: 'Borrow APY',
+      dataIndex: 'borrowAPY',
+      key: 'borrowAPY',
+      render: (action, record) => (
+        <div className="record-table">
+          <div className="color-black text-ellipsis">
+            <span>$</span>
+            <span>
+              {new Intl.NumberFormat({
+                maximumSignificantDigits: 3
+              }).format(record?.borrowApy)}
+            </span>
+          </div>
+          <div className="sub-value">
+            {new BigNumber(record?.borrowStrikeApy).dp(2, 1).toString(10)}
+            {`%`}
+          </div>
+        </div>
+      ),
+      width: isMobile ? '20%' : 'auto'
+    }
+  ];
   return (
     <div className="markets-available">
       <div className="markets-available-content">
@@ -176,7 +184,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
             dataSource={markets?.markets}
             pagination={false}
             className="table-market"
-            style={{ minHeight: '450px' }}
+            style={{ minHeight: isMobile ? '450px' : '480px' }}
           />
           <div style={{ textAlign: 'right', marginTop: '20px' }}>
             <Pagination

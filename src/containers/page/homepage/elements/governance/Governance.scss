@@ -9,10 +9,13 @@
       @media screen and (max-width: 767px) {
         padding-left: 20px;
         padding-right: 20px;
+        padding-top: 150px;
       }
       .docs {
+        padding: 200px 0;
         @media screen and (max-width: 767px) {
           margin-top: 20px;
+          padding: 0;
         }
         .title {
           font-size: 20px;
@@ -29,6 +32,23 @@
           font-size: 39px;
           @media screen and (max-width: 767px) {
             font-size: 25px;
+          }
+        }
+        .content-left {
+          position: relative;
+          .arrow-cross-above-opacity {
+            position: absolute;
+            top: 0;
+            left: 100px;
+            opacity: 0.8;
+          }
+          .arrow-black-down-opacity {
+            position: absolute;
+            bottom: -100px;
+            right: 30%;
+            @media screen and (max-width: 767px) {
+              display: none;
+            }
           }
         }
       }
