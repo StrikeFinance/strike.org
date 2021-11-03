@@ -22,6 +22,7 @@ import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
 import './MarketsAvailable.scss';
 import { useHistory } from 'react-router';
+import { currencyFormatter } from 'utilities/common';
 
 const format = commaNumber.bindWith(',', '.');
 const ICONS = {
@@ -36,7 +37,98 @@ const ICONS = {
   STRK: strkImg,
   SXP: sxpImg
 };
-
+const columns = [
+  {
+    title: 'Market',
+    dataIndex: 'market',
+    key: 'market',
+    render: (action, record) => (
+      <div className="flex symbol">
+        <div className="token-type mr-1">
+          <img alt="symbol" src={ICONS[record?.underlyingSymbol]} />
+        </div>
+        <div className="mx-auto">
+          <div className="row1">{record?.underlyingName}</div>
+          <div className="row2">{record?.underlyingSymbol}</div>
+        </div>
+      </div>
+    )
+  },
+  {
+    title: 'Total Supply',
+    dataIndex: 'totalSuplly',
+    key: 'totalSupply',
+    render: (action, record) => (
+      <div className="total-supply">
+        <div className="row1">
+          <span>{currencyFormatter(record.totalSupplyUsd)}</span>
+        </div>
+        <div className="row2">
+          {format(
+            new BigNumber(record?.totalSupplyUsd)
+              .div(new BigNumber(record?.tokenPrice))
+              .dp(0, 1)
+              .toString(10)
+          )}{' '}
+          {record?.underlyingSymbol}
+        </div>
+      </div>
+    )
+  },
+  {
+    title: 'Supply APY',
+    dataImdex: 'supplyAPY',
+    key: 'supplyAPY',
+    render: (action, record) => (
+      <div className="total-supply">
+        <div className="row1">
+          <div>{record.sAPY}%</div>
+        </div>
+        <div className="row2">
+          {new BigNumber(record?.supplyStrikeApy).dp(2, 1).toString(10)}
+          {`%`}
+        </div>
+      </div>
+    )
+  },
+  {
+    title: 'Total Borrow',
+    dataIndex: 'totalBorrow',
+    key: 'totalBorrow',
+    render: (action, record) => (
+      <div className="total-supply">
+        <div className="row1">
+          <span>{currencyFormatter(record.totalBorrowsUsd)}</span>
+        </div>
+        <div className="row2">
+          {format(
+            new BigNumber(record.totalBorrowsUsd)
+              .div(new BigNumber(record.tokenPrice))
+              .dp(0, 1)
+              .toString(10)
+          )}{' '}
+          {record.underlyingSymbol}
+        </div>
+      </div>
+    )
+  },
+  {
+    title: 'Borrow APY',
+    dataIndex: 'borrowAPY',
+    key: 'borrowAPY',
+    render: (action, record) => (
+      <div className="total-supply">
+        <div className="row1">
+          <span>{record.bAPY}%</span>
+        </div>
+        <div className="row2">
+          {new BigNumber(record?.borrowStrikeApy).dp(2, 1).toString(10)}
+          {`%`}
+        </div>
+      </div>
+    )
+  }
+];
 const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
   const [isMobile] = useWindowResizeMobile(768);
   const [markets, setMarkets] = useState([]);
@@ -48,7 +140,22 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
       offset,
       limit
     });
-    setMarkets(res?.data);
+    const data = res?.data.markets
+      .filter(m => m.underlyingSymbol !== 'ZRX' && m.underlyingSymbol !== 'BAT')
+      .map(market => {
+        return {
+          ...market,
+          sAPY: new BigNumber(market.supplyApy)
+            .plus(new BigNumber(market.supplyStrikeApy))
+            .dp(2, 1)
+            .toNumber(),
+          bAPY: new BigNumber(market.borrowStrikeApy)
+            .minus(new BigNumber(market.borrowApy))
+            .dp(2, 1)
+            .toNumber()
+        };
+      });
+    setMarkets(data);
     setTotal(res?.data?.total);
   };
   const onChangePage = value => {
@@ -187,7 +294,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
           <div className="title-table">All markets</div>
           <Table
             columns={columns}
-            dataSource={markets?.markets}
+            dataSource={markets}
             pagination={false}
             className="table-market"
             style={{ minHeight: '450px' }}
