@@ -14,7 +14,8 @@
       display: block;
     }
     .content {
-      flex: 1 1 0%;
+      max-width: 100%;
+      padding-top: 5%;
       @media screen and (max-width: 767px) {
         display: block;
       }
@@ -32,15 +33,16 @@
       .text-layer-1 {
         padding-bottom: 30px;
         flex-basis: min-content;
+        max-width: 74%;
         .comprehensive-developer {
           font-size: 49px;
           font-weight: 500;
           color: #0b0f23;
           display: block;
-          padding-right: 318px;
           @media screen and (max-width: 767px) {
             display: block;
             font-size: 31px;
+            max-width: 100%;
           }
         }
 
@@ -48,19 +50,17 @@
           font-size: 49px;
           font-weight: 500;
           color: #0b0f23;
-          padding-right: 37%;
           display: block;
+          max-width: 74%;
           @media screen and (max-width: 767px) {
             display: block;
             font-size: 31px;
-            padding-right: 0;
+            max-width: 100%;
           }
         }
       }
       .text-layer-2 {
         padding-bottom: 40px;
-        padding-right: 35%;
-        flex-basis: min-content;
         @media screen and (max-width: 767px) {
           padding-right: 0;
         }
@@ -69,9 +69,10 @@
           font-weight: 500;
           color: #6d6f7b;
           display: block;
-          width: 100%;
+          max-width: 58%;
           @media screen and (max-width: 767px) {
             display: block;
+            max-width: 100%;
           }
         }
       }
@@ -96,21 +97,23 @@
     }
 
     .img-dev {
-      flex: 1;
-      margin-left: 146px;
+      width: 100%;
+      margin: auto;
       @media screen and (max-width: 767px) {
         padding-top: 86.45px;
         text-align: center;
         margin: 0 auto;
+        max-width: 100%;
       }
 
       .img-blockchain {
-        margin-top: -14%;
+        margin-top: -14%; 
+        width: 100%;
         @media screen and (max-width: 767px) {
           margin: auto;
           width: 100%;
-          margin: auto;
           padding-right: 10%;
+          text-align: center;
         }
       }
     }

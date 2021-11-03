@@ -8,24 +8,21 @@
       flex-direction: column-reverse;
     }
     .img-dev {
-      flex: 1;
+      width: 100%;
       @media screen and (max-width: 767px) {
         padding-top: 84.45px;
+        max-width: 100%;
       }
       .img-macbook {
-        width: 800px;
+        width: 100%;
         @media screen and (max-width: 767px) {
-          width: 100%;
+          max-width: 100%;
           margin: auto;
         }
       }
     }
     .content {
-      flex: 1 1 0%;
-      flex-basis: min-content;
-      padding-top: 5%;
-      margin-left: 389px;
-      padding-right: 8%;
+      padding-top: 12%;
 
       @media screen and (max-width: 767px) {
         margin-left: 20px;
@@ -57,6 +54,10 @@
           color: #6d6f7b;
           display: block;
           padding-bottom: 40px;
+          max-width: 44%;
+          @media screen and (max-width: 767px) {
+            max-width: 100%;
+          }
         }
       }
       .btn-launchapp {
