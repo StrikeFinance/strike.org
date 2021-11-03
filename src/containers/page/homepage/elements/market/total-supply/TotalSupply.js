@@ -36,8 +36,8 @@ const TotalSupply = ({ markets, totalSupply, supplierCount, supplyVolume }) => {
             })
             .slice(0, 3)
             .map((item, key) => (
-              <>
-                <div className="coin-info" key={key}>
+              <div key={key}>
+                <div className="coin-info">
                   <div>{item.underlyingSymbol}</div>
                   <div>
                     {!new BigNumber(totalSupply).isZero()
@@ -62,7 +62,7 @@ const TotalSupply = ({ markets, totalSupply, supplierCount, supplyVolume }) => {
                   showInfo={false}
                 />
                 <hr />
-              </>
+              </div>
             ))}
         <div className="table-total-supply-footer">
           <div>

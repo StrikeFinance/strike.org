@@ -1,6 +1,15 @@
 .title-wrapper {
     padding: 20px 100px;
     display: flex;
+    @media only screen and (max-width: 768px) {
+      padding: 50px 20px;
+    }
+    .title-wrapper-child {
+      width: 100%;
+      border-bottom: solid 1px;
+      display: flex;
+      padding-bottom: 25px;
+    }
     img {
       height: 16px;
       transform: rotate(180deg);

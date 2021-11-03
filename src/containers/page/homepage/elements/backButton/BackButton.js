@@ -10,14 +10,20 @@ const BackButton = ({ title }) => {
   };
   return (
     <div className="title-wrapper" onClick={handleRoute}>
-      <img src={arrowRightImg} alt="arrow-left" />
-      <p
-        className={`${
-          title === 'Overview' || title === 'Details' ? 'highlight' : ''
-        }`}
-      >
-        {title}
-      </p>
+      <div className="title-wrapper-child">
+        <div>
+          <img src={arrowRightImg} alt="arrow-left" />
+        </div>
+        <div>
+          <p
+            className={`${
+              title === 'Overview' || title === 'Details' ? 'highlight' : ''
+            }`}
+          >
+            {title}
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

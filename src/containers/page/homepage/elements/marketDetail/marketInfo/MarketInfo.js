@@ -6,10 +6,10 @@ import commaNumber from 'comma-number';
 
 const format = commaNumber.bindWith(',', '.');
 const MarketInfo = ({ marketInfo, marketType }) => {
-  console.log('MARKET INFO: ', marketInfo, marketType);
+  if (!marketInfo.underlyingSymbol) return null;
   return (
-    <>
-      <div className="market-info">
+    <div className="market-info">
+      <div className="row1">
         <img
           className="asset-img"
           src={
@@ -23,12 +23,12 @@ const MarketInfo = ({ marketInfo, marketType }) => {
           }
           alt="asset"
         />
-        <span className="stoken-text">{marketInfo.underlyingSymbol}</span>
+        <span className="symbol-name">{marketInfo.underlyingSymbol}</span>
       </div>
-      <div className="">
+      <div className="row2">
         <div className="net-rate">
-          <p className="label">Net Rate</p>
-          <p className="value">
+          <div className="label">Net Rate</div>
+          <div className="value">
             {marketType === 'supply'
               ? new BigNumber(
                   +marketInfo.supplyApy < 0.01 ? 0.01 : marketInfo.supplyApy
@@ -55,11 +55,11 @@ const MarketInfo = ({ marketInfo, marketType }) => {
                   .dp(2, 1)
                   .toString(10)}
             %
-          </p>
+          </div>
         </div>
         <div className="supply-apy">
-          <p className="label right">Supply APY</p>
-          <p className="value right">
+          <div className="label">Supply APY</div>
+          <div className="value">
             {marketType === 'supply'
               ? new BigNumber(
                   +marketInfo.supplyApy < 0.01 ? 0.01 : marketInfo.supplyApy
@@ -72,11 +72,11 @@ const MarketInfo = ({ marketInfo, marketType }) => {
                   .dp(2, 1)
                   .toString(10)}
             %
-          </p>
+          </div>
         </div>
         <div className="distribution-apy">
-          <p className="label">Distribution APY</p>
-          <p className="value">
+          <div className="label">Distribution APY</div>
+          <div className="value">
             {marketType === 'supply'
               ? new BigNumber(
                   +marketInfo.supplyStrikeApy < 0.01
@@ -93,11 +93,11 @@ const MarketInfo = ({ marketInfo, marketType }) => {
                   .dp(2, 1)
                   .toString(10)}
             %
-          </p>
+          </div>
         </div>
-        <div className="total-supply">
-          <p className="label right">Total Supply</p>
-          <p className="value right">
+        <div className="">
+          <div className="label">Total Supply</div>
+          <div className="value">
             $
             {format(
               new BigNumber(
@@ -108,10 +108,10 @@ const MarketInfo = ({ marketInfo, marketType }) => {
                 .dp(2, 1)
                 .toString(10)
             )}
-          </p>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
