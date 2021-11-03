@@ -11,7 +11,7 @@ import Market from './elements/market/Market';
 import Developers from './elements/developers/Developers';
 import LoadingSpinner from '../../../components/Basic/LoadingSpinner';
 
-const HomePage = ({ getGovernanceStrike }) => {
+const HomePage = ({ getGovernanceStrike, setSetting }) => {
   const [markets, setmarkets] = useState();
   const getMarket = async () => {
     const res = await promisify(getGovernanceStrike, {});
@@ -19,6 +19,7 @@ const HomePage = ({ getGovernanceStrike }) => {
       return;
     }
     setmarkets(res.data);
+    setSetting(res.data);
   };
 
   useEffect(() => {
@@ -53,7 +54,8 @@ const mapDispatchToProps = dispatch => {
     getDecimals,
     getInterateModel,
     getGovernance,
-    getGovernanceStrikeWithParam
+    getGovernanceStrikeWithParam,
+    setSetting
   } = accountActionCreators;
 
   return bindActionCreators(
@@ -62,7 +64,8 @@ const mapDispatchToProps = dispatch => {
       getInterateModel,
       getDecimals,
       getGovernance,
-      getGovernanceStrikeWithParam
+      getGovernanceStrikeWithParam,
+      setSetting
     },
     dispatch
   );

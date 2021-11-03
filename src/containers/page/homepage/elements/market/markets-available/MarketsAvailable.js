@@ -21,6 +21,7 @@ import uniImg from 'assets/img/uni.png';
 import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
 import './MarketsAvailable.scss';
+import { useHistory } from 'react-router';
 
 const format = commaNumber.bindWith(',', '.');
 const ICONS = {
@@ -41,6 +42,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
   const [markets, setMarkets] = useState([]);
   const [total, setTotal] = useState(0);
   const [current, setCurrent] = useState(1);
+  const history = useHistory();
   const getMarkets = async ({ offset, limit }) => {
     const res = await promisify(getGovernanceStrikeWithParam, {
       offset,
@@ -53,6 +55,10 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
     setCurrent(value);
     getMarkets({ offset: (value - 1) * 5, limit: 5 });
   };
+  const onRowClick = record => {
+    history.push(`/market/${record.underlyingSymbol}`);
+  };
+
   useEffect(() => {
     getMarkets({ offset: 0, limit: 5 });
   }, []);
@@ -184,7 +190,8 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
             dataSource={markets?.markets}
             pagination={false}
             className="table-market"
-            style={{ minHeight: isMobile ? '450px' : '480px' }}
+            style={{ minHeight: '450px' }}
+            onRowClick={onRowClick}
           />
           <div style={{ textAlign: 'right', marginTop: '20px' }}>
             <Pagination
