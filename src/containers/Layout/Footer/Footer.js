@@ -3,15 +3,16 @@ import footerImg from 'assets/img/footer-logo.png';
 import './Footer.scss';
 import { Col, Row } from 'antd';
 import { useWindowResizeMobile } from 'utilities/hook';
+import { useHistory } from 'react-router-dom';
 
 const ProtocolOption = [
   {
     label: 'Market',
-    href: ''
+    href: 'https://app.strike.org/market'
   },
   {
     label: 'Documentation',
-    href: ''
+    href: 'https://docs.strike.org/'
   },
   {
     label: 'Terms',
@@ -19,49 +20,50 @@ const ProtocolOption = [
   },
   {
     label: 'Bug Bounty',
-    href: ''
+    href: 'https://www.immunefi.com/bounty/strikefinance'
   }
 ];
 const GovernanceOption = [
   {
     label: 'Proposals',
-    href: ''
+    href: 'https://app.strike.org/vote'
   },
   {
     label: 'STRK',
-    href: ''
+    href: 'https://app.strike.org/strk'
   },
   {
     label: 'Leaderboard',
-    href: ''
+    href: 'https://app.strike.org/vote/leaderboard'
   }
 ];
 
 const CommunityOption = [
   {
     label: 'Forum',
-    href: ''
+    href: 'https://community.strike.org/'
   },
   {
     label: 'Twitter',
-    href: ''
+    href: 'https://twitter.com/StrikeFinance'
   },
   {
     label: 'Telegram',
-    href: ''
+    href: 'https://t.me/StrikeFinance'
   },
   {
     label: 'Github',
-    href: ''
+    href: 'https://github.com/StrikeFinance'
   },
   {
     label: 'DeFi Pulse',
-    href: ''
+    href: 'https://defipulse.com/'
   }
 ];
 
 const Footer = () => {
   const [isMobile] = useWindowResizeMobile(768);
+  const history = useHistory();
   return (
     <div className="footer">
       <div className="footer-content flex just-between">
@@ -77,7 +79,19 @@ const Footer = () => {
                   <div className="options">
                     {ProtocolOption.map((protocol, index) => (
                       <div key={index} className="option">
-                        <a href={protocol?.href}>{protocol?.label}</a>
+                        {protocol?.label === 'Terms' ? (
+                          <div onClick={() => history.push('/terms')}>
+                            {protocol?.label}
+                          </div>
+                        ) : (
+                          <a
+                            href={protocol?.href}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {protocol?.label}
+                          </a>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -87,7 +101,13 @@ const Footer = () => {
                   <div className="options">
                     {GovernanceOption.map((protocol, index) => (
                       <div key={index} className="option">
-                        <a href={protocol?.href}>{protocol?.label}</a>
+                        <a
+                          href={protocol?.href}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {protocol?.label}
+                        </a>
                       </div>
                     ))}
                   </div>
@@ -99,7 +119,13 @@ const Footer = () => {
                   <div className="options">
                     {CommunityOption.map((protocol, index) => (
                       <div key={index} className="option">
-                        <a href={protocol?.href}>{protocol?.label}</a>
+                        <a
+                          href={protocol?.href}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {protocol?.label}
+                        </a>
                       </div>
                     ))}
                   </div>
@@ -123,7 +149,19 @@ const Footer = () => {
                 <div className="options">
                   {ProtocolOption.map((protocol, index) => (
                     <div key={index} className="option">
-                      <a href={protocol?.href}>{protocol?.label}</a>
+                      {protocol?.label === 'Terms' ? (
+                        <div onClick={() => history.push('/terms')}>
+                          {protocol?.label}
+                        </div>
+                      ) : (
+                        <a
+                          href={protocol?.href}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {protocol?.label}
+                        </a>
+                      )}
                     </div>
                   ))}
                 </div>

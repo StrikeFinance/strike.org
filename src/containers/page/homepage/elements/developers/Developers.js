@@ -6,7 +6,7 @@ import './Developers.scss';
 
 const Developers = () => {
   return (
-    <div className="developers">
+    <div className="developers" id="developer">
       <DeveloperDocs />
       <UserInterface />
       <StrikeProtocol />

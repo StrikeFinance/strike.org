@@ -6,9 +6,10 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import enMessages from 'lang/en';
 import { store } from 'core';
-import Home from 'containers/Main/Home';
-import Terms from 'containers/Main/Terms';
+// import Home from 'containers/Main/Home';
+// import Terms from 'containers/Main/Terms';
 import HomePage from 'containers/page/homepage/HomePage';
+import TermsPage from 'containers/page/term/TermsPage';
 import Theme from './Theme';
 import 'assets/styles/App.scss';
 import MarketDetail from '../components/Main/MarketDetail';
@@ -43,7 +44,7 @@ class App extends React.Component {
                 className="switch-wrapper"
               >
                 <Route exact path="/" component={HomePage} />
-                <Route exact path="/terms" component={Terms} />
+                <Route exact path="/terms" component={TermsPage} />
                 <Route exact path="/market/:asset" component={MarketDetail} />
                 <Redirect from="/" to="/" />
               </Switch>

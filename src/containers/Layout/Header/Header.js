@@ -4,7 +4,7 @@ import MenuTabImg from 'assets/img/homepage/menu-tab.svg';
 import CloseMenuImg from 'assets/img/homepage/close-menu.svg';
 import './Header.scss';
 import { compose } from 'recompose';
-import { withRouter } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
 import { useWindowResizeMobile } from 'utilities/hook';
 import { Drawer } from 'antd';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
@@ -34,21 +34,28 @@ const HomePageLink = [
 const Header = () => {
   const [isMobile] = useWindowResizeMobile(768);
   const [visible, setVisible] = useState(false);
+  const history = useHistory();
   return (
     <div className="page-header" id="header">
       <div className="header-content">
         <div className="header__content">
-          <div className="logo">
+          <div className="logo" onClick={() => history.push('/')}>
             <img src={logoImg} alt="logo" />
           </div>
           {isMobile ? (
             <div className="header-mobile">
               {visible ? (
-                <div className="menu-icon" onClick={() => setVisible(false)}>
+                <div
+                  className="menu-icon cursor-pointer"
+                  onClick={() => setVisible(false)}
+                >
                   <img src={CloseMenuImg} alt="menu-tab" />
                 </div>
               ) : (
-                <div className="menu-icon" onClick={() => setVisible(true)}>
+                <div
+                  className="menu-icon cursor-pointer"
+                  onClick={() => setVisible(true)}
+                >
                   <img src={MenuTabImg} alt="menu-tab" />
                 </div>
               )}
@@ -71,6 +78,7 @@ const Header = () => {
                           className="link-item"
                           to={link?.to}
                           exact
+                          onClick={() => setVisible(false)}
                         >
                           {link?.title}
                         </NavLink>
