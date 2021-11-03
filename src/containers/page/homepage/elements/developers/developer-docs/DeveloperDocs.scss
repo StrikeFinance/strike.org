@@ -1,5 +1,5 @@
 .developer-docs {
-  padding-left: 240px;
+  padding-left: 120px;
   display: block;
   margin: auto;
   @media screen and (max-width: 767px) {
@@ -15,8 +15,8 @@
     }
     .content {
       max-width: 100%;
+      flex: 1 1 0%;
       @media screen and (max-width: 767px) {
-        display: block;padding-left: 120px;
         display: block;
         margin: auto;
       }
@@ -53,7 +53,7 @@
           font-weight: 500;
           color: #0b0f23;
           display: block;
-          max-width: 75%;
+          max-width: 80%;
           @media screen and (max-width: 767px) {
             display: block;
             font-size: 31px;
@@ -99,7 +99,7 @@
     }
 
     .img-dev {
-      text-align: right;
+      flex: 1;
       @media screen and (max-width: 767px) {
         padding-top: 86.45px;
         text-align: center;

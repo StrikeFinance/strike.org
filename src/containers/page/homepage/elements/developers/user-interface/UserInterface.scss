@@ -1,5 +1,4 @@
 .strike-protocols {
-  padding-left: 120px;
   display: block;
   margin: auto;
   @media screen and (max-width: 767px) {
@@ -10,9 +9,11 @@
   .strike-protocol-content {
     @media screen and (max-width: 767px) {
       flex-direction: column-reverse;
+      padding-left: 20px;
     }
     .img-dev {
       max-width: 100%;
+      flex: 1;
       @media screen and (max-width: 767px) {
         padding-top: 84.45px;
         max-width: 100%;
@@ -26,11 +27,13 @@
       }
     }
     .content {
-      padding-top: 12%;
-      margin-left: 146px;
+      padding-top: 9%;
+      position: relative;
+      left: 146px;
+      max-width: 100%;
+      flex: 1 1 0%;
       @media screen and (max-width: 767px) {
-        margin-left: 20px;
-        padding-right: 0;
+        position: static;
       }
 
       .strike-finance {
@@ -41,6 +44,9 @@
       }
 
       .text-layer {
+        @media screen and (max-width: 767px) {
+          width: 100%;
+        }
         span:first-child {
           font-size: 49px;
           font-weight: 500;
@@ -58,9 +64,10 @@
           color: #6d6f7b;
           display: block;
           padding-bottom: 40px;
-          max-width: 44%;
+          max-width: 57%;
           @media screen and (max-width: 767px) {
-            font-size: 31px;
+            font-size: 18px;
+            max-width: 100%;
           }
         }
       }
