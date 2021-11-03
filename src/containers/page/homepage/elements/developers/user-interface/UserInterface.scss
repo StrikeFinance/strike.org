@@ -1,14 +1,18 @@
 .strike-protocols {
+  padding-left: 120px;
+  display: block;
+  margin: auto;
   @media screen and (max-width: 767px) {
     padding-left: 20px;
     padding-right: 12px;
+    display: block;
   }
   .strike-protocol-content {
     @media screen and (max-width: 767px) {
       flex-direction: column-reverse;
     }
     .img-dev {
-      width: 100%;
+      max-width: 100%;
       @media screen and (max-width: 767px) {
         padding-top: 84.45px;
         max-width: 100%;
@@ -23,7 +27,7 @@
     }
     .content {
       padding-top: 12%;
-
+      margin-left: 146px;
       @media screen and (max-width: 767px) {
         margin-left: 20px;
         padding-right: 0;
@@ -56,7 +60,7 @@
           padding-bottom: 40px;
           max-width: 44%;
           @media screen and (max-width: 767px) {
-            max-width: 100%;
+            font-size: 31px;
           }
         }
       }

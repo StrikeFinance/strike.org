@@ -1,5 +1,5 @@
 .developer-docs {
-  padding-left: 120px;
+  padding-left: 240px;
   display: block;
   margin: auto;
   @media screen and (max-width: 767px) {
@@ -15,9 +15,10 @@
     }
     .content {
       max-width: 100%;
-      padding-top: 5%;
       @media screen and (max-width: 767px) {
+        display: block;padding-left: 120px;
         display: block;
+        margin: auto;
       }
       .text-developers {
         font-size: 25px;
@@ -39,6 +40,7 @@
           font-weight: 500;
           color: #0b0f23;
           display: block;
+          max-width: 100%;
           @media screen and (max-width: 767px) {
             display: block;
             font-size: 31px;
@@ -51,7 +53,7 @@
           font-weight: 500;
           color: #0b0f23;
           display: block;
-          max-width: 77%;
+          max-width: 75%;
           @media screen and (max-width: 767px) {
             display: block;
             font-size: 31px;
@@ -97,8 +99,7 @@
     }
 
     .img-dev {
-      width: 100%;
-      margin: auto;
+      text-align: right;
       @media screen and (max-width: 767px) {
         padding-top: 86.45px;
         text-align: center;
@@ -108,7 +109,6 @@
 
       .img-blockchain {
         margin-top: -14%; 
-        width: 100%;
         @media screen and (max-width: 767px) {
           margin: auto;
           width: 100%;
