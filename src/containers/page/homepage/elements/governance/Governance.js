@@ -7,13 +7,15 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { promisify } from 'utilities';
 import './Governance.scss';
-import completed from 'assets/img/landingpage/Shape.png';
-import cancel from 'assets/img/landingpage/cancel.png';
+import completed from 'assets/img/homepage/success.svg';
+import cancel from 'assets/img/homepage/cancel.svg';
 import { Col, Row } from 'antd';
 import { useWindowResizeMobile } from 'utilities/hook';
 import ArrowCrossFillImg from 'assets/img/homepage/arrow-cross-fill.svg';
 import ArrowCrossBlackOpacity from 'assets/img/homepage/arrow-cross-black-opacity.png';
 import ArrowCrossBlack from 'assets/img/homepage/arrow-cross-black.png';
+import ArrowCrossAboveOpacity from 'assets/img/homepage/arrow-cross-above-opacity.png';
+import ArrowBlackDownOpacity from 'assets/img/homepage/arrow-black-down-opacity.png';
 import MarketsAvailable from '../market/markets-available/MarketsAvailable';
 
 const Governance = ({ getGovernance }) => {
@@ -48,12 +50,31 @@ const Governance = ({ getGovernance }) => {
         </div>
         <div className="governance-content">
           <Row className="docs" gutter={isMobile ? [40, 40] : [100, 40]}>
-            <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+            <Col
+              xs={24}
+              sm={24}
+              md={10}
+              lg={10}
+              xl={10}
+              className="content-left"
+            >
               <div className="title">Governance</div>
               <div className="desc">
                 Strike is managed by a decentralized community of Strike
                 token-holders and their delegates, who propose and vote on
                 upgrades to the protocol.
+              </div>
+              <div className="arrow-cross-above-opacity">
+                <img
+                  src={ArrowCrossAboveOpacity}
+                  alt="arrow-cross-above-opacity"
+                />
+              </div>
+              <div className="arrow-black-down-opacity">
+                <img
+                  src={ArrowBlackDownOpacity}
+                  alt="arrow-black-down-opacity"
+                />
               </div>
             </Col>
             <Col xs={24} sm={24} md={14} lg={14} xl={14}>
@@ -92,14 +113,20 @@ const Governance = ({ getGovernance }) => {
                           </div>
                         )}
                       </div>
-                      <div className="flex mx-auto">
+                      <div
+                        className={`${isMobile ? 'flex mt-1' : 'flex mx-auto'}`}
+                      >
                         <div className="mr-1">
                           <img
                             alt="status"
                             src={`${item.canceled ? completed : cancel}`}
                           />
                         </div>
-                        <div className="mx-auto state">{item.state}</div>
+                        <div
+                          className={`${isMobile ? 'state' : 'mx-auto state'}`}
+                        >
+                          {item.state}
+                        </div>
                       </div>
                     </div>
                   ))}
