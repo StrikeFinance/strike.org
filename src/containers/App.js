@@ -5,11 +5,11 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import enMessages from 'lang/en';
-import { store } from 'core';
 // import Home from 'containers/Main/Home';
 // import Terms from 'containers/Main/Terms';
-import HomePage from 'containers/page/homepage/HomePage';
-import TermsPage from 'containers/page/term/TermsPage';
+import HomePage from './page/homepage/HomePage';
+import TermsPage from './page/term/TermsPage';
+import { store } from '../core';
 import Theme from './Theme';
 import MarketDetail from './page/homepage/elements/marketDetail/MarketDetail';
 
