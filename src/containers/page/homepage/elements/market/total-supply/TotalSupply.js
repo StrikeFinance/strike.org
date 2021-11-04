@@ -46,7 +46,7 @@ const TotalSupply = ({ markets, totalSupply, supplierCount, supplyVolume }) => {
                           .times(100)
                           .dp(2, 1)
                           .toNumber()
-                      : 0}
+                      : 0} %
                   </div>
                 </div>
                 <Progress
