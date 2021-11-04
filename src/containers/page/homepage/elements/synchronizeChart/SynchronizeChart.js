@@ -89,7 +89,7 @@ export const SynchronizeChart = ({ marketType, data }) => {
       {
         name: 'ok',
         showInLegend: false,
-        color: 'grey',
+        color: '#F3F9FE',
         type: 'column',
         yAxis: 1,
         data: []
@@ -113,14 +113,14 @@ export const SynchronizeChart = ({ marketType, data }) => {
       ...options,
       series: [
         {
-          name: `${marketType === 'supply' ? 'SUPPLY APY' : 'BORROW APY'}`,
+          name: `${marketType === 'supply' ? 'Supply APY' : 'Borrow APY'}`,
           color: `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`,
           data: supplyOrBorrow,
           lineWidth: 5
         },
         {
-          name: `${marketType === 'supply' ? 'TOTAL SUPPLY' : 'TOTAL BORROW'}`,
-          color: `gray`,
+          name: `${marketType === 'supply' ? 'Total Supply' : 'Total Borrow'}`,
+          color: `${marketType === 'supply' ? '#F3F9FE' : '#FFF3F5'}`,
           data: totalSupplyOrBorrow
         }
       ],
@@ -132,6 +132,10 @@ export const SynchronizeChart = ({ marketType, data }) => {
             }
           }
         }
+      },
+      tooltip: {
+        pointFormat: `{series.name}:  {point.y}</b><br/>`,
+        shared: true
       }
     });
   }, [marketType, data]);
