@@ -134,7 +134,7 @@ const Governance = ({ getGovernance }) => {
                 </div>
                 <div className="arrow-cross">
                   <img src={ArrowCrossFillImg} alt="arrow-cross" />
-                </div>
+                </div>  
                 <div className="arrow-cross-black-opacity">
                   <img
                     src={ArrowCrossBlackOpacity}

@@ -15,7 +15,6 @@
       padding-left: 20px;
     }
     .content {
-      flex: 1 1 0%;
       .strike-whitepaper-text {
         font-size: 25px;
         font-weight: 500;
@@ -40,9 +39,9 @@
           color: #6d6f7b;
           display: block;
           padding-top: 30px;
-          padding-right: 37%;
+          max-width: 56%;
           @media screen and (max-width: 767px) {
-            padding-right: 21%;
+            max-width: 100%;
           }
         }
       }
@@ -62,13 +61,12 @@
       }
     }
     .img-dev {
-      flex: 1;
-      margin-left: 146px;
+      width: 100%;
+      margin: auto;
       @media screen and (max-width: 767px) {
         margin: auto;
       }
       img {
-        width: 448px;
         @media screen and (max-width: 767px) {
           padding-top: 86.45px;
         }

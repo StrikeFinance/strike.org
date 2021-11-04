@@ -1,35 +1,39 @@
 .strike-protocols {
+  display: block;
+  margin: auto;
   @media screen and (max-width: 767px) {
     padding-left: 20px;
     padding-right: 12px;
+    display: block;
   }
   .strike-protocol-content {
     @media screen and (max-width: 767px) {
       flex-direction: column-reverse;
+      padding-left: 20px;
     }
     .img-dev {
+      max-width: 100%;
       flex: 1;
       @media screen and (max-width: 767px) {
         padding-top: 84.45px;
+        max-width: 100%;
       }
       .img-macbook {
-        width: 800px;
+        width: 100%;
         @media screen and (max-width: 767px) {
-          width: 100%;
+          max-width: 100%;
           margin: auto;
         }
       }
     }
     .content {
+      padding-top: 9%;
+      position: relative;
+      left: 146px;
+      max-width: 100%;
       flex: 1 1 0%;
-      flex-basis: min-content;
-      padding-top: 5%;
-      margin-left: 389px;
-      padding-right: 8%;
-
       @media screen and (max-width: 767px) {
-        margin-left: 20px;
-        padding-right: 0;
+        position: static;
       }
 
       .strike-finance {
@@ -40,6 +44,9 @@
       }
 
       .text-layer {
+        @media screen and (max-width: 767px) {
+          width: 100%;
+        }
         span:first-child {
           font-size: 49px;
           font-weight: 500;
@@ -57,6 +64,11 @@
           color: #6d6f7b;
           display: block;
           padding-bottom: 40px;
+          max-width: 57%;
+          @media screen and (max-width: 767px) {
+            font-size: 18px;
+            max-width: 100%;
+          }
         }
       }
       .btn-launchapp {
