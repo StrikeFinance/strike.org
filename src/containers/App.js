@@ -11,8 +11,7 @@ import { store } from 'core';
 import HomePage from 'containers/page/homepage/HomePage';
 import TermsPage from 'containers/page/term/TermsPage';
 import Theme from './Theme';
-import 'assets/styles/App.scss';
-import MarketDetail from '../components/Main/MarketDetail';
+import MarketDetail from './page/homepage/elements/marketDetail/MarketDetail';
 
 addLocaleData([...en]);
 const initialLang = 'en';

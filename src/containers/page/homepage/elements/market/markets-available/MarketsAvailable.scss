@@ -33,6 +33,27 @@
           color: #9D9FA7;
           font-size: 16px;
         }
+        .ant-table-header-column {
+          float: right;
+        }
+        .ant-table-thead th:first-child span{
+          float: left;
+        }
+        .ant-table-row {
+          .total-supply {
+            float:right;
+            padding: 0px;
+            display: block;
+            .row1 {
+              font-size: 18px;
+              font-weight: 800;
+              color: var(--color-text-black);
+            }
+            .row2 {
+              color: var(--color-green);
+            }
+          }
+        }
         .symbol {
           .token-type {
             img {
