@@ -5,7 +5,7 @@ import App from './containers/App';
 // import * as serviceWorker from 'serviceWorker';
 
 import 'antd/dist/antd.css';
-import 'assets/styles/index.scss';
+import './assets/styles/index.scss';
 
 console.warn = () => {};
 
