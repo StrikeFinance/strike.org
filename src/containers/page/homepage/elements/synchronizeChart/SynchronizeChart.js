@@ -114,8 +114,9 @@ export const SynchronizeChart = ({ marketType, data }) => {
       series: [
         {
           name: `${marketType === 'supply' ? 'SUPPLY APY' : 'BORROW APY'}`,
-          color: `${marketType === 'supply' ? '#00D395' : '#9669ED'}`,
-          data: supplyOrBorrow
+          color: `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`,
+          data: supplyOrBorrow,
+          lineWidth: 5
         },
         {
           name: `${marketType === 'supply' ? 'TOTAL SUPPLY' : 'TOTAL BORROW'}`,
@@ -127,7 +128,7 @@ export const SynchronizeChart = ({ marketType, data }) => {
         column: {
           states: {
             hover: {
-              color: `${marketType === 'supply' ? '#00D395' : '#9669ED'}`
+              color: `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`
             }
           }
         }

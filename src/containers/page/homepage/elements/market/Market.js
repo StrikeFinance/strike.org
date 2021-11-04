@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import Borrow from './borrow/Borrow';
 import './Market.scss';
-// import MarketsAvailable from './markets-available/MarketsAvailable';
 import TotalSupply from './total-supply/TotalSupply';
 
 const Market = ({ markets }) => {
@@ -17,7 +16,7 @@ const Market = ({ markets }) => {
   const [borrowVolume, setBorrowVolume] = useState(0);
 
   useEffect(() => {
-    if (markets.markets && markets.marketVolumeLog && markets.dailyStrike) {
+    if (markets.markets) {
       const tempTS = (markets.markets || []).reduce((accumulator, market) => {
         return new BigNumber(accumulator).plus(
           new BigNumber(market.totalSupplyUsd)
@@ -38,8 +37,8 @@ const Market = ({ markets }) => {
       setSupplierCount(tempSC);
       setTotalBorrow(tempTB.dp(2, 1).toString(10));
       setBorrowerCount(tempBC);
-      setSupplyVolume(markets.marketVolumeLog.totalSupplyUsd24h);
-      setBorrowVolume(markets.marketVolumeLog.totalBorrowsUsd24h);
+      setSupplyVolume(markets.marketVolumeLog ? markets.marketVolumeLog.totalSupplyUsd24h : 0);
+      setBorrowVolume(markets.marketVolumeLog ? markets.marketVolumeLog.totalBorrowsUsd24h : 0);
     }
   }, [markets]);
   return (

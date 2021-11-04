@@ -154,6 +154,11 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
             .dp(2, 1)
             .toNumber()
         };
+      })
+      .sort((a, b) => {
+        return new BigNumber(b.totalSupplyUsd)
+          .minus(new BigNumber(a.totalSupplyUsd))
+          .toNumber();
       });
     setMarkets(data);
     setTotal(res?.data?.total);

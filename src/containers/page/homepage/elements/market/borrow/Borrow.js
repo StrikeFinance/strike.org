@@ -36,7 +36,7 @@ const Borrow = ({ markets, totalBorrow, borrowerCount, borrowVolume }) => {
                           .times(100)
                           .dp(2, 1)
                           .toNumber()
-                      : 0}
+                      : 0} %
                   </div>
                 </div>
                 <Progress
