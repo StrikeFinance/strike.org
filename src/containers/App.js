@@ -12,6 +12,7 @@ import HomePage from 'containers/page/homepage/HomePage';
 import Theme from './Theme';
 import 'assets/styles/App.scss';
 import MarketDetail from '../components/Main/MarketDetail';
+import GovernanceDetail from 'containers/page/GovernanceDetail'
 
 addLocaleData([...en]);
 const initialLang = 'en';
@@ -45,6 +46,13 @@ class App extends React.Component {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/terms" component={Terms} />
                 <Route exact path="/market/:asset" component={MarketDetail} />
+
+                <Route
+                    exact
+                    path="/governance-detail/:id"
+                    component={GovernanceDetail}
+                  />
+
                 <Redirect from="/" to="/" />
               </Switch>
             </BrowserRouter>

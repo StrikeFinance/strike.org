@@ -1,0 +1,126 @@
+.table-detail-content {
+  //   background: #ffffff;
+  margin-top: 33px;
+  &__left {
+    background: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    .children-content {
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-top: 22px;
+
+      .progress-info {
+        width: 100%;
+        .info-number {
+          display: flex;
+          align-content: center;
+          span:first-child {
+            padding-right: 395px;
+          }
+          span:nth-child(2) {
+          }
+        }
+      }
+
+      .address-vote {
+        display: flex;
+        justify-content: space-between;
+
+        span:first-child {
+          font-size: 16px;
+          font-weight: 500;
+          color: #9d9fa7;
+        }
+        span:nth-child(2) {
+          font-size: 16px;
+          font-weight: 500;
+          color: #9d9fa7;
+        }
+      }
+
+      .addressed-votes-info {
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        padding-bottom: 25px;
+
+        &__left {
+          font-size: 16px;
+          font-weight: 800;
+          color: #9d9fa7;
+        }
+
+        &__right {
+          font-size: 16px;
+          font-weight: 800;
+          color: #0b0f23;
+        }
+      }
+    }
+  }
+  &__right {
+    background: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+
+    .children-content {
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-top: 22px;
+
+      .progress-info {
+        width: 100%;
+        .info-number {
+          display: flex;
+          align-content: center;
+          span:first-child {
+            padding-right: 395px;
+          }
+          span:nth-child(2) {
+          }
+        }
+      }
+
+      .scroll-bar{
+        overflow-y: auto;
+        max-height: 100vh;
+      }
+
+      .address-vote {
+        display: flex;
+        justify-content: space-between;
+
+        span:first-child {
+          font-size: 16px;
+          font-weight: 500;
+          color: #9d9fa7;
+        }
+        span:nth-child(2) {
+          font-size: 16px;
+          font-weight: 500;
+          color: #9d9fa7;
+        }
+      }
+        .addressed-votes-info {
+          display: flex;
+          align-content: center;
+          justify-content: space-between;
+          padding-bottom: 25px;
+          max-height: 100vh;
+
+          &__left {
+            font-size: 16px;
+            font-weight: 800;
+            color: #9d9fa7;
+          }
+
+          &__right {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0b0f23;
+          }
+        }
+    }
+  }
+}

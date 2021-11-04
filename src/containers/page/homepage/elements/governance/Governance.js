@@ -18,7 +18,7 @@ import ArrowCrossAboveOpacity from 'assets/img/homepage/arrow-cross-above-opacit
 import ArrowBlackDownOpacity from 'assets/img/homepage/arrow-black-down-opacity.png';
 import MarketsAvailable from '../market/markets-available/MarketsAvailable';
 
-const Governance = ({ getGovernance }) => {
+const Governance = ({ getGovernance, history }) => {
   const getStatus = p => {
     if (p.state === 'Executed') {
       return 'Passed';
@@ -82,7 +82,13 @@ const Governance = ({ getGovernance }) => {
                 <div className="title-proposals">Recent Proposals</div>
                 <div className="recent-list">
                   {governance.map((item, index) => (
-                    <div className="recent-item flex just-between" key={index}>
+                    <div
+                      onClick={() =>
+                        history.push(`/governance-detail/${item.id}`)
+                      }
+                      className="recent-item flex just-between"
+                      key={index}
+                    >
                       <div className="">
                         <div className="description">
                           {item?.description.split('\n')[0]}
@@ -133,7 +139,7 @@ const Governance = ({ getGovernance }) => {
                 </div>
                 <div className="arrow-cross">
                   <img src={ArrowCrossFillImg} alt="arrow-cross" />
-                </div>  
+                </div>
                 <div className="arrow-cross-black-opacity">
                   <img
                     src={ArrowCrossBlackOpacity}
