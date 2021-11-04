@@ -1,11 +1,13 @@
+import BigNumber from 'bignumber.js';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
 import { accountActionCreators, connectAccount } from 'core';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
 import { promisify } from 'utilities';
+import * as constants from 'utilities/constants';
 import LoadingSpinner from '../../../../../components/Basic/LoadingSpinner';
 import BackButton from '../backButton/BackButton';
 import { SynchronizeChart } from '../synchronizeChart/SynchronizeChart';
@@ -13,6 +15,9 @@ import InterestRateModel from './interestRateModel/InterestRateModel';
 import './MarketDetail.scss';
 import MarketInfo from './marketInfo/MarketInfo';
 import MarketSummary from './marketSummary/MarketSummary';
+
+let timeStamp = 0;
+const abortController = new AbortController();
 
 const MarketDetail = ({
   settings,
@@ -27,6 +32,7 @@ const MarketDetail = ({
   const [marketInfo, setmarketInfo] = useState();
   const [marketType, setmarketType] = useState('supply');
   const [decimal, setdecimal] = useState();
+  const [data, setData] = useState([]);
 
   const getMarket = async () => {
     const res = await promisify(getGovernanceStrike, {});
@@ -41,12 +47,43 @@ const MarketDetail = ({
     }
   };
 
+  const getGraphData = useCallback(
+    async (asset, type) => {
+      const tempData = [];
+      await promisify(getMarketHistory, { asset, type }).then(res => {
+        res.data.result.forEach(m => {
+          tempData.push({
+            createdAt: m.createdAt,
+            supplyApy: +new BigNumber(m.supplyApy || 0).dp(8, 1).toString(10),
+            borrowApy: +new BigNumber(m.borrowApy || 0).dp(8, 1).toString(10),
+            totalSupply: +(new BigNumber(m.totalSupply || 0).dp(8, 1).toString(10)),
+            totalBorrow: +(new BigNumber(m.totalBorrow || 0).dp(8, 1).toString(10))
+          });
+        });
+        setData([...tempData.reverse()]);
+      });
+    },
+    [getMarketHistory]
+  );
+
+  useEffect(() => {
+    if (timeStamp % 60 === 0 && currentAsset) {
+      getGraphData(
+        constants.CONTRACT_SBEP_ADDRESS[currentAsset].address,
+        '1day'
+      );
+    }
+    timeStamp = Date.now();
+    return function cleanup() {
+      abortController.abort();
+    };
+  }, [settings.selectedAddress, currentAsset, getGraphData]);
+
   const getDecimal = async () => {
     const res = await promisify(getDecimals, {});
     if (!res.status) {
       return;
     }
-    console.log('RESPONSE DATA: ', res.data);
     setdecimal(res.data);
   };
 
@@ -72,7 +109,7 @@ const MarketDetail = ({
                     onClick={() => setmarketType('borrow')}
                   >BORROW</div>
                 </div>
-                <SynchronizeChart />
+                <SynchronizeChart marketType={marketType} data={data} />
               </div>
             </div>
             <div className="interes-rate-market-summary">

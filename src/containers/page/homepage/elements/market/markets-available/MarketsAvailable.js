@@ -61,7 +61,7 @@ const columns = [
     render: (action, record) => (
       <div className="total-supply">
         <div className="row1">
-          <span>{currencyFormatter(record.totalSupplyUsd)}</span>
+          <div>{currencyFormatter(record.totalSupplyUsd)}</div>
         </div>
         <div className="row2">
           {format(
@@ -169,123 +169,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
   useEffect(() => {
     getMarkets({ offset: 0, limit: 5 });
   }, []);
-  const columns = [
-    {
-      title: 'Market',
-      dataIndex: 'market',
-      key: 'market',
-      render: (action, record) => (
-        <div className="flex symbol">
-          <div className="token-type mr-1">
-            <img alt="symbol" src={ICONS[record?.underlyingSymbol]} />
-          </div>
-          <div className="mx-auto">
-            <div className="color-black">{record?.underlyingSymbol}</div>
-            <div className="sub-value">{record?.underlyingName}</div>
-          </div>
-        </div>
-      ),
-      width: isMobile ? '20%' : 'auto'
-    },
-    {
-      title: 'Total Supply',
-      dataIndex: 'totalSuplly',
-      key: 'totalSupply',
-      render: (action, record) => (
-        <div className="record-table">
-          <div className="color-black text-ellipsis">
-            <span>$</span>
-            <span>
-              {new Intl.NumberFormat({
-                maximumSignificantDigits: 3
-              }).format(record?.totalSupply)}
-            </span>
-          </div>
-          <div className="sub-value">
-            {format(
-              new BigNumber(record?.totalSupplyUsd)
-                .div(new BigNumber(record?.tokenPrice))
-                .dp(0, 1)
-                .toString(10)
-            )}{' '}
-            {record?.underlyingSymbol}
-          </div>
-        </div>
-      ),
-      width: isMobile ? '20%' : 'auto'
-    },
-    {
-      title: 'Supply APY',
-      dataImdex: 'supplyAPY',
-      key: 'supplyAPY',
-      render: (action, record) => (
-        <div className="record-table">
-          <div className="color-black text-ellipsis">
-            <span>$</span>
-            <span>
-              {new Intl.NumberFormat({
-                maximumSignificantDigits: 3
-              }).format(record?.supplyApy)}
-            </span>
-          </div>
-          <div className="sub-value">
-            {new BigNumber(record?.supplyStrikeApy).dp(2, 1).toString(10)}
-            {`%`}
-          </div>
-        </div>
-      ),
-      width: isMobile ? '20%' : 'auto'
-    },
-    {
-      title: 'Total Borrow',
-      dataIndex: 'totalBorrow',
-      key: 'totalBorrow',
-      render: (action, record) => (
-        <div className="record-table">
-          <div className="color-black text-ellipsis">
-            <span>$</span>
-            <span>
-              {new Intl.NumberFormat({
-                maximumSignificantDigits: 3
-              }).format(record?.totalBorrows)}
-            </span>
-          </div>
-          <div className="sub-value">
-            {format(
-              new BigNumber(record?.totalBorrowsUsd)
-                .div(new BigNumber(record?.tokenPrice))
-                .dp(0, 1)
-                .toString(10)
-            )}{' '}
-            {record?.underlyingSymbol}
-          </div>
-        </div>
-      ),
-      width: isMobile ? '20%' : 'auto'
-    },
-    {
-      title: 'Borrow APY',
-      dataIndex: 'borrowAPY',
-      key: 'borrowAPY',
-      render: (action, record) => (
-        <div className="record-table">
-          <div className="color-black text-ellipsis">
-            <span>$</span>
-            <span>
-              {new Intl.NumberFormat({
-                maximumSignificantDigits: 3
-              }).format(record?.borrowApy)}
-            </span>
-          </div>
-          <div className="sub-value">
-            {new BigNumber(record?.borrowStrikeApy).dp(2, 1).toString(10)}
-            {`%`}
-          </div>
-        </div>
-      ),
-      width: isMobile ? '20%' : 'auto'
-    }
-  ];
+
   return (
     <div className="markets-available">
       <div className="markets-available-content">

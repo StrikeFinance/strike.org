@@ -51,9 +51,9 @@ const Borrow = ({ markets, totalBorrow, borrowerCount, borrowVolume }) => {
                   }
                   showInfo={false}
                 />
-                <hr />
               </div>
             ))}
+        <hr />
         <div className="table-total-borrows-footer">
           <div>
             <div className="footer-text">24h Borrow Volume </div>

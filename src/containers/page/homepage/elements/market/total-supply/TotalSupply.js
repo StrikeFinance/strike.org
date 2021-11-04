@@ -61,9 +61,9 @@ const TotalSupply = ({ markets, totalSupply, supplierCount, supplyVolume }) => {
                   }
                   showInfo={false}
                 />
-                <hr />
               </div>
             ))}
+        <hr />
         <div className="table-total-supply-footer">
           <div>
             <div className="footer-text">24h Supply Volume </div>
