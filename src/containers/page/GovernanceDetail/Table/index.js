@@ -60,7 +60,6 @@ function TableDetail(props) {
             <span>Votes</span>
           </div>
           <Divider />
-          <div className="scroll-bar">
             {dataTableLeft.map((item, index) => {
               return (
                 <div className="addressed-votes-info" key={index}>
@@ -73,7 +72,6 @@ function TableDetail(props) {
                 </div>
               );
             })}
-          </div>
         </div>
       </div>
     </div>
