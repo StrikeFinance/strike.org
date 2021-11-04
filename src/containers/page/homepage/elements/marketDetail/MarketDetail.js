@@ -105,10 +105,10 @@ const MarketDetail = ({
                 <div className="market-tab-wrapper">
                   <div className={`tab-item supply-tab ${marketType === 'supply' ? 'tab-active' : ''}`}
                     onClick={() => setmarketType('supply')}
-                  >SUPPLY</div>
+                  >Supply</div>
                   <div className={`tab-item borrow-tab ${marketType === 'borrow' ? 'tab-active' : ''}`}
                     onClick={() => setmarketType('borrow')}
-                  >BORROW</div>
+                  >Borrow</div>
                 </div>
                 <SynchronizeChart marketType={marketType} data={data} />
               </div>

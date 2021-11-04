@@ -132,6 +132,10 @@ export const SynchronizeChart = ({ marketType, data }) => {
             }
           }
         }
+      },
+      tooltip: {
+        pointFormat: `{series.name}:  {point.y}</b><br/>`,
+        shared: true
       }
     });
   }, [marketType, data]);
