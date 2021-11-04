@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { accountActionCreators, connectAccount } from 'core';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { promisify } from 'utilities';
 import './Governance.scss';
 import completed from 'assets/img/homepage/success.svg';
 import cancel from 'assets/img/homepage/cancel.svg';
 import { Col, Row } from 'antd';
-import { useWindowResizeMobile } from 'utilities/hook';
 import ArrowCrossFillImg from 'assets/img/homepage/arrow-cross-fill.svg';
 import ArrowCrossBlackOpacity from 'assets/img/homepage/arrow-cross-black-opacity.png';
 import ArrowCrossBlack from 'assets/img/homepage/arrow-cross-black.png';
 import ArrowCrossAboveOpacity from 'assets/img/homepage/arrow-cross-above-opacity.png';
 import ArrowBlackDownOpacity from 'assets/img/homepage/arrow-black-down-opacity.png';
-import MarketsAvailable from '../market/markets-available/MarketsAvailable';
+import { useWindowResizeMobile } from 'utilities/hook';
+import { promisify } from 'utilities/promisify';
+import MarketsAvailable from 'containers/page/homepage/elements/market/markets-available/MarketsAvailable';
+import { accountActionCreators } from 'core/modules/account/actions';
+import { connectAccount } from 'core/modules/account/connectAccount';
 
 const Governance = ({ getGovernance }) => {
   const getStatus = p => {
