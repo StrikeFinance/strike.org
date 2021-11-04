@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
-import enMessages from 'lang/en';
+import enMessages from '../lang/en.json';
 // import Home from 'containers/Main/Home';
 // import Terms from 'containers/Main/Terms';
 import HomePage from './page/homepage/HomePage';
