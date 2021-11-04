@@ -1,20 +1,21 @@
 import BigNumber from 'bignumber.js';
-import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
-import { accountActionCreators, connectAccount } from 'core';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
-import { promisify } from 'utilities';
+import { promisify } from 'utilities/promisify';
 import * as constants from 'utilities/constants';
-import LoadingSpinner from '../../../../../components/Basic/LoadingSpinner';
-import BackButton from '../backButton/BackButton';
-import { SynchronizeChart } from '../synchronizeChart/SynchronizeChart';
+import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
+import BackButton from 'containers/page/homepage/elements/backButton/BackButton';
+import LoadingSpinner from 'components/Basic/LoadingSpinner';
 import InterestRateModel from './interestRateModel/InterestRateModel';
 import './MarketDetail.scss';
 import MarketInfo from './marketInfo/MarketInfo';
 import MarketSummary from './marketSummary/MarketSummary';
+import SynchronizeChart from 'containers/page/homepage/elements/synchronizeChart/SynchronizeChart';
+import { accountActionCreators } from 'core/modules/account/actions';
+import { connectAccount } from 'core/modules/account/connectAccount';
 
 let timeStamp = 0;
 const abortController = new AbortController();
