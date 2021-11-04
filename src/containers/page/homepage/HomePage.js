@@ -1,17 +1,18 @@
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
 import React, { useEffect, useState } from 'react';
-import { promisify } from 'utilities';
-import { accountActionCreators, connectAccount } from 'core';
 import { bindActionCreators } from 'redux';
-import Banner from './elements/banner/Banner';
-import Governance from './elements/governance/Governance';
-import Market from './elements/market/Market';
-import Developers from './elements/developers/Developers';
-import LoadingSpinner from '../../../components/Basic/LoadingSpinner';
+import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
+import LoadingSpinner from 'components/Basic/LoadingSpinner';
+import { accountActionCreators } from 'core/modules/account/actions';
+import { connectAccount } from 'core/modules/account/connectAccount';
+import { promisify } from 'utilities/promisify';
+import Banner from 'containers/page/homepage/elements/banner/Banner';
+import Market from 'containers/page/homepage/elements/market/Market';
+import Governance from 'containers/page/homepage/elements/governance/Governance';
+import Developers from 'containers/page/homepage/elements/developers/Developers';
 
-const HomePage = ({ getGovernanceStrike }) => {
+const HomePage = ({ getGovernanceStrike, setSetting }) => {
   const [markets, setmarkets] = useState();
   const getMarket = async () => {
     const res = await promisify(getGovernanceStrike, {});
@@ -19,6 +20,7 @@ const HomePage = ({ getGovernanceStrike }) => {
       return;
     }
     setmarkets(res.data);
+    setSetting(res.data);
   };
 
   useEffect(() => {
@@ -53,7 +55,8 @@ const mapDispatchToProps = dispatch => {
     getDecimals,
     getInterateModel,
     getGovernance,
-    getGovernanceStrikeWithParam
+    getGovernanceStrikeWithParam,
+    setSetting
   } = accountActionCreators;
 
   return bindActionCreators(
@@ -62,7 +65,8 @@ const mapDispatchToProps = dispatch => {
       getInterateModel,
       getDecimals,
       getGovernance,
-      getGovernanceStrikeWithParam
+      getGovernanceStrikeWithParam,
+      setSetting
     },
     dispatch
   );

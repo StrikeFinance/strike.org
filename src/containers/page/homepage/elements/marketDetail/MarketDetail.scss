@@ -1,0 +1,57 @@
+.market-detail {
+    background-color: var(--color-bg-main);
+    .card-chart {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        padding: 0 100px;
+        @media only screen and (max-width: 768px) {
+            padding: 20px;
+        }
+        .sub-card-chart {
+            background-color: var(--color-bg-primary);
+            padding: 20px;
+            border-radius: 5px;
+            .market-tab-wrapper {
+                display: flex;
+                .supply-tab, .borrow-tab {
+                    cursor: pointer;
+                    font-size: 17px;
+                    font-weight: 900;
+                }
+                .supply-tab {
+                    margin-right: 20px;
+                }
+                .tab-active {
+                    color: var(--color-text-main);
+                }
+            }
+        }
+    }
+    .interes-rate-market-summary {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 100px;
+        @media only screen and (max-width: 768px) {
+            padding: 20px;
+            display: block;
+        }
+        .interest-rate {
+            width: 100%;
+            padding-right: 10px;
+            @media only screen and (max-width: 768px) {
+                width: 100%;
+                margin-bottom: 20px;
+                padding-right: 0px;
+            }
+        }
+        .summary {
+            width: 100%;
+            padding-left: 10px;
+            @media only screen and (max-width: 768px) {
+                width: 100%;
+                padding-left: 0px;
+            }
+        }
+    }
+}

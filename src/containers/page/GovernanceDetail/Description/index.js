@@ -32,7 +32,7 @@ const data = [
 
 function Description() {
   return (
-    <div className="description-content flex ">
+    <div className="description-content flex just-between">
       <div className="description-content__left">
         <div className="header">
           <span>Operation</span>

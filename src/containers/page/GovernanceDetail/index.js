@@ -13,8 +13,8 @@ import { promisify } from 'utilities';
 
 function Governance(props) {
   const { getGovernance, history, match } = props;
-  const [dataGovernance, setDataGovernance] = useState([]);
   const [currentMatch, setCurrentMatch] = useState();
+  const [governanceInfo, setGovernanceInfo] = useState({});
 
   const getStatus = p => {
     if (p.state === 'Executed') {
@@ -30,7 +30,7 @@ function Governance(props) {
   };
 
   useEffect(() => {
-    if (match?.params && match?.params?.id) {
+    if (match.params && match.params.id) {
       setCurrentMatch(match.params.id);
     }
   }, [match]);
@@ -45,21 +45,22 @@ function Governance(props) {
       limit: 5
     })
       .then(res => {
-        setDataGovernance(res?.data?.result);
-        const data = res.data.result;
-
-        let dataObj = {};
-        const current = data.find(item => item.id === currentMatch);
-        console.log(current);
+        const data = res?.data?.result;
+        if (currentMatch) {
+          const current = data.find(item => item.id === currentMatch);
+          setGovernanceInfo(current || {});
+        }
       })
       .catch(e => {
         console.log(e);
       });
-  }, [getGovernance]);
+  }, [getGovernance, currentMatch]);
 
   useEffect(() => {
     getDataGovernance();
   }, [getDataGovernance]);
+
+  console.log(governanceInfo)
 
   return (
     <div className="governance-detail">
@@ -76,7 +77,7 @@ function Governance(props) {
       <div className="governance-detail-main ">
         <div className="text-info flex just-between">
           <div className="text-info__left">
-            <span className="info-content">{}</span>
+            <span className="info-content">{governanceInfo.description}</span>
             <div className="date-completed">
               <span className="passed">Passed</span>
               <span className="date">003 - Executed October 20th, 2021</span>
