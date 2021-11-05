@@ -186,7 +186,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
             dataSource={markets}
             pagination={false}
             className="table-market"
-            style={{ minHeight: '450px' }}
+            style={{ height: '450px' }}
             onRowClick={onRowClick}
           />
           <div style={{ textAlign: 'right', marginTop: '20px' }}>

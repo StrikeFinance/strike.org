@@ -1,8 +1,7 @@
-.total-supplys{
+.total-supplys {
   margin-top: 88px;
   .total-supply-content {
     @media screen and (max-width: 767px) {
-      padding-left: 20px;
     }
     &__left {
       @media screen and (max-width: 767px) {
@@ -18,7 +17,7 @@
         font-size: 49px;
         font-weight: 500;
         color: #0b0f23;
-        width: 66%;
+        width: 70%;
         padding-bottom: 30px;
         @media screen and (max-width: 767px) {
           font-size: 25px;
@@ -40,9 +39,9 @@
       background: rgba(255, 255, 255, 0.5);
       border-radius: 20px;
       padding: 25px 40px 27px 40px;
-      width: 45%!important;
+      width: 45% !important;
       @media screen and (max-width: 767px) {
-        width: 100%!important;
+        width: 100% !important;
       }
       img.vector3 {
         position: absolute;
