@@ -1,77 +1,92 @@
 .total-borrows {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+  @media screen and (max-width: 767px) {
     display: flex;
-    justify-content: space-between;
-    padding: 20px 0px;
+    flex-direction: column-reverse;
+  }
+  .right-text,
+  .table-total-borrows {
+    width: 78%;
     @media screen and (max-width: 767px) {
-        display: flex;
-        flex-direction: column-reverse;
+      width: 100%;
     }
-    .right-text, .table-total-borrows {
-        width: 50%;
-        @media screen and (max-width: 767px) {
-            width: 100%;
-        }
+  }
+  .right-text {
+    div:first-child {
+      color: var(--color-blue);
+      font-size: 25px;
+      font-weight: 500;
+      padding-bottom: 10px;
+      @media screen and (max-width: 767px) {
+        font-size: 20px;
+      }
     }
-    .right-text{
-        div:first-child {
-            color: var(--color-blue);
-            font-size: 25px;
-            font-weight: 500;
-        }
-        div:nth-child(2) {
-            font-size: 49px;
-            font-weight: 500;
-            color: var(--color-text-black);
-        }
-        span {
-            font-size: 18px;
-            font-weight: 500;
-        }
-    }
-    .table-total-borrows {
-        width: 520px;
-        height: auto;
-        background-color: var(--color-bg-primary);
-        border-radius: 20px;
-        padding: 25px 40px;
-
-        @media screen and (max-width: 767px) {
-            width: auto;
-        }
-        .coin-info, .table-total-borrows-footer {
-            display: flex;
-            justify-content: space-between;
-        }
-        h3 {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--color-text-black);
-        }
-        p {
-            color: var(--color-blue);
-            font-size: 20px;
-            font-weight: 400;
-        }
-    }
-    .table-total-borrows 
-    .money-market {
+    div:nth-child(2) {
+      font-size: 49px;
+      font-weight: 500;
+      color: var(--color-text-black);
+      padding-bottom: 30px;
+      @media screen and (max-width: 767px) {
         font-size: 25px;
-        font-weight: 800;
-        color: var(--color-text-black);
+      }
     }
+    span {
+      font-size: 18px;
+      font-weight: 500;
+      @media screen and (max-width: 767px) {
+        font-size: 16px;
+      }
+    }
+  }
+  .table-total-borrows {
+    width: 520px;
+    height: auto;
+    background-color: var(--color-bg-primary);
+    border-radius: 20px;
+    padding: 25px 40px;
+
+    @media screen and (max-width: 767px) {
+      width: auto;
+    }
+    .coin-info,
     .table-total-borrows-footer {
-        .footer-text {
-            color: var(--color-text-gray);
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .footer-value {
-            color: var(--color-text-black);
-            font-size: 20px;
-            font-weight: 500;
-        }
+      display: flex;
+      justify-content: space-between;
     }
-    hr {
-        opacity: 0.2;
+    h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-text-black);
+      padding-bottom: 8px;
     }
+    p {
+      color: var(--color-blue);
+      font-size: 20px;
+      font-weight: 400;
+      padding-bottom: 16px;
+    }
+  }
+  .table-total-borrows .money-market {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--color-text-black);
+  }
+  .table-total-borrows-footer {
+      padding-top: 15px;
+    .footer-text {
+      color: var(--color-text-gray);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .footer-value {
+      color: var(--color-text-black);
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+  hr {
+    opacity: 0.2;
+  }
 }
