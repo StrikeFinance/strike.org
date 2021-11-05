@@ -1,0 +1,123 @@
+.total-supply {
+  margin-top: 88px;
+  .total-supply-content {
+    @media screen and (max-width: 767px) {
+      padding-left: 20px;
+    }
+    &__left {
+      @media screen and (max-width: 767px) {
+        padding-bottom: 40px;
+      }
+      .title {
+        font-size: 25px;
+        color: #107def;
+        font-weight: 500;
+        padding-bottom: 10px;
+      }
+      .title-desciption {
+        font-size: 49px;
+        font-weight: 500;
+        color: #0b0f23;
+        width: 57%;
+        padding-bottom: 30px;
+        @media screen and (max-width: 767px) {
+          font-size: 25px;
+          width: 100%;
+        }
+      }
+      .title-strike {
+        font-size: 18px;
+        font-weight: 500;
+        color: #6d6f7b;
+        width: 48%;
+        @media screen and (max-width: 767px) {
+          font-size: 14px;
+          width: 100%;
+        }
+      }
+    }
+    &__right {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 25px 40px 27px 40px;
+      img.vector3 {
+        position: absolute;
+        z-index: 1;
+        left: 60%;
+        top: -14%;
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+      img.vector2 {
+        position: absolute;
+        right: -10%;
+        top: 63%;
+        z-index: 1;
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+
+      img.vector4 {
+        position: absolute;
+        bottom: -19%;
+        right: 40%;
+        z-index: 1;
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
+      }
+      .children-content {
+        .title-content {
+          font-size: 20px;
+          font-weight: 800;
+          color: #0b0f23;
+        }
+        .money-supply {
+          font-size: 25px;
+          font-weight: 800;
+          color: #0b0f23;
+        }
+        .top-markets {
+          color: #107def;
+          font-size: 20px;
+          font-weight: 400;
+        }
+        .coin-info {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 5px;
+          padding-top: 21px;
+        }
+
+        .footer-content {
+          &__left {
+            &__title {
+              font-size: 14px;
+              font-weight: 500;
+              color: #9d9fa7;
+            }
+            &__number {
+              font-size: 20px;
+              color: #0b0f23;
+              font-weight: 500;
+            }
+          }
+          &__right {
+            &__title {
+              font-size: 14px;
+              font-weight: 500;
+              color: #9d9fa7;
+            }
+            &__number {
+              font-size: 20px;
+              color: #0b0f23;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}

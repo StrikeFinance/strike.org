@@ -31,7 +31,7 @@ const Banner = ({ markets }) => {
               )}
             </span>
             <span> </span>
-            <span>TVL</span>
+            <span>TVL across</span>
           </div>
           <div>
             <span className="text-highlight">{markets.markets.length}</span>

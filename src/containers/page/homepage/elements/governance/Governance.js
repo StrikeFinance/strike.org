@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import './Governance.scss';
 import completed from 'assets/img/homepage/success.svg';
-import cancel from 'assets/img/homepage/cancel.svg';
+import cancel from 'assets/img/landingpage/cancel.png';
 import { Col, Row } from 'antd';
 import ArrowCrossFillImg from 'assets/img/homepage/arrow-cross-fill.svg';
 import ArrowCrossBlackOpacity from 'assets/img/homepage/arrow-cross-black-opacity.png';
@@ -99,7 +99,7 @@ const Governance = ({ getGovernance, history }) => {
                             <div className="mx-auto time">
                               {moment(item?.createdAt).format('MMMM Do, YYYY')}
                             </div>
-                            <div className="status mx-auto">
+                            <div className={`mx-auto ${getStatus(item) === 'Failed' ? 'failed' : 'status'}`}>
                               {getStatus(item)}
                             </div>
                           </div>
@@ -108,8 +108,8 @@ const Governance = ({ getGovernance, history }) => {
                             <div
                               className={`${
                                 isMobile
-                                  ? 'status mx-auto'
-                                  : 'mr-1 status mx-auto'
+                                  ? `mx-auto ${getStatus(item) === 'Failed' ? 'failed' : 'status'}`
+                                  : `mr-1 mx-auto ${getStatus(item) === 'Failed' ? 'failed' : 'status'}`
                               }`}
                             >
                               {getStatus(item)}
@@ -126,7 +126,7 @@ const Governance = ({ getGovernance, history }) => {
                         <div className="mr-1">
                           <img
                             alt="status"
-                            src={`${item.canceled ? completed : cancel}`}
+                            src={`${getStatus(item) === 'Failed' ? cancel : completed}`}
                           />
                         </div>
                         <div
