@@ -1,4 +1,3 @@
-
 .markets-available {
   .markets-available-content {
     .title {
@@ -22,21 +21,28 @@
       @media screen and (max-width: 767px) {
         margin: 0 20px;
       }
+
+      .table-market{
+        max-height: 482px;
+        @media screen and (max-width: 767px) {
+          height: 100%;
+        }
+      }
       .title-table {
-        color: #0B0F23;
+        color: #0b0f23;
         font-size: 20px;
         padding-bottom: 10px;
-        border-bottom: 1px solid #E5E5E5;
+        border-bottom: 1px solid #e5e5e5;
       }
       .ant-table-body {
         .ant-table-column-title {
-          color: #9D9FA7;
+          color: #9d9fa7;
           font-size: 16px;
         }
         .ant-table-header-column {
           float: right;
         }
-        .ant-table-thead th:first-child span{
+        .ant-table-thead th:first-child span {
           float: left;
         }
         .ant-table-row {
@@ -48,9 +54,16 @@
               font-size: 18px;
               font-weight: 800;
               color: var(--color-text-black);
+              @media screen and (max-width: 767px) {
+                font-size: 10px;
+              }
             }
             .row2 {
               color: var(--color-green);
+              font-size: 18px;
+              @media screen and (max-width: 767px) {
+                font-size: 8px;
+              }
             }
           }
         }
@@ -68,13 +81,20 @@
               margin-right: 5px;
             }
           }
+          .mx-auto{
+            .row1,.row2{
+              @media screen and (max-width: 767px) {
+                font-size: 10px!important;
+              }
+            }
+          }
         }
         td {
           cursor: pointer;
         }
         @media screen and (max-width: 767px) {
           .ant-table-column-title {
-            color: #9D9FA7;
+            color: #9d9fa7;
             font-size: 12px;
             word-break: break-word;
           }
@@ -130,12 +150,11 @@
           text-overflow: ellipsis;
         }
       }
-      
+
       .sub-value {
         font-size: 16px;
         @media screen and (max-width: 767px) {
           font-size: 10px;
-
         }
       }
     }
