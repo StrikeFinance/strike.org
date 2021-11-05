@@ -24,8 +24,15 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
   };
 
   useEffect(() => {
-    getMarket();
-  }, [getGovernanceStrike]);
+    const updateTimer = setInterval(() => {
+      getMarket();
+    }, 3000);
+    return function cleanup() {
+      if (updateTimer) {
+        clearInterval(updateTimer);
+      }
+    };
+  }, []);
 
   return (
     <WrapLayout>
