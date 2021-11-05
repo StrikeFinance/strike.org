@@ -47,14 +47,14 @@ function TotalBorrow(props) {
                   <div key={key}>
                     <div className="coin-info">
                       <div>{item.underlyingSymbol}</div>
-                      <div>
+                      <div className="coin-percent">
                         {!new BigNumber(totalBorrow).isZero()
                           ? new BigNumber(item.totalBorrowsUsd)
                               .div(new BigNumber(totalBorrow))
                               .times(100)
                               .dp(2, 1)
                               .toNumber()
-                          : 0}
+                          : 0}%
                       </div>
                     </div>
                     <Progress
