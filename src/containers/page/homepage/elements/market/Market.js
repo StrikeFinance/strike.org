@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import Borrow from './borrow/';
 import './Market.scss';
-// import TotalSupply from './total-supply/TotalSupply';
 import TotalSupply from './total-supply';
 
 

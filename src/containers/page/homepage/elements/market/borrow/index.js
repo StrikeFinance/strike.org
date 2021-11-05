@@ -24,7 +24,7 @@ function TotalBorrow(props) {
           <img src={vector14} className="vector14" />
           <img src={vector15} className="vector15" />
           <div className="children-content">
-            <Typography className="title-content">Total Suply</Typography>
+            <Typography className="title-content">Total Borrow</Typography>
             <Divider />
             <Typography className="money-supply">
               ${format(totalBorrow)}

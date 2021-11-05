@@ -42,7 +42,7 @@ function Totalsupply(props) {
         >
           <img src={vector3} className="vector3" />
           <div className="children-content">
-            <Typography className="title-content">Total Suply</Typography>
+            <Typography className="title-content">Total Supply</Typography>
             <Divider />
             <Typography className="money-supply">
               ${format(totalSupply)}
