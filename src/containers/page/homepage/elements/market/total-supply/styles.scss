@@ -5,7 +5,7 @@
     }
     &__left {
       @media screen and (max-width: 767px) {
-        padding-bottom: 40px;
+        padding-bottom: 50px;
       }
       .title {
         font-size: 25px;
@@ -42,6 +42,7 @@
       width: 45% !important;
       @media screen and (max-width: 767px) {
         width: 100% !important;
+        margin-top: 50px;
       }
       img.vector3 {
         position: absolute;
