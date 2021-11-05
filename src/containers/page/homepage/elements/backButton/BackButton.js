@@ -9,9 +9,9 @@ const BackButton = ({ title }) => {
     history.go(-1);
   };
   return (
-    <div className="title-wrapper" onClick={handleRoute}>
+    <div className="title-wrapper">
       <div className="title-wrapper-child">
-        <div>
+        <div onClick={handleRoute}>
           <img src={arrowRightImg} alt="arrow-left" />
         </div>
         <div>

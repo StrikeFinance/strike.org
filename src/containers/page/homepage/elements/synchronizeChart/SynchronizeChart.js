@@ -114,7 +114,7 @@ export const SynchronizeChart = ({ marketType, data }) => {
       ...options,
       series: [
         {
-          name: `${marketType === 'supply' ? 'Supply APY' : 'Borrow APY'}`,
+          name: `${marketType === 'supply' ? ' Supply APY' : 'Borrow APY'}`,
           color: `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`,
           data: supplyOrBorrow,
           lineWidth: 5
