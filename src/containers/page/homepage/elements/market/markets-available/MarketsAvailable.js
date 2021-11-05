@@ -134,6 +134,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
   const [markets, setMarkets] = useState([]);
   const [total, setTotal] = useState(0);
   const [current, setCurrent] = useState(1);
+  const [sortInfo, setSortInfo] = useState({ field: '', sort: 'desc' });
   const history = useHistory();
   const getMarkets = async ({ offset, limit }) => {
     const res = await promisify(getGovernanceStrikeWithParam, {
@@ -174,6 +175,14 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
   useEffect(() => {
     getMarkets({ offset: 0, limit: 5 });
   }, []);
+
+  const handleSort = field => {
+    setSortInfo({
+      field,
+      sort:
+        sortInfo.field === field && sortInfo.sort === 'desc' ? 'asc' : 'desc'
+    });
+  };
 
   return (
     <div className="markets-available">
