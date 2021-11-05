@@ -89,9 +89,23 @@ const MarketDetail = ({
   };
 
   useEffect(() => {
+    getGraphData(constants.CONTRACT_SBEP_ADDRESS[currentAsset].address, '1day');
     getDecimal();
     getMarket();
   }, []);
+
+  useEffect(() => {
+    if (currentAsset) {
+      getGraphData(
+        constants.CONTRACT_SBEP_ADDRESS[currentAsset].address,
+        '1day'
+      );
+    }
+  }, [currentAsset]);
+
+  useEffect(() => {
+    setcurrentAsset(match.params.asset.toLowerCase());
+  }, [match]);
 
   return (
     <WrapLayout>
