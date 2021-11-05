@@ -1,6 +1,9 @@
 .banner-homepage {
   padding-top: 30px;
   padding-bottom: 120px;
+  @media screen and (max-width: 767px) {
+    padding-bottom: 61px;
+  }
   .banner-content {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -63,6 +66,5 @@
     }
   }
   .scroll-image {
-    margin-bottom: 30px;
   }
 }

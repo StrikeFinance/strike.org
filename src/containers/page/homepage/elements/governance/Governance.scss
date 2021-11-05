@@ -1,15 +1,14 @@
-
 .governance {
   .governance-wrapper {
     position: relative;
     .governance-content {
-      background: #3B54B5;
+      background: #3b54b5;
       padding: 200px 100px 100px 100px;
       margin-top: 700px;
       @media screen and (max-width: 767px) {
         padding-left: 20px;
         padding-right: 20px;
-        padding-top: 150px;
+        padding-top: 60px;
       }
       .docs {
         padding: 200px 0;
@@ -21,7 +20,7 @@
           font-size: 20px;
           padding: 5px;
           font-weight: 800;
-          background: #ECEFF9;
+          background: #eceff9;
           border-radius: 5px;
           display: inline-block;
           line-height: 27px;
@@ -64,18 +63,18 @@
           font-weight: 800;
           font-size: 20px;
           padding-bottom: 10px;
-          border-bottom: 1px solid #E5E5E5;
+          border-bottom: 1px solid #e5e5e5;
         }
         .recent-list {
           .recent-item {
             padding: 10px 0;
-            border-bottom: 1px solid #E5E5E5;
+            border-bottom: 1px solid #e5e5e5;
             .description {
               color: #ffffff;
               font-size: 20px;
             }
             .status {
-              background: #06C270;
+              background: #06c270;
               border-radius: 5px;
               color: #ffffff;
               font-weight: 800;
@@ -95,7 +94,7 @@
               }
             }
             .time {
-              color: #9D9FA7;
+              color: #9d9fa7;
               font-size: 14px;
             }
             .state {
@@ -120,7 +119,6 @@
           position: absolute;
           top: -100px;
           right: 50px;
-          
         }
         .arrow-cross-black {
           position: absolute;
@@ -141,6 +139,9 @@
       right: 0;
       margin-left: auto;
       margin-right: auto;
+      @media screen and (max-width: 767px) {
+        // top: -340px;
+      }
     }
   }
 }
