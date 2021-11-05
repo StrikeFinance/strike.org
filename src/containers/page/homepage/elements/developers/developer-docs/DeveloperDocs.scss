@@ -15,7 +15,6 @@
     }
     .content {
       max-width: 100%;
-      flex: 1 1 0%;
       @media screen and (max-width: 767px) {
         display: block;
         margin: auto;
@@ -53,7 +52,7 @@
           font-weight: 500;
           color: #0b0f23;
           display: block;
-          max-width: 80%;
+          max-width: 100%;
           @media screen and (max-width: 767px) {
             display: block;
             font-size: 31px;
@@ -71,7 +70,7 @@
           font-weight: 500;
           color: #6d6f7b;
           display: block;
-          max-width: 58%;
+          max-width: 77%;
           @media screen and (max-width: 767px) {
             display: block;
             max-width: 100%;
@@ -99,17 +98,16 @@
     }
 
     .img-dev {
-      flex: 1;
       @media screen and (max-width: 767px) {
         padding-top: 86.45px;
         text-align: center;
         margin: 0 auto;
-        max-width: 100%;
+        
       }
 
       .img-blockchain {
-        width: 100%;
         margin-top: -14%; 
+        max-width: 100%;
         @media screen and (max-width: 767px) {
           margin: auto;
           width: 100%;
