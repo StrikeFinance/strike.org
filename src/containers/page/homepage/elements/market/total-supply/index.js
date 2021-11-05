@@ -65,14 +65,14 @@ function Totalsupply(props) {
                   <div key={key}>
                     <div className="coin-info">
                       <div>{item.underlyingSymbol}</div>
-                      <div>
+                      <div className="coin-percent">
                         {!new BigNumber(totalSupply).isZero()
                           ? new BigNumber(item.totalSupplyUsd)
                               .div(new BigNumber(totalSupply))
                               .times(100)
                               .dp(2, 1)
                               .toNumber()
-                          : 0}
+                          : 0}%
                       </div>
                     </div>
                     <Progress
