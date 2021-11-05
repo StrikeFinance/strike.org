@@ -75,7 +75,7 @@ function TotalBorrow(props) {
             <div className="footer-content flex just-between">
               <div className="footer-content__left">
                 <Typography className="footer-content__left__title">
-                  24h Supply Volume
+                  24h Borrow Volume
                 </Typography>
                 <Typography className="footer-content__number">{`$${format(
                   new BigNumber(borrowVolume).toFormat(2)
@@ -83,7 +83,7 @@ function TotalBorrow(props) {
               </div>
               <div className="footer-content__right">
                 <Typography className="footer-content__right__title">
-                  # of Suppliers
+                  # of Borrowers
                 </Typography>
                 <Typography className="footer-content__right__number">
                   {borrowerCount}

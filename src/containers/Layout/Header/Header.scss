@@ -1,9 +1,11 @@
 .page-header {
-  position: sticky;
   top: 0;
   z-index: 1000;
   .header-content {
     .header__content {
+      position: fixed;
+      width: 100%;
+      z-index: 10;
       padding: 20px 100px;
       display: flex;
       justify-content: space-between;
@@ -24,8 +26,6 @@
         }
       }
       .nav-links {
-      
-
         .links {
           display: flex;
           align-items: center;

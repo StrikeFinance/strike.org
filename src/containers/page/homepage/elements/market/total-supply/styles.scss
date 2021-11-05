@@ -1,5 +1,8 @@
 .total-supplys {
   margin-top: 88px;
+  @media screen and (max-width: 767px) {
+    margin-top: 0;
+  }
   .total-supply-content {
     @media screen and (max-width: 767px) {
     }
@@ -12,6 +15,10 @@
         color: #107def;
         font-weight: 500;
         padding-bottom: 10px;
+        @media screen and (max-width: 767px) {
+          display: block;
+          padding-bottom: 10px;
+        }
       }
       .title-desciption {
         font-size: 49px;
@@ -42,7 +49,6 @@
       width: 45% !important;
       @media screen and (max-width: 767px) {
         width: 100% !important;
-        margin-top: 50px;
       }
       img.vector3 {
         position: absolute;

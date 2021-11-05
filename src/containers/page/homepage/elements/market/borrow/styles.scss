@@ -1,5 +1,8 @@
 .total-borrows {
   margin-top: 163px;
+  @media screen and (max-width: 767px) {
+     margin-top: 56px;
+  }
   .total-borrow-content {
     display: flex !important;
     justify-content: space-between;
@@ -8,6 +11,9 @@
       flex-direction: column-reverse;
     }
     &__left {
+      @media screen and (max-width: 767px) {
+        padding-top: 0!important;
+      }
       img.vector14 {
         position: absolute;
         top: 27%;
