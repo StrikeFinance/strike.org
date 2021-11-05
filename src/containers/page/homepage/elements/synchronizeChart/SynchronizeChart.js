@@ -3,6 +3,7 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import React, { useEffect, useState } from 'react';
 import './SynchronizeChart.scss';
+import { currencyFormatter } from 'utilities/common';
 
 export const SynchronizeChart = ({ marketType, data }) => {
   const [options, setoption] = useState({
@@ -116,18 +117,12 @@ export const SynchronizeChart = ({ marketType, data }) => {
           name: `${marketType === 'supply' ? 'Supply APY' : 'Borrow APY'}`,
           color: `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`,
           data: supplyOrBorrow,
-          lineWidth: 5,
-          tooltip: {
-            pointFormat: `{series.name}:  <strong>{point.y}%</strong> <br>`
-          }
+          lineWidth: 5
         },
         {
           name: `${marketType === 'supply' ? 'Total Supply' : 'Total Borrow'}`,
           color: `${marketType === 'supply' ? '#F3F9FE' : '#FFF3F5'}`,
-          data: totalSupplyOrBorrow,
-          tooltip: {
-            pointFormat: '{series.name}: <b>{point.y}</b>'
-          }
+          data: totalSupplyOrBorrow
         }
       ],
       plotOptions: {
@@ -138,6 +133,19 @@ export const SynchronizeChart = ({ marketType, data }) => {
             }
           }
         }
+      },
+      tooltip: {
+        formatter: function () {
+          const points = this.points;
+          const pointsLength = points.length;
+          const tooltipMarkup = pointsLength
+            ? `<div>
+                <div>${points[0].series.name}:  <strong>${points[0].y}%</strong></div><br>
+                <div>${points[1].series.name}:  <strong>${currencyFormatter(points[1].y)}</strong></div>
+              </div>` : '';
+          return tooltipMarkup;
+        },
+        shared: true
       }
     });
   }, [marketType, data]);
