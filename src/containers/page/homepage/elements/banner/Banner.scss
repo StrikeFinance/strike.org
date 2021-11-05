@@ -1,6 +1,6 @@
 .banner-homepage {
   padding-top: 30px;
- 
+  padding-bottom: 120px;
   .banner-content {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -45,10 +45,17 @@
       }
     }
     .image-banner {
-      z-index: 5;
+      position: absolute;
+      z-index: 1;
+      right: 10%;
       padding-right: 30px;
+      max-height: 100%;
+      img{
+        width: 100%;
+      }
       @media screen and (max-width: 767px) {
         text-align: right;
+        position: static;
         img {
           width: 217px;
         }

@@ -4,7 +4,7 @@
   margin: auto;
   padding-bottom: 215px;
   @media screen and (max-width: 767px) {
-    padding-left: 20px;
+    padding-left: 0;
     padding-right: 12px;
     padding-bottom: 121px;
   }
@@ -40,7 +40,7 @@
           color: #6d6f7b;
           display: block;
           padding-top: 30px;
-          max-width: 56%;
+          max-width: 75%;
           @media screen and (max-width: 767px) {
             max-width: 100%;
           }
@@ -68,6 +68,7 @@
         margin: auto;
       }
       img {
+        max-width: 100%;
         @media screen and (max-width: 767px) {
           padding-top: 86.45px;
         }

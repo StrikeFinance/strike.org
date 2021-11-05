@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 const WrapLayout = ({ children }) => {
   useEffect(() => {}, []);
   return (
-    <div>
+    <div style={{overflowX: "hidden"}}>
       <Header />
       <div>{children}</div>
       <Footer />

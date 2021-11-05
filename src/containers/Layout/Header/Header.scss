@@ -1,4 +1,3 @@
-
 .page-header {
   position: sticky;
   top: 0;
@@ -25,29 +24,32 @@
         }
       }
       .nav-links {
+      
+
         .links {
           display: flex;
           align-items: center;
+          flex: wrap !important;
           .link-item {
-              margin-right: 2rem;
-              font-size: 20px;
-              font-weight: 500;
-              color: #aaaeb5;
-              text-decoration: none;
-              &:hover {
-                  color: #277ee6;
-              }
+            margin-right: 2rem;
+            font-size: 20px;
+            font-weight: 500;
+            color: #aaaeb5;
+            text-decoration: none;
+            &:hover {
+              color: #277ee6;
+            }
           }
         }
       }
-      .nav-btn { 
+      .nav-btn {
         font-size: 18px;
         font-weight: 800;
         .whitepaper-btn {
           width: 160px;
           height: 50px;
           border-radius: 8px;
-          background-color:  #ffffff;
+          background-color: #ffffff;
           color: #277ee6;
           display: flex;
           align-items: center;
@@ -59,7 +61,7 @@
           width: 160px;
           height: 50px;
           border-radius: 8px;
-          background-color: #107DEF;
+          background-color: #107def;
           color: #ffffff;
           display: flex;
           align-items: center;
@@ -68,7 +70,7 @@
           cursor: pointer;
           &:hover {
             background-color: #ffffff;
-            color: #477ee6 ;
+            color: #477ee6;
           }
         }
       }
@@ -106,7 +108,7 @@
         width: 160px;
         height: 50px;
         border-radius: 8px;
-        background-color:  #ffffff;
+        background-color: #ffffff;
         color: #277ee6;
         display: flex;
         align-items: center;
@@ -118,7 +120,7 @@
         width: 160px;
         height: 50px;
         border-radius: 8px;
-        background-color: #107DEF;
+        background-color: #107def;
         color: #ffffff;
         display: flex;
         align-items: center;
@@ -126,7 +128,7 @@
         cursor: pointer;
         &:hover {
           background-color: #ffffff;
-          color: #477ee6 ;
+          color: #477ee6;
         }
       }
     }
