@@ -1,0 +1,8 @@
+.loading-spinner {
+    height: calc(100vh - 425px);
+    width: 100%;
+
+    @media only screen and (max-width: 1440px) {
+        height: 70vh;
+    }
+}
