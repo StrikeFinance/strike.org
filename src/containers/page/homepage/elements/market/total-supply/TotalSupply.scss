@@ -42,14 +42,14 @@
     }
   }
   .table-total-supply {
-    width: 520px;
+    width: 512px;
     height: auto;
     background-color: var(--color-bg-primary);
     border-radius: 20px;
     padding: 25px 40px;
 
     @media screen and (max-width: 767px) {
-      width: auto;
+      max-width: 100%;
     }
     .coin-info,
     .table-total-supply-footer {

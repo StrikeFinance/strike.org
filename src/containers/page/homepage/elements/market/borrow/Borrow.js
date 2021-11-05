@@ -72,7 +72,7 @@ const Borrow = ({ markets, totalBorrow, borrowerCount, borrowVolume }) => {
             </div>
           </div>
         </Col>
-        <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+        <Col xs={24} sm={24} md={14} lg={10} xl={10}>
           <div className="right-text">
             <div>Market</div>
             <div>Access Liquidity from Strike on-demand on any asset</div>
