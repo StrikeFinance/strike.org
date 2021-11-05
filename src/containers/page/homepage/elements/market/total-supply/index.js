@@ -12,14 +12,14 @@ function Totalsupply(props) {
   const { markets, totalSupply, supplierCount, supplyVolume } = props;
   const format = commaNumber.bindWith(',', '.');
   return (
-    <div className="total-supply">
+    <div className="total-supplys">
       <Row className="total-supply-content">
         <Col
           xs={24}
           sm={24}
           md={10}
-          lg={14}
-          xl={14}
+          lg={12}
+          xl={12}
           className="total-supply-content__left"
         >
           <Typography className="title">Market</Typography>
@@ -36,8 +36,8 @@ function Totalsupply(props) {
           xs={24}
           sm={24}
           md={10}
-          lg={10}
-          xl={10}
+          lg={12}
+          xl={12}
           className="total-supply-content__right"
         >
           <img src={vector3} className="vector3" />
@@ -49,8 +49,8 @@ function Totalsupply(props) {
             </Typography>
             <Divider />
             <Typography className="top-markets">Top 3 Markets</Typography>
-            {markets.markets &&
-              (markets.markets || [])
+            {markets?.markets &&
+              (markets?.markets || [])
                 .filter(
                   m =>
                     m.underlyingSymbol !== 'ZRX' && m.underlyingSymbol !== 'BAT'

@@ -24,7 +24,7 @@ const Banner = ({ markets }) => {
               {new Intl.NumberFormat({
                 maximumSignificantDigits: 3
               }).format(
-                markets.markets.reduce(
+                markets?.markets.reduce(
                   (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
                   new BigNumber('0')
                 )
@@ -34,7 +34,7 @@ const Banner = ({ markets }) => {
             <span>TVL across</span>
           </div>
           <div>
-            <span className="text-highlight">{markets.markets.length}</span>
+            <span className="text-highlight">{markets?.markets.length}</span>
             <span> sToken markets</span>
           </div>
           <div className="arrow-down-fill">

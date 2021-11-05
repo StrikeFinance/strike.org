@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import Borrow from './borrow/Borrow';
+import Borrow from './borrow/';
 import './Market.scss';
 // import TotalSupply from './total-supply/TotalSupply';
 import TotalSupply from './total-supply';
@@ -51,12 +51,12 @@ const Market = ({ markets }) => {
         supplierCount={supplierCount}
         supplyVolume={supplyVolume}
       />
-      {/* <Borrow
+      <Borrow
         markets={markets}
         borrowVolume={borrowVolume}
         borrowerCount={borrowerCount}
         totalBorrow={totalBorrow}
-      /> */}
+      />
       {/* <MarketsAvailable /> */}
     </div>
   );
