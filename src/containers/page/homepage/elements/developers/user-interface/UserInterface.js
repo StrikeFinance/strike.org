@@ -10,7 +10,7 @@ const StrikeProtocol = () => {
   return (
     <div className="strike-protocols">
       <div className="strike-protocol-content flex just-between">
-        <Row>
+        <Row className="Row">
           <Col xs={24} sm={24} md={12} lg={12} xl={12}>
             <div className="img-dev">
               <img src={imgMacbook} className="img-macbook" />
