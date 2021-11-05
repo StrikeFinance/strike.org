@@ -32,7 +32,7 @@ const HomePageLink = [
   }
 ];
 const Header = () => {
-  const [isMobile] = useWindowResizeMobile(768);
+  const [isMobile] = useWindowResizeMobile(1099);
   const [visible, setVisible] = useState(false);
   const history = useHistory();
   return (
@@ -111,7 +111,7 @@ const Header = () => {
             </div>
           ) : (
             <div className="nav-links flex">
-              <div className="links">
+              <div className="links ">
                 {HomePageLink.map((link, index) => (
                   <NavLink
                     key={index}

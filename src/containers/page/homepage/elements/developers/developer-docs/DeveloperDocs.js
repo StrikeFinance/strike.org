@@ -10,7 +10,7 @@ const DeveloperDocs = () => {
   return (
     <div className="developer-docs">
       <div className="developer-docs-content flex just-between">
-        <Row>
+        <Row >
           <Col xs={24} sm={24} md={10} lg={10} xl={10}>
             <div className="content">
               <span className="text-developers">Developers</span>
