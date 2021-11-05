@@ -83,6 +83,9 @@
       }
     }
     &__right {
+      @media screen and (max-width: 767px) {
+        padding-top: 0;
+      }
       .title {
         font-size: 25px;
         color: #107def;
