@@ -83,6 +83,14 @@
               font-weight: 500;
             }
           }
+          .footer-content__number, .footer-content__right__number {
+            font-size: 20px;
+            font-weight: 600;
+            color: #0b0f23;
+          }
+          .footer-content__right__number {
+            text-align: right;
+          }
         }
       }
     }
