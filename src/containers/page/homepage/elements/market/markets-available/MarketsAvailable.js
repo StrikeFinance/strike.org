@@ -39,7 +39,7 @@ const ICONS = {
 };
 const columns = [
   {
-    title: 'Market',
+    title: () => <span>Market</span>,
     dataIndex: 'market',
     key: 'market',
     render: (action, record) => (
@@ -58,6 +58,7 @@ const columns = [
     title: 'Total Supply',
     dataIndex: 'totalSuplly',
     key: 'totalSupply',
+    sorter: (a, b) => a.totalSupplyUsd - b.totalSupplyUsd,
     render: (action, record) => (
       <div className="total-supply">
         <div className="row1">
