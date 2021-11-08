@@ -33,6 +33,9 @@
           @media screen and (max-width: 812px) {
             font-size: 25px;
           }
+          @media screen and (max-width: 1024px) {
+            font-size: 26px!important;
+          }
         }
         .content-left {
           position: relative;
@@ -68,6 +71,9 @@
           font-size: 20px;
           padding-bottom: 10px;
           border-bottom: 1px solid #e5e5e5;
+          @media screen and (max-width: 812px) {
+            font-size: 16px;
+          }
         }
         .recent-list {
           .recent-item {
@@ -76,6 +82,9 @@
             .description {
               color: #ffffff;
               font-size: 20px;
+              @media screen and (max-width: 812px) {
+                font-size: 16px;
+              }
             }
             .status {
               background: #06c270;
@@ -85,6 +94,7 @@
               padding: 2px 10px;
               @media screen and (max-width: 812px) {
                 display: inline-block;
+                font-size: 12px!important;
               }
             }
             .failed {
@@ -95,6 +105,7 @@
               padding: 2px 10px;
               @media screen and (max-width: 812px) {
                 display: inline-block;
+                font-size: 12px!important;
               }
             }
             .time {
@@ -104,6 +115,9 @@
             .state {
               color: #ffffff;
               font-size: 14px;
+              @media screen and (max-width: 812px) {
+                font-size: 12px!important;
+              }
             }
           }
         }

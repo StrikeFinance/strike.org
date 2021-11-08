@@ -45,6 +45,11 @@
             font-size: 25px;
             max-width: 100%;
           }
+          @media screen and (max-width: 1024px) {
+            display: block;
+            font-size: 26px!important;
+            max-width: 100%;
+          }
         }
 
         .developer-api {
@@ -56,6 +61,11 @@
           @media screen and (max-width: 812px) {
             display: block;
             font-size: 25px;
+            max-width: 100%;
+          }
+          @media screen and (max-width: 1024px) {
+            display: block;
+            font-size: 26px!important;
             max-width: 100%;
           }
         }
@@ -75,6 +85,10 @@
             display: block;
             max-width: 100%;
             font-size: 16px;
+          }
+          @media screen and (max-width: 1024px) {
+            display: block;
+            max-width: 100%;
           }
         }
       }

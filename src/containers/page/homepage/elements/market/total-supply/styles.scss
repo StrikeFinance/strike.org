@@ -31,6 +31,9 @@
           font-size: 25px;
           width: 100%;
         }
+        @media screen and (device-width: 1024px) {
+          font-size: 26px !important;
+        }
       }
       .title-strike {
         font-size: 18px;
@@ -40,6 +43,10 @@
         @media screen and (max-width: 812px) {
           font-size: 14px;
           width: 100%;
+        }
+        @media screen and (max-width: 1024px) {
+          width: 90% !important;
+          font-size: 18px;
         }
       }
     }
@@ -53,6 +60,9 @@
         padding-left: 26px !important;
         padding-right: 26px !important;
       }
+      @media screen and (device-width: 1024px) {
+        width: 100%;
+      }
       img.vector3 {
         position: absolute;
         z-index: 1;
@@ -60,6 +70,10 @@
         top: -14%;
         @media screen and (max-width: 812px) {
           display: none;
+        }
+        @media screen and (max-width: 1024px) {
+          width: 25%;
+          top: -8%;
         }
       }
       img.vector2 {
@@ -70,6 +84,10 @@
         @media screen and (max-width: 812px) {
           display: none;
         }
+        @media screen and (max-width: 1024px) {
+          width: 16%;
+          bottom: -11%;
+        }
       }
 
       img.vector4 {
@@ -79,6 +97,9 @@
         z-index: 1;
         @media screen and (max-width: 812px) {
           display: none;
+        }
+        @media screen and (max-width: 1024px) {
+          width: 25%;
         }
       }
       .children-content {
@@ -91,16 +112,25 @@
           font-size: 20px;
           font-weight: 800;
           color: #0b0f23;
+          @media screen and (max-width: 1024px) {
+            font-size: 16px;
+          }
         }
         .money-supply {
           font-size: 25px;
           font-weight: 800;
           color: #0b0f23;
+          @media screen and (max-width: 1024px) {
+            font-size: 16px;
+          }
         }
         .top-markets {
           color: #107def;
           font-size: 20px;
           font-weight: 400;
+          @media screen and (max-width: 1024px) {
+            font-size: 16px;
+          }
         }
         .coin-info {
           display: flex;
@@ -110,6 +140,9 @@
           .coin-percent {
             font-size: 16px;
             font-weight: 500;
+            @media screen and (max-width: 1024px) {
+              font-size: 14px;
+            }
           }
         }
 
@@ -119,11 +152,17 @@
               font-size: 14px;
               font-weight: 500;
               color: #9d9fa7;
+              @media screen and (max-width: 1024px) {
+                font-size: 14px;
+              }
             }
             &__number {
               font-size: 20px;
               color: #0b0f23;
               font-weight: 500;
+              @media screen and (max-width: 1024px) {
+                font-size: 14px !important;
+              }
             }
           }
           &__right {
@@ -131,19 +170,20 @@
               font-size: 14px;
               font-weight: 500;
               color: #9d9fa7;
+              @media screen and (max-width: 1024px) {
+                font-size: 14px !important;
+              }
             }
             &__number {
               font-size: 20px;
               color: #0b0f23;
               font-weight: 500;
+              @media screen and (max-width: 1024px) {
+                font-size: 14px !important;
+              }
             }
           }
-          .footer-content__number,
-          .footer-content__right__number {
-            font-size: 20px;
-            font-weight: 600;
-            color: #0b0f23;
-          }
+
           .footer-content__right__number {
             text-align: right;
           }

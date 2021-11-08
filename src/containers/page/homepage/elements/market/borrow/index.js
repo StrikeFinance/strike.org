@@ -77,7 +77,7 @@ function TotalBorrow(props) {
                 <Typography className="footer-content__left__title">
                   24h Borrow Volume
                 </Typography>
-                <Typography className="footer-content__number">{`$${format(
+                <Typography className="footer-content__left__number">{`$${format(
                   new BigNumber(borrowVolume).toFormat(2)
                 )}`}</Typography>
               </div>

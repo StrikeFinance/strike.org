@@ -35,7 +35,7 @@ function Totalsupply(props) {
         <Col
           xs={24}
           sm={24}
-          md={10}
+          md={14}
           lg={12}
           xl={12}
           className="total-supply-content__right"
@@ -95,7 +95,7 @@ function Totalsupply(props) {
                 <Typography className="footer-content__left__title">
                   24h Supply Volume
                 </Typography>
-                <Typography className="footer-content__number">{`$${format(
+                <Typography className="footer-content__left__number">{`$${format(
                   new BigNumber(supplyVolume).toFormat(2)
                 )}`}</Typography>
               </div>

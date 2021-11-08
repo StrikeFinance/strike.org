@@ -24,6 +24,11 @@
         padding-left: 20px;
         display: block;
       }
+
+      @media screen and (device-width: 1024px) {
+        font-size: 28px !important;
+      }
+
       .arrow-down-fill {
         margin-top: 10px;
         margin-left: 50px;
@@ -53,7 +58,7 @@
       right: 10%;
       padding-right: 30px;
       max-height: 100%;
-      img{
+      img {
         width: 100%;
       }
       @media screen and (max-width: 812px) {
@@ -61,6 +66,12 @@
         position: static;
         img {
           width: 217px;
+        }
+      }
+      @media screen and (device-width: 1024px) {
+        position: static;
+        img {
+          width: 80%!important;
         }
       }
     }
