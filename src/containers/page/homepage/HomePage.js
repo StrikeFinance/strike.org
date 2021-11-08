@@ -12,6 +12,7 @@ import Market from 'containers/page/homepage/elements/market/Market';
 import Governance from 'containers/page/homepage/elements/governance/Governance';
 import Developers from 'containers/page/homepage/elements/developers/Developers';
 
+
 const HomePage = ({ getGovernanceStrike, setSetting }) => {
   const [markets, setmarkets] = useState();
   const getMarket = async () => {
@@ -50,7 +51,9 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
           </div>
         </div>
       ) : (
-        <LoadingSpinner />
+        <div className="loading-spinner" style={{height: `calc(100vh - 325px)`}}>
+          <LoadingSpinner />
+        </div>
       )}
     </WrapLayout>
   );

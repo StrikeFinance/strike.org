@@ -1,5 +1,5 @@
 .market-info {
-    padding: 0 100px;
+    padding: 20px 100px;
     display: flex;
     justify-content: space-between;
     @media only screen and (max-width: 768px) {
@@ -31,10 +31,18 @@
         .label {
             font-size: 14px;
             font-weight: 500;
+            text-align: right;
+            @media screen and (max-width: 475px) {
+                font-size: 11px;
+            }
         }
         .value {
             font-size: 20px;
             font-weight: 800;
+            text-align: right;
+            @media screen and (max-width: 475px) {
+                font-size: 14px;
+            }
         }
         .total-supply {
             display: block;

@@ -82,7 +82,7 @@ const Governance = ({ getGovernance, history }) => {
               <div className="recent-proposals">
                 <div className="title-proposals">Recent Proposals</div>
                 <div className="recent-list">
-                  {governance.map((item, index) => (
+                  {governance.slice(0, 5).map((item, index) => (
                     <div
                       onClick={() =>
                         history.push(`/governance-detail/${item.id}`)
