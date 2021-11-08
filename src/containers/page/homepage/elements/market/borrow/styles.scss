@@ -42,23 +42,32 @@
         padding: 25px 40px 27px 40px !important;
         @media screen and (max-width: 812px) {
           width: 100%;
-          padding-left: 26px!important;
-          padding-right: 26px!important;
+          padding-left: 26px !important;
+          padding-right: 26px !important;
         }
         .title-content {
           font-size: 20px;
           font-weight: 800;
           color: #0b0f23;
+          @media screen and (max-width: 1024px) {
+            font-size: 16px !important;
+          }
         }
         .money-supply {
           font-size: 25px;
           font-weight: 800;
           color: #0b0f23;
+          @media screen and (max-width: 1024px) {
+            font-size: 16px !important;
+          }
         }
         .top-markets {
           color: #107def;
           font-size: 20px;
           font-weight: 400;
+          @media screen and (max-width: 1024px) {
+            font-size: 16px !important;
+          }
         }
         .coin-info {
           display: flex;
@@ -68,6 +77,9 @@
           .coin-percent {
             font-size: 16px;
             font-weight: 500;
+            @media screen and (max-width: 1024px) {
+              font-size: 14px !important;
+            }
           }
         }
         .footer-content {
@@ -81,6 +93,9 @@
               font-size: 20px;
               color: #0b0f23;
               font-weight: 500;
+              @media screen and (max-width: 1024px) {
+                font-size: 16px !important;
+              }
             }
           }
           &__right {
@@ -93,14 +108,12 @@
               font-size: 20px;
               color: #0b0f23;
               font-weight: 500;
+              @media screen and (max-width: 1024px) {
+                font-size: 16px !important;
+              }
             }
           }
-          .footer-content__number,
-          .footer-content__right__number {
-            font-size: 20px;
-            font-weight: 600;
-            color: #0b0f23;
-          }
+
           .footer-content__right__number {
             text-align: right;
           }
@@ -128,6 +141,9 @@
           font-size: 25px;
           width: 100%;
         }
+        @media screen and (max-width: 1024px) {
+          font-size: 26px !important;
+        }
       }
       .title-strike {
         font-size: 18px;
@@ -137,6 +153,10 @@
         @media screen and (max-width: 812px) {
           font-size: 14px;
           width: 100%;
+        }
+        @media screen and (max-width: 1024px) {
+          width: 90% !important;
+          font-size: 18px;
         }
       }
     }

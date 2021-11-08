@@ -33,6 +33,9 @@
           @media screen and (max-width: 812px) {
             font-size: 25px;
           }
+          @media screen and (max-width: 1024px) {
+            font-size: 26px!important;
+          }
         }
         .content-left {
           position: relative;

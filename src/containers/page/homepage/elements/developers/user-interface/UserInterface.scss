@@ -59,6 +59,9 @@
             @media screen and (max-width: 812px) {
               font-size: 25px;
             }
+            @media screen and (max-width: 1024px) {
+              font-size: 26px!important;
+            }
           }
 
           span:nth-child(2) {
@@ -71,6 +74,10 @@
             @media screen and (max-width: 812px) {
               font-size: 16px;
               max-width: 100%;
+            }
+            @media screen and (max-width: 1024px) {
+              font-size: 16px;
+              max-width: 71%!important;
             }
           }
         }
