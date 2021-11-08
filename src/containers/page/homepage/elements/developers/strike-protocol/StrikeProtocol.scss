@@ -3,14 +3,14 @@
   display: block;
   margin: auto;
   padding-bottom: 215px;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 812px) {
     padding-left: 0;
     padding-right: 12px;
     padding-bottom: 121px;
   }
 
   .strike-whitepaper-content {
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 812px) {
       flex-direction: column;
       padding-left: 20px;
     }
@@ -29,8 +29,8 @@
           color: #0b0f23;
           display: block;
           padding-top: 10px;
-          @media screen and (max-width: 767px) {
-            font-size: 31px;
+          @media screen and (max-width: 812px) {
+            font-size: 25px;
           }
         }
 
@@ -41,8 +41,9 @@
           display: block;
           padding-top: 30px;
           max-width: 75%;
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 812px) {
             max-width: 100%;
+            font-size: 16px;
           }
         }
       }
@@ -64,15 +65,15 @@
     .img-dev {
       width: 100%;
       margin: auto;
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         margin: auto;
       }
       img {
         max-width: 100%;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           padding-top: 50px;
         }
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           width: 100%;
           margin: auto;
           padding-right: 10%;

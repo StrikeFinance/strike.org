@@ -241,7 +241,7 @@ function Header({ history }) {
               </NavLink>
             </li>
             <li className="header-menu__item">
-              <NavLink exact className="header-menu__link" to="/#earn">
+              <NavLink exact className="header-menu__link" to="/#market">
                 Market
               </NavLink>
             </li>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logoImg from 'assets/img/logo.png';
 import MenuTabImg from 'assets/img/homepage/menu-tab.svg';
 import CloseMenuImg from 'assets/img/homepage/close-menu.svg';
@@ -16,7 +16,7 @@ const HomePageLink = [
     altTitle: ''
   },
   {
-    to: '/#earn',
+    to: '/#market',
     title: 'Market',
     altTitle: ''
   },
@@ -35,6 +35,19 @@ const Header = () => {
   const [isMobile] = useWindowResizeMobile(1099);
   const [visible, setVisible] = useState(false);
   const history = useHistory();
+
+ 
+
+
+  const scrollWithOffset = (el, offset) => {
+    const elementPosition = el.offsetTop - offset;
+    window.scroll({
+      top: elementPosition,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className="page-header" id="header">
       <div className="header-content">
@@ -79,6 +92,7 @@ const Header = () => {
                           to={link?.to}
                           exact
                           onClick={() => setVisible(false)}
+                          scroll={(el) => scrollWithOffset(el, 100)}
                         >
                           {link?.title}
                         </NavLink>
@@ -118,7 +132,7 @@ const Header = () => {
                     className="link-item"
                     to={link?.to}
                     exact
-                    smooth
+                    scroll={el => scrollWithOffset(el, 100)}
                   >
                     {link?.title}
                   </NavLink>

@@ -39,7 +39,7 @@ const ICONS = {
 };
 const columns = [
   {
-    title: 'Market',
+    title: () => <span>Market</span>,
     dataIndex: 'market',
     key: 'market',
     render: (action, record) => (
@@ -67,6 +67,7 @@ const columns = [
           {format(
             new BigNumber(record?.totalSupplyUsd)
               .div(new BigNumber(record?.tokenPrice))
+
               .dp(0, 1)
               .toString(10)
           )}{' '}
@@ -197,7 +198,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
             className="table-market"
             onRowClick={onRowClick}
           />
-          <div style={{ textAlign: 'right', marginTop: '20px' }}>
+          <div className="pagination">
             <Pagination
               onChange={onChangePage}
               total={total}

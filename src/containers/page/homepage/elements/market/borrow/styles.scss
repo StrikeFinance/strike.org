@@ -1,25 +1,26 @@
 .total-borrows {
   margin-top: 163px;
-  @media screen and (max-width: 767px) {
-     margin-top: 56px;
+  @media screen and (max-width: 812px) {
+    margin-top: 56px;
   }
   .total-borrow-content {
     display: flex !important;
     justify-content: space-between;
     position: relative;
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 812px) {
       flex-direction: column-reverse;
     }
     &__left {
-      @media screen and (max-width: 767px) {
-        padding-top: 0!important;
+      @media screen and (max-width: 812px) {
+        padding-top: 0 !important;
+        width: 100%;
       }
       img.vector14 {
         position: absolute;
         top: 27%;
         left: 0%;
         z-index: 0;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           display: none;
         }
       }
@@ -29,7 +30,7 @@
         z-index: 0;
         top: 62%;
         left: -5%;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           display: none;
         }
       }
@@ -38,7 +39,12 @@
         background: rgba(255, 255, 255, 0.5);
         border-radius: 20px;
         width: 100%;
-        padding: 25px 40px 27px 40px !important ;
+        padding: 25px 40px 27px 40px !important;
+        @media screen and (max-width: 812px) {
+          width: 100%;
+          padding-left: 26px!important;
+          padding-right: 26px!important;
+        }
         .title-content {
           font-size: 20px;
           font-weight: 800;
@@ -89,7 +95,8 @@
               font-weight: 500;
             }
           }
-          .footer-content__number, .footer-content__right__number {
+          .footer-content__number,
+          .footer-content__right__number {
             font-size: 20px;
             font-weight: 600;
             color: #0b0f23;
@@ -101,8 +108,9 @@
       }
     }
     &__right {
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         padding-top: 0;
+        width: 100%;
       }
       .title {
         font-size: 25px;
@@ -116,7 +124,7 @@
         color: #0b0f23;
         width: 75%;
         padding-bottom: 30px;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           font-size: 25px;
           width: 100%;
         }
@@ -126,7 +134,7 @@
         font-weight: 500;
         color: #6d6f7b;
         width: 62%;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           font-size: 14px;
           width: 100%;
         }

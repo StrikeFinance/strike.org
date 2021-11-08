@@ -11,12 +11,12 @@ const StrikeProtocol = () => {
     <div className="strike-protocols">
       <div className="strike-protocol-content flex just-between">
         <Row className="Row">
-          <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             <div className="img-dev">
               <img src={imgMacbook} className="img-macbook" />
             </div>
           </Col>
-          <Col xs={24} sm={24} md={10} lg={12} xl={12}>
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             <div className="content">
               <span className="strike-finance">Try Strike Finance</span>
               <div className="text-layer">

@@ -43,7 +43,7 @@ const Market = ({ markets }) => {
     }
   }, [markets]);
   return (
-    <div className="market-homepage" id="earn">
+    <div className="market-homepage" id="market">
       <TotalSupply
         markets={markets}
         totalSupply={totalSupply}

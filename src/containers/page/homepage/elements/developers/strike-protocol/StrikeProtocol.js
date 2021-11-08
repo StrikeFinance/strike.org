@@ -11,7 +11,7 @@ function StrikeProtocol() {
     <div className="strike-whitepaper">
       <div className="strike-whitepaper-content flex just-between">
         <Row>
-          <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+          <Col xs={24} sm={24} md={24} lg={10} xl={10}>
             <div className="content">
               <span className="strike-whitepaper-text">Try Strike Finance</span>
               <div className="text-layer">
