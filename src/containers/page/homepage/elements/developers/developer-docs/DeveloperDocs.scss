@@ -2,20 +2,20 @@
   padding-left: 120px;
   display: block;
   margin: auto;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 812px) {
     padding-right: 12px;
     display: block;
     padding-left: 0;
   }
   .developer-docs-content {
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 812px) {
       padding-left: 20px;
       flex-direction: column !important;
       display: block;
     }
     .content {
       max-width: 100%;
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         display: block;
         margin: auto;
       }
@@ -25,7 +25,7 @@
         color: #107def;
         display: block;
         padding-bottom: 10px;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           display: block;
         }
       }
@@ -40,9 +40,9 @@
           color: #0b0f23;
           display: block;
           max-width: 100%;
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 812px) {
             display: block;
-            font-size: 31px;
+            font-size: 25px;
             max-width: 100%;
           }
         }
@@ -53,16 +53,16 @@
           color: #0b0f23;
           display: block;
           max-width: 100%;
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 812px) {
             display: block;
-            font-size: 31px;
+            font-size: 25px;
             max-width: 100%;
           }
         }
       }
       .text-layer-2 {
         padding-bottom: 40px;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           padding-right: 0;
         }
         .strike-protocol {
@@ -71,9 +71,10 @@
           color: #6d6f7b;
           display: block;
           max-width: 77%;
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 812px) {
             display: block;
             max-width: 100%;
+            font-size: 16px;
           }
         }
       }
@@ -81,7 +82,7 @@
         cursor: pointer;
         width: 174px;
 
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
         }
         .button-dev {
           display: block;
@@ -91,14 +92,14 @@
           width: 100%;
           box-shadow: 0px 3px 20px rgba(18, 114, 236, 0.4);
           border-radius: 8px;
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 812px) {
           }
         }
       }
     }
 
     .img-dev {
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         // padding-top: 86.45px;
         text-align: center;
         margin: 0 auto;
@@ -108,7 +109,7 @@
       .img-blockchain {
         margin-top: -14%; 
         max-width: 100%;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           margin: auto;
           width: 100%;
           padding-right: 10%;

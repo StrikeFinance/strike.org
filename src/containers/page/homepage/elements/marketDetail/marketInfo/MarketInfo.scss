@@ -2,7 +2,8 @@
     padding: 20px 100px;
     display: flex;
     justify-content: space-between;
-    @media only screen and (max-width: 768px) {
+    align-items: center;
+    @media only screen and (max-width: 812px) {
         display: inline-block;
         padding: 0 20px;
         width: 100%;
@@ -25,7 +26,7 @@
         width: 60%;
         display: flex;
         justify-content: space-between;
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: 812px) {
             width: 100%;
         }
         .label {
@@ -33,7 +34,7 @@
             font-weight: 500;
             text-align: right;
             @media screen and (max-width: 475px) {
-                font-size: 11px;
+                font-size: 10px;
             }
         }
         .value {
@@ -41,7 +42,7 @@
             font-weight: 800;
             text-align: right;
             @media screen and (max-width: 475px) {
-                font-size: 14px;
+                font-size: 10px;
             }
         }
         .total-supply {

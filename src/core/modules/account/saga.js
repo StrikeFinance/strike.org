@@ -9,7 +9,12 @@ import {
 } from 'core/modules/account/actions';
 
 import { restService } from 'utilities';
-import { GET_GOVERNANCE_REQUEST, GET_GOVERNANCE_STRIKE_PARAM_REQUEST, GET_INTERATE_MODEL } from './actions';
+import {
+  GET_GOVERNANCE_REQUEST,
+  GET_GOVERNANCE_STRIKE_PARAM_REQUEST,
+  GET_INTERATE_MODEL,
+  GET_PROPOSAL_BY_ID_REQUEST
+} from './actions';
 
 export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
   const { asset, type } = payload;
@@ -30,7 +35,7 @@ export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
 
 export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
   let url;
-  if (typeof (payload.offset) === 'number' && payload.limit) {
+  if (typeof payload.offset === 'number' && payload.limit) {
     url = `/governance/strike?offset=${payload.offset}&limit=${payload.limit}`;
   } else {
     url = `/governance/strike`;
@@ -51,7 +56,7 @@ export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
 export function* asyncGetGovernanceRequest({ payload, resolve, reject }) {
   try {
     const response = yield call(restService, {
-      api: `/proposals?limit=${payload.limit}&offset=${payload.offset}`,
+      api: `/proposals?limit=${payload.limit}&offset=${payload.offset}&filter=${payload.filter}`,
       method: 'GET',
       params: {}
     });
@@ -60,6 +65,31 @@ export function* asyncGetGovernanceRequest({ payload, resolve, reject }) {
     }
   } catch (e) {
     reject(e);
+  }
+}
+
+export function* asyncGetProposalByIdRequest({ payload, resolve, reject }) {
+  const { id } = payload;
+  try {
+    const response = yield call(restService, {
+      api: `/proposals/${id}`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    } else {
+      reject(response);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
+export function* watchGetProposalByIdRequest() {
+  while (true) {
+    const action = yield take(GET_PROPOSAL_BY_ID_REQUEST);
+    yield* asyncGetProposalByIdRequest(action);
   }
 }
 
@@ -157,13 +187,14 @@ export function* asyncGetFaucetRequest({ payload, resolve, reject }) {
   }
 }
 
-export default function* () {
+export default function*() {
   yield all([
     fork(watchGetMarketHistoryRequest),
     fork(watchGetGovernanceStrikeRequest),
     fork(watchGetDecimalRequest),
     fork(watchGetInterateModelRequest),
     fork(watchasyncGetGovernanceRequest),
-    fork(watchGetGovernanceStrikeWithParamRequest)
+    fork(watchGetGovernanceStrikeWithParamRequest),
+    fork(watchGetProposalByIdRequest)
   ]);
 }

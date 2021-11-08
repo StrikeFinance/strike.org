@@ -11,16 +11,22 @@ import { bindActionCreators } from 'redux';
 import { accountActionCreators, connectAccount } from 'core';
 import { promisify } from 'utilities';
 import moment from 'moment';
+import BigNumber from 'bignumber.js';
+import commaNumber from 'comma-number';
+import Web3 from 'web3';
+
+const format = commaNumber.bindWith(',', '.');
 
 function Governance(props) {
-  const { getGovernance, history, match } = props;
+  const { getGovernance, history, match, getIdProposal } = props;
   const [governanceInfo, setGovernanceInfo] = useState({});
   const [id, setId] = useState(match.params.id);
   const [date, setDate] = useState({});
   const [proposer, setProposer] = useState({});
   const [governanceStatus, setGovernanceStatus] = useState({});
   const [votePoint, setVotePoint] = useState({});
-  const [againstVote,setAgainstVote] = useState({})
+  const [againstVote, setAgainstVote] = useState({});
+  const [data, setData] = useState([]);
 
   const handleBack = () => {
     history.go(-1);
@@ -32,23 +38,29 @@ function Governance(props) {
     }
   }, [match]);
 
+  // const getIdProposal = useCallback(async () => {
+  //   await promisify(getProposalId, {
+  //     id: id
+  //   }).then();
+  // }, []);
+
   const getDataGovernance = useCallback(async () => {
     await promisify(getGovernance, {
-      offset: 0,
-      limit: 5
+      id: id
     })
       .then(res => {
+        const resDataTotal = res.data;
         const data = res.data.result;
         let dataObj = {};
         let statusObj = {};
         let dateObj = {};
         let proposerObj = {};
         let votePoint = {};
-        let againstVote = {}
+        let againstVote = {};
         data.forEach(item => {
           dataObj = {
             ...dataObj,
-            [item.id]: item.description
+            [item.id]: item.description.split('\n')[0]
           };
           statusObj = {
             ...statusObj,
@@ -64,19 +76,24 @@ function Governance(props) {
           };
           votePoint = {
             ...votePoint,
-            [item.id]: item.forVotes
+            [item.id]: format(
+              new BigNumber(Web3.utils.fromWei(item.forVotes, 'ether'))
+                .dp(8, 1)
+                .toString(10)
+            )
           };
           againstVote = {
             ...againstVote,
             [item.id]: item.againstVotes
-          }
+          };
         });
         setGovernanceInfo(dataObj);
         setGovernanceStatus(statusObj);
         setDate(dateObj);
         setProposer(proposerObj);
         setVotePoint(votePoint);
-        setAgainstVote(againstVote)
+        setAgainstVote(againstVote);
+        setData(resDataTotal);
       })
       .catch(e => {
         console.log(e);
@@ -107,13 +124,14 @@ function Governance(props) {
               {governanceStatus[id] === 'Executed' ? (
                 <span className="passed">passed</span>
               ) : governanceStatus[id] === 'Defeated' ? (
-                <span className="defeated">defeated</span>
+                <span className="defeated">failed</span>
               ) : governanceStatus[id] === 'Active' ? (
                 <span className="active">active</span>
               ) : null}
 
               <span className="date">
-                003 - Executed {moment(date[id]).format('MMMM Do, YYYY')}
+                003 - {governanceStatus[id]}{' '}
+                {moment(date[id]).format('MMMM Do, YYYY')}
               </span>
             </div>
           </div>
@@ -133,7 +151,26 @@ function Governance(props) {
         </div>
       </div>
       {/* End main content */}
-      <TableDetail votePoint={votePoint} id={id} againstVote={againstVote} />
+      <TableDetail
+        votePoint={
+          isNaN(BigNumber(parseInt(votePoint[id]))) ? '0' : votePoint[id]
+        }
+        id={id}
+        againstVote={
+          isNaN(BigNumber(parseInt(againstVote[id]))) ? '0' : againstVote[id]
+        }
+        data={data}
+        addressNumber={isNaN(BigNumber(data?.total)) ? 0 : data?.total}
+        emptyNumber={4 - (isNaN(BigNumber(data?.total)) ? 0 : data?.total)}
+        list={
+          data?.result &&
+          data?.result.map(v => ({
+            label: v.proposer,
+            value: v.forVotes
+          }))
+        }
+      />
+      {}
       <Description />
     </div>
   );
@@ -149,7 +186,8 @@ const mapDispatchToProps = dispatch => {
     getDecimals,
     getInterateModel,
     getGovernance,
-    getGovernanceStrikeWithParam
+    getGovernanceStrikeWithParam,
+    getProposalId
   } = accountActionCreators;
 
   return bindActionCreators(
@@ -158,7 +196,8 @@ const mapDispatchToProps = dispatch => {
       getInterateModel,
       getDecimals,
       getGovernance,
-      getGovernanceStrikeWithParam
+      getGovernanceStrikeWithParam,
+      getProposalId
     },
     dispatch
   );

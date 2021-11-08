@@ -1,21 +1,22 @@
 .total-supplys {
   margin-top: 88px;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 812px) {
     margin-top: 0;
   }
   .total-supply-content {
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 812px) {
     }
     &__left {
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         padding-bottom: 50px;
+        width: 100%;
       }
       .title {
         font-size: 25px;
         color: #107def;
         font-weight: 500;
         padding-bottom: 10px;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           display: block;
           padding-bottom: 10px;
         }
@@ -26,7 +27,7 @@
         color: #0b0f23;
         width: 70%;
         padding-bottom: 30px;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           font-size: 25px;
           width: 100%;
         }
@@ -36,7 +37,7 @@
         font-weight: 500;
         color: #6d6f7b;
         width: 55%;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           font-size: 14px;
           width: 100%;
         }
@@ -47,15 +48,17 @@
       border-radius: 20px;
       padding: 25px 40px 27px 40px;
       width: 45% !important;
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         width: 100% !important;
+        padding-left: 26px !important;
+        padding-right: 26px !important;
       }
       img.vector3 {
         position: absolute;
         z-index: 1;
         left: 60%;
         top: -14%;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           display: none;
         }
       }
@@ -64,7 +67,7 @@
         right: -10%;
         top: 63%;
         z-index: 1;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           display: none;
         }
       }
@@ -74,11 +77,16 @@
         bottom: -19%;
         right: 40%;
         z-index: 1;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           display: none;
         }
       }
       .children-content {
+        width: 100%;
+        @media screen and (max-width: 812px) {
+          width: 100%;
+        }
+
         .title-content {
           font-size: 20px;
           font-weight: 800;
@@ -130,7 +138,8 @@
               font-weight: 500;
             }
           }
-          .footer-content__number, .footer-content__right__number {
+          .footer-content__number,
+          .footer-content__right__number {
             font-size: 20px;
             font-weight: 600;
             color: #0b0f23;

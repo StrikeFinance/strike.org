@@ -1,32 +1,32 @@
 .strike-protocols {
   display: block;
   margin: auto;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 812px) {
     padding-left: 0;
     padding-right: 12px;
     display: block;
   }
   .strike-protocol-content {
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 812px) {
       display: flex !important;
       flex-direction: column-reverse;
       padding-left: 20px;
     }
     .Row {
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         display: flex !important;
         flex-direction: column-reverse;
       }
       .img-dev {
         max-width: 100%;
         flex: 1;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           // padding-top: 84.45px;
           max-width: 100%;
         }
         .img-macbook {
           width: 100%;
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 812px) {
             max-width: 100%;
             margin: auto;
           }
@@ -36,7 +36,7 @@
         padding-top: 9%;
         max-width: 100%;
         flex: 1 1 0%;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
         }
 
         .strike-finance {
@@ -47,7 +47,7 @@
         }
 
         .text-layer {
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 812px) {
             width: 100%;
           }
           span:first-child {
@@ -56,8 +56,8 @@
             color: #0b0f23;
             display: block;
             padding-bottom: 30px;
-            @media screen and (max-width: 767px) {
-              font-size: 31px;
+            @media screen and (max-width: 812px) {
+              font-size: 25px;
             }
           }
 
@@ -68,8 +68,8 @@
             display: block;
             padding-bottom: 40px;
             max-width: 49%;
-            @media screen and (max-width: 767px) {
-              font-size: 18px;
+            @media screen and (max-width: 812px) {
+              font-size: 16px;
               max-width: 100%;
             }
           }

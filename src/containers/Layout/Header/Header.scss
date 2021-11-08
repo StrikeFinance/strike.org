@@ -11,7 +11,7 @@
       justify-content: space-between;
       align-items: center;
       background-color: var(--color-bg-main);
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         padding: 30px 20px;
       }
       .logo {
@@ -19,7 +19,7 @@
         img {
           width: 140px;
           height: 45px;
-          @media screen and (max-width: 767px) {
+          @media screen and (max-width: 812px) {
             width: 100px;
             height: 32px;
           }

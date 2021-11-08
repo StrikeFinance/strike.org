@@ -5,7 +5,7 @@
     height: 100%;
     border-radius: 5px;
     padding: 0 100px;
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 812px) {
       padding: 20px;
     }
     .sub-card-chart {
@@ -34,14 +34,14 @@
     display: flex;
     justify-content: space-between;
     padding: 20px 100px;
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 812px) {
       padding: 20px;
       display: block;
     }
     .interest-rate {
       width: 100%;
       padding-right: 10px;
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 812px) {
         width: 100%;
         margin-bottom: 20px;
         padding-right: 0px;
@@ -50,7 +50,7 @@
     .summary {
       width: 100%;
       padding-left: 10px;
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 812px) {
         width: 100%;
         padding-left: 0px;
       }

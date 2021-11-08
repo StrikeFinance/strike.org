@@ -11,7 +11,7 @@ const DeveloperDocs = () => {
     <div className="developer-docs">
       <div className="developer-docs-content flex just-between">
         <Row >
-          <Col xs={24} sm={24} md={10} lg={10} xl={10}>
+          <Col xs={24} sm={24} md={24} lg={10} xl={10}>
             <div className="content">
               <span className="text-developers">Developers</span>
               <div className="text-layer-1">
@@ -39,7 +39,7 @@ const DeveloperDocs = () => {
               </div>
             </div>
           </Col>
-          <Col xs={24} sm={24} md={14} lg={14} xl={14}>
+          <Col xs={24} sm={24} md={24} lg={14} xl={14}>
             <div className="img-dev">
               <img src={imgBlockChain} className="img-blockchain" />
             </div>

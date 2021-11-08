@@ -32,7 +32,7 @@ const Governance = ({ getGovernance, history }) => {
     }
     return p.state;
   };
-  const [isMobile] = useWindowResizeMobile(767);
+  const [isMobile] = useWindowResizeMobile(768);
   const [governance, setGovernance] = useState([]);
 
   const getGovernanceData = async () => {

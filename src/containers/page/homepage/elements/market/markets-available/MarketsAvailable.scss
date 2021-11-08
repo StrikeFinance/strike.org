@@ -5,7 +5,7 @@
       color: #0b0f23;
       font-size: 50px;
       font-weight: 500;
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         font-size: 25px;
         margin-bottom: 20px;
       }
@@ -18,14 +18,22 @@
       margin: 0 auto;
       z-index: 2;
       font-size: 16px;
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 812px) {
         margin: 0 20px;
       }
 
       .table-market{
-        max-height: 482px;
-        @media screen and (max-width: 767px) {
-          height: 413px;
+        height: 100%;
+        @media screen and (max-width: 812px) {
+          height: 100%;
+        }
+      }
+      .pagination{
+        text-align: right;
+        margin-top: 20px;
+        @media screen and (max-width: 812px) {
+          // margin-top: 45px;
+          margin-top: 42px;
         }
       }
       .title-table {
@@ -41,6 +49,7 @@
         }
         .ant-table-header-column {
           float: right;
+          // text-align: right;
         }
         .ant-table-thead th:first-child span {
           float: left;
@@ -54,14 +63,14 @@
               font-size: 18px;
               font-weight: 800;
               color: var(--color-text-black);
-              @media screen and (max-width: 767px) {
-                font-size: 10px;
+              @media screen and (max-width: 812px) {
+                font-size: 9px;
               }
             }
             .row2 {
               color: var(--color-green);
               font-size: 18px;
-              @media screen and (max-width: 767px) {
+              @media screen and (max-width: 812px) {
                 font-size: 8px;
               }
             }
@@ -72,19 +81,19 @@
             img {
               width: 36px;
               height: 36px;
-              @media screen and (max-width: 767px) {
+              @media screen and (max-width: 812px) {
                 width: 18px;
                 height: 18px;
               }
             }
-            @media screen and (max-width: 767px) {
+            @media screen and (max-width: 812px) {
               margin-right: 5px;
             }
           }
           .mx-auto{
             .row1,.row2{
-              @media screen and (max-width: 767px) {
-                font-size: 10px!important;
+              @media screen and (max-width: 812px) {
+                font-size: 9px!important;
               }
             }
           }
@@ -92,10 +101,10 @@
         td {
           cursor: pointer;
         }
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           .ant-table-column-title {
             color: #9d9fa7;
-            font-size: 12px;
+            font-size: 11px;
             word-break: break-word;
           }
           .ant-table-tbody {
@@ -106,6 +115,7 @@
           .ant-table-thead {
             th {
               padding: 16px 5px 16px 0;
+              text-align: right;
             }
           }
         }
@@ -123,19 +133,19 @@
         right: -68px;
         margin-left: auto;
         margin-right: auto;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           display: none;
         }
       }
       .color-black {
         color: #000000;
         font-size: 18px;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           font-size: 10px;
         }
       }
       .text-ellipsis {
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           width: 90px;
           display: block;
           white-space: nowrap;
@@ -153,12 +163,12 @@
 
       .sub-value {
         font-size: 16px;
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 812px) {
           font-size: 10px;
         }
       }
     }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 812px) {
       .ant-card-body {
         padding: 12px;
       }

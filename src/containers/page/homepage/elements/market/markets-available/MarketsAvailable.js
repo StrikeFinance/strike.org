@@ -58,7 +58,6 @@ const columns = [
     title: 'Total Supply',
     dataIndex: 'totalSuplly',
     key: 'totalSupply',
-    sorter: (a, b) => a.totalSupplyUsd - b.totalSupplyUsd,
     render: (action, record) => (
       <div className="total-supply">
         <div className="row1">
@@ -68,6 +67,7 @@ const columns = [
           {format(
             new BigNumber(record?.totalSupplyUsd)
               .div(new BigNumber(record?.tokenPrice))
+
               .dp(0, 1)
               .toString(10)
           )}{' '}
@@ -198,7 +198,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
             className="table-market"
             onRowClick={onRowClick}
           />
-          <div style={{ textAlign: 'right', marginTop: '20px' }}>
+          <div className="pagination">
             <Pagination
               onChange={onChangePage}
               total={total}
