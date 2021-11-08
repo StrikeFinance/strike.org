@@ -141,7 +141,7 @@ const MarketDetail = ({
             </div>
           </>
         ) : (
-          <div className="loading-spinner" style={{height: `calc(100vh - 400px)`}}>
+          <div className="loading-spinner" style={{height: `calc(100vh - 325px)`}}>
             <LoadingSpinner />
           </div>
         )}
