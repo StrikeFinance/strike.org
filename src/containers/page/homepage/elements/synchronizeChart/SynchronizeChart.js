@@ -85,7 +85,7 @@ export const SynchronizeChart = ({ marketType, data }) => {
         yAxis: 0,
         data: [],
         marker: {
-          enabled: true
+          enabled: false
         }
       },
       {
