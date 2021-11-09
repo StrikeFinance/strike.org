@@ -84,9 +84,9 @@ const Governance = ({ getGovernance, history }) => {
                 <div className="recent-list">
                   {governance.slice(0, 5).map((item, index) => (
                     <div
-                      // onClick={() =>
-                      //   history.push(`/governance-detail/${item.id}`)
-                      // }
+                      onClick={() =>
+                        history.push(`/governance-detail/${item.id}`)
+                      }
                       className="recent-item flex just-between"
                       key={index}
                     >

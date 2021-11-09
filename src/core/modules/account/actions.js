@@ -14,6 +14,7 @@ export const GET_COMMON = '@account/GET_COMMON';
 export const GET_INTERATE_MODEL = '@account/GET_INTERATE_MODEL';
 export const GET_GOVERNANCE_REQUEST = '@account/GET_GOVERNANCE_REQUEST';
 export const GET_PROPOSAL_BY_ID_REQUEST = '@account/GET_PROPOSAL_BY_ID_REQUEST';
+export const GET_VOTERS_REQUEST = '@account/GET_VOTERS_REQUEST';
 
 /**
  * Action Creators
@@ -28,5 +29,6 @@ export const accountActionCreators = {
   getDecimals: createPromiseAction(GET_COMMON),
   getInterateModel: createPromiseAction(GET_INTERATE_MODEL),
   getGovernance: createPromiseAction(GET_GOVERNANCE_REQUEST),
-  getProposalId: createPromiseAction(GET_PROPOSAL_BY_ID_REQUEST)
+  getProposalById: createPromiseAction(GET_PROPOSAL_BY_ID_REQUEST),
+  getVoters: createPromiseAction(GET_VOTERS_REQUEST),
 };

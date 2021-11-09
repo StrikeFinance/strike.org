@@ -10,26 +10,26 @@ const format = commaNumber.bindWith(',', '.');
 
 function TableDetail(props) {
   const {
-    votePoint,
-    id,
+    forVotes,
     againstVote,
-    data,
     emptyNumber,
     list,
     addressNumber,
-    loadMore
+    listDataAgainst,
+    againstAddressNumber,
+    emptyAgainstNumber
   } = props;
   const [forPercent, setForPercent] = useState(0);
   const [againstPercent, setAgainstPercent] = useState(0);
 
   useEffect(() => {
-    const total = new BigNumber(parseInt(votePoint)).plus(
+    const total = new BigNumber(parseInt(forVotes)).plus(
       new BigNumber(parseInt(againstVote))
     );
     setForPercent(
-      isNaN(new BigNumber(parseInt(votePoint) * 100).div(total))
+      isNaN(new BigNumber(parseInt(forVotes) * 100).div(total))
         ? '0'
-        : new BigNumber(parseInt(votePoint) * 100).div(total).toString(10)
+        : new BigNumber(parseInt(forVotes) * 100).div(total).toString(10)
     );
 
     setAgainstPercent(
@@ -37,26 +37,36 @@ function TableDetail(props) {
         ? '0'
         : new BigNumber(parseInt(againstVote) * 100).div(total).toString(10)
     );
-  }, [votePoint, againstVote]);
+  }, [forVotes, againstVote]);
 
   const emptyList = [];
+  const emptyAgainstList = [];
   if (emptyNumber > 0) {
     for (let i = 0; i < emptyNumber; i += 1) {
       emptyList.push(i);
+    }
+  }
+  if (emptyAgainstNumber > 0) {
+    for (let i = 0; i < emptyAgainstNumber; i += 1) {
+      emptyAgainstList.push(i);
     }
   }
 
   return (
     <div className="table-detail-content flex just-between">
       {/* Content Left */}
-      <div
-        className="table-detail-content__left"
-      >
+      <div className="table-detail-content__left">
         <div className="children-content">
           <div className="progress-info">
             <div className="info-number">
               <span>For</span>
-              <span>{votePoint}</span>
+              <span>
+                {format(
+                  new BigNumber(Web3.utils.fromWei(forVotes, 'ether'))
+                    .dp(8, 1)
+                    .toString(10)
+                )}
+              </span>
             </div>
             <div
               style={{
@@ -126,11 +136,11 @@ function TableDetail(props) {
           </div>
           <Divider />
           <div className="address-vote">
-            <span>13 Addresses</span>
+            <span>{againstAddressNumber} Addresses</span>
             <span>Votes</span>
           </div>
           <Divider />
-          {list?.map((item, index) => {
+          {listDataAgainst?.map((item, index) => {
             return (
               <div className="addressed-votes-info" key={index}>
                 <span className="addressed-votes-info__left">
@@ -148,7 +158,7 @@ function TableDetail(props) {
               </div>
             );
           })}
-          {emptyList.map(v => (
+          {emptyAgainstList.map(v => (
             <div
               className="flex align-center just-between vote-item empty-item"
               key={v}

@@ -13,7 +13,8 @@ import {
   GET_GOVERNANCE_REQUEST,
   GET_GOVERNANCE_STRIKE_PARAM_REQUEST,
   GET_INTERATE_MODEL,
-  GET_PROPOSAL_BY_ID_REQUEST
+  GET_PROPOSAL_BY_ID_REQUEST,
+  GET_VOTERS_REQUEST
 } from './actions';
 
 export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
@@ -86,13 +87,6 @@ export function* asyncGetProposalByIdRequest({ payload, resolve, reject }) {
   }
 }
 
-export function* watchGetProposalByIdRequest() {
-  while (true) {
-    const action = yield take(GET_PROPOSAL_BY_ID_REQUEST);
-    yield* asyncGetProposalByIdRequest(action);
-  }
-}
-
 export function* watchasyncGetGovernanceRequest() {
   while (true) {
     const action = yield take(GET_GOVERNANCE_REQUEST);
@@ -103,6 +97,13 @@ export function* watchGetMarketHistoryRequest() {
   while (true) {
     const action = yield take(GET_MARKET_HISTORY_REQUEST);
     yield* asyncGetMarketHistoryRequest(action);
+  }
+}
+
+export function* watchGetProposalByIdRequest() {
+  while (true) {
+    const action = yield take(GET_PROPOSAL_BY_ID_REQUEST);
+    yield* asyncGetProposalByIdRequest(action);
   }
 }
 
@@ -156,10 +157,35 @@ export function* asyncGetInterateModel({ payload, resolve, reject }) {
   }
 }
 
+export function* asyncGetVotersRequest({ payload, resolve, reject }) {
+  const { limit, filter, id } = payload;
+  try {
+    const response = yield call(restService, {
+      api: `/voters/${id}?limit=${limit || 3}&filter=${filter}`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    } else {
+      reject(response);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
 export function* watchGetInterateModelRequest() {
   while (true) {
     const action = yield take(GET_INTERATE_MODEL);
     yield* asyncGetInterateModel(action);
+  }
+}
+
+export function* watchGetVotersRequest() {
+  while (true) {
+    const action = yield take(GET_VOTERS_REQUEST);
+    yield* asyncGetVotersRequest(action);
   }
 }
 
@@ -193,8 +219,9 @@ export default function*() {
     fork(watchGetGovernanceStrikeRequest),
     fork(watchGetDecimalRequest),
     fork(watchGetInterateModelRequest),
+    fork(watchGetProposalByIdRequest),
     fork(watchasyncGetGovernanceRequest),
     fork(watchGetGovernanceStrikeWithParamRequest),
-    fork(watchGetProposalByIdRequest)
+    fork(watchGetVotersRequest)
   ]);
 }
