@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { accountActionCreators, connectAccount } from 'core';
 import BigNumber from 'bignumber.js';
 
-const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo }) => {
+const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo, decimal }) => {
   const [percent, setPercent] = useState(null);
   const [tickerPos, setTickerPos] = useState(null);
   const [currentPos, setCurrentPos] = useState(30);
@@ -91,7 +91,7 @@ const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo }) => {
     let cash = marketInfo.cash || [];
     cash = new BigNumber(cash).div(new BigNumber(10).pow(18));
     const borrows = new BigNumber(marketInfo.totalBorrows2);
-    const reserves = new BigNumber(marketInfo.totalReserves || 0);
+    const reserves = new BigNumber(marketInfo.totalReserves || 0).div(new BigNumber(10).pow(decimal.decimal[asset].token));
     const currentUtilizationRate = borrows.div(cash.plus(borrows).minus(reserves));
 
     const tempCurrentPercent = parseInt(+currentUtilizationRate.toString(10) * 100, 10);
@@ -149,7 +149,7 @@ const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo }) => {
 
   useEffect(() => {
     getGraphData(currentAsset);
-  }, [currentAsset]);
+  }, [currentAsset, marketInfo, decimal]);
 
   const handleMouseMove = e => {
     const graphElement = document.getElementById('percent-wrapper');
