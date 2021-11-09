@@ -2,10 +2,18 @@
   padding-left: 120px;
   padding-top: 30px;
   padding-right: 120px;
-  background: #ECEFF9;
+  background: #eceff9;
+
+  @media screen and (max-width: 812px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
   .governance-detail-header {
     padding-bottom: 43px;
+    @media screen and (max-width: 812px) {
+      padding-bottom: 38.5px;
+    }
     .button-app {
       color: #ffffff;
       font-size: 18px;
@@ -24,12 +32,18 @@
     align-items: center;
     justify-content: flex-start;
     padding-bottom: 30px;
+    @media screen and (max-width: 812px) {
+      padding-bottom: 2px;
+    }
     span {
       text-align: center;
       padding-left: 11px;
       font-size: 20px;
       font-weight: 500;
       color: #000000;
+      @media screen and (max-width: 812px) {
+        font-size: 14px;
+      }
     }
   }
 
@@ -37,17 +51,26 @@
     width: 100%;
 
     .text-info {
+      @media screen and (max-width: 812px) {
+        flex-direction: column;
+        margin-top: 24px;
+      }
       &__left {
         .info-content {
           font-size: 25px;
           font-weight: 800;
           color: #000000;
           padding-bottom: 8px;
+          @media screen and (max-width: 812px) {
+            font-size: 16px;
+            padding-bottom: 4px;
+          }
         }
 
         .date-completed {
           display: flex;
           align-content: center;
+          padding-bottom: 21px;
           .passed {
             font-size: 12px;
             color: #ffffff;
@@ -83,19 +106,24 @@
             font-size: 14px;
             font-weight: 500;
             color: #9d9fa7;
-          } 
+          }
         }
       }
 
       &__right {
+        @media screen and (max-width: 812px) {
+          width: 48%;
+          text-align: center;
+        }
+
         .hexcode {
           display: flex;
           align-items: center;
           padding: 11.5px 30px 10px 20px;
           background: #ffffff;
           border-radius: 8px;
-          span{
-              margin-right: 15px;
+          span {
+            margin-right: 15px;
           }
         }
       }

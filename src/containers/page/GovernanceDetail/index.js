@@ -2,7 +2,9 @@ import React, { useEffect, useState, useCallback } from 'react';
 import './styles.scss';
 import backicon from 'assets/img/governance-detail/back-icon.svg';
 import launchicon from 'assets/img/governance-detail/launch.svg';
-import { Divider } from 'antd';
+import Header from '../../Layout/Header/Header';
+import { useWindowResizeMobile } from 'utilities/hook';
+import { Divider, Drawer } from 'antd';
 import TableDetail from './Table';
 import Description from './Description';
 import { compose } from 'recompose';
@@ -14,19 +16,44 @@ import moment from 'moment';
 import BigNumber from 'bignumber.js';
 import commaNumber from 'comma-number';
 import Web3 from 'web3';
+import logo from 'assets/img/governance-detail/logo-strike.png';
+import MenuTabImg from 'assets/img/homepage/menu-tab.svg';
+import CloseMenuImg from 'assets/img/homepage/close-menu.svg';
+import { NavHashLink as NavLink } from 'react-router-hash-link';
 
-const format = commaNumber.bindWith(',', '.');
+const HomePageLink = [
+  {
+    to: '/#',
+    title: 'Home',
+    altTitle: ''
+  },
+  {
+    to: '/#market',
+    title: 'Market',
+    altTitle: ''
+  },
+  {
+    to: '/#gorvernance',
+    title: 'Governance',
+    altTitle: ''
+  },
+  {
+    to: '/#developer',
+    title: 'Developers',
+    altTitle: ''
+  }
+];
 
 function Governance(props) {
-  const { getGovernance, history, match, getIdProposal } = props;
-  const [governanceInfo, setGovernanceInfo] = useState({});
+  const { history, match, getProposalById, getVoters } = props;
+  const [governanceInfo, setGovernanceInfo] = useState([]);
   const [id, setId] = useState(match.params.id);
-  const [date, setDate] = useState({});
-  const [proposer, setProposer] = useState({});
-  const [governanceStatus, setGovernanceStatus] = useState({});
-  const [votePoint, setVotePoint] = useState({});
-  const [againstVote, setAgainstVote] = useState({});
   const [data, setData] = useState([]);
+  const [description, setDescription] = useState('');
+  const [dataAgainst, setDataAgainst] = useState([]);
+  const [isMobile] = useWindowResizeMobile(813);
+  const [visible, setVisible] = useState(false);
+  const format = commaNumber.bindWith(',', '.');
 
   const handleBack = () => {
     history.go(-1);
@@ -38,80 +65,129 @@ function Governance(props) {
     }
   }, [match]);
 
-  // const getIdProposal = useCallback(async () => {
-  //   await promisify(getProposalId, {
-  //     id: id
-  //   }).then();
-  // }, []);
+  const getDataProposalById = useCallback(async () => {
+    if (id) {
+      await promisify(getProposalById, { id: id })
+        .then(res => {
+          setGovernanceInfo(res.data || {});
+          setDescription(res.data.description);
+        })
+        .catch(e => console.log(e));
+    }
+  }, [id, getProposalById]);
 
-  const getDataGovernance = useCallback(async () => {
-    await promisify(getGovernance, {
-      id: id
-    })
+  const getDataProPosal = useCallback(async () => {
+    let bodyFor = {
+      id: id,
+      limit: 5,
+      filter: 'for'
+    };
+    let bodyAgainst = {
+      id: id,
+      limit: 5,
+      filter: 'against'
+    };
+    await promisify(getVoters, bodyFor)
       .then(res => {
-        const resDataTotal = res.data;
-        const data = res.data.result;
-        let dataObj = {};
-        let statusObj = {};
-        let dateObj = {};
-        let proposerObj = {};
-        let votePoint = {};
-        let againstVote = {};
-        data.forEach(item => {
-          dataObj = {
-            ...dataObj,
-            [item.id]: item.description.split('\n')[0]
-          };
-          statusObj = {
-            ...statusObj,
-            [item.id]: item.state
-          };
-          dateObj = {
-            ...dateObj,
-            [item.id]: item.createdAt
-          };
-          proposerObj = {
-            ...proposerObj,
-            [item.id]: item.proposer
-          };
-          votePoint = {
-            ...votePoint,
-            [item.id]: format(
-              new BigNumber(Web3.utils.fromWei(item.forVotes, 'ether'))
-                .dp(8, 1)
-                .toString(10)
-            )
-          };
-          againstVote = {
-            ...againstVote,
-            [item.id]: item.againstVotes
-          };
-        });
-        setGovernanceInfo(dataObj);
-        setGovernanceStatus(statusObj);
-        setDate(dateObj);
-        setProposer(proposerObj);
-        setVotePoint(votePoint);
-        setAgainstVote(againstVote);
-        setData(resDataTotal);
+        setData(res.data);
       })
-      .catch(e => {
-        console.log(e);
+      .catch(() => {
+        setData([]);
       });
-  }, [getGovernance]);
+
+    await promisify(getVoters, bodyAgainst)
+      .then(res => {
+        console.log('res data against', res);
+        setDataAgainst(res.data);
+      })
+      .catch(() => {
+        setData([]);
+      });
+  }, [getVoters]);
 
   useEffect(() => {
-    getDataGovernance();
-  }, [getDataGovernance]);
+    getDataProposalById();
+    getDataProPosal();
+  }, []);
 
   return (
     <div className="governance-detail">
       <div className="governance-detail-header flex just-between">
-        <div></div>
-        <button className="button-app">Launch App</button>
+        <img src={logo} />
+        {isMobile ? (
+          <div className="header-mobile">
+            {visible ? (
+              <div
+                className="menu-icon cursor-pointer"
+                onClick={() => setVisible(false)}
+              >
+                <img src={CloseMenuImg} alt="menu-tab" />
+              </div>
+            ) : (
+              <div
+                className="menu-icon cursor-pointer"
+                onClick={() => setVisible(true)}
+              >
+                <img src={MenuTabImg} alt="menu-tab" />
+              </div>
+            )}
+            <Drawer
+              height="50%"
+              title=""
+              placement="left"
+              closable={false}
+              onClose={() => setVisible(false)}
+              visible={visible}
+              key="left"
+              className="drawer-menu-mobile"
+            >
+              <div>
+                <div className="nav-link-mobile">
+                  {HomePageLink.map((link, index) => (
+                    <div className="drawer-body-item" key={index}>
+                      <NavLink
+                        key={index}
+                        className="link-item"
+                        to={link?.to}
+                        exact
+                        onClick={() => setVisible(false)}
+                      >
+                        {link?.title}
+                      </NavLink>
+                    </div>
+                  ))}
+                </div>
+                <div className="nav-btn-mobile">
+                  <div
+                    onClick={() =>
+                      window.open('https://strike.org/Whitepaper.pdf', '_blank')
+                    }
+                    className="whitepaper-btn"
+                  >
+                    Whitepaper
+                  </div>
+                  <div
+                    onClick={() =>
+                      window.open('https://app.strike.org/', '_blank')
+                    }
+                    className="launch-app-btn"
+                  >
+                    Launch App
+                  </div>
+                </div>
+              </div>
+            </Drawer>
+          </div>
+        ) : (
+          <button className="button-app">Launch App</button>
+        )}
       </div>
       <div className="back-governance">
-        <img onClick={handleBack} src={backicon} />
+        <img
+          onClick={handleBack}
+          src={backicon}
+          style={{ cursor: 'pointer' }}
+        />
         <span>Governance</span>
       </div>
       <Divider />
@@ -119,30 +195,30 @@ function Governance(props) {
       <div className="governance-detail-main ">
         <div className="text-info flex just-between">
           <div className="text-info__left">
-            <span className="info-content">{governanceInfo[id]}</span>
+            <span className="info-content">{description.split('\n')[0]}</span>
             <div className="date-completed">
-              {governanceStatus[id] === 'Executed' ? (
+              {governanceInfo.state === 'Executed' ? (
                 <span className="passed">passed</span>
-              ) : governanceStatus[id] === 'Defeated' ? (
+              ) : governanceInfo.state === 'Defeated' ? (
                 <span className="defeated">failed</span>
-              ) : governanceStatus[id] === 'Active' ? (
+              ) : governanceInfo.state === 'Active' ? (
                 <span className="active">active</span>
               ) : null}
 
               <span className="date">
-                003 - {governanceStatus[id]}{' '}
-                {moment(date[id]).format('MMMM Do, YYYY')}
+                {governanceInfo.id} - {governanceInfo.state}{' '}
+                {moment(governanceInfo.createdAt).format('MMMM Do, YYYY')}
               </span>
             </div>
           </div>
           <div className="text-info__right">
             <div className="hexcode">
               <span>
-                {proposer[id]
-                  ? `${proposer[id].substr(0, 5)}...${proposer[id].substr(
-                      -4,
-                      4
-                    )}`
+                {governanceInfo.proposer
+                  ? `${governanceInfo.proposer.substr(
+                      0,
+                      5
+                    )}...${governanceInfo.proposer.substr(-4, 4)}`
                   : ''}
               </span>
               <img src={launchicon} />
@@ -152,26 +228,39 @@ function Governance(props) {
       </div>
       {/* End main content */}
       <TableDetail
-        votePoint={
-          isNaN(BigNumber(parseInt(votePoint[id]))) ? '0' : votePoint[id]
+        forVotes={
+          isNaN(BigNumber(parseInt(data.sumVotes))) ? '0' : data.sumVotes
         }
-        id={id}
         againstVote={
-          isNaN(BigNumber(parseInt(againstVote[id]))) ? '0' : againstVote[id]
+          isNaN(BigNumber(parseInt(dataAgainst.sumVotes)))
+            ? '0'
+            : dataAgainst.sumVotes
         }
-        data={data}
         addressNumber={isNaN(BigNumber(data?.total)) ? 0 : data?.total}
         emptyNumber={4 - (isNaN(BigNumber(data?.total)) ? 0 : data?.total)}
+        emptyAgainstNumber={
+          4 - (isNaN(BigNumber(dataAgainst?.total)) ? 0 : dataAgainst?.total)
+        }
+        againstAddressNumber={
+          isNaN(BigNumber(dataAgainst?.total)) ? 0 : dataAgainst?.total
+        }
+        listDataAgainst={
+          dataAgainst?.mapStateToProps &&
+          data?.result.map(v => ({
+            labael: v.address,
+            valuev: v.votes
+          }))
+        }
         list={
           data?.result &&
           data?.result.map(v => ({
-            label: v.proposer,
-            value: v.forVotes
+            label: v.address,
+            value: v.votes
           }))
         }
       />
       {}
-      <Description />
+      <Description governanceInfo={governanceInfo} />
     </div>
   );
 }
@@ -181,23 +270,12 @@ const mapStateToProps = ({ account }) => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  const {
-    getGovernanceStrike,
-    getDecimals,
-    getInterateModel,
-    getGovernance,
-    getGovernanceStrikeWithParam,
-    getProposalId
-  } = accountActionCreators;
+  const { getProposalById, getVoters } = accountActionCreators;
 
   return bindActionCreators(
     {
-      getGovernanceStrike,
-      getInterateModel,
-      getDecimals,
-      getGovernance,
-      getGovernanceStrikeWithParam,
-      getProposalId
+      getProposalById,
+      getVoters
     },
     dispatch
   );

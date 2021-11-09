@@ -1,17 +1,26 @@
 .description-content {
   margin-top: 30px;
+  @media screen and (max-width: 812px) {
+    flex-direction: column-reverse;
+  }
   &__left {
     background: #ffffff;
     border-radius: 5px;
     padding-left: 40px;
     padding-right: 40px;
-    width: 790px;
+    width: 67%;
+    @media screen and (max-width: 812px) {
+      width: 100%;
+    }
     .header {
       padding-top: 22px;
       span {
         font-size: 20px;
         font-weight: 800;
         color: #000000;
+        @media screen and (max-width: 812px) {
+          font-size: 16px;
+        }
       }
     }
 
@@ -22,12 +31,18 @@
         font-weight: 800;
         color: #000000;
         padding-bottom: 6px;
+        @media screen and (max-width: 812px) {
+          font-size: 12px;
+        }
       }
       .tile-content {
         font-size: 25px;
         font-weight: 800;
         display: block;
         color: #000000;
+        @media screen and (max-width: 812px) {
+          font-size: 20px;
+        }
       }
       .summary {
         padding-top: 15px;
@@ -37,6 +52,9 @@
           font-weight: 800;
           display: block;
           color: #000000;
+          @media screen and (max-width: 812px) {
+            font-size: 16px;
+          }
         }
         &__content {
           padding-top: 5px;
@@ -53,12 +71,25 @@
           }
         }
       }
+      .btn-showmore {
+        font-size: 18px;
+        color: #107def;
+        font-weight: 800;
+        padding: 11px 15px 11px 15px;
+        border: 1px solid #107def;
+        text-align: center;
+        border-radius: 8px;
+        background-color: #ffffff;
+      }
       .purpose {
         &__title {
           font-size: 18px;
           font-weight: 800;
           display: block;
           color: #000000;
+          @media screen and (max-width: 812px) {
+            font-size: 16px;
+          }
         }
         &__content {
           padding-top: 5px;
@@ -78,6 +109,9 @@
           font-weight: 800;
           display: block;
           color: #000000;
+          @media screen and (max-width: 812px) {
+            font-size: 16px;
+          }
         }
         &__content {
           padding-top: 5px;
@@ -96,6 +130,9 @@
           font-weight: 800;
           display: block;
           color: #000000;
+          @media screen and (max-width: 812px) {
+            font-size: 16px;
+          }
         }
         &__content {
           padding-top: 5px;
@@ -111,50 +148,17 @@
     }
   }
   &__right {
-    width: 380px;
+    width: 27%;
     background: #ffffff;
     border-radius: 5px;
     padding-left: 40px;
     padding-right: 40px;
     height: 100%;
-    .header {
-      padding-top: 22px;
-      span {
-        font-size: 20px;
-        color: #000000;
-        font-weight: 800;
-      }
-    }
-    .completed-date {
-      display: flex;
-      align-items: center;
-      padding-bottom: 30px;
-      img.disable {
-        padding: 14px 11px 13px 11px;
-        border-radius: 50%;
-        background: #9d9fa7;
-      }
-      img.active {
-        background: #107def;
-        padding: 14px 11px 13px 11px;
-        border-radius: 50%;
-      }
-
-      &__text {
-        margin-left: 20px;
-        span:first-child {
-          display: block;
-          font-size: 16px;
-          font-weight: 800;
-          color: #0b0f23;
-        }
-        span:nth-child(2) {
-          font-size: 14px;
-          font-weight: 800;
-          display: block;
-          color: #9d9fa7;
-        }
-      }
+    @media screen and (max-width: 812px) {
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-bottom: 24px;
     }
   }
 }
