@@ -1,7 +1,9 @@
 .description-content {
   margin-top: 30px;
-  @media screen and (max-width: 812px) {
+  margin-bottom: 56px;
+  @media screen and (max-width: 1024px) {
     flex-direction: column-reverse;
+    margin-bottom: 56px;
   }
   &__left {
     background: #ffffff;
@@ -9,7 +11,7 @@
     padding-left: 40px;
     padding-right: 40px;
     width: 67%;
-    @media screen and (max-width: 812px) {
+    @media screen and (max-width: 1024px) {
       width: 100%;
     }
     .header {
@@ -18,7 +20,7 @@
         font-size: 20px;
         font-weight: 800;
         color: #000000;
-        @media screen and (max-width: 812px) {
+        @media screen and (max-width: 1024px) {
           font-size: 16px;
         }
       }
@@ -31,7 +33,7 @@
         font-weight: 800;
         color: #000000;
         padding-bottom: 6px;
-        @media screen and (max-width: 812px) {
+        @media screen and (max-width: 1024px) {
           font-size: 12px;
         }
       }
@@ -40,7 +42,7 @@
         font-weight: 800;
         display: block;
         color: #000000;
-        @media screen and (max-width: 812px) {
+        @media screen and (max-width: 1024px) {
           font-size: 20px;
         }
       }
@@ -52,7 +54,7 @@
           font-weight: 800;
           display: block;
           color: #000000;
-          @media screen and (max-width: 812px) {
+          @media screen and (max-width: 1024px) {
             font-size: 16px;
           }
         }
@@ -80,6 +82,11 @@
         text-align: center;
         border-radius: 8px;
         background-color: #ffffff;
+        width: 50%;
+        margin: auto;
+        margin-bottom: 40px;
+        cursor: pointer;
+
       }
       .purpose {
         &__title {
@@ -87,7 +94,7 @@
           font-weight: 800;
           display: block;
           color: #000000;
-          @media screen and (max-width: 812px) {
+          @media screen and (max-width: 1024px) {
             font-size: 16px;
           }
         }
@@ -109,7 +116,7 @@
           font-weight: 800;
           display: block;
           color: #000000;
-          @media screen and (max-width: 812px) {
+          @media screen and (max-width: 1024px) {
             font-size: 16px;
           }
         }
@@ -130,7 +137,7 @@
           font-weight: 800;
           display: block;
           color: #000000;
-          @media screen and (max-width: 812px) {
+          @media screen and (max-width: 1024px) {
             font-size: 16px;
           }
         }
@@ -154,7 +161,7 @@
     padding-left: 40px;
     padding-right: 40px;
     height: 100%;
-    @media screen and (max-width: 812px) {
+    @media screen and (max-width: 1024px) {
       width: 100%;
       padding-left: 20px;
       padding-right: 20px;

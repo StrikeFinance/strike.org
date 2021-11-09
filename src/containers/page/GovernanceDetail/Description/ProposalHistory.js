@@ -10,10 +10,13 @@ const ProposalHistoryWrapper = styled.div`
   border-radius: 5px;
 
   .title {
-    font-size: 17px;
-    font-weight: 900;
-    color: var(--color-text-main);
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000;
     padding-top: 22px;
+    @media screen and (max-width: 812px) {
+      font-size: 16px;
+    }
   }
 
   .history-steps-wrapper {
@@ -29,11 +32,17 @@ const ProposalHistoryWrapper = styled.div`
           font-size: 17px;
           font-weight: 900;
           line-height: unset;
-          color: var(--color-text-main);
+          color: #000000;
+          @media screen and (max-width: 812px) {
+            font-size: 16px;
+          }
         }
         .ant-steps-item-description {
-          font-size: 16px;
-          color: var(--color-text-secondary);
+          font-size: 14px;
+          color: #9D9FA7;
+          @media screen and (max-width: 812px) {
+            font-size: 14px;
+          }
         }
         .ant-steps-item-icon {
           width: 22px;
