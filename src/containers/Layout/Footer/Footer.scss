@@ -21,6 +21,11 @@
     .footer-options {
       font-weight: 500;
       font-size: 20px;
+      .ant-row{
+         @media screen and (max-width: 1024px) {
+            margin-right: 16px!important;
+          }
+      }
       .title {
         color: #107def;
         margin-bottom: 10px;

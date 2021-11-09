@@ -4,72 +4,9 @@ import moment from 'moment';
 import styled from 'styled-components';
 import { Steps, Icon, Divider } from 'antd';
 import { Card } from 'components/Basic/Card';
+import './styles.scss'
 
-const ProposalHistoryWrapper = styled.div`
-  width: 100%;
-  border-radius: 5px;
 
-  .title {
-    font-size: 20px;
-    font-weight: 800;
-    color: #000000;
-    padding-top: 22px;
-    @media screen and (max-width: 812px) {
-      font-size: 16px;
-    }
-  }
-
-  .history-steps-wrapper {
-    width: 100%;
-    margin-top: 28px;
-    .ant-steps {
-      .ant-steps-item-tail {
-        display: none !important;
-      }
-      .ant-steps-item-container {
-        display: flex;
-        .ant-steps-item-title {
-          font-size: 17px;
-          font-weight: 900;
-          line-height: unset;
-          color: #000000;
-          @media screen and (max-width: 812px) {
-            font-size: 16px;
-          }
-        }
-        .ant-steps-item-description {
-          font-size: 14px;
-          color: #9D9FA7;
-          @media screen and (max-width: 812px) {
-            font-size: 14px;
-          }
-        }
-        .ant-steps-item-icon {
-          width: 22px;
-          height: 22px;
-          background: var(--color-blue);
-          .ant-steps-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            line-height: unset;
-            font-size: 16px;
-          }
-        }
-      }
-      .ant-steps-item-process .ant-steps-item-icon {
-        background: var(--color-text-inactive);
-        border: none;
-      }
-      .ant-steps-item-wait .ant-steps-item-icon {
-        background: var(--color-text-inactive);
-        border: none;
-      }
-    }
-  }
-`;
 
 const { Step } = Steps;
 
@@ -95,13 +32,14 @@ function ProposalHistory({ governanceInfo }) {
   };
   return (
     <Card>
-      <ProposalHistoryWrapper>
+      <div className="proposal-history-content">
         <p className="title">Proposal history</p>
         <Divider />
         <div className="history-steps-wrapper">
-          <Steps direction="vertical" current={getStepNumber()}>
+          <Steps  direction="vertical" current={getStepNumber()}>
             <Step
               title="Created"
+              current={1}
               description={
                 governanceInfo.createdTimestamp
                   ? moment(governanceInfo.createdTimestamp * 1000).format('LLL')
@@ -110,7 +48,7 @@ function ProposalHistory({ governanceInfo }) {
               icon={
                 <Icon
                   type="check"
-                  style={{ fontSize: '10px', color: 'white' }}
+                  style={{ fontSize: '18px', color: 'white' }}
                 />
               }
               disabled
@@ -125,7 +63,7 @@ function ProposalHistory({ governanceInfo }) {
               icon={
                 <Icon
                   type="check"
-                  style={{ fontSize: '10px', color: 'white' }}
+                  style={{ fontSize: '18px', color: 'white' }}
                 />
               }
               disabled
@@ -151,7 +89,7 @@ function ProposalHistory({ governanceInfo }) {
               icon={
                 <Icon
                   type="check"
-                  style={{ fontSize: '10px', color: 'white' }}
+                  style={{ fontSize: '18px', color: 'white' }}
                 />
               }
               disabled
@@ -168,7 +106,7 @@ function ProposalHistory({ governanceInfo }) {
               icon={
                 <Icon
                   type="check"
-                  style={{ fontSize: '10px', color: 'white' }}
+                  style={{ fontSize: '18px', color: 'white' }}
                 />
               }
               disabled
@@ -193,14 +131,14 @@ function ProposalHistory({ governanceInfo }) {
               icon={
                 <Icon
                   type="check"
-                  style={{ fontSize: '10px', color: 'white' }}
+                  style={{ fontSize: '18px', color: 'white' }}
                 />
               }
               disabled
             />
           </Steps>
         </div>
-      </ProposalHistoryWrapper>
+      </div>
     </Card>
   );
 }

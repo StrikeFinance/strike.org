@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles.scss';
 import { Divider } from 'antd';
 import complete from 'assets/img/governance-detail/complete.svg';
-import ProposalHistory from './ProposalHistory';
+import ProposalHistory from './ProposalHistory/ProposalHistory.js';
 import { useWindowResizeMobile } from 'utilities/hook';
 
 function Description(props) {
@@ -298,7 +298,7 @@ function Description(props) {
             </div>
           </>
           )}
-          {visibile ? (
+          {visibile && isMobile ? (
             <div className="btn-showmore" onClick={handleClickShowLess}>
               Show Less
             </div>
