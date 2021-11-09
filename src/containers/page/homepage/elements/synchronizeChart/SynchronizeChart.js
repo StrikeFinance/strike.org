@@ -33,7 +33,9 @@ export const SynchronizeChart = ({ marketType, data }) => {
           hover: {
             color: `green`
           }
-        }
+        },
+        borderWidth: 0,
+        pointPadding: 0.1
       }
     },
     tooltip: {
@@ -80,12 +82,12 @@ export const SynchronizeChart = ({ marketType, data }) => {
       {
         name: 'ok2',
         showInLegend: false,
-        type: 'spline',
-        color: `green`,
+        type: 'areaspline',
+        // color: `green`,
         yAxis: 0,
         data: [],
         marker: {
-          enabled: true
+          enabled: false
         }
       },
       {
@@ -118,7 +120,19 @@ export const SynchronizeChart = ({ marketType, data }) => {
           name: `${marketType === 'supply' ? ' Supply APY' : 'Borrow APY'}`,
           color: `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`,
           data: supplyOrBorrow,
-          lineWidth: 5
+          lineWidth: 5,
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 0.8
+            },
+            stops: [
+              [0, `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`],
+              [1, '#ffff']
+            ]
+          }
         },
         {
           name: `${marketType === 'supply' ? 'Total Supply' : 'Total Borrow'}`,

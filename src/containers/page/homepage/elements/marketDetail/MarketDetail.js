@@ -108,7 +108,7 @@ const MarketDetail = ({
   }, [match]);
 
   return (
-    <WrapLayout>
+    <WrapLayout showMenu={false}>
       <div className="market-detail">
         {marketInfo ? (
           <>
@@ -129,7 +129,7 @@ const MarketDetail = ({
             </div>
             <div className="interes-rate-market-summary">
               <div className="interest-rate">
-                <InterestRateModel marketInfo={marketInfo} currentAsset={currentAsset} />
+                <InterestRateModel marketInfo={marketInfo} currentAsset={currentAsset} decimal={decimal} />
               </div>
               <div className="summary">
                 <MarketSummary
