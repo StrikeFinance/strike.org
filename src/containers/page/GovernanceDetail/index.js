@@ -121,7 +121,11 @@ function Governance(props) {
     <div style={{ background: '#eceff9' }}>
       <div className="governance-detail">
         <div className="governance-detail-header flex just-between">
-          <img src={logo} />
+          <img
+            src={logo}
+            onClick={() => history.push('/')}
+            style={{ cursor: 'pointer' }}
+          />
           {isMobile ? (
             <div className="header-mobile">
               {visible ? (
@@ -228,7 +232,14 @@ function Governance(props) {
               </div>
             </div>
             <div className="text-info__right">
-              <div className="hexcode" onClick={() => window.open(`https://etherscan.io/address/${governanceInfo.proposer}`)}>
+              <div
+                className="hexcode"
+                onClick={() =>
+                  window.open(
+                    `https://etherscan.io/address/${governanceInfo.proposer}`
+                  )
+                }
+              >
                 <span>
                   {governanceInfo.proposer
                     ? `${governanceInfo.proposer.substr(
@@ -276,7 +287,10 @@ function Governance(props) {
           }
         />
         {}
-        <Description governanceInfo={governanceInfo} description={description}  />
+        <Description
+          governanceInfo={governanceInfo}
+          description={description}
+        />
       </div>
       <Footer />
     </div>
