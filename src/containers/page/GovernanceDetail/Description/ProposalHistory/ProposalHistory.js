@@ -32,7 +32,7 @@ function ProposalHistory({ governanceInfo }) {
   };
   return (
     <Card>
-      <div className="proposal-history-content">
+      <div className="proposal-history-content">   
         <p className="title">Proposal history</p>
         <Divider />
         <div className="history-steps-wrapper">

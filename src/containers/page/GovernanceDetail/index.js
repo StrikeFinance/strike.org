@@ -276,7 +276,7 @@ function Governance(props) {
           }
         />
         {}
-        <Description governanceInfo={governanceInfo} />
+        <Description governanceInfo={governanceInfo} description={description}  />
       </div>
       <Footer />
     </div>
