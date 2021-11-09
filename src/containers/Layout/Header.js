@@ -267,7 +267,7 @@ const Header = ({ showMenuHead }) => {
                   Whitepaper
                 </div>
               </>
-            ) : null }
+            ) : null}
             <div
               className="header-menu__btn"
               onClick={() => handleLink('https://app.strike.org/')}
