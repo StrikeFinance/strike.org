@@ -33,7 +33,7 @@
       background-color: var(--color-bg-primary);
       padding: 20px;
       width: 90%;
-      margin-right: 5%;
+      margin-right: 30px;
       @media screen and (max-width: 812px) {
         width: 100%;
         margin-bottom: 20px;
@@ -58,6 +58,7 @@
           font-size: 20px;
           font-weight: 800;
           color: #0b0f23;
+          margin-top: 4px;
         }
         .just-between {
           display: flex;
@@ -65,6 +66,16 @@
           .voting-count {
             font-size: 20px;
             color: #1c2d41;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span {
+              margin-top: 5px;
+              margin-left: 7.17px;
+              font-size: 20px;
+              font-weight: 500;
+              color: #000000;
+            }
           }
         }
       }
@@ -86,12 +97,22 @@
       }
       .header-text {
         display: flex;
-        justify-content: space-between;
         padding: 20px 0px;
         border-bottom: solid 1px #e5e5e5;
         font-size: 16px;
         font-weight: 500;
         color: #9d9fa7;
+        .action-column {
+          flex: 1;
+        }
+
+        .age-column {
+          flex: 1;
+        }
+
+        .result-column {
+          flex: 1;
+        }
       }
       .row-text {
         display: flex;
@@ -102,14 +123,20 @@
         color: #9d9fa7;
         .action-column,
         .age-column {
-          width: 40%;
+          flex: 1;
         }
         .result-column {
-          width: 30%;
+          flex: 1;
         }
         .data-list {
           height: 225px;
           overflow-y: scroll;
+        }
+        .green-color {
+          color: var(--color-green);
+        }
+        .red-color {
+          color: var(--color-red);
         }
       }
       .row-text:last-child {
@@ -118,12 +145,7 @@
       .result-column {
         display: flex;
         justify-content: flex-end;
-        .green-color {
-          color: var(--color-green);
-        }
-        .red-color {
-          color: var(--color-red);
-        }
+
         .result-text {
           color: #0b0f23;
           font-size: 16px;
@@ -147,7 +169,7 @@
     border-radius: 10px;
     background-color: var(--color-bg-primary);
     padding: 20px;
-    margin-top: 40px;
+    margin-top: 30px;
     @media screen and (max-width: 812px) {
       width: 100%;
     }
@@ -161,15 +183,30 @@
     .voting-history-row {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      @media screen and (max-width: 812px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .column-1 {
-        width: 50%;
+        flex: 1;
       }
       .column-2 {
-        width: 40%;
+        flex: 2;
+        @media screen and (max-width: 812px) {
+          width: 100%;
+        }
       }
       .column-3 {
         width: 10%;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media screen and (max-width: 812px) {
+          justify-content: flex-start;
+        }
         .agree {
           color: var(--color-blue);
           font-size: 30px;
@@ -195,7 +232,7 @@
     .column-2,
     .column-3 {
       padding: 15px 0;
-      border-bottom: solid 1px #e5e5e5;
+      // border-bottom: solid 1px #e5e5e5;
     }
     .history-name {
       color: #0b0f23;
@@ -209,21 +246,26 @@
       background: #06c270;
       padding: 5px;
       border-radius: 5px;
-      color: #fff;
+      color: #ffffff;
     }
     .defeated {
       margin-right: 10px;
       background: #f63311;
       padding: 5px;
       border-radius: 5px;
-      color: #fff;
+      color: #ffffff;
     }
     .active {
       margin-right: 10px;
       background: #3f6af7;
       padding: 5px;
       border-radius: 5px;
-      color: #fff;
+      color: #ffffff;
+    }
+    .completed-date {
+      font-size: 14px;
+      font-weight: 500;
+      color: #9d9fa7;
     }
   }
 }

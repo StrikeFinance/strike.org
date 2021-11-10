@@ -31,13 +31,11 @@ const HomePageLink = [
     altTitle: ''
   }
 ];
-const Header = () => {
+const Header = ({ showMenuHead }) => {
   const [isMobile] = useWindowResizeMobile(1099);
   const [visible, setVisible] = useState(false);
   const history = useHistory();
-
- 
-
+  console.log('showMenuHead: ', showMenuHead);
 
   const scrollWithOffset = (el, offset) => {
     const elementPosition = el.offsetTop - offset;
@@ -92,7 +90,7 @@ const Header = () => {
                           to={link?.to}
                           exact
                           onClick={() => setVisible(false)}
-                          scroll={(el) => scrollWithOffset(el, 100)}
+                          scroll={el => scrollWithOffset(el, 100)}
                         >
                           {link?.title}
                         </NavLink>
@@ -125,28 +123,32 @@ const Header = () => {
             </div>
           ) : (
             <div className="nav-links flex">
-              <div className="links ">
-                {HomePageLink.map((link, index) => (
-                  <NavLink
-                    key={index}
-                    className="link-item"
-                    to={link?.to}
-                    exact
-                    scroll={el => scrollWithOffset(el, 100)}
-                  >
-                    {link?.title}
-                  </NavLink>
-                ))}
-              </div>
-              <div className="nav-btn flex align-center">
-                <div
-                  onClick={() =>
-                    window.open('https://strike.org/Whitepaper.pdf', '_blank')
-                  }
-                  className="whitepaper-btn"
-                >
-                  Whitepaper
+              {showMenuHead ? (
+                <div className="links ">
+                  {HomePageLink.map((link, index) => (
+                    <NavLink
+                      key={index}
+                      className="link-item"
+                      to={link?.to}
+                      exact
+                      scroll={el => scrollWithOffset(el, 100)}
+                    >
+                      {link?.title}
+                    </NavLink>
+                  ))}
                 </div>
+              ) : null}
+              <div className="nav-btn flex align-center">
+                {showMenuHead ? (
+                  <div
+                    onClick={() =>
+                      window.open('https://strike.org/Whitepaper.pdf', '_blank')
+                    }
+                    className="whitepaper-btn"
+                  >
+                    Whitepaper
+                  </div>
+                ) : null}
                 <div
                   onClick={() =>
                     window.open('https://app.strike.org/', '_blank')

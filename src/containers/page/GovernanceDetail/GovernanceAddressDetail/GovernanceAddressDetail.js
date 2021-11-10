@@ -12,8 +12,12 @@ import BigNumber from 'bignumber.js';
 import { promisify } from 'utilities';
 import launchicon from 'assets/img/governance-detail/launch.svg';
 import commaNumber from 'comma-number';
-import { Icon, Progress, Pagination } from 'antd';
+import { Icon, Progress, Pagination, Divider } from 'antd';
 import moment from 'moment';
+import user from 'assets/img/governance-detail/user.png';
+import complete from 'assets/img/governance-detail/Shape.png';
+import { useWindowResizeMobile } from 'utilities/hook';
+import TransectionMobile from './TransactionMobile';
 
 const format = commaNumber.bindWith(',', '.');
 const GovernanceAddressDetail = ({
@@ -27,6 +31,7 @@ const GovernanceAddressDetail = ({
   const [current, setCurrent] = useState(1);
   const [total, setTotal] = useState(0);
   const [voteHistoryData, setvoteHistoryData] = useState([]);
+  const [isMobile] = useWindowResizeMobile(812);
   const history = useHistory();
   const getDate = timestamp => {
     const startDate = moment(timestamp * 1000);
@@ -137,13 +142,27 @@ const GovernanceAddressDetail = ({
   };
 
   const calcAgaintsPercent = item => {
-    const totalPercent = new BigNumber(item.proposal.forVotes).plus(new BigNumber(item.proposal.againstVotes));
-    return isNaN(new BigNumber(item.proposal.againstVotes * 100).div(totalPercent)) ? '0' : new BigNumber(item.proposal.againstVotes * 100).div(totalPercent).toString();
+    const totalPercent = new BigNumber(item.proposal.forVotes).plus(
+      new BigNumber(item.proposal.againstVotes)
+    );
+    return isNaN(
+      new BigNumber(item.proposal.againstVotes * 100).div(totalPercent)
+    )
+      ? '0'
+      : new BigNumber(item.proposal.againstVotes * 100)
+          .div(totalPercent)
+          .toString();
   };
 
   const calcForPercent = item => {
-    const totalPercent = new BigNumber(item.proposal.forVotes).plus(new BigNumber(item.proposal.againstVotes));
-    return isNaN(new BigNumber(item.proposal.forVotes * 100).div(totalPercent)) ? '0' : new BigNumber(item.proposal.forVotes * 100).div(totalPercent).toString();
+    const totalPercent = new BigNumber(item.proposal.forVotes).plus(
+      new BigNumber(item.proposal.againstVotes)
+    );
+    return isNaN(new BigNumber(item.proposal.forVotes * 100).div(totalPercent))
+      ? '0'
+      : new BigNumber(item.proposal.forVotes * 100)
+          .div(totalPercent)
+          .toString();
   };
 
   const convertState = state => {
@@ -186,7 +205,7 @@ const GovernanceAddressDetail = ({
                   {format(holdingInfo.votes || '0.0000')}
                 </div>
                 <div className="voting-count">
-                  <Icon type="user" />
+                  <Icon component={() => <img src={user} />} />
                   <span>{holdingInfo.delegateCount || 0}</span>
                 </div>
               </div>
@@ -208,80 +227,96 @@ const GovernanceAddressDetail = ({
               </div>
             </div>
           </div>
-          <div className="transactions">
-            <div className="title">Transactions</div>
-            <div className="header-text">
-              <div className="action-column">Action</div>
-              <div className="age-column">Age</div>
-              <div className="result-column">Result</div>
-            </div>
-            <div className="data-list">
-              {data &&
-                data.map((item, index) => (
-                  <div className="row-text" key={index}>
-                    <div className="action-column">{item.action}</div>
-                    <div className="age-column">{item.age}</div>
-                    <div className="result-column">
+
+          {isMobile ? (
+            <TransectionMobile data={data} address={address} />
+          ) : (
+            <div className="transactions">
+              <div className="title">Transactions</div>
+              <div className="header-text">
+                <div className="action-column">Action</div>
+                <div className="age-column">Age</div>
+                <div className="result-column">Result</div>
+              </div>
+              <div className="data-list">
+                {data &&
+                  data.map((item, index) => (
+                    <div className="row-text" key={index}>
+                      <div className="action-column">{item.action}</div>
+                      <div className="age-column">{item.age}</div>
                       {item.isReceived ? (
                         <Icon type="arrow-up" className="green-color" />
                       ) : (
                         <Icon type="arrow-down" className="red-color" />
                       )}
-                      <div className="result-text">{item.result}</div>
+                      <div className="result-column">
+                        <div className="result-text">{item.result}</div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+              </div>
+              <div className="view-more" onClick={() => handleLink()}>
+                VIEW MORE
+              </div>
             </div>
-            <div className="view-more" onClick={() => handleLink()}>
-              VIEW MORE
-            </div>
-          </div>
+          )}
         </div>
         <div className="voting-history">
           <div className="header">Voting History</div>
           <div className="body">
             {voteHistoryData.map((item, index) => (
-              <div
-                className={`row-${index} voting-history-row`}
-                onClick={() => history.push(`/governance-detail/${item.proposal.id}`)}
-              >
-                <div className="column-1">
-                  <div className="history-name">
-                    {item.proposal.description.split('\n')[0]}
+              <div key={index}>
+                <div
+                  className={`row-${index} voting-history-row`}
+                  onClick={() =>
+                    history.push(`/governance-detail/${item.proposal.id}`)
+                  }
+                >
+                  <div className="column-1">
+                    <div className="history-name">
+                      {item.proposal.description.split('\n')[0]}
+                    </div>
+                    <div>
+                      <span className={`${convertState(item.proposal.state)}`}>
+                        {convertState(item.proposal.state)}
+                      </span>
+                      <span className="completed-date">{`${
+                        item.proposal.id
+                      } - ${item.proposal.state} ${moment(
+                        item.proposal.createdAt
+                      ).format('MMMM Do, YYYY')}`}</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className={`${convertState(item.proposal.state)}`}>
-                      {convertState(item.proposal.state)}
+                  <div className="column-2">
+                    {parseInt(calcForPercent(item)) === 0 ? null : (
+                      <Progress
+                        percent={parseInt(calcForPercent(item))}
+                        strokeColor="#277ee6"
+                        strokeWidth={7}
+                        showInfo={false}
+                      />
+                    )}
+                    {parseInt(calcAgaintsPercent(item)) === 0 ? null : (
+                      <Progress
+                        percent={parseInt(calcAgaintsPercent(item))}
+                        strokeColor="#277ee6"
+                        strokeWidth={7}
+                        showInfo={false}
+                      />
+                    )}
+                  </div>
+                  <div className="column-3">
+                    <Icon
+                      className={item.support ? 'agree' : 'against'}
+                      theme="filled"
+                      component={() => <img src={complete} />}
+                    />
+                    <span className="for-or-against">
+                      {item.support ? 'For' : 'Against'}
                     </span>
-                    <span>{`${item.proposal.id} - ${
-                      item.proposal.state
-                    } ${moment(item.proposal.createdAt).format(
-                      'MMMM Do, YYYY'
-                    )}`}</span>
                   </div>
                 </div>
-                <div className="column-2">
-                  <Progress
-                    percent={calcForPercent(item)}
-                    strokeColor="#277ee6"
-                    strokeWidth={7}
-                    showInfo={false}
-                  />
-                  <Progress
-                    percent={calcAgaintsPercent(item)}
-                    strokeColor="#277ee6"
-                    strokeWidth={7}
-                    showInfo={false}
-                  />
-                </div>
-                <div className="column-3">
-                  <Icon
-                    className={item.support ? 'agree' : 'against'}
-                    type="check-square"
-                    theme="filled"
-                  />
-                  <span className="for-or-against">{item.support ? 'For' : 'Against'}</span>
-                </div>
+                <Divider style={{ marginTop: '16px!important' }} />
               </div>
             ))}
           </div>

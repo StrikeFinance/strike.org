@@ -41,7 +41,9 @@ const Governance = ({ getGovernance, history }) => {
     setGovernance(res?.data?.result);
   };
   useEffect(() => {
+    let mounted = true;
     getGovernanceData();
+    return () => (mounted = false);
   }, []);
   return (
     <div className="governance" id="gorvernance">

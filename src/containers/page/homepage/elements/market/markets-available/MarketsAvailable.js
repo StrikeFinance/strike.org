@@ -6,7 +6,6 @@ import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
 import { promisify } from 'utilities';
 import { BigNumber } from 'bignumber.js';
-// import moment from 'moment';
 import { useWindowResizeMobile } from 'utilities/hook';
 import commaNumber from 'comma-number';
 import { Table, Pagination, Card } from 'antd';
@@ -39,7 +38,7 @@ const ICONS = {
 };
 const columns = [
   {
-    title: () => <span>Market</span>,
+    title: 'Market',
     dataIndex: 'market',
     key: 'market',
     render: (action, record) => (
@@ -130,13 +129,14 @@ const columns = [
     )
   }
 ];
-const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
+function MarketsAvailable({ getGovernanceStrikeWithParam }) {
   const [isMobile] = useWindowResizeMobile(768);
   const [markets, setMarkets] = useState([]);
   const [total, setTotal] = useState(0);
   const [current, setCurrent] = useState(1);
   const [sortInfo, setSortInfo] = useState({ field: '', sort: 'desc' });
   const history = useHistory();
+
   const getMarkets = async ({ offset, limit }) => {
     const res = await promisify(getGovernanceStrikeWithParam, {
       offset,
@@ -169,12 +169,14 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
     setCurrent(value);
     getMarkets({ offset: (value - 1) * 5, limit: 5 });
   };
-  const onRowClick = record => {
+  const onRow = record => {
     history.push(`/market/${record.underlyingSymbol}`);
   };
 
   useEffect(() => {
+    let mounted = true;
     getMarkets({ offset: 0, limit: 5 });
+    return () => (mounted = false);
   }, []);
 
   return (
@@ -188,7 +190,9 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
             dataSource={markets}
             pagination={false}
             className="table-market"
-            onRowClick={onRowClick}
+            onRow={record => ({
+              onClick: () => history.push(`/market/${record.underlyingSymbol}`)
+            })}
           />
           <div className="pagination">
             <Pagination
@@ -202,7 +206,7 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
       </div>
     </div>
   );
-};
+}
 const mapDispatchToProps = dispatch => {
   const {
     getGovernanceStrike,
