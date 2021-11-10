@@ -7,7 +7,7 @@ import moment from 'moment';
 import './Governance.scss';
 import completed from 'assets/img/homepage/success.svg';
 import cancel from 'assets/img/landingpage/cancel.png';
-import { Col, Row } from 'antd';
+import { Col, Row, Pagination } from 'antd';
 import ArrowCrossFillImg from 'assets/img/homepage/arrow-cross-fill.svg';
 import ArrowCrossBlackOpacity from 'assets/img/homepage/arrow-cross-black-opacity.png';
 import ArrowCrossBlack from 'assets/img/homepage/arrow-cross-black.png';
@@ -34,12 +34,21 @@ const Governance = ({ getGovernance, history }) => {
   };
   const [isMobile] = useWindowResizeMobile(768);
   const [governance, setGovernance] = useState([]);
+  const [current, setCurrent] = useState(1);
+  const [total, setTotal] = useState(0);
 
-  const getGovernanceData = async () => {
-    const res = await promisify(getGovernance, { limit: 5, offset: 0 });
+  const getGovernanceData = async (offset, limit) => {
+    const res = await promisify(getGovernance, { offset, limit });
     // console.log(res?.data);
     setGovernance(res?.data?.result);
+    setTotal(res?.data?.total);
   };
+
+  const onChangePage = value => {
+    setCurrent(value);
+    getGovernanceData({ offset: (value - 1) * 5, limit: 5 });
+  };
+
   useEffect(() => {
     let mounted = true;
     getGovernanceData();
@@ -156,6 +165,14 @@ const Governance = ({ getGovernance, history }) => {
                     </div>
                   </div>
                 ))}
+                <div className="pagination">
+                  <Pagination
+                    onChange={onChangePage}
+                    total={total}
+                    pageSize={5}
+                    current={current}
+                  />
+                </div>
 
                 <div className="arrow-cross">
                   <img src={ArrowCrossFillImg} alt="arrow-cross" />
