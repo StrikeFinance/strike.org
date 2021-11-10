@@ -24,6 +24,8 @@ function TableDetail(props) {
   } = props;
   const [forPercent, setForPercent] = useState(0);
   const [againstPercent, setAgainstPercent] = useState(0);
+  const [isViewAll, setIsViewAll] = useState(true);
+
   const history = useHistory();
   useEffect(() => {
     const total = new BigNumber(parseInt(forVotes)).plus(
