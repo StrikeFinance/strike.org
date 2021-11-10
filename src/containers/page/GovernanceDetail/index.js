@@ -56,6 +56,19 @@ function Governance(props) {
   const [visible, setVisible] = useState(false);
   const format = commaNumber.bindWith(',', '.');
 
+  const getStatus = p => {
+    if (p.state === 'Executed') {
+      return 'passed';
+    }
+    if (p.state === 'Active') {
+      return 'active';
+    }
+    if (p.state === 'Defeated') {
+      return 'failed';
+    }
+    return p.state;
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: 0
@@ -241,13 +254,9 @@ function Governance(props) {
             <div className="text-info__left">
               <span className="info-content">{description.split('\n')[0]}</span>
               <div className="date-completed">
-                {governanceInfo.state === 'Executed' ? (
-                  <span className="passed">passed</span>
-                ) : governanceInfo.state === 'Defeated' ? (
-                  <span className="defeated">failed</span>
-                ) : governanceInfo.state === 'Active' ? (
-                  <span className="active">active</span>
-                ) : null}
+                <span className={`${getStatus(governanceInfo)}`}>
+                  {getStatus(governanceInfo)}
+                </span>
 
                 <span className="date">
                   {governanceInfo.id} - {governanceInfo.state}{' '}

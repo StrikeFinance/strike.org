@@ -44,7 +44,12 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.createdTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={completeIcon}
+              icon={
+                <Icon
+                  type="check"
+                  style={{ fontSize: '23px', color: 'white' }}
+                />
+              }
               disabled
             />
             <Step
@@ -54,7 +59,12 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.startTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={completeIcon}
+                icon={
+                <Icon
+                  type="check"
+                  style={{ fontSize: '23px', color: 'white' }}
+                />
+              }
               disabled
             />
             <Step
@@ -75,7 +85,12 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.endTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={completeIcon}
+                icon={
+                <Icon
+                  type="check"
+                  style={{ fontSize: '23px', color: 'white' }}
+                />
+              }
               disabled
             />
             <Step
@@ -87,7 +102,12 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.queuedTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={completeIcon}
+                icon={
+                <Icon
+                  type="check"
+                  style={{ fontSize: '23px', color: 'white' }}
+                />
+              }
               disabled
             />
             <Step
@@ -107,7 +127,12 @@ function ProposalHistory({ governanceInfo }) {
                     )
                   : ''
               }
-              icon={completeIcon}
+                icon={
+                <Icon
+                  type="check"
+                  style={{ fontSize: '23px', color: 'white' }}
+                />
+              }
               disabled
             />
           </Steps>
