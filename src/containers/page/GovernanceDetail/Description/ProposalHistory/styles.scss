@@ -1,0 +1,88 @@
+.proposal-history-content {
+  width: 100%;
+  border-radius: 5px;
+
+  .title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000000;
+    padding-top: 22px;
+    @media screen and (max-width: 812px) {
+      font-size: 16px;
+    }
+  }
+
+  .history-steps-wrapper {
+    width: 100%;
+    margin-top: 28px;
+    .ant-steps {
+      .ant-steps-item-container {
+        padding-bottom: 30px;
+      }
+      .ant-steps-item-tail {
+        top: 40px !important;
+        // left: 19px !important;
+        width: 1px !important;
+        padding: 38px 2px 6px !important;
+        border-right: 1px dashed #000000 !important;
+        z-index: 0 !important;
+        opacity: 0.2 !important;
+        &::after {
+          content: '';
+          width: 0;
+          height: 0;
+          background: none;
+        }
+      }
+      .ant-steps-item-icon {
+        .ant-steps-icon {
+          width: 18px;
+          height: 13px;
+          color: #ffffff!important;
+          font-size: 23px!important;
+        }
+      }
+      .ant-steps-item-container {
+        display: flex;
+        .ant-steps-item-title {
+          font-size: 17px;
+          font-weight: 900;
+          line-height: unset;
+          color: #000000;
+          @media screen and (max-width: 812px) {
+            font-size: 16px;
+          }
+        }
+        .ant-steps-item-description {
+          font-size: 14px;
+          color: #9d9fa7;
+          @media screen and (max-width: 812px) {
+            font-size: 14px;
+          }
+        }
+        .ant-steps-item-icon {
+          width: 40px;
+          height: 40px;
+          background: var(--color-blue);
+          .ant-steps-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            line-height: unset;
+            font-size: 16px;
+          }
+        }
+      }
+      .ant-steps-item-process .ant-steps-item-icon {
+        background: #9d9fa7;
+        border: none;
+      }
+      .ant-steps-item-wait .ant-steps-item-icon {
+        background: #9d9fa7;
+        border: none;
+      }
+    }
+  }
+}

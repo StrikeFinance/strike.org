@@ -17,10 +17,13 @@ function TableDetail(props) {
     addressNumber,
     listDataAgainst,
     againstAddressNumber,
-    emptyAgainstNumber
+    emptyAgainstNumber,
+    onViewAllFor,
+    onViewAllAgainst
   } = props;
   const [forPercent, setForPercent] = useState(0);
   const [againstPercent, setAgainstPercent] = useState(0);
+  const [isViewAll, setIsViewAll] = useState(true);
 
   useEffect(() => {
     const total = new BigNumber(parseInt(forVotes)).plus(
@@ -68,15 +71,7 @@ function TableDetail(props) {
                 )}
               </span>
             </div>
-            <div
-              style={{
-                width: `${forPercent}%`,
-                height: '5px',
-                borderRadius: ' 27px',
-                marginTop: '19px',
-                background: 'var(--color-blue)'
-              }}
-            />
+            <Progress percent={forPercent} showInfo={false} status="active" />
           </div>
           <Divider />
           <div className="address-vote">
@@ -84,36 +79,51 @@ function TableDetail(props) {
             <span>Votes</span>
           </div>
           <Divider />
-
-          {list?.map((item, index) => {
-            return (
-              <div className="addressed-votes-info" key={index}>
-                <span className="addressed-votes-info__left">
-                  {item.label
-                    ? `${item.label.substr(0, 5)}...${item.label.substr(-4, 4)}`
-                    : ''}
-                </span>
-                <span className="addressed-votes-info__right">
-                  <span>
-                    {format(
-                      new BigNumber(Web3.utils.fromWei(item.value, 'ether'))
-                        .dp(8, 1)
-                        .toString(10)
-                    )}
+          <div className="scroll-bar">
+            {list?.map((item, index) => {
+              return (
+                <div className="addressed-votes-info" key={index}>
+                  <span className="addressed-votes-info__left">
+                    {item.label
+                      ? `${item.label.substr(0, 5)}...${item.label.substr(
+                          -4,
+                          4
+                        )}`
+                      : ''}
                   </span>
-                </span>
+                  <span className="addressed-votes-info__right">
+                    <span>
+                      {format(
+                        new BigNumber(Web3.utils.fromWei(item.value, 'ether'))
+                          .dp(8, 1)
+                          .toString(10)
+                      )}
+                    </span>
+                  </span>
+                </div>
+              );
+            })}
+            {emptyList.map(v => (
+              <div
+                className="flex align-center just-between vote-item empty-item"
+                key={v}
+              >
+                <span>—</span>
+                <span>—</span>
               </div>
-            );
-          })}
-          {emptyList.map(v => (
-            <div
-              className="flex align-center just-between vote-item empty-item"
-              key={v}
-            >
-              <span>—</span>
-              <span>—</span>
-            </div>
-          ))}
+            ))}
+            {isViewAll && addressNumber > 3 && (
+              <div
+                className="flex align-center just-center view-all pointer"
+                onClick={() => {
+                  setIsViewAll(false);
+                  onViewAllFor();
+                }}
+              >
+                View all
+              </div>
+            )}
+          </div>
         </div>
       </div>
       {/* End content left */}
@@ -124,14 +134,10 @@ function TableDetail(props) {
               <span>Against</span>
               <span>{againstVote}</span>
             </div>
-            <div
-              style={{
-                width: `${againstPercent}%`,
-                height: '5px',
-                borderRadius: ' 27px',
-                marginTop: '19px',
-                background: 'var(--color-purple)'
-              }}
+            <Progress
+              percent={againstPercent}
+              showInfo={false}
+              status="exception"
             />
           </div>
           <Divider />
@@ -140,33 +146,38 @@ function TableDetail(props) {
             <span>Votes</span>
           </div>
           <Divider />
-          {listDataAgainst?.map((item, index) => {
-            return (
-              <div className="addressed-votes-info" key={index}>
-                <span className="addressed-votes-info__left">
-                  {item.label
-                    ? `${item.label.substr(0, 5)}...${item.label.substr(-4, 4)}`
-                    : ''}
-                </span>
-                <span className="addressed-votes-info__right">
-                  {format(
-                    new BigNumber(Web3.utils.fromWei(item.value, 'ether'))
-                      .dp(8, 1)
-                      .toString(10)
-                  )}
-                </span>
+          <div className="scroll-bar">
+            {listDataAgainst?.map((item, index) => {
+              return (
+                <div className="addressed-votes-info" key={index}>
+                  <span className="addressed-votes-info__left">
+                    {item.label
+                      ? `${item.label.substr(0, 5)}...${item.label.substr(
+                          -4,
+                          4
+                        )}`
+                      : ''}
+                  </span>
+                  <span className="addressed-votes-info__right">
+                    {format(
+                      new BigNumber(Web3.utils.fromWei(item.value, 'ether'))
+                        .dp(8, 1)
+                        .toString(10)
+                    )}
+                  </span>
+                </div>
+              );
+            })}
+            {emptyAgainstList.map(v => (
+              <div
+                className="flex align-center just-between vote-item empty-item"
+                key={v}
+              >
+                <span>—</span>
+                <span>—</span>
               </div>
-            );
-          })}
-          {emptyAgainstList.map(v => (
-            <div
-              className="flex align-center just-between vote-item empty-item"
-              key={v}
-            >
-              <span>—</span>
-              <span>—</span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

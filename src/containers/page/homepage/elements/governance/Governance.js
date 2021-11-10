@@ -81,16 +81,16 @@ const Governance = ({ getGovernance, history }) => {
             <Col xs={24} sm={24} md={14} lg={14} xl={14}>
               <div className="recent-proposals">
                 <div className="title-proposals">Recent Proposals</div>
-                <div className="recent-list">
-                  {governance.slice(0, 5).map((item, index) => (
+
+                {governance.map((item, index) => (
+                  <div className="recent-list" key={index}>
                     <div
                       onClick={() =>
                         history.push(`/governance-detail/${item.id}`)
                       }
                       className="recent-item flex just-between"
-                      key={index}
                     >
-                      <div className="">
+                      <div>
                         <div className="description">
                           {item?.description.split('\n')[0]}
                         </div>
@@ -99,7 +99,13 @@ const Governance = ({ getGovernance, history }) => {
                             <div className="mx-auto time">
                               {moment(item?.createdAt).format('MMMM Do, YYYY')}
                             </div>
-                            <div className={`mx-auto ${getStatus(item) === 'Failed' ? 'failed' : 'status'}`}>
+                            <div
+                              className={`mx-auto ${
+                                getStatus(item) === 'Failed'
+                                  ? 'failed'
+                                  : 'status'
+                              }`}
+                            >
                               {getStatus(item)}
                             </div>
                           </div>
@@ -108,8 +114,16 @@ const Governance = ({ getGovernance, history }) => {
                             <div
                               className={`${
                                 isMobile
-                                  ? `mx-auto ${getStatus(item) === 'Failed' ? 'failed' : 'status'}`
-                                  : `mr-1 mx-auto ${getStatus(item) === 'Failed' ? 'failed' : 'status'}`
+                                  ? `mx-auto ${
+                                      getStatus(item) === 'Failed'
+                                        ? 'failed'
+                                        : 'status'
+                                    }`
+                                  : `mr-1 mx-auto ${
+                                      getStatus(item) === 'Failed'
+                                        ? 'failed'
+                                        : 'status'
+                                    }`
                               }`}
                             >
                               {getStatus(item)}
@@ -126,7 +140,9 @@ const Governance = ({ getGovernance, history }) => {
                         <div className="mr-1">
                           <img
                             alt="status"
-                            src={`${getStatus(item) === 'Failed' ? cancel : completed}`}
+                            src={`${
+                              getStatus(item) === 'Failed' ? cancel : completed
+                            }`}
                           />
                         </div>
                         <div
@@ -136,8 +152,9 @@ const Governance = ({ getGovernance, history }) => {
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
+
                 <div className="arrow-cross">
                   <img src={ArrowCrossFillImg} alt="arrow-cross" />
                 </div>
