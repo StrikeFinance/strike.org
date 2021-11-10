@@ -15,6 +15,8 @@ export const GET_INTERATE_MODEL = '@account/GET_INTERATE_MODEL';
 export const GET_GOVERNANCE_REQUEST = '@account/GET_GOVERNANCE_REQUEST';
 export const GET_PROPOSAL_BY_ID_REQUEST = '@account/GET_PROPOSAL_BY_ID_REQUEST';
 export const GET_VOTERS_REQUEST = '@account/GET_VOTERS_REQUEST';
+export const GET_VOTER_DETAIL_REQUEST = '@account/GET_VOTER_DETAIL_REQUEST';
+export const GET_VOTER_HISTORY_REQUEST = '@account/GET_VOTER_HISTORY_REQUEST';
 
 /**
  * Action Creators
@@ -31,4 +33,6 @@ export const accountActionCreators = {
   getGovernance: createPromiseAction(GET_GOVERNANCE_REQUEST),
   getProposalById: createPromiseAction(GET_PROPOSAL_BY_ID_REQUEST),
   getVoters: createPromiseAction(GET_VOTERS_REQUEST),
+  getVoterDetail: createPromiseAction(GET_VOTER_DETAIL_REQUEST),
+  getVoterHistory: createPromiseAction(GET_VOTER_HISTORY_REQUEST)
 };

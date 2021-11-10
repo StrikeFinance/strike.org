@@ -177,14 +177,6 @@ const MarketsAvailable = ({ getGovernanceStrikeWithParam }) => {
     getMarkets({ offset: 0, limit: 5 });
   }, []);
 
-  const handleSort = field => {
-    setSortInfo({
-      field,
-      sort:
-        sortInfo.field === field && sortInfo.sort === 'desc' ? 'asc' : 'desc'
-    });
-  };
-
   return (
     <div className="markets-available">
       <div className="markets-available-content">
