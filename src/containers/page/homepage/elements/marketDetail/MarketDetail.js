@@ -35,6 +35,12 @@ const MarketDetail = ({
   const [decimal, setdecimal] = useState();
   const [data, setData] = useState([]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0
+    });
+  }, []);
+
   const getMarket = async () => {
     const res = await promisify(getGovernanceStrike, {});
     if (!res.status) {
@@ -57,8 +63,12 @@ const MarketDetail = ({
             createdAt: m.createdAt,
             supplyApy: +new BigNumber(m.supplyApy || 0).dp(8, 1).toString(10),
             borrowApy: +new BigNumber(m.borrowApy || 0).dp(8, 1).toString(10),
-            totalSupply: +(new BigNumber(m.totalSupply || 0).dp(8, 1).toString(10)),
-            totalBorrow: +(new BigNumber(m.totalBorrow || 0).dp(8, 1).toString(10))
+            totalSupply: +new BigNumber(m.totalSupply || 0)
+              .dp(8, 1)
+              .toString(10),
+            totalBorrow: +new BigNumber(m.totalBorrow || 0)
+              .dp(8, 1)
+              .toString(10)
           });
         });
         setData([...tempData.reverse()]);
@@ -117,19 +127,33 @@ const MarketDetail = ({
             <div className="card-chart">
               <div className="sub-card-chart">
                 <div className="market-tab-wrapper">
-                  <div className={`tab-item supply-tab ${marketType === 'supply' ? 'tab-active' : ''}`}
+                  <div
+                    className={`tab-item supply-tab ${
+                      marketType === 'supply' ? 'tab-active' : ''
+                    }`}
                     onClick={() => setmarketType('supply')}
-                  >Supply</div>
-                  <div className={`tab-item borrow-tab ${marketType === 'borrow' ? 'tab-active' : ''}`}
+                  >
+                    Supply
+                  </div>
+                  <div
+                    className={`tab-item borrow-tab ${
+                      marketType === 'borrow' ? 'tab-active' : ''
+                    }`}
                     onClick={() => setmarketType('borrow')}
-                  >Borrow</div>
+                  >
+                    Borrow
+                  </div>
                 </div>
                 <SynchronizeChart marketType={marketType} data={data} />
               </div>
             </div>
             <div className="interes-rate-market-summary">
               <div className="interest-rate">
-                <InterestRateModel marketInfo={marketInfo} currentAsset={currentAsset} decimal={decimal} />
+                <InterestRateModel
+                  marketInfo={marketInfo}
+                  currentAsset={currentAsset}
+                  decimal={decimal}
+                />
               </div>
               <div className="summary">
                 <MarketSummary
@@ -141,7 +165,10 @@ const MarketDetail = ({
             </div>
           </>
         ) : (
-          <div className="loading-spinner" style={{height: `calc(100vh - 325px)`}}>
+          <div
+            className="loading-spinner"
+            style={{ height: `calc(100vh - 325px)` }}
+          >
             <LoadingSpinner />
           </div>
         )}
