@@ -7,7 +7,6 @@ import Borrow from './borrow/';
 import './Market.scss';
 import TotalSupply from './total-supply';
 
-
 const Market = ({ markets }) => {
   const [totalSupply, setTotalSupply] = useState('0');
   const [supplierCount, setSupplierCount] = useState(0);
@@ -17,6 +16,7 @@ const Market = ({ markets }) => {
   const [borrowVolume, setBorrowVolume] = useState(0);
 
   useEffect(() => {
+    let mounted = true;
     if (markets.markets) {
       const tempTS = (markets.markets || []).reduce((accumulator, market) => {
         return new BigNumber(accumulator).plus(
@@ -38,9 +38,14 @@ const Market = ({ markets }) => {
       setSupplierCount(tempSC);
       setTotalBorrow(tempTB.dp(2, 1).toString(10));
       setBorrowerCount(tempBC);
-      setSupplyVolume(markets.marketVolumeLog ? markets.marketVolumeLog.totalSupplyUsd24h : 0);
-      setBorrowVolume(markets.marketVolumeLog ? markets.marketVolumeLog.totalBorrowsUsd24h : 0);
+      setSupplyVolume(
+        markets.marketVolumeLog ? markets.marketVolumeLog.totalSupplyUsd24h : 0
+      );
+      setBorrowVolume(
+        markets.marketVolumeLog ? markets.marketVolumeLog.totalBorrowsUsd24h : 0
+      );
     }
+    return () => (mounted = false);
   }, [markets]);
   return (
     <div className="market-homepage" id="market">
