@@ -17,10 +17,13 @@ function TableDetail(props) {
     addressNumber,
     listDataAgainst,
     againstAddressNumber,
-    emptyAgainstNumber
+    emptyAgainstNumber,
+    onViewAllFor,
+    onViewAllAgainst
   } = props;
   const [forPercent, setForPercent] = useState(0);
   const [againstPercent, setAgainstPercent] = useState(0);
+  const [isViewAll, setIsViewAll] = useState(true);
 
   useEffect(() => {
     const total = new BigNumber(parseInt(forVotes)).plus(
@@ -68,15 +71,7 @@ function TableDetail(props) {
                 )}
               </span>
             </div>
-            <div
-              style={{
-                width: `${forPercent}%`,
-                height: '5px',
-                borderRadius: ' 27px',
-                marginTop: '19px',
-                background: 'var(--color-blue)'
-              }}
-            />
+            <Progress percent={forPercent} showInfo={false} status="active" />
           </div>
           <Divider />
           <div className="address-vote">
@@ -114,6 +109,17 @@ function TableDetail(props) {
               <span>—</span>
             </div>
           ))}
+          {isViewAll && addressNumber > 3 && (
+            <div
+              className="flex align-center just-center view-all pointer"
+              onClick={() => {
+                setIsViewAll(false);
+                onViewAllFor();
+              }}
+            >
+              View all
+            </div>
+          )}
         </div>
       </div>
       {/* End content left */}
@@ -124,14 +130,10 @@ function TableDetail(props) {
               <span>Against</span>
               <span>{againstVote}</span>
             </div>
-            <div
-              style={{
-                width: `${againstPercent}%`,
-                height: '5px',
-                borderRadius: ' 27px',
-                marginTop: '19px',
-                background: 'var(--color-purple)'
-              }}
+            <Progress
+              percent={againstPercent}
+              showInfo={false}
+              status="exception"
             />
           </div>
           <Divider />

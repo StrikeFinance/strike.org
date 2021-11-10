@@ -20,7 +20,7 @@
         padding-bottom: 30px;
       }
       .ant-steps-item-tail {
-        top: 40px!important;
+        top: 40px !important;
         // left: 19px !important;
         width: 1px !important;
         padding: 38px 2px 6px !important;
@@ -32,6 +32,14 @@
           width: 0;
           height: 0;
           background: none;
+        }
+      }
+      .ant-steps-item-icon {
+        .ant-steps-icon {
+          width: 18px;
+          height: 13px;
+          color: #ffffff;
+          font-size: 23px!important;
         }
       }
       .ant-steps-item-container {
@@ -68,11 +76,11 @@
         }
       }
       .ant-steps-item-process .ant-steps-item-icon {
-        background: var(--color-text-inactive);
+        background: #9d9fa7;
         border: none;
       }
       .ant-steps-item-wait .ant-steps-item-icon {
-        background: var(--color-text-inactive);
+        background: #9d9fa7;
         border: none;
       }
     }

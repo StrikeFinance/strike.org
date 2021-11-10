@@ -4,9 +4,8 @@ import moment from 'moment';
 import styled from 'styled-components';
 import { Steps, Icon, Divider } from 'antd';
 import { Card } from 'components/Basic/Card';
-import './styles.scss'
-
-
+import './styles.scss';
+import completeIcon from 'assets/img/governance-detail/complete-icon.png';
 
 const { Step } = Steps;
 
@@ -32,11 +31,11 @@ function ProposalHistory({ governanceInfo }) {
   };
   return (
     <Card>
-      <div className="proposal-history-content">   
+      <div className="proposal-history-content">
         <p className="title">Proposal history</p>
         <Divider />
         <div className="history-steps-wrapper">
-          <Steps  direction="vertical" current={getStepNumber()}>
+          <Steps direction="vertical" current={getStepNumber()}>
             <Step
               title="Created"
               current={1}
@@ -45,12 +44,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.createdTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '18px', color: 'white' }}
-                />
-              }
+              icon={completeIcon}
               disabled
             />
             <Step
@@ -60,12 +54,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.startTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '18px', color: 'white' }}
-                />
-              }
+              icon={completeIcon}
               disabled
             />
             <Step
@@ -86,12 +75,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.endTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '18px', color: 'white' }}
-                />
-              }
+              icon={completeIcon}
               disabled
             />
             <Step
@@ -103,12 +87,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.queuedTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '18px', color: 'white' }}
-                />
-              }
+              icon={completeIcon}
               disabled
             />
             <Step
@@ -128,12 +107,7 @@ function ProposalHistory({ governanceInfo }) {
                     )
                   : ''
               }
-              icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '18px', color: 'white' }}
-                />
-              }
+              icon={completeIcon}
               disabled
             />
           </Steps>

@@ -112,6 +112,30 @@ function Governance(props) {
       });
   }, [getVoters]);
 
+  const loadMore = type => {
+    if (type === 'for' && data?.total) {
+      promisify(getVoters, {
+        id: governanceInfo.id,
+        limit: data?.total,
+        filter: 'for'
+      })
+        .then(res => {
+          setData(res.data || {});
+        })
+        .catch(e => console.log(e));
+    } else if (dataAgainst?.total) {
+      promisify(getVoters, {
+        id: governanceInfo.id,
+        limit: dataAgainst?.total,
+        filter: 'against'
+      })
+        .then(res => {
+          setDataAgainst(res.data);
+        })
+        .catch(e => console.log(e));
+    }
+  };
+
   useEffect(() => {
     getDataProposalById();
     getDataProPosal();
@@ -255,6 +279,8 @@ function Governance(props) {
         </div>
         {/* End main content */}
         <TableDetail
+          onViewAllFor={() => loadMore('for')}
+          onViewAllAgainst={() => loadMore('against')}
           forVotes={
             isNaN(BigNumber(parseInt(data.sumVotes))) ? '0' : data.sumVotes
           }
