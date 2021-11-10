@@ -117,7 +117,6 @@ function Governance(props) {
 
     await promisify(getVoters, bodyAgainst)
       .then(res => {
-        console.log('res data against', res);
         setDataAgainst(res.data);
       })
       .catch(() => {

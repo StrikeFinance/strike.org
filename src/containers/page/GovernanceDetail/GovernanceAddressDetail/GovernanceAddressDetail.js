@@ -160,7 +160,7 @@ const GovernanceAddressDetail = ({
   };
 
   return (
-    <WrapLayout>
+    <WrapLayout showMenu={false}>
       <BackButton title="Details" />
       <div className="governance-address-detail">
         <div className="address">

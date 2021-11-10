@@ -287,7 +287,7 @@ const Header = ({ showMenuHead }) => {
       </div>
     </HeaderWrapper>
   );
-}
+};
 
 Header.propTypes = {
   showMenuHead: PropTypes.bool
