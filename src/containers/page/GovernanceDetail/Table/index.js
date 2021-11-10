@@ -5,6 +5,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import BigNumber from 'bignumber.js';
 import Web3 from 'web3';
 import commaNumber from 'comma-number';
+import { useHistory } from 'react-router';
 
 const format = commaNumber.bindWith(',', '.');
 
@@ -25,6 +26,7 @@ function TableDetail(props) {
   const [againstPercent, setAgainstPercent] = useState(0);
   const [isViewAll, setIsViewAll] = useState(true);
 
+  const history = useHistory();
   useEffect(() => {
     const total = new BigNumber(parseInt(forVotes)).plus(
       new BigNumber(parseInt(againstVote))
@@ -82,7 +84,11 @@ function TableDetail(props) {
           <div className="scroll-bar">
             {list?.map((item, index) => {
               return (
-                <div className="addressed-votes-info" key={index}>
+                <div
+                  className="addressed-votes-info"
+                  key={index}
+                  onClick={() => history.push(`/vote/address/${item.label}`)}
+                >
                   <span className="addressed-votes-info__left">
                     {item.label
                       ? `${item.label.substr(0, 5)}...${item.label.substr(

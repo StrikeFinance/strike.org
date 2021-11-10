@@ -1,0 +1,100 @@
+.transaction-mobile {
+  .children-content {
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 22px;
+    background-color: #ffffff;
+    border-radius: 5px;
+
+    .ant-divider-horizontal {
+      margin-top: 11px !important;
+    }
+
+    &__title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #000000;
+    }
+    &__info {
+      .action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        &__title {
+          font-size: 14px;
+          font-weight: 500;
+          color: #9d9fa7;
+        }
+
+        &__info {
+          font-size: 14px;
+          font-weight: 800;
+          color: #9d9fa7;
+        }
+      }
+      .age {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        &__title {
+          font-size: 14px;
+          font-weight: 500;
+          color: #9d9fa7;
+          flex: 1;
+        }
+
+        .date-arrow {
+          display: flex;
+        //   justify-content: space-between;
+          align-items: center;
+          flex: 1;
+          .green-color {
+            color: var(--color-green);
+            flex: 1;
+          }
+          .red-color {
+            color: var(--color-red);
+            flex: 1;
+          }
+
+          .date {
+            font-size: 14px;
+            font-weight: 800;
+            color: #9d9fa7;
+            text-align: right;
+            flex: 2
+          }
+        }
+      }
+      .result {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        &__title {
+          font-size: 14px;
+          font-weight: 500;
+          color: #9d9fa7;
+        }
+        &__info {
+          font-size: 14px;
+          font-weight: 800;
+          color: #0b0f23;
+        }
+      }
+    }
+    .view-more {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--color-text-main);
+      cursor: pointer;
+    }
+    .view-more:hover {
+      color: var(--color-blue);
+    }
+  }
+}

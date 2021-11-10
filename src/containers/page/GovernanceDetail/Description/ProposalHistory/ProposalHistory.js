@@ -44,12 +44,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.createdTimestamp * 1000).format('LLL')
                   : ''
               }
-              icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '23px', color: 'white' }}
-                />
-              }
+              component={() => <img src={completeIcon} />}
               disabled
             />
             <Step
@@ -59,12 +54,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.startTimestamp * 1000).format('LLL')
                   : ''
               }
-                icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '23px', color: 'white' }}
-                />
-              }
+              component={() => <img src={completeIcon} />}
               disabled
             />
             <Step
@@ -85,12 +75,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.endTimestamp * 1000).format('LLL')
                   : ''
               }
-                icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '23px', color: 'white' }}
-                />
-              }
+              component={() => <img src={completeIcon} />}
               disabled
             />
             <Step
@@ -102,12 +87,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.queuedTimestamp * 1000).format('LLL')
                   : ''
               }
-                icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '23px', color: 'white' }}
-                />
-              }
+              component={() => <img src={completeIcon} />}
               disabled
             />
             <Step
@@ -127,12 +107,7 @@ function ProposalHistory({ governanceInfo }) {
                     )
                   : ''
               }
-                icon={
-                <Icon
-                  type="check"
-                  style={{ fontSize: '23px', color: 'white' }}
-                />
-              }
+              component={() => <img src={completeIcon} />}
               disabled
             />
           </Steps>

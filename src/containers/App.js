@@ -14,6 +14,7 @@ import Theme from './Theme';
 import 'assets/styles/App.scss';
 import GovernanceDetail from 'containers/page/GovernanceDetail'
 import MarketDetail from './page/homepage/elements/marketDetail/MarketDetail';
+import GovernanceAddressDetail from 'containers/page/GovernanceDetail/GovernanceAddressDetail/GovernanceAddressDetail';
 
 addLocaleData([...en]);
 const initialLang = 'en';
@@ -47,13 +48,16 @@ class App extends React.Component {
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/terms" component={TermsPage} />
                 <Route exact path="/market/:asset" component={MarketDetail} />
-
                 <Route
-                    exact
-                    path="/governance-detail/:id"
-                    component={GovernanceDetail}
-                  />
-
+                  exact
+                  path="/vote/address/:address"
+                  component={GovernanceAddressDetail}
+                />
+                <Route
+                  exact
+                  path="/governance-detail/:id"
+                  component={GovernanceDetail}
+                />
                 <Redirect from="/" to="/" />
               </Switch>
             </BrowserRouter>

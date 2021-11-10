@@ -14,7 +14,9 @@ import {
   GET_GOVERNANCE_STRIKE_PARAM_REQUEST,
   GET_INTERATE_MODEL,
   GET_PROPOSAL_BY_ID_REQUEST,
-  GET_VOTERS_REQUEST
+  GET_VOTERS_REQUEST,
+  GET_VOTER_DETAIL_REQUEST,
+  GET_VOTER_HISTORY_REQUEST
 } from './actions';
 
 export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
@@ -213,6 +215,56 @@ export function* asyncGetFaucetRequest({ payload, resolve, reject }) {
   }
 }
 
+export function* asyncGetVoterDetailRequest({ payload, resolve, reject }) {
+  const { address } = payload;
+  try {
+    const response = yield call(restService, {
+      api: `/voters/accounts/${address}`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    } else {
+      reject(response);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
+export function* watchGetVoterDetailRequest() {
+  while (true) {
+    const action = yield take(GET_VOTER_DETAIL_REQUEST);
+    yield* asyncGetVoterDetailRequest(action);
+  }
+}
+
+export function* asyncGetVoterHistoryRequest({ payload, resolve, reject }) {
+  const { offset, limit, address } = payload;
+  try {
+    const response = yield call(restService, {
+      api: `/voters/history/${address}?offset=${offset || 0}&limit=${limit || 5}`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    } else {
+      reject(response);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
+export function* watchGetVoterHistoryRequest() {
+  while (true) {
+    const action = yield take(GET_VOTER_HISTORY_REQUEST);
+    yield* asyncGetVoterHistoryRequest(action);
+  }
+}
+
 export default function*() {
   yield all([
     fork(watchGetMarketHistoryRequest),
@@ -222,6 +274,8 @@ export default function*() {
     fork(watchGetProposalByIdRequest),
     fork(watchasyncGetGovernanceRequest),
     fork(watchGetGovernanceStrikeWithParamRequest),
-    fork(watchGetVotersRequest)
+    fork(watchGetVotersRequest),
+    fork(watchGetVoterDetailRequest),
+    fork(watchGetVoterHistoryRequest)
   ]);
 }
