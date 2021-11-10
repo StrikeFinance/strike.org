@@ -72,6 +72,10 @@
           font-size: 16px;
           font-weight: 800;
           color: #9d9fa7;
+          cursor: pointer;
+          &:hover {
+            color: #277ee6;
+          }
           @media screen and (max-width: 1024px) {
             font-size: 14px;
           }
@@ -112,7 +116,7 @@
         width: 100%;
         padding: 15px 0;
         margin-top: 21px;
-    
+
         p {
           font-size: 16px;
           font-weight: bold;
