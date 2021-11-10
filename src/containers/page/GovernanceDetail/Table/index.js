@@ -84,7 +84,11 @@ function TableDetail(props) {
           <div className="scroll-bar">
             {list?.map((item, index) => {
               return (
-                <div className="addressed-votes-info" key={index}>
+                <div
+                  className="addressed-votes-info"
+                  key={index}
+                  onClick={() => history.push(`/vote/address/${item.label}`)}
+                >
                   <span className="addressed-votes-info__left">
                     {item.label
                       ? `${item.label.substr(0, 5)}...${item.label.substr(
