@@ -130,7 +130,6 @@ function Governance(props) {
       <BackButton title="Governance" />
       <div style={{ background: '#eceff9' }}>
         <div className="governance-detail">
-          <Divider />
           {/* Main content */}
           <div className="governance-detail-main ">
             <div className="text-info flex just-between">
