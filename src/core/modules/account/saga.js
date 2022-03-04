@@ -9,7 +9,15 @@ import {
 } from 'core/modules/account/actions';
 
 import { restService } from 'utilities';
-import { GET_GOVERNANCE_REQUEST, GET_GOVERNANCE_STRIKE_PARAM_REQUEST, GET_INTERATE_MODEL } from './actions';
+import {
+  GET_GOVERNANCE_REQUEST,
+  GET_GOVERNANCE_STRIKE_PARAM_REQUEST,
+  GET_INTERATE_MODEL,
+  GET_PROPOSAL_BY_ID_REQUEST,
+  GET_VOTERS_REQUEST,
+  GET_VOTER_DETAIL_REQUEST,
+  GET_VOTER_HISTORY_REQUEST
+} from './actions';
 
 export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
   const { asset, type } = payload;
@@ -30,7 +38,7 @@ export function* asyncGetMarketHistoryRequest({ payload, resolve, reject }) {
 
 export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
   let url;
-  if (typeof (payload.offset) === 'number' && payload.limit) {
+  if (typeof payload.offset === 'number' && payload.limit) {
     url = `/governance/strike?offset=${payload.offset}&limit=${payload.limit}`;
   } else {
     url = `/governance/strike`;
@@ -51,12 +59,30 @@ export function* asyncGetGovernanceStrikeRequest({ payload, resolve, reject }) {
 export function* asyncGetGovernanceRequest({ payload, resolve, reject }) {
   try {
     const response = yield call(restService, {
-      api: `/proposals?limit=${payload.limit}&offset=${payload.offset}`,
+      api: `/proposals?limit=${payload.limit}&offset=${payload.offset}&filter=${payload.filter}`,
       method: 'GET',
       params: {}
     });
     if (response.status === 200) {
       resolve(response.data);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
+export function* asyncGetProposalByIdRequest({ payload, resolve, reject }) {
+  const { id } = payload;
+  try {
+    const response = yield call(restService, {
+      api: `/proposals/${id}`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    } else {
+      reject(response);
     }
   } catch (e) {
     reject(e);
@@ -73,6 +99,13 @@ export function* watchGetMarketHistoryRequest() {
   while (true) {
     const action = yield take(GET_MARKET_HISTORY_REQUEST);
     yield* asyncGetMarketHistoryRequest(action);
+  }
+}
+
+export function* watchGetProposalByIdRequest() {
+  while (true) {
+    const action = yield take(GET_PROPOSAL_BY_ID_REQUEST);
+    yield* asyncGetProposalByIdRequest(action);
   }
 }
 
@@ -126,10 +159,35 @@ export function* asyncGetInterateModel({ payload, resolve, reject }) {
   }
 }
 
+export function* asyncGetVotersRequest({ payload, resolve, reject }) {
+  const { limit, filter, id } = payload;
+  try {
+    const response = yield call(restService, {
+      api: `/voters/${id}?limit=${limit || 3}&filter=${filter}`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    } else {
+      reject(response);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
 export function* watchGetInterateModelRequest() {
   while (true) {
     const action = yield take(GET_INTERATE_MODEL);
     yield* asyncGetInterateModel(action);
+  }
+}
+
+export function* watchGetVotersRequest() {
+  while (true) {
+    const action = yield take(GET_VOTERS_REQUEST);
+    yield* asyncGetVotersRequest(action);
   }
 }
 
@@ -157,13 +215,67 @@ export function* asyncGetFaucetRequest({ payload, resolve, reject }) {
   }
 }
 
-export default function* () {
+export function* asyncGetVoterDetailRequest({ payload, resolve, reject }) {
+  const { address } = payload;
+  try {
+    const response = yield call(restService, {
+      api: `/voters/accounts/${address}`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    } else {
+      reject(response);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
+export function* watchGetVoterDetailRequest() {
+  while (true) {
+    const action = yield take(GET_VOTER_DETAIL_REQUEST);
+    yield* asyncGetVoterDetailRequest(action);
+  }
+}
+
+export function* asyncGetVoterHistoryRequest({ payload, resolve, reject }) {
+  const { offset, limit, address } = payload;
+  try {
+    const response = yield call(restService, {
+      api: `/voters/history/${address}?offset=${offset || 0}&limit=${limit || 5}`,
+      method: 'GET',
+      params: {}
+    });
+    if (response.status === 200) {
+      resolve(response.data);
+    } else {
+      reject(response);
+    }
+  } catch (e) {
+    reject(e);
+  }
+}
+
+export function* watchGetVoterHistoryRequest() {
+  while (true) {
+    const action = yield take(GET_VOTER_HISTORY_REQUEST);
+    yield* asyncGetVoterHistoryRequest(action);
+  }
+}
+
+export default function*() {
   yield all([
     fork(watchGetMarketHistoryRequest),
     fork(watchGetGovernanceStrikeRequest),
     fork(watchGetDecimalRequest),
     fork(watchGetInterateModelRequest),
+    fork(watchGetProposalByIdRequest),
     fork(watchasyncGetGovernanceRequest),
-    fork(watchGetGovernanceStrikeWithParamRequest)
+    fork(watchGetGovernanceStrikeWithParamRequest),
+    fork(watchGetVotersRequest),
+    fork(watchGetVoterDetailRequest),
+    fork(watchGetVoterHistoryRequest)
   ]);
 }

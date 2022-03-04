@@ -217,9 +217,8 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-function Header({ history }) {
+const Header = ({ showMenuHead }) => {
   const [isOpened, setIsOpened] = useState(false);
-
   const handleLink = url => {
     setIsOpened(false);
     window.open(url, '_blank');
@@ -235,43 +234,47 @@ function Header({ history }) {
         </div>
         <div className={`header-menu ${isOpened ? 'active' : ''}`}>
           <ul className="header-menu__list">
-            <li className="header-menu__item">
-              <NavLink className="header-menu__link" to="/">
-                Home
-              </NavLink>
-            </li>
-            <li className="header-menu__item">
-              <NavLink exact className="header-menu__link" to="/#earn">
-                Market
-              </NavLink>
-            </li>
-            <li className="header-menu__item">
-              <NavLink exact className="header-menu__link" to="/#gorvernance">
-                Governance
-              </NavLink>
-            </li>
-            <li className="header-menu__item">
-              <NavLink
-                exact
-                className="header-menu__link"
-                to="/#developer"
-              >
-                Developers
-              </NavLink>
-            </li>
+            {showMenuHead ? (
+              <>
+                <li className="header-menu__item">
+                  <NavLink className="header-menu__link" to="/">
+                    Home
+                  </NavLink>
+                </li>
+                <li className="header-menu__item">
+                  <NavLink exact className="header-menu__link" to="/#market">
+                    Market
+                  </NavLink>
+                </li>
+                <li className="header-menu__item">
+                  <NavLink exact className="header-menu__link" to="/#gorvernance">
+                    Governance
+                  </NavLink>
+                </li>
+                <li className="header-menu__item">
+                  <NavLink
+                    exact
+                    className="header-menu__link"
+                    to="/#developer"
+                  >
+                    Developers
+                  </NavLink>
+                </li>
+                <div
+                  className="header-menu__btn_white"
+                  onClick={() => handleLink('https://strike.org/Whitepaper.pdf')}
+                >
+                  Whitepaper
+                </div>
+              </>
+            ) : null}
+            <div
+              className="header-menu__btn"
+              onClick={() => handleLink('https://app.strike.org/')}
+            >
+              Launch App
+            </div>
           </ul>
-          <div
-            className="header-menu__btn_white"
-            onClick={() => handleLink('https://strike.org/Whitepaper.pdf')}
-          >
-            Whitepaper
-          </div>
-          <div
-            className="header-menu__btn"
-            onClick={() => handleLink('https://app.strike.org/')}
-          >
-            Launch App
-          </div>
         </div>
         <div
           className={`header-burger ${isOpened ? 'active' : ''}`}
@@ -284,14 +287,14 @@ function Header({ history }) {
       </div>
     </HeaderWrapper>
   );
-}
+};
 
 Header.propTypes = {
-  history: PropTypes.object
+  showMenuHead: PropTypes.bool
 };
 
 Header.defaultProps = {
-  history: {}
+  showMenuHead: true
 };
 
 export default compose(withRouter)(Header);

@@ -1,0 +1,52 @@
+.market-info {
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media only screen and (max-width: 812px) {
+        display: inline-block;
+        padding: 0 20px;
+        width: 100%;
+    }
+    .asset-img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 14px;
+    }
+    .symbol-name {
+        width: 80px;
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--color-text-main);
+    }
+    .row1 {
+        width: 40%;
+    }
+    .row2 {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        @media only screen and (max-width: 812px) {
+            width: 100%;
+        }
+        .label {
+            font-size: 14px;
+            font-weight: 500;
+            text-align: right;
+            @media screen and (max-width: 475px) {
+                font-size: 10px;
+            }
+        }
+        .value {
+            font-size: 20px;
+            font-weight: 800;
+            text-align: right;
+            @media screen and (max-width: 475px) {
+                font-size: 10px;
+            }
+        }
+        .total-supply {
+            display: block;
+        }
+    }
+}

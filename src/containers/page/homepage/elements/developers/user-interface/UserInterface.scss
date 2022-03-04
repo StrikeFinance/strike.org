@@ -1,0 +1,100 @@
+.strike-protocols {
+  display: block;
+  margin: auto;
+  @media screen and (max-width: 812px) {
+    padding-left: 0;
+    padding-right: 12px;
+    display: block;
+  }
+  .strike-protocol-content {
+    @media screen and (max-width: 812px) {
+      display: flex !important;
+      flex-direction: column-reverse;
+      padding-left: 20px;
+    }
+    .Row {
+      @media screen and (max-width: 812px) {
+        display: flex !important;
+        flex-direction: column-reverse;
+      }
+      .img-dev {
+        max-width: 100%;
+        flex: 1;
+        @media screen and (max-width: 812px) {
+          // padding-top: 84.45px;
+          max-width: 100%;
+        }
+        .img-macbook {
+          width: 100%;
+          @media screen and (max-width: 812px) {
+            max-width: 100%;
+            margin: auto;
+          }
+        }
+      }
+      .content {
+        padding-top: 9%;
+        max-width: 100%;
+        flex: 1 1 0%;
+        @media screen and (max-width: 812px) {
+        }
+
+        .strike-finance {
+          font-size: 25px;
+          font-weight: 500;
+          color: #107def;
+          display: block;
+        }
+
+        .text-layer {
+          @media screen and (max-width: 812px) {
+            width: 100%;
+          }
+          span:first-child {
+            font-size: 49px;
+            font-weight: 500;
+            color: #0b0f23;
+            display: block;
+            padding-bottom: 30px;
+            @media screen and (max-width: 812px) {
+              font-size: 25px;
+            }
+            @media screen and (max-width: 1024px) {
+              font-size: 26px!important;
+            }
+          }
+
+          span:nth-child(2) {
+            font-size: 18px;
+            font-weight: 500;
+            color: #6d6f7b;
+            display: block;
+            padding-bottom: 40px;
+            max-width: 49%;
+            @media screen and (max-width: 812px) {
+              font-size: 16px;
+              max-width: 100%;
+            }
+            @media screen and (max-width: 1024px) {
+              font-size: 16px;
+              max-width: 100%!important;
+            }
+          }
+        }
+        .btn-launchapp {
+          width: 174px;
+          cursor: pointer;
+          span {
+            display: block;
+            padding: 10.5px 30px 10.5px 30px;
+            background: #107def;
+            color: #ffffff;
+            box-shadow: 0px 3px 20px rgba(18, 114, 236, 0.4);
+            border-radius: 8px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,14 +4,17 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
-import enMessages from 'lang/en';
-import { store } from 'core';
-import Home from 'containers/Main/Home';
-import Terms from 'containers/Main/Terms';
+import enMessages from '../lang/en.json';
+// import Home from 'containers/Main/Home';
+// import Terms from 'containers/Main/Terms';
+import HomePage from './page/homepage/HomePage';
+import TermsPage from './page/term/TermsPage';
+import { store } from '../core';
 import Theme from './Theme';
-
 import 'assets/styles/App.scss';
-import MarketDetail from '../components/Main/MarketDetail';
+import GovernanceDetail from 'containers/page/GovernanceDetail'
+import MarketDetail from './page/homepage/elements/marketDetail/MarketDetail';
+import GovernanceAddressDetail from 'containers/page/GovernanceDetail/GovernanceAddressDetail/GovernanceAddressDetail';
 
 addLocaleData([...en]);
 const initialLang = 'en';
@@ -42,9 +45,19 @@ class App extends React.Component {
                 atActive={{ opacity: 1 }}
                 className="switch-wrapper"
               >
-                <Route exact path="/" component={Home} />
-                <Route exact path="/terms" component={Terms} />
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/terms" component={TermsPage} />
                 <Route exact path="/market/:asset" component={MarketDetail} />
+                <Route
+                  exact
+                  path="/vote/address/:address"
+                  component={GovernanceAddressDetail}
+                />
+                <Route
+                  exact
+                  path="/governance-detail/:id"
+                  component={GovernanceDetail}
+                />
                 <Redirect from="/" to="/" />
               </Switch>
             </BrowserRouter>

@@ -55,7 +55,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
       let elem = document.getElementById(location.hash.slice(1));
       if (elem) {
         window.scrollTo({
-          top: elem.offsetTop - 100,
+          top: elem.offsetTop - 10,
           behavior: 'smooth'
         });
       }
