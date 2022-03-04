@@ -218,6 +218,13 @@ function Footer({ settings }) {
               >
                 Leaderboard
               </a>
+              <a
+                href="https://forms.gle/jas762TF1Zzs3HU8A"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Grant Program
+              </a>
             </div>
           </div>
           <div className="link-wrapper__row">
