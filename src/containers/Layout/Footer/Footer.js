@@ -35,6 +35,10 @@ const GovernanceOption = [
   {
     label: 'Leaderboard',
     href: 'https://app.strike.org/vote/leaderboard'
+  },
+  {
+    label: 'Grant Program',
+    href: 'https://forms.gle/jas762TF1Zzs3HU8A'
   }
 ];
 
