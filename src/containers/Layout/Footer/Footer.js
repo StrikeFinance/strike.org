@@ -206,8 +206,7 @@ const Footer = () => {
       </div>
       <div className="latest-block-wrapper">
         <div className="copyright">
-          © {new Date().getUTCFullYear()} Strike.org All Rights Reserved. The
-          Strike Decentralized App does not support US based users.
+          © {new Date().getUTCFullYear()} Strike.org All Rights Reserved.
         </div>
       </div>
     </div>
