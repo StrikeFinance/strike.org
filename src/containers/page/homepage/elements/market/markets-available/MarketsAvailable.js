@@ -186,7 +186,7 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
   return (
     <div className="markets-available">
       <div className="markets-available-content">
-        <div className="title">10 markets available</div>
+        <div className="title">12 markets available</div>
         <Card className="markets-table">
           <div className="title-table">All markets</div>
           <Table
