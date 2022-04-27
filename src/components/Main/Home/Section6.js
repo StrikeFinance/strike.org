@@ -176,7 +176,7 @@ function Section6({ settings, setSetting, getGovernanceStrike, getDecimals }) {
 
   return (
     <Section6Wrapper id="section6-parent">
-      <h3 className="market-available">10 markets available</h3>
+      <h3 className="market-available">12 markets available</h3>
       <TableWrapper>
         <div className="table-title">Market Distribution</div>
         <Row className="table_header">
