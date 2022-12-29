@@ -16,6 +16,7 @@ import usdtImg from 'assets/img/usdt.png';
 import sxpImg from 'assets/img/sxp.png';
 import apeImg from 'assets/img/ape.png';
 import ustImg from 'assets/img/ust.png';
+import daiImg from 'assets/img/dai.png';
 import completed from 'assets/img/landingpage/Shape.png';
 import cancel from 'assets/img/landingpage/cancel.png';
 import dailogo from 'assets/img/landingpage/image-8.png';
@@ -563,7 +564,8 @@ const ICONS = {
   STRK: strkImg,
   SXP: sxpImg,
   APE: apeImg,
-  UST: ustImg
+  UST: ustImg,
+  DAI: daiImg
 };
 const format = commaNumber.bindWith(',', '.');
 function Section3({
