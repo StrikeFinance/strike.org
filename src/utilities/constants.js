@@ -10,6 +10,7 @@ import comp from 'assets/img/coins/comp.png';
 import uni from 'assets/img/coins/uni.png';
 import ape from 'assets/img/coins/ape.png';
 import ust from 'assets/img/coins/ust.png';
+import dai from 'assets/img/coins/dai.png';
 
 import susdc from 'assets/img/coins/susdc.png';
 import susdt from 'assets/img/coins/susdt.png';
@@ -23,6 +24,7 @@ import scomp from 'assets/img/coins/scomp.png';
 import suni from 'assets/img/coins/suni.png';
 import sape from 'assets/img/coins/sape.png';
 import sust from 'assets/img/coins/sust.png';
+import sdai from 'assets/img/coins/sdai.png';
 
 export const NOT_INSTALLED = 'MetaMask not installed';
 export const MISSING_PROVIDER = 'Missing provider';
@@ -109,6 +111,13 @@ export const CONTRACT_TOKEN_ADDRESS =
           address: process.env.REACT_APP_TEST_UST_TOKEN_ADDRESS,
           asset: ust,
           sasset: sust
+        },
+        dai: {
+          id: 'dai',
+          symbol: 'DAI',
+          address: process.env.REACT_APP_TEST_DAI_TOKEN_ADDRESS,
+          asset: dai,
+          sasset: sdai
         }
       }
     : {
@@ -195,6 +204,13 @@ export const CONTRACT_TOKEN_ADDRESS =
           address: process.env.REACT_APP_MAIN_UST_TOKEN_ADDRESS,
           asset: ust,
           sasset: sust
+        },
+        dai: {
+          id: 'dai',
+          symbol: 'DAI',
+          address: process.env.REACT_APP_MAIN_DAI_TOKEN_ADDRESS,
+          asset: dai,
+          sasset: sdai
         }
       };
 
@@ -288,6 +304,11 @@ export const CONTRACT_SBEP_ADDRESS =
           id: 'ust',
           symbol: 'sUST',
           address: process.env.REACT_APP_TEST_UST_SBEP_ADDRESS
+        },
+        dai: {
+          id: 'dai',
+          symbol: 'sDAI',
+          address: process.env.REACT_APP_TEST_DAI_SBEP_ADDRESS
         }
       }
     : {
@@ -346,10 +367,10 @@ export const CONTRACT_SBEP_ADDRESS =
           symbol: 'sAPE',
           address: process.env.REACT_APP_MAIN_APE_SBEP_ADDRESS
         },
-        ust: {
-          id: 'ust',
-          symbol: 'sUST',
-          address: process.env.REACT_APP_MAIN_UST_SBEP_ADDRESS
+        dai: {
+          id: 'dai',
+          symbol: 'sDAI',
+          address: process.env.REACT_APP_MAIN_DAI_SBEP_ADDRESS
         }
       };
 export const CONTRACT_SBEP_ABI =
