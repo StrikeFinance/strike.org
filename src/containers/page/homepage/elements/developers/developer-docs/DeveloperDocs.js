@@ -10,7 +10,7 @@ const DeveloperDocs = () => {
   return (
     <div className="developer-docs">
       <div className="developer-docs-content flex just-between">
-        <Row >
+        <Row>
           <Col xs={24} sm={24} md={24} lg={10} xl={10}>
             <div className="content">
               <span className="text-developers">Developers</span>
@@ -24,9 +24,9 @@ const DeveloperDocs = () => {
               <div className="text-layer-2">
                 <span className="strike-protocol">
                   Build your own custom application by accessing a non-custodial
-                  money market with our developer APIs and SDKs.This will enable
-                  developers to quickly build their own application tailored to
-                  fit the Strike protocol.
+                  money market with our developer APIs and SDKs. This will
+                  enable developers to quickly build their own application
+                  tailored to fit the Strike protocol.
                 </span>
               </div>
               <div
