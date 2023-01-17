@@ -286,7 +286,11 @@ function Section4({ history }) {
             to quickly build their own application tailored to fit the Strike
             protocol.
           </span>
-          <button className="btn-docs" type="button" onClick={() => handleLink('https://docs.strike.org/')}>
+          <button
+            className="btn-docs"
+            type="button"
+            onClick={() => handleLink('https://docs.strike.org/')}
+          >
             Developer Docs
           </button>
         </div>
@@ -310,7 +314,11 @@ function Section4({ history }) {
             market powered on Ethereum 24/7/365 with a user-interface, api, or
             smart contracts.
           </span>
-          <button className="btn-docs" type="button" onClick={() => handleLink('https://app.strike.org/')}>
+          <button
+            className="btn-docs"
+            type="button"
+            onClick={() => handleLink('https://app.strike.org/')}
+          >
             Launch App
           </button>
         </div>
@@ -325,7 +333,11 @@ function Section4({ history }) {
             use that supplied asset as collateral to borrow other supported
             digital assets all on-chain.
           </span>
-          <button className="btn-docs" type="button" onClick={() => handleLink('https://strike.org/Whitepaper.pdf')}>
+          <button
+            className="btn-docs"
+            type="button"
+            onClick={() => handleLink('https://strike.org/Whitepaper.pdf')}
+          >
             Read The Whitepaper
           </button>
         </div>
