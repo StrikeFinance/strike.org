@@ -282,7 +282,7 @@ function Section4({ history }) {
           </span>
           <span className="content-2">
             Build your own custom application by accessing a non-custodial money
-            market with our developer APIs and SDKs. This will enable developers
+            market with our developer APIs and SDKs. &nbsp;This will enable developers
             to quickly build their own application tailored to fit the Strike
             protocol.
           </span>
