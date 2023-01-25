@@ -37,7 +37,7 @@ const Governance = ({ getGovernance, history }) => {
   const [current, setCurrent] = useState(1);
   const [total, setTotal] = useState(0);
 
-  const getGovernanceData = async (offset, limit) => {
+  const getGovernanceData = async ({ offset, limit }) => {
     const res = await promisify(getGovernance, { offset, limit });
     // console.log(res?.data);
     setGovernance(res?.data?.result);
@@ -51,7 +51,7 @@ const Governance = ({ getGovernance, history }) => {
 
   useEffect(() => {
     let mounted = true;
-    getGovernanceData();
+    getGovernanceData({ offset: 0, limit: 5 });
     return () => (mounted = false);
   }, []);
   return (
@@ -103,7 +103,7 @@ const Governance = ({ getGovernance, history }) => {
                     >
                       <div>
                         <div className="description">
-                          {item?.description.split('\n')[0]}
+                          {item?.description.replace('# ', '').split('\n')[0]}
                         </div>
                         {isMobile ? (
                           <div className="">

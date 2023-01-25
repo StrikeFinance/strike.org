@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './styles.scss';
 import { Divider } from 'antd';
 import complete from 'assets/img/governance-detail/complete.svg';
+import ReactMarkdown from 'react-markdown';
 import ProposalHistory from './ProposalHistory/ProposalHistory.js';
 import { useWindowResizeMobile } from 'utilities/hook';
 
@@ -23,51 +24,25 @@ function Description(props) {
       <div className="description-content__left">
         <div className="header">
           <span>Operation</span>
-          {/* <div></div> */}
+          <div className="operationContent">
+            {(governanceInfo.signatures || []).map((s, idx) => (
+              <div key={idx}>{s}</div>
+            ))}
+          </div>
         </div>
         <Divider />
         <div className="main-content">
           <span className="title">Description</span>
-          <span className="tile-content">{description.split('\n')[0]}</span>
+          <ReactMarkdown children={description} />
 
-          <div className="summary">
-            <span className="summary__title">Summary</span>
+          {/* <div className="summary">
+            <span className="summary__title">Overview</span>
             <div className="summary__content">
-              <span>
-                Strike Finance Community proposes to start a program called the
-                Strike Grants Program (“SGP”), which will provide funding to
-                projects, ideas, and events that benefit Strike and its
-                stakeholders. If approved, funding for the program will come
-                from Strike Distribution, which currently holds ~$177mm as of
-                09/30/21.
-              </span>
-              <span>
-                The program will be a pilot. For this reason, we believe it’s
-                prudent to limit the program’s dollar value to $1mm per quarter
-                and the length to two quarters for a cost of $2mm over six
-                months.
-              </span>
-              <span>
-                Since it’s not practical to solicit a community vote for every
-                disbursement, we propose forming a small and nimble committee
-                that has the power to administer the grants at its own
-                discretion (limited by the aforementioned dollar and length
-                caps).
-              </span>
-              <span>
-                As compensation for administering the program, we propose the
-                lead be paid $5k upfront and $100 per hour thereafter with a cap
-                of 30 hours per week for a maximum compensation of $83k. In
-                total, we are asking for a maximum of 2,000,000 USDT to fund the
-                grants, program setup and operational costs (200k USDT), and
-                compensation for the program lead (100k USDT). All unspent funds
-                will be returned to the community treasury at the conclusion of
-                the SGP.
-              </span>
+              <span></span>
             </div>
-          </div>
+          </div> */}
 
-          {!visibile && isMobile ? (
+          {/* {!visibile && isMobile ? (
             <div className="btn-showmore" onClick={handleClickShowMore}>
               Show More
             </div>
@@ -302,7 +277,7 @@ function Description(props) {
             <div className="btn-showmore" onClick={handleClickShowLess}>
               Show Less
             </div>
-          ) : null}
+          ) : null} */}
         </div>
       </div>
       <div className="description-content__right">

@@ -35,7 +35,6 @@ const Header = ({ showMenuHead }) => {
   const [isMobile] = useWindowResizeMobile(1099);
   const [visible, setVisible] = useState(false);
   const history = useHistory();
-  console.log('showMenuHead: ', showMenuHead);
 
   const scrollWithOffset = (el, offset) => {
     const elementPosition = el.offsetTop - offset;
