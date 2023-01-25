@@ -135,7 +135,7 @@ function Governance(props) {
             <div className="text-info flex just-between">
               <div className="text-info__left">
                 <span className="info-content">
-                  {description.split('\n')[0]}
+                  {description.replace('# ', '').split('\n')[0]}
                 </span>
                 <div className="date-completed">
                   <span className={`${getStatus(governanceInfo)}`}>
