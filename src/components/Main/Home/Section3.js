@@ -17,6 +17,7 @@ import sxpImg from 'assets/img/sxp.png';
 import apeImg from 'assets/img/ape.png';
 import ustImg from 'assets/img/ust.png';
 import daiImg from 'assets/img/dai.png';
+import xcnImg from 'assets/img/xcn.png';
 import completed from 'assets/img/landingpage/Shape.png';
 import cancel from 'assets/img/landingpage/cancel.png';
 import dailogo from 'assets/img/landingpage/image-8.png';
@@ -450,7 +451,7 @@ const PortableWrapper = styled.div`
         align-items: center;
         flex-direction: column;
         flex-grow: 1;
-      
+
         margin-top: 15px;
         @media only screen and (max-width: 768px) {
           margin-bottom: 0px;
@@ -565,7 +566,8 @@ const ICONS = {
   SXP: sxpImg,
   APE: apeImg,
   UST: ustImg,
-  DAI: daiImg
+  DAI: daiImg,
+  XCN: xcnImg
 };
 const format = commaNumber.bindWith(',', '.');
 function Section3({

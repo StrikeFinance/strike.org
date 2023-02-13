@@ -17,6 +17,7 @@ import sxpImg from 'assets/img/sxp.png';
 import apeImg from 'assets/img/ape.png';
 import ustImg from 'assets/img/ust.png';
 import daiImg from 'assets/img/dai.png';
+import xcnImg from 'assets/img/xcn.png';
 import LineProgressBar from '../../Basic/LineProgressBar';
 
 const Section2Wrapper = styled.div`
@@ -238,7 +239,8 @@ const ICONS = {
   SXP: sxpImg,
   APE: apeImg,
   UST: ustImg,
-  DAI: daiImg
+  DAI: daiImg,
+  XCN: xcnImg
 }
 
 function Section2({ history, markets }) {

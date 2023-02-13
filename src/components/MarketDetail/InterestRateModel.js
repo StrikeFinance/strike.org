@@ -177,9 +177,9 @@ function InterestRateModel({ settings, currentAsset, history, marketInfo, getInt
 
   const getGraphData = async asset => {
     flag = true;
-    console.log('INTEREST_RATE START: ', asset);
-    const vbepContract = await promisify(getInterateModel, { asset });
-    console.log('INTEREST_RATE: ', asset, vbepContract);
+    // console.log('INTEREST_RATE START: ', asset);
+    // const vbepContract = await promisify(getInterateModel, { asset });
+    // console.log('INTEREST_RATE: ', asset, vbepContract);
     // const interestRateModel = await methods.call(
     //   vbepContract.methods.interestRateModel,
     //   []
