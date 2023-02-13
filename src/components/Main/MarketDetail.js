@@ -124,8 +124,6 @@ function MarketDetail({ match, settings, getMarketHistory }) {
   const [marketInfo, setMarketInfo] = useState({});
   const [currentAPY, setCurrentAPY] = useState(0);
 
-  console.log('asset: ', match.params.asset.toLowerCase());
-
   useEffect(() => {
     if (match.params && match.params.asset) {
       setCurrentAsset(match.params.asset.toLowerCase());

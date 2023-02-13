@@ -22,6 +22,7 @@ import sxpImg from 'assets/img/sxp.png';
 import apeImg from 'assets/img/ape.png';
 import ustImg from 'assets/img/ust.png';
 import daiImg from 'assets/img/dai.png';
+import xcnImg from 'assets/img/xcn.png';
 import './MarketsAvailable.scss';
 import { useHistory } from 'react-router';
 import { currencyFormatter } from 'utilities/common';
@@ -40,7 +41,8 @@ const ICONS = {
   SXP: sxpImg,
   APE: apeImg,
   UST: ustImg,
-  DAI: daiImg
+  DAI: daiImg,
+  XCN: xcnImg
 };
 const columns = [
   {
