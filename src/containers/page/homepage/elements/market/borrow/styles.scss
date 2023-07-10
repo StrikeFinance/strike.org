@@ -15,29 +15,12 @@
         padding-top: 0 !important;
         width: 100%;
       }
-      img.vector14 {
-        position: absolute;
-        top: 27%;
-        left: 0%;
-        z-index: 0;
-        @media screen and (max-width: 812px) {
-          display: none;
-        }
-      }
-
-      img.vector15 {
-        position: absolute;
-        z-index: 0;
-        top: 62%;
-        left: -5%;
-        @media screen and (max-width: 812px) {
-          display: none;
-        }
-      }
 
       .children-content {
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
+        background: #1E1F25;
+        border-left: 4px solid rgba(16, 125, 239, 0.50);
+        border-right: 4px solid rgba(16, 125, 239, 0.50);
+        border-bottom: 4px solid rgba(16, 125, 239, 0.50);
         width: 100%;
         padding: 25px 40px 27px 40px !important;
         @media screen and (max-width: 812px) {
@@ -46,9 +29,11 @@
           padding-right: 26px !important;
         }
         .title-content {
-          font-size: 20px;
-          font-weight: 800;
-          color: #0b0f23;
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--color-text-main);
+          margin-bottom: 23px;
+          line-height: 120%;
           @media screen and (max-width: 1024px) {
             font-size: 16px !important;
           }
@@ -56,13 +41,15 @@
         .money-supply {
           font-size: 25px;
           font-weight: 800;
-          color: #0b0f23;
+          color: var(--color-blue);
+          margin-bottom: 9px;
+          text-align: right;
           @media screen and (max-width: 1024px) {
             font-size: 16px !important;
           }
         }
         .top-markets {
-          color: #107def;
+          color: #5D6588;
           font-size: 20px;
           font-weight: 400;
           @media screen and (max-width: 1024px) {
@@ -74,6 +61,7 @@
           justify-content: space-between;
           padding-bottom: 5px;
           padding-top: 21px;
+          color: var(--color-text-main);
           .coin-percent {
             font-size: 16px;
             font-weight: 500;
@@ -83,16 +71,19 @@
           }
         }
         .footer-content {
+          margin-top: 32px;
           &__left {
             &__title {
-              font-size: 14px;
-              font-weight: 500;
-              color: #9d9fa7;
+              font-size: 13px;
+              font-weight: 400;
+              color: #5D6588;
+              line-height: 21px;
             }
             &__number {
-              font-size: 20px;
-              color: #0b0f23;
-              font-weight: 500;
+              font-size: 21px;
+              color: var(--color-blue);
+              font-weight: 400;
+              line-height: 120%;
               @media screen and (max-width: 1024px) {
                 font-size: 16px !important;
               }
@@ -100,14 +91,16 @@
           }
           &__right {
             &__title {
-              font-size: 14px;
-              font-weight: 500;
-              color: #9d9fa7;
+              font-size: 13px;
+              font-weight: 400;
+              color: #5D6588;
+              line-height: 21px;
             }
             &__number {
-              font-size: 20px;
-              color: #0b0f23;
-              font-weight: 500;
+              font-size: 21px;
+              color: var(--color-blue);
+              font-weight: 400;
+              line-height: 120%;
               @media screen and (max-width: 1024px) {
                 font-size: 16px !important;
               }
@@ -132,11 +125,12 @@
         padding-bottom: 10px;
       }
       .title-desciption {
-        font-size: 49px;
-        font-weight: 500;
-        color: #0b0f23;
-        width: 75%;
-        padding-bottom: 30px;
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--color-text-main);
+        width: 70%;
+        padding-bottom: 24px;
+        line-height: 50px;
         @media screen and (max-width: 812px) {
           font-size: 25px;
           width: 100%;
@@ -147,8 +141,8 @@
       }
       .title-strike {
         font-size: 18px;
-        font-weight: 500;
-        color: #6d6f7b;
+        font-weight: 400;
+        color: #aaaaaa;
         width: 62%;
         @media screen and (max-width: 812px) {
           font-size: 14px;

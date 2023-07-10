@@ -1,24 +1,25 @@
 .banner-homepage {
-  padding-top: 164px;
-  padding-bottom: 120px;
+  margin-top: 86px;
+  padding-bottom: 58px;
   @media screen and (max-width: 812px) {
     padding-bottom: 61px;
   }
   .banner-content {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding: 50px 0px;
     position: relative;
     @media screen and (max-width: 812px) {
       display: block;
     }
     .description {
-      font-size: 60px;
-      font-weight: 500;
+      font-size: 48px;
+      font-weight: 700;
       z-index: 2;
-      color: #0b0f23;
+      color: var(--color-text-main);
       margin: auto 0;
       padding-left: 100px;
       position: relative;
+      max-width: 850px;
+
       @media screen and (max-width: 812px) {
         font-size: 25px;
         padding-left: 20px;
@@ -35,7 +36,8 @@
       }
       .text-highlight {
         color: #107def;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 60px;
       }
       .image-opacity {
         position: absolute;
@@ -43,21 +45,10 @@
         left: 40%;
       }
     }
-    .image-banner-blur {
-      position: absolute;
-      right: 0%;
-      top: -60%;
-      opacity: 0.4;
-      @media screen and (max-width: 812px) {
-        display: none;
-      }
-    }
     .image-banner {
-      position: absolute;
       z-index: 1;
-      right: 10%;
-      padding-right: 30px;
-      max-height: 100%;
+      margin-right: 50px;
+      min-width: 500px;
       img {
         width: 100%;
       }

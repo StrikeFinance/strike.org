@@ -121,22 +121,24 @@ const Header = ({ showMenuHead }) => {
               </Drawer>
             </div>
           ) : (
-            <div className="nav-links flex">
-              {showMenuHead ? (
-                <div className="links ">
-                  {HomePageLink.map((link, index) => (
-                    <NavLink
-                      key={index}
-                      className="link-item"
-                      to={link?.to}
-                      exact
-                      scroll={el => scrollWithOffset(el, 100)}
-                    >
-                      {link?.title}
-                    </NavLink>
-                  ))}
-                </div>
-              ) : null}
+            <>
+              <div className="nav-links flex">
+                {showMenuHead ? (
+                  <div className="links ">
+                    {HomePageLink.map((link, index) => (
+                      <NavLink
+                        key={index}
+                        className="link-item"
+                        to={link?.to}
+                        exact
+                        scroll={el => scrollWithOffset(el, 100)}
+                      >
+                        {link?.title}
+                      </NavLink>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
               <div className="nav-btn flex align-center">
                 {showMenuHead ? (
                   <div
@@ -157,7 +159,7 @@ const Header = ({ showMenuHead }) => {
                   Launch App
                 </div>
               </div>
-            </div>
+            </>
           )}
         </div>
       </div>

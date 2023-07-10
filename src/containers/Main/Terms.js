@@ -11,7 +11,7 @@ import MainLayout from 'containers/Layout/MainLayout';
 
 const TermsWrapper = styled.div`
   padding: 150px 150px 50px;
-  color: black;
+  color: var(--color-text-main);
   font-size: 16px;
 
   @media (max-width: 768px) {

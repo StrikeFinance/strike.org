@@ -1,5 +1,5 @@
 import React from 'react';
-import footerImg from 'assets/img/footer-logo.png';
+import footerImg from 'assets/img/footer-logo.svg';
 import './Footer.scss';
 import { Col, Row } from 'antd';
 import { useWindowResizeMobile } from 'utilities/hook';
@@ -66,10 +66,11 @@ const CommunityOption = [
 ];
 
 const Footer = () => {
-  const [isMobile] = useWindowResizeMobile(768);
+  const [isMobile] = useWindowResizeMobile(620);
   const history = useHistory();
   return (
     <div className="footer">
+      <div className="footer-top" />
       <div className="footer-content flex just-between">
         <div className="footer-logo">
           <img src={footerImg} alt="footer" />
@@ -134,21 +135,11 @@ const Footer = () => {
                     ))}
                   </div>
                 </Col>
-                <Col xs={12} sm={12} md={6} lg={6} xl={6}>
-                  <div
-                    className="flex align-center just-center app-btn"
-                    onClick={() => {
-                      window.open('https://app.strike.org', '_blank');
-                    }}
-                  >
-                    App
-                  </div>
-                </Col>
               </Row>
             </>
           ) : (
-            <Row gutter={[100, 40]}>
-              <Col xs={12} sm={12} md={6} lg={6} xl={6}>
+            <div className="desktop-menu">
+              <div className="menu1">
                 <div className="title">Protocol</div>
                 <div className="options">
                   {ProtocolOption.map((protocol, index) => (
@@ -169,44 +160,38 @@ const Footer = () => {
                     </div>
                   ))}
                 </div>
-              </Col>
-              <Col xs={12} sm={12} md={6} lg={6} xl={6}>
+              </div>
+              <div className="menu2">
                 <div className="title">Governance</div>
                 <div className="options">
                   {GovernanceOption.map((protocol, index) => (
                     <div key={index} className="option">
-                      <a href={protocol?.href}>{protocol?.label}</a>
+                      <a href={protocol?.href} target="_blank" rel="noreferrer">
+                        {protocol?.label}
+                      </a>
                     </div>
                   ))}
                 </div>
-              </Col>
-              <Col xs={12} sm={12} md={6} lg={6} xl={6}>
+              </div>
+              <div className="menu3">
                 <div className="title">Comunity</div>
                 <div className="options">
                   {CommunityOption.map((protocol, index) => (
                     <div key={index} className="option">
-                      <a href={protocol?.href}>{protocol?.label}</a>
+                      <a href={protocol?.href} target="_blank" rel="noreferrer">
+                        {protocol?.label}
+                      </a>
                     </div>
                   ))}
                 </div>
-              </Col>
-              <Col xs={12} sm={12} md={6} lg={6} xl={6}>
-                <div
-                  className="flex align-center just-center app-btn"
-                  onClick={() => {
-                    window.open('https://app.strike.org', '_blank');
-                  }}
-                >
-                  App
-                </div>
-              </Col>
-            </Row>
+              </div>
+            </div>
           )}
         </div>
       </div>
       <div className="latest-block-wrapper">
         <div className="copyright">
-          © {new Date().getUTCFullYear()} Strike.org All Rights Reserved.
+          © Strike.org {new Date().getUTCFullYear()} all rights reserved.
         </div>
       </div>
     </div>

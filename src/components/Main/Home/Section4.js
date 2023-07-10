@@ -59,7 +59,7 @@ const Section4Wrapper = styled.div`
     .content-2 {
       font-size: 18px;
       font-weight: 500;
-      color: #6D6F7B;
+      color: #aaaaaa;
       display:block;
       width: 510px;
       padding-bottom: 40px;

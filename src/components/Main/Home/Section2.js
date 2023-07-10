@@ -271,7 +271,7 @@ const Section2Wrapper = styled.div`
       h5 {
         font-size: 18px;
         font-weight: 500;
-        color: #6d6f7b;
+        color: #aaaaaa;
         @media only screen and (max-width: 768px) {
           font-size: 16px;
         }
@@ -492,7 +492,7 @@ const Section2Wrapper = styled.div`
       h5 {
         font-size: 18px;
         font-weight: 500;
-        color: #6d6f7b;
+        color: #aaaaaa;
         @media only screen and (max-width: 768px) {
           font-size: 16px;
         }
@@ -549,12 +549,12 @@ const Section2Wrapper = styled.div`
         .name {
           font-size: 14px;
           font-weight: 800;
-          color: #6d6f7b;
+          color: #aaaaaa;
         }
         .percent-progress {
           font-size: 16px;
           font-weight: 800;
-          color: #6d6f7b;
+          color: #aaaaaa;
           float: right;
           margin-right: 49px;
         }

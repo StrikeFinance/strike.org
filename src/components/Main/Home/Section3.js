@@ -304,7 +304,7 @@ const PortableWrapper = styled.div`
       span {
         color: #0b0f23;
         padding: 6.67px 13.74px 6.34px 13.67px;
-        background: #eceff9;
+        background: #1e1a22;
         border-radius: 5px;
         cursor: pointer;
         font-size: 20px;

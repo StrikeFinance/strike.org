@@ -8,6 +8,7 @@ const LoadingSpinnerWrapper = styled.div`
   height: 100%;
 
   .loading-spinner {
+    height: fit-content;
     color: var(--color-blue);
   }
 `;

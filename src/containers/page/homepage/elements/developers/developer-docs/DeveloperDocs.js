@@ -1,6 +1,7 @@
 import React from 'react';
 import './DeveloperDocs.scss';
 import imgBlockChain from 'assets/img/homepage/img-vector.png';
+import imgUp from 'assets/img/up.svg';
 import { Col, Row } from 'antd';
 
 const DeveloperDocs = () => {
@@ -9,11 +10,31 @@ const DeveloperDocs = () => {
   };
   return (
     <div className="developer-docs">
+      <div className="slider-animation">
+        <div className="slider">
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+        </div>
+        <div className="slider">
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+          <span className="slider-text">DEVELOPERS</span>
+        </div>
+      </div>
       <div className="developer-docs-content flex just-between">
         <Row>
-          <Col xs={24} sm={24} md={24} lg={10} xl={10}>
+          <Col xs={24} sm={24} md={24} lg={14} xl={14}>
             <div className="content">
-              <span className="text-developers">Developers</span>
+              {/* <span className="text-developers">Developers</span> */}
               <div className="text-layer-1">
                 <span className="comprehensive-developer">Comprehensive</span>
                 <span className="developer-api">
@@ -35,13 +56,18 @@ const DeveloperDocs = () => {
                 }
                 className="button"
               >
-                <span className="button-dev">Developer Docs</span>
+                <span className="button-dev">Read More</span>
+                <img src={imgUp} alt="up" />
               </div>
             </div>
           </Col>
-          <Col xs={24} sm={24} md={24} lg={14} xl={14}>
+          <Col xs={24} sm={24} md={24} lg={10} xl={10}>
             <div className="img-dev">
-              <img src={imgBlockChain} className="img-blockchain" />
+              <img
+                src={imgBlockChain}
+                className="img-blockchain"
+                alt="developer"
+              />
             </div>
           </Col>
         </Row>

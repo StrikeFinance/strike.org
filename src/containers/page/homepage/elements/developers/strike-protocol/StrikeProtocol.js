@@ -1,19 +1,39 @@
 import React from 'react';
 import imgWhitepaper from 'assets/img/homepage/img-whitepaper.png';
+import imgUp from 'assets/img/up.svg';
 import './StrikeProtocol.scss';
 import { Col, Row } from 'antd';
 
 function StrikeProtocol() {
-  const handleLink = url => {
-    window.open(url, '_blank');
-  };
   return (
     <div className="strike-whitepaper">
+      <div className="slider-animation">
+        <div className="slider">
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+        </div>
+        <div className="slider">
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">TRY STRIKE FINANCE</span>
+        </div>
+      </div>
       <div className="strike-whitepaper-content flex just-between">
         <Row>
-          <Col xs={24} sm={24} md={24} lg={10} xl={10}>
+          <Col xs={24} sm={24} md={14} lg={12} xl={12}>
+            <div className="img-dev">
+              <img src={imgWhitepaper} alt="whitepaper" />
+            </div>
+          </Col>
+          <Col xs={24} sm={24} md={24} lg={12} xl={12}>
             <div className="content">
-              <span className="strike-whitepaper-text">Try Strike Finance</span>
               <div className="text-layer">
                 <span>Strike Protocol</span>
                 <span>
@@ -29,13 +49,9 @@ function StrikeProtocol() {
                 }
                 className="btn-whitepaper"
               >
-                <span>Read The Whitepaper</span>
+                <span>Learn More</span>
+                <img src={imgUp} alt="up" />
               </div>
-            </div>
-          </Col>
-          <Col xs={24} sm={24} md={14} lg={14} xl={14}>
-            <div className="img-dev">
-              <img src={imgWhitepaper} />
             </div>
           </Col>
         </Row>

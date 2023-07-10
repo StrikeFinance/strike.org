@@ -3,9 +3,7 @@ import './styles.scss';
 import { Progress } from 'antd';
 import commaNumber from 'comma-number';
 import BigNumber from 'bignumber.js';
-import { Col, Row, Typography, Divider } from 'antd';
-import vector14 from 'assets/img/homepage/Vector14-b.png';
-import vector15 from 'assets/img/homepage/Vector15-b.png';
+import { Col, Row, Typography } from 'antd';
 
 function TotalBorrow(props) {
   const { markets, totalBorrow, borrowerCount, borrowVolume } = props;
@@ -21,15 +19,11 @@ function TotalBorrow(props) {
           xl={12}
           className="total-borrow-content__left"
         >
-          <img src={vector14} className="vector14" />
-          <img src={vector15} className="vector15" />
           <div className="children-content">
             <Typography className="title-content">Total Borrow</Typography>
-            <Divider />
             <Typography className="money-supply">
               ${format(totalBorrow)}
             </Typography>
-            <Divider />
             <Typography className="top-markets">Top 3 Markets</Typography>
             {markets.markets &&
               (markets.markets || [])
@@ -54,7 +48,8 @@ function TotalBorrow(props) {
                               .times(100)
                               .dp(2, 1)
                               .toNumber()
-                          : 0}%
+                          : 0}
+                        %
                       </div>
                     </div>
                     <Progress
@@ -71,22 +66,21 @@ function TotalBorrow(props) {
                     />
                   </div>
                 ))}
-            <Divider />
             <div className="footer-content flex just-between">
               <div className="footer-content__left">
-                <Typography className="footer-content__left__title">
-                  24h Borrow Volume
-                </Typography>
                 <Typography className="footer-content__left__number">{`$${format(
                   new BigNumber(borrowVolume).toFormat(2)
                 )}`}</Typography>
+                <Typography className="footer-content__left__title">
+                  24h Borrow Volume
+                </Typography>
               </div>
               <div className="footer-content__right">
-                <Typography className="footer-content__right__title">
-                  # of Borrowers
-                </Typography>
                 <Typography className="footer-content__right__number">
                   {borrowerCount}
+                </Typography>
+                <Typography className="footer-content__right__title">
+                  # of Borrowers
                 </Typography>
               </div>
             </div>
@@ -100,7 +94,7 @@ function TotalBorrow(props) {
           xl={12}
           className="total-borrow-content__right"
         >
-          <Typography className="title">Market</Typography>
+          {/* <Typography className="title">Market</Typography> */}
           <Typography className="title-desciption">
             Access Liquidity from Strike on-demand on any asset
           </Typography>

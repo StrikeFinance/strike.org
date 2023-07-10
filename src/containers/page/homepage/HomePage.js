@@ -11,7 +11,7 @@ import Banner from 'containers/page/homepage/elements/banner/Banner';
 import Market from 'containers/page/homepage/elements/market/Market';
 import Governance from 'containers/page/homepage/elements/governance/Governance';
 import Developers from 'containers/page/homepage/elements/developers/Developers';
-
+import './HomePage.scss';
 
 const HomePage = ({ getGovernanceStrike, setSetting }) => {
   const [markets, setmarkets] = useState();
@@ -38,9 +38,9 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
   return (
     <WrapLayout>
       {markets ? (
-        <div style={{ backgroundColor: '#eceff9' }}>
+        <div className="main-container">
           <Banner markets={markets} />
-          <div>
+          <div className="market-area" id="market">
             <Market markets={markets} />
           </div>
           <div>
@@ -51,7 +51,10 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
           </div>
         </div>
       ) : (
-        <div className="loading-spinner" style={{height: `calc(100vh - 325px)`}}>
+        <div
+          className="loading-spinner"
+          style={{ height: `calc(100vh - 443px)` }}
+        >
           <LoadingSpinner />
         </div>
       )}

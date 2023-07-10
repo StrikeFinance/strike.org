@@ -10,38 +10,51 @@
     --color-blue: #107def;
     --color-dark-grey: #666771;
     /* Background colors */
-    --color-bg-main: #ECEFF9;
+    --color-bg-main: #1e1a22;
     --color-bg-primary: #ffffff;
     --color-bg-active: #f8f9fa;
     /* Typography colors */
-    --color-text-main: #39496a;
+    --color-text-main: #ffffff;
     --color-text-secondary: #c5cbd4;
     --color-text-inactive: #5e5f6a;
     --color-text-green: #97cc60;
     --color-text-blue: #2fe29b;
     --color-text-black: #0B0F23;
-    --color-text-gray: #6D6F7B;
+    --color-text-gray: #aaaaaa;
     /* Chart color */
     --color-chart-supply: #00D395;
     --color-chart-borrow: #9669ED;
 }
 
 @font-face {
-    font-family: AvenirNext;
-    src: url("../font/Avenir-next/AvenirNextLTPro-Regular.otf") format("opentype");
+    font-family: "DMSans";
+    src: url("../font/DMSans/DMSans-Regular.ttf");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../font/DMSans/DMSans-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../font/DMSans/DMSans-Bold.ttf");
+    font-weight: 700;
 }
 
 body * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    font-family: "AvenirNext";
+    font-family: "DMSans";
     font-stretch: normal;
     font-style: normal;
 }
 
 a, span, p, h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0px;
-    font-family: "AvenirNext";
+    font-family: "DMSans";
 }
 
 .input-error {

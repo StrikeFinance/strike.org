@@ -5,3 +5,33 @@
         padding: 10px 20px;
     }
 }
+
+.slider-animation {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: marquee 25s linear infinite;
+    border-top: 1px solid #D1D1D1;
+    border-bottom: 1px solid #D1D1D1;
+
+    @keyframes marquee {
+        0% {
+            transform: translate3d(0, 0, 0);
+        }
+        100% {
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+}
+
+.slider {
+    display: inline-block;
+    font-size: 60px;
+    line-height: 84px;
+    font-weight: 700;
+    color: #464646;
+}
+
+.slider-text {
+    margin-right: 250px;
+}

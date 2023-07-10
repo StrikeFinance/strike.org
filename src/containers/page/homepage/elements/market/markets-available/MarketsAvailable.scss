@@ -1,10 +1,13 @@
 .markets-available {
+  margin-top: 100px;
   .markets-available-content {
     .title {
       text-align: center;
-      color: #0b0f23;
-      font-size: 50px;
-      font-weight: 500;
+      color: var(--color-text-main);
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 84px;
+      margin-bottom: 30px;
       @media screen and (max-width: 812px) {
         font-size: 25px;
         margin-bottom: 20px;

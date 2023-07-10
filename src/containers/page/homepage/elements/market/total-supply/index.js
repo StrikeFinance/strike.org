@@ -2,11 +2,8 @@ import React from 'react';
 import { Progress } from 'antd';
 import commaNumber from 'comma-number';
 import BigNumber from 'bignumber.js';
-import { Col, Row, Typography, Divider } from 'antd';
+import { Col, Row, Typography } from 'antd';
 import './styles.scss';
-import vector2 from 'assets/img/homepage/Vector2-b.png';
-import vector3 from 'assets/img/homepage/Vector3-b.png';
-import vector4 from 'assets/img/homepage/Vector4-b.png';
 
 function Totalsupply(props) {
   const { markets, totalSupply, supplierCount, supplyVolume } = props;
@@ -22,7 +19,7 @@ function Totalsupply(props) {
           xl={12}
           className="total-supply-content__left"
         >
-          <Typography className="title">Market</Typography>
+          {/* <Typography className="title">Market</Typography> */}
           <Typography className="title-desciption">
             Supply collateral to Strike while controlling your keys
           </Typography>
@@ -40,14 +37,11 @@ function Totalsupply(props) {
           xl={12}
           className="total-supply-content__right"
         >
-          <img src={vector3} className="vector3" />
           <div className="children-content">
             <Typography className="title-content">Total Supply</Typography>
-            <Divider />
             <Typography className="money-supply">
               ${format(totalSupply)}
             </Typography>
-            <Divider />
             <Typography className="top-markets">Top 3 Markets</Typography>
             {markets?.markets &&
               (markets?.markets || [])
@@ -72,7 +66,8 @@ function Totalsupply(props) {
                               .times(100)
                               .dp(2, 1)
                               .toNumber()
-                          : 0}%
+                          : 0}
+                        %
                       </div>
                     </div>
                     <Progress
@@ -89,28 +84,25 @@ function Totalsupply(props) {
                     />
                   </div>
                 ))}
-            <Divider />
             <div className="footer-content flex just-between">
               <div className="footer-content__left">
-                <Typography className="footer-content__left__title">
-                  24h Supply Volume
-                </Typography>
                 <Typography className="footer-content__left__number">{`$${format(
                   new BigNumber(supplyVolume).toFormat(2)
                 )}`}</Typography>
+                <Typography className="footer-content__left__title">
+                  24h Supply Volume
+                </Typography>
               </div>
               <div className="footer-content__right">
-                <Typography className="footer-content__right__title">
-                  # of Suppliers
-                </Typography>
                 <Typography className="footer-content__right__number">
                   {supplierCount}
+                </Typography>
+                <Typography className="footer-content__right__title">
+                  # of Suppliers
                 </Typography>
               </div>
             </div>
           </div>
-          <img src={vector2} className="vector2"/>
-          <img src={vector4} className="vector4"/>
         </Col>
       </Row>
     </div>

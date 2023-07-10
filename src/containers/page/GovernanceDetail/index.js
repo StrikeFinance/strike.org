@@ -128,7 +128,7 @@ function Governance(props) {
   return (
     <WrapLayout showMenu={false}>
       <BackButton title="Governance" />
-      <div style={{ background: '#eceff9' }}>
+      <div style={{ background: '#1e1a22' }}>
         <div className="governance-detail">
           {/* Main content */}
           <div className="governance-detail-main ">

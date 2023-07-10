@@ -6,6 +6,7 @@ import { compose } from 'recompose';
 import Borrow from './borrow/';
 import './Market.scss';
 import TotalSupply from './total-supply';
+import MarketsAvailable from './markets-available/MarketsAvailable';
 
 const Market = ({ markets }) => {
   const [totalSupply, setTotalSupply] = useState('0');
@@ -48,7 +49,27 @@ const Market = ({ markets }) => {
     return () => (mounted = false);
   }, [markets]);
   return (
-    <div className="market-homepage" id="market">
+    <div className="market-homepage">
+      <div className="slider-animation">
+        <div className="slider">
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+        </div>
+        <div className="slider">
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">MARKETS</span>
+        </div>
+      </div>
       <TotalSupply
         markets={markets}
         totalSupply={totalSupply}
@@ -61,7 +82,7 @@ const Market = ({ markets }) => {
         borrowerCount={borrowerCount}
         totalBorrow={totalBorrow}
       />
-      {/* <MarketsAvailable /> */}
+      <MarketsAvailable />
     </div>
   );
 };

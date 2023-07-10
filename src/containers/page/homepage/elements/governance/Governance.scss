@@ -1,64 +1,59 @@
 .governance {
   .governance-wrapper {
+    margin-top: 100px;
     position: relative;
     .governance-content {
-      background: #3b54b5;
-      padding: 200px 100px 100px 100px;
-      margin-top: 700px;
+      padding: 120px 100px 100px 100px;
       @media screen and (max-width: 812px) {
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 163px;
         margin-top: 493px;
       }
-      .docs {
-        padding: 200px 0;
+      .title {
+        font-size: 20px;
+        padding: 5px;
+        font-weight: 800;
+        background: #1e1a22;
+        border-radius: 5px;
+        display: inline-block;
+        line-height: 27px;
+        margin-bottom: 20px;
+      }
+      .desc {
+        color: var(--color-text-main);
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 40px;
+        max-width: 920px;
+        margin: 0 auto 60px auto;
+
         @media screen and (max-width: 812px) {
-          margin-top: 20px;
-          padding: 0;
-        }
-        .title {
           font-size: 20px;
-          padding: 5px;
-          font-weight: 800;
-          background: #eceff9;
-          border-radius: 5px;
-          display: inline-block;
-          line-height: 27px;
-          margin-bottom: 20px;
         }
-        .desc {
-          color: #ffffff;
-          font-size: 39px;
-          @media screen and (max-width: 812px) {
-            font-size: 25px;
-          }
-          @media screen and (max-width: 1024px) {
-            font-size: 26px !important;
-          }
-        }
-        .content-left {
-          position: relative;
-          .arrow-cross-above-opacity {
-            position: absolute;
-            top: 0;
-            left: 100px;
-            opacity: 0.8;
-          }
-          .arrow-black-down-opacity {
-            position: absolute;
-            bottom: -100px;
-            right: 30%;
-            @media screen and (max-width: 812px) {
-              display: none;
-            }
-          }
+        @media screen and (max-width: 1024px) {
+          font-size: 22px !important;
         }
       }
       .recent-proposals {
         padding: 20px 30px 52px 30px;
-        background: rgba(11, 15, 35, 0.5);
-        border-radius: 20px;
+        background: #1E1F25;
+        max-width: 1200px;
+        margin: 0 auto;
+        border-top: 4px solid #0146d0;
+        border-width: 4px;
+        border-style: solid;
+        border-image: linear-gradient(
+          to bottom, 
+          #0146d0,
+          #0146d0,
+          rgba(255, 255, 255, 0.7),
+          rgba(255, 255, 255, 0.5),
+          rgba(30, 26, 34, 0.8),
+          #1E1A22
+        ) 1 100%;
+
         @media screen and (max-width: 812px) {
           padding-bottom: 52px;
         }
@@ -92,7 +87,7 @@
           font-weight: 800;
           font-size: 20px;
           padding-bottom: 10px;
-          border-bottom: 1px solid #e5e5e5;
+          border-bottom: 1px solid #34384C;
           @media screen and (max-width: 812px) {
             font-size: 16px;
           }
@@ -100,7 +95,7 @@
         .recent-list {
           .recent-item {
             padding: 10px 0;
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 1px solid #34384C;
             cursor: pointer;
             .description {
               color: #ffffff;
@@ -171,18 +166,6 @@
             display: none;
           }
         }
-      }
-    }
-    .markets-available-content {
-      position: absolute;
-      top: -280px;
-      left: 0;
-      right: 0;
-      margin-left: auto;
-      margin-right: auto;
-      @media screen and (max-width: 812px) {
-        // top: -340px;
-        top: -237px;
       }
     }
   }

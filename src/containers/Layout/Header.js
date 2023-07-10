@@ -89,7 +89,7 @@ const HeaderWrapper = styled.div`
       .header-menu__link {
         font-size: 20px;
         font-weight: 500;
-        color: #aaaeb5;
+        color: #aaaaaa;
         text-decoration: none;
         cursor: pointer;
         @media only screen and (max-width: 768px) {

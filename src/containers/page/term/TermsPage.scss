@@ -1,9 +1,10 @@
 
 .wrap-terms-container {
   padding: 150px 150px 50px;
-  color: black;
+  color: var(--color-text-main);
   font-size: 16px;
-  background-color: #eceff9;
+  background-color: #1e1a22;
+  padding-bottom: 150px;
   @media screen and (max-width: 812px) {
     padding-left: 20px;
     padding-right: 20px;

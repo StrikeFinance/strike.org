@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 const FooterWrapper = styled.div`
   padding: 75px 75px 44px;
-  background-color: #090d27;
+  background: var(--color-bg-main);
 
   @media (max-width: 768px) {
     padding: 35px;

@@ -1,8 +1,18 @@
 .loading-spinner {
-    height: calc(100vh - 425px);
+    height: fit-content;
     width: 100%;
+    background: var(--color-bg-main);
 
     @media only screen and (max-width: 1440px) {
         height: 70vh;
     }
+}
+
+.main-container {
+    background: var(--color-bg-main);
+    background-image: url('../../../assets/img/grid.png');
+}
+
+.market-area {
+    padding-top: 0px;
 }

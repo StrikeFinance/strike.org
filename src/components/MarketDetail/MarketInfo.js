@@ -10,7 +10,6 @@ import * as constants from 'utilities/constants';
 const MarketInfoWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  font-family: 'Avenir';
   .asset-img {
     width: 80px;
     height: 80px;
@@ -72,7 +71,15 @@ function MarketInfo({ marketInfo, marketType }) {
         <div>
           <img
             className="asset-img"
-            src={constants.CONTRACT_TOKEN_ADDRESS[marketInfo.underlyingSymbol.toLowerCase()] ? constants.CONTRACT_TOKEN_ADDRESS[marketInfo.underlyingSymbol.toLowerCase()].asset : null}
+            src={
+              constants.CONTRACT_TOKEN_ADDRESS[
+                marketInfo.underlyingSymbol.toLowerCase()
+              ]
+                ? constants.CONTRACT_TOKEN_ADDRESS[
+                    marketInfo.underlyingSymbol.toLowerCase()
+                  ].asset
+                : null
+            }
             alt="asset"
           />
           <span className="stoken-text">{marketInfo.underlyingSymbol}</span>
@@ -83,8 +90,30 @@ function MarketInfo({ marketInfo, marketType }) {
           <p className="label">Net Rate</p>
           <p className="value">
             {marketType === 'supply'
-              ? new BigNumber(+marketInfo.supplyApy < 0.01 ? 0.01 : marketInfo.supplyApy).plus(new BigNumber(+marketInfo.supplyStrikeApy < 0.01 ? 0.01 : marketInfo.supplyStrikeApy)).dp(2, 1).toString(10)
-              : new BigNumber(+marketInfo.borrowApy < 0.01 ? 0.01 : marketInfo.borrowApy).plus(new BigNumber(marketInfo.borrowStrikeApy < 0.01 ? 0.01 : marketInfo.borrowStrikeApy)).dp(2, 1).toString(10)}
+              ? new BigNumber(
+                  +marketInfo.supplyApy < 0.01 ? 0.01 : marketInfo.supplyApy
+                )
+                  .plus(
+                    new BigNumber(
+                      +marketInfo.supplyStrikeApy < 0.01
+                        ? 0.01
+                        : marketInfo.supplyStrikeApy
+                    )
+                  )
+                  .dp(2, 1)
+                  .toString(10)
+              : new BigNumber(
+                  +marketInfo.borrowApy < 0.01 ? 0.01 : marketInfo.borrowApy
+                )
+                  .plus(
+                    new BigNumber(
+                      marketInfo.borrowStrikeApy < 0.01
+                        ? 0.01
+                        : marketInfo.borrowStrikeApy
+                    )
+                  )
+                  .dp(2, 1)
+                  .toString(10)}
             %
           </p>
         </div>
@@ -92,8 +121,16 @@ function MarketInfo({ marketInfo, marketType }) {
           <p className="label right">Supply APY</p>
           <p className="value right">
             {marketType === 'supply'
-              ? new BigNumber(+marketInfo.supplyApy < 0.01 ? 0.01 : marketInfo.supplyApy).dp(2, 1).toString(10)
-              : new BigNumber(+marketInfo.borrowApy < 0.01 ? 0.01 : marketInfo.borrowApy).dp(2, 1).toString(10)}
+              ? new BigNumber(
+                  +marketInfo.supplyApy < 0.01 ? 0.01 : marketInfo.supplyApy
+                )
+                  .dp(2, 1)
+                  .toString(10)
+              : new BigNumber(
+                  +marketInfo.borrowApy < 0.01 ? 0.01 : marketInfo.borrowApy
+                )
+                  .dp(2, 1)
+                  .toString(10)}
             %
           </p>
         </div>
@@ -101,15 +138,36 @@ function MarketInfo({ marketInfo, marketType }) {
           <p className="label">Distribution APY</p>
           <p className="value">
             {marketType === 'supply'
-              ? new BigNumber(+marketInfo.supplyStrikeApy < 0.01 ? 0.01 : marketInfo.supplyStrikeApy).dp(2, 1).toString(10)
-              : new BigNumber(marketInfo.borrowStrikeApy < 0.01 ? 0.01 : marketInfo.borrowStrikeApy).dp(2, 1).toString(10)}
+              ? new BigNumber(
+                  +marketInfo.supplyStrikeApy < 0.01
+                    ? 0.01
+                    : marketInfo.supplyStrikeApy
+                )
+                  .dp(2, 1)
+                  .toString(10)
+              : new BigNumber(
+                  marketInfo.borrowStrikeApy < 0.01
+                    ? 0.01
+                    : marketInfo.borrowStrikeApy
+                )
+                  .dp(2, 1)
+                  .toString(10)}
             %
           </p>
         </div>
         <div className="total-supply">
           <p className="label right">Total Supply</p>
           <p className="value right">
-            ${format(new BigNumber(marketType === 'supply' ? marketInfo.totalSupplyUsd : marketInfo.totalBorrowsUsd).dp(2, 1).toString(10))}
+            $
+            {format(
+              new BigNumber(
+                marketType === 'supply'
+                  ? marketInfo.totalSupplyUsd
+                  : marketInfo.totalBorrowsUsd
+              )
+                .dp(2, 1)
+                .toString(10)
+            )}
           </p>
         </div>
       </div>
