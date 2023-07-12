@@ -12,22 +12,45 @@ const Banner = ({ markets }) => {
   return (
     <div className="banner-homepage">
       <div className="banner-content flex just-between">
-        <div className="description">
-          The Strike protocol currently has{' '}
-          <span className="text-highlight">
-            $
-            {new Intl.NumberFormat({
-              maximumSignificantDigits: 3
-            }).format(
-              markets?.markets.reduce(
-                (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
-                new BigNumber('0')
-              )
-            )}
-          </span>{' '}
-          TVL across{' '}
-          <span className="text-highlight">{markets?.markets.length}</span>{' '}
-          sToken markets
+        <div className="left">
+          <div className="title">
+            The Strike protocol currently has{' '}
+            <span className="text-highlight">
+              $
+              {new Intl.NumberFormat({
+                maximumSignificantDigits: 3
+              }).format(
+                markets?.markets.reduce(
+                  (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
+                  new BigNumber('0')
+                )
+              )}
+            </span>{' '}
+            TVL across{' '}
+            <span className="text-highlight">{markets?.markets.length}</span>{' '}
+            sToken markets
+          </div>
+          <div className="description">
+            Strike users control all of their digital assets on a non-custodial
+            protocol while earning a variable rate based on market demands of
+            that asset. Rates are earned per Ethereum block mined.
+          </div>
+          <div className="btn-mobile">
+            <div
+              onClick={() => window.open('https://app.strike.org/', '_blank')}
+              className="launch-app-btn"
+            >
+              Launch App
+            </div>
+            <div
+              onClick={() =>
+                window.open('https://strike.org/Whitepaper.pdf', '_blank')
+              }
+              className="whitepaper-btn"
+            >
+              Whitepaper
+            </div>
+          </div>
         </div>
         <div className="image-banner">
           <img src={BannerImg} alt="banner" />

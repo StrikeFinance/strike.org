@@ -14,7 +14,7 @@
       border-bottom: 1px solid #d1d1d1;
 
       @media screen and (max-width: 1280px) {
-        padding: 30px 20px;
+        padding: 20px 20px;
       }
 
       .logo {
@@ -53,9 +53,8 @@
         .whitepaper-btn {
           width: 140px;
           height: 40px;
-          border-radius: 8px;
-          background-color: #ffffff;
-          color: #277ee6;
+          color: #ffffff;
+          border: 1px solid #107def;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -64,13 +63,12 @@
         .launch-app-btn {
           width: 140px;
           height: 40px;
-          border-radius: 8px;
-          background-color: #107def;
-          color: #ffffff;
+          color: #107def;
+          background: #ffffff;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-left: 20px;
+          margin-right: 20px;
           cursor: pointer;
         }
       }
@@ -107,31 +105,25 @@
       .whitepaper-btn {
         width: 140px;
         height: 40px;
-        border-radius: 8px;
-        background-color: #ffffff;
-        color: #277ee6;
+        color: #ffffff;
+        border: 1px solid #107def;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         margin: 0 auto;
-        margin-bottom: 20px;
       }
       .launch-app-btn {
         width: 140px;
         height: 40px;
-        border-radius: 8px;
-        background-color: #107def;
-        color: #ffffff;
+        color: #107def;
+        background: #ffffff;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto;
+        margin-bottom: 20px;
         cursor: pointer;
-        &:hover {
-          background-color: #ffffff;
-          color: #477ee6;
-        }
       }
     }
   }

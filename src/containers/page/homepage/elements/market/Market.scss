@@ -30,6 +30,11 @@
     line-height: 84px;
     font-weight: 700;
     color: #464646;
+
+    @media screen and (max-width: 812px) {
+        font-size: 37.5px;
+        line-height: 52.5px;
+    }
 }
 
 .slider-text {

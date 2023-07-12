@@ -99,6 +99,14 @@ const Header = ({ showMenuHead }) => {
                   <div className="nav-btn-mobile">
                     <div
                       onClick={() =>
+                        window.open('https://app.strike.org/', '_blank')
+                      }
+                      className="launch-app-btn"
+                    >
+                      Launch App
+                    </div>
+                    <div
+                      onClick={() =>
                         window.open(
                           'https://strike.org/Whitepaper.pdf',
                           '_blank'
@@ -107,14 +115,6 @@ const Header = ({ showMenuHead }) => {
                       className="whitepaper-btn"
                     >
                       Whitepaper
-                    </div>
-                    <div
-                      onClick={() =>
-                        window.open('https://app.strike.org/', '_blank')
-                      }
-                      className="launch-app-btn"
-                    >
-                      Launch App
                     </div>
                   </div>
                 </div>
@@ -140,6 +140,14 @@ const Header = ({ showMenuHead }) => {
                 ) : null}
               </div>
               <div className="nav-btn flex align-center">
+                <div
+                  onClick={() =>
+                    window.open('https://app.strike.org/', '_blank')
+                  }
+                  className="launch-app-btn"
+                >
+                  Launch App
+                </div>
                 {showMenuHead ? (
                   <div
                     onClick={() =>
@@ -150,14 +158,6 @@ const Header = ({ showMenuHead }) => {
                     Whitepaper
                   </div>
                 ) : null}
-                <div
-                  onClick={() =>
-                    window.open('https://app.strike.org/', '_blank')
-                  }
-                  className="launch-app-btn"
-                >
-                  Launch App
-                </div>
               </div>
             </>
           )}
