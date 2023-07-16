@@ -1,25 +1,40 @@
 .developer-docs {
-  padding-left: 120px;
+  padding: 0px 120px;
   display: block;
   margin: auto;
+  
+  @media screen and (max-width: 1280px) {
+    padding: 0px;
+    padding-left: 120px;
+  }
+
   @media screen and (max-width: 812px) {
-    padding-right: 12px;
     display: block;
-    padding-left: 0;
+    padding: 0px 20px;
   }
   .developer-docs-content {
+
     @media screen and (max-width: 812px) {
-      padding-left: 20px;
       flex-direction: column !important;
       display: block;
     }
     .content {
-      padding-top: 120px;
-      max-width: 100%;
-      @media screen and (max-width: 812px) {
-        display: block;
-        margin: auto;
+      padding: 260px 0px;
+      max-width: 600px;
+
+      @media screen and (max-width: 1280px) {
+        padding: 200px 0px;
       }
+
+      @media screen and (max-width: 1024px) {
+        padding: 150px 0px;
+      }
+
+      @media screen and (max-width: 812px) {
+        padding: 0px;
+        padding-top: 100px;
+      }
+
       .text-developers {
         font-size: 25px;
         font-weight: 500;
@@ -35,42 +50,29 @@
         padding-bottom: 30px;
         flex-basis: min-content;
         max-width: 74%;
-        .comprehensive-developer {
-          font-size: 48px;
-          font-weight: 500;
-          color: var(--color-text-main);
-          line-height: 50px;
-          display: block;
-          max-width: 100%;
-          @media screen and (max-width: 812px) {
-            display: block;
-            font-size: 25px;
-            max-width: 100%;
-          }
-          @media screen and (max-width: 1024px) {
-            display: block;
-            font-size: 26px!important;
-            max-width: 100%;
-          }
+        font-size: 48px;
+        font-weight: 500;
+        color: var(--color-text-main);
+        line-height: 50px;
+        display: block;
+        max-width: 100%;
+        @media screen and (max-width: 1440px) {
+          width: 90%;
+          font-size: 38px;
+          line-height: 40px;
         }
 
-        .developer-api {
-          font-size: 48px;
-          font-weight: 500;
-          color: var(--color-text-main);
-          line-height: 50px;
-          display: block;
-          max-width: 100%;
-          @media screen and (max-width: 812px) {
-            display: block;
-            font-size: 25px;
-            max-width: 100%;
-          }
-          @media screen and (max-width: 1024px) {
-            display: block;
-            font-size: 26px!important;
-            max-width: 100%;
-          }
+        @media screen and (max-width: 1280px) {
+          font-size: 38px;
+        }
+
+        @media screen and (max-width: 1024px) {
+          font-size: 26px;
+        }
+
+        @media screen and (max-width: 812px) {
+          font-size: 25px;
+          width: 100%;
         }
       }
       .text-layer-2 {
@@ -121,23 +123,32 @@
       }
     }
 
-    .img-dev {      
-      padding-top: 120px;
+    .img-dev {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      margin: auto 0;
       width: 483px;
+
+      @media screen and (max-width: 1280px) {
+        width: 400px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        margin: auto;
+        min-width: 380px;
+      }
+
       @media screen and (max-width: 812px) {
-        // padding-top: 86.45px;
         text-align: center;
         margin: 0 auto;
-        
+        width: 300px;
       }
 
       .img-blockchain {
-        margin-top: -14%; 
-        max-width: 100%;
+        width: 100%;
         @media screen and (max-width: 812px) {
           margin: auto;
-          width: 100%;
-          padding-right: 10%;
           text-align: center;
         }
       }

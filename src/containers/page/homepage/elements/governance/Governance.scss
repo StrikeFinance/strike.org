@@ -7,8 +7,6 @@
       @media screen and (max-width: 812px) {
         padding-left: 20px;
         padding-right: 20px;
-        padding-top: 163px;
-        margin-top: 493px;
       }
       .title {
         font-size: 20px;
@@ -71,15 +69,28 @@
             background: none;
 
             i.anticon.anticon-left {
-              color: #3b54b5 !important;
+              color: var(--color-text-main) !important;
             }
             i.anticon.anticon-right {
-              color: #3b54b5 !important;
+              color: var(--color-text-main) !important;
             }
+          }
+          .ant-pagination-item a {
+            color: #666;
           }
           .ant-pagination-item {
             background: none !important;
             border: 1px solid #3b54b5 !important;
+          }
+          .ant-pagination-item:focus a,
+          .ant-pagination-item:hover a {
+            color: var(--color-text-main);
+          }
+
+          .ant-pagination-item-active {
+            a {
+              color: var(--color-text-main);
+            }
           }
         }
         .title-proposals {

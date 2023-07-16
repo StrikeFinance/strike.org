@@ -25,6 +25,7 @@
       justify-content: space-between;
 
       @media screen and (max-width: 812px) {
+        display: block;
       }
 
       .text-layer {
@@ -39,11 +40,21 @@
           display: block;
           line-height: 50px;
 
+          @media screen and (max-width: 1440px) {
+            font-size: 38px;
+            line-height: 40px;
+          }
+  
+          @media screen and (max-width: 1280px) {
+            font-size: 38px;
+          }
+  
+          @media screen and (max-width: 1024px) {
+            font-size: 26px;
+          }
+  
           @media screen and (max-width: 812px) {
             font-size: 25px;
-          }
-          @media screen and (max-width: 1024px) {
-            font-size: 26px!important;
           }
         }
 
@@ -54,13 +65,14 @@
           display: block;
           padding-bottom: 40px;
           max-width: 544px;
+          
+          @media screen and (max-width: 1024px) {
+            font-size: 16px;
+          }
+
           @media screen and (max-width: 812px) {
             font-size: 16px;
             max-width: 100%;
-          }
-          @media screen and (max-width: 1024px) {
-            font-size: 16px;
-            max-width: 100%!important;
           }
         }
       }

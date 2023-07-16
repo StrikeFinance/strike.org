@@ -3,19 +3,29 @@
   display: block;
   margin: auto;
   padding-bottom: 215px;
-  @media screen and (max-width: 812px) {
-    padding-left: 0;
-    padding-right: 12px;
-    padding-bottom: 121px;
+  @media screen and (max-width: 1023px) {
+    padding: 20px;
+    padding-bottom: 120px;
   }
 
   .strike-whitepaper-content {
+    display: flex;
+    justify-content: space-between;
     padding-top: 180px;
-    @media screen and (max-width: 812px) {
+    gap: 100px;
+
+    @media screen and (max-width: 1280px) {
+      gap: 50px;
+    }
+
+    @media screen and (max-width: 1023px) {
       flex-direction: column;
-      padding-left: 20px;
     }
     .content {
+      @media screen and (max-width: 1024px) {
+        max-width: 500px;
+      }
+
       .text-layer {
         width: 100%;
         span:first-child {
@@ -24,11 +34,21 @@
           color: var(--color-text-main);
           line-height: 50px;
           display: block;
+          @media screen and (max-width: 1440px) {
+            font-size: 38px;
+            line-height: 40px;
+          }
+  
+          @media screen and (max-width: 1280px) {
+            font-size: 38px;
+          }
+  
+          @media screen and (max-width: 1024px) {
+            font-size: 26px;
+          }
+  
           @media screen and (max-width: 812px) {
             font-size: 25px;
-          }
-          @media screen and (max-width: 1024px) {
-            font-size: 26px!important;
           }
         }
 
@@ -72,18 +92,22 @@
     }
     .img-dev {
       width: 100%;
-      margin: auto;
-      @media screen and (max-width: 812px) {
-        margin: auto;
+      text-align: center;
+      margin: 0 auto;
+
+      @media screen and (max-width: 1200px) {
+        
       }
+
+      @media screen and (max-width: 992px) {
+        
+      }
+
       img {
         max-width: 100%;
         @media screen and (max-width: 812px) {
-          padding-top: 50px;
-        }
-        @media screen and (max-width: 812px) {
-          width: 100%;
           margin: auto;
+          padding-top: 50px;
           padding-right: 10%;
         }
       }

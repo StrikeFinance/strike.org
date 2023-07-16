@@ -1,10 +1,13 @@
 .total-supplys {
   margin-top: 88px;
   @media screen and (max-width: 812px) {
-    margin-top: 0;
+    margin-top: 50px;
   }
   .total-supply-content {
+    display: flex;
+    justify-content: space-between;
     @media screen and (max-width: 812px) {
+      flex-direction: column;
     }
     &__left {
       @media screen and (max-width: 812px) {
@@ -29,27 +32,49 @@
         padding-bottom: 24px;
         line-height: 50px;
 
+        @media screen and (max-width: 1440px) {
+          width: 90%;
+          font-size: 38px;
+          line-height: 40px;
+        }
+
+        @media screen and (max-width: 1280px) {
+          font-size: 38px;
+        }
+
+        @media screen and (max-width: 1024px) {
+          font-size: 26px;
+        }
+
         @media screen and (max-width: 812px) {
           font-size: 25px;
           width: 100%;
-        }
-        @media screen and (device-width: 1024px) {
-          font-size: 26px !important;
-        }
+        }        
       }
       .title-strike {
         font-size: 18px;
         font-weight: 400;
         color: #aaaaaa;
         width: 55%;
+
+        @media screen and (max-width: 1440px) {
+          width: 80%;
+        }
+
+        @media screen and (max-width: 1280px) {
+          width: 90%;
+        }
+
+        @media screen and (max-width: 1024px) {
+          width: 90%;
+          font-size: 18px;
+        }
+
         @media screen and (max-width: 812px) {
           font-size: 14px;
           width: 100%;
         }
-        @media screen and (max-width: 1024px) {
-          width: 90% !important;
-          font-size: 18px;
-        }
+        
       }
     }
     &__right {
@@ -58,15 +83,22 @@
       border-right: 4px solid rgba(16, 125, 239, 0.50);
       border-bottom: 4px solid rgba(16, 125, 239, 0.50);
       padding: 25px 40px 27px 40px;
-      width: 45% !important;
+      min-width: 500px;
+
+      @media screen and (max-width: 1280px) {
+        min-width: 400px;
+      }
+
+      @media screen and (max-width: 960px) {
+        min-width: 350px;
+      }
+
       @media screen and (max-width: 812px) {
-        width: 100% !important;
-        padding-left: 26px !important;
-        padding-right: 26px !important;
-      }
-      @media screen and (device-width: 1024px) {
         width: 100%;
+        padding-left: 26px;
+        padding-right: 26px;
       }
+      
 
       .children-content {
         width: 100%;

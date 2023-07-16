@@ -1,8 +1,7 @@
 import React from 'react';
-import { Progress } from 'antd';
+import { Progress, Typography } from 'antd';
 import commaNumber from 'comma-number';
 import BigNumber from 'bignumber.js';
-import { Col, Row, Typography } from 'antd';
 import './styles.scss';
 
 function Totalsupply(props) {
@@ -10,15 +9,8 @@ function Totalsupply(props) {
   const format = commaNumber.bindWith(',', '.');
   return (
     <div className="total-supplys">
-      <Row className="total-supply-content">
-        <Col
-          xs={24}
-          sm={24}
-          md={10}
-          lg={12}
-          xl={12}
-          className="total-supply-content__left"
-        >
+      <div className="total-supply-content">
+        <div className="total-supply-content__left">
           {/* <Typography className="title">Market</Typography> */}
           <Typography className="title-desciption">
             Supply collateral to Strike while controlling your keys
@@ -28,15 +20,8 @@ function Totalsupply(props) {
             protocol while earning a variable rate based on market demands of
             that asset. Rates are earned per Ethereum block mined
           </Typography>
-        </Col>
-        <Col
-          xs={24}
-          sm={24}
-          md={14}
-          lg={12}
-          xl={12}
-          className="total-supply-content__right"
-        >
+        </div>
+        <div className="total-supply-content__right">
           <div className="children-content">
             <Typography className="title-content">Total Supply</Typography>
             <Typography className="money-supply">
@@ -103,8 +88,8 @@ function Totalsupply(props) {
               </div>
             </div>
           </div>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 }

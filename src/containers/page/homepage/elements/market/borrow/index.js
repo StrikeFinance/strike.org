@@ -1,27 +1,29 @@
 import React from 'react';
 import './styles.scss';
-import { Progress } from 'antd';
+import { Progress, Typography } from 'antd';
 import commaNumber from 'comma-number';
 import BigNumber from 'bignumber.js';
-import { Col, Row, Typography } from 'antd';
 
 function TotalBorrow(props) {
   const { markets, totalBorrow, borrowerCount, borrowVolume } = props;
   const format = commaNumber.bindWith(',', '.');
   return (
     <div className="total-borrows">
-      <Row className="total-borrow-content" gutter={[100, 100]}>
-        <Col
-          xs={24}
-          sm={24}
-          md={10}
-          lg={12}
-          xl={12}
-          className="total-borrow-content__left"
-        >
+      <div className="total-borrow-content">
+        <div className="total-borrow-content__left">
+          {/* <Typography className="title">Market</Typography> */}
+          <Typography className="title-desciption">
+            Access Liquidity from Strike on-demand on any asset
+          </Typography>
+          <Typography className="title-strike">
+            With the Strike protocols decentralized nature, users and developers
+            can access liquidity on-demand from their supplied collateral
+          </Typography>
+        </div>
+        <div className="total-borrow-content__right">
           <div className="children-content">
             <Typography className="title-content">Total Borrow</Typography>
-            <Typography className="money-supply">
+            <Typography className="money-borrow">
               ${format(totalBorrow)}
             </Typography>
             <Typography className="top-markets">Top 3 Markets</Typography>
@@ -85,25 +87,8 @@ function TotalBorrow(props) {
               </div>
             </div>
           </div>
-        </Col>
-        <Col
-          xs={24}
-          sm={24}
-          md={10}
-          lg={12}
-          xl={12}
-          className="total-borrow-content__right"
-        >
-          {/* <Typography className="title">Market</Typography> */}
-          <Typography className="title-desciption">
-            Access Liquidity from Strike on-demand on any asset
-          </Typography>
-          <Typography className="title-strike">
-            With the Strike protocols decentralized nature, users and developers
-            can access liquidity on-demand from their supplied collateral
-          </Typography>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 }

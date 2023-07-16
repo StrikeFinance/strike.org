@@ -83,7 +83,12 @@ const Governance = ({ getGovernance, history }) => {
             {governance.map((item, index) => (
               <div className="recent-list" key={index}>
                 <div
-                  onClick={() => history.push(`/governance-detail/${item.id}`)}
+                  onClick={() =>
+                    window.open(
+                      `https://app.strike.org/vote/proposal/${item.id}`,
+                      '_blank'
+                    )
+                  }
                   className="recent-item flex just-between"
                 >
                   <div>
