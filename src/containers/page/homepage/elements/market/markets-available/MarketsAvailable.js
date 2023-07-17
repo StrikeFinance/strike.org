@@ -8,7 +8,6 @@ import { promisify } from 'utilities';
 import { BigNumber } from 'bignumber.js';
 import { useWindowResizeMobile } from 'utilities/hook';
 import commaNumber from 'comma-number';
-import { Table, Pagination, Card } from 'antd';
 import ethImg from 'assets/img/eth.png';
 import wbtcImg from 'assets/img/wbtc.png';
 import usdcImg from 'assets/img/usdc.png';
@@ -24,8 +23,8 @@ import ustImg from 'assets/img/ust.png';
 import daiImg from 'assets/img/dai.png';
 import xcnImg from 'assets/img/xcn.png';
 import './MarketsAvailable.scss';
-import { useHistory } from 'react-router';
-import { currencyFormatter } from 'utilities/common';
+import { currencyFormatter, shortenNumberFormatter } from 'utilities/common';
+import MarketSlider from './MarketSlider';
 
 const format = commaNumber.bindWith(',', '.');
 const ICONS = {
@@ -44,111 +43,16 @@ const ICONS = {
   DAI: daiImg,
   XCN: xcnImg
 };
-const columns = [
-  {
-    title: 'Market',
-    dataIndex: 'market',
-    key: 'market',
-    render: (action, record) => (
-      <div className="flex symbol">
-        <div className="token-type mr-1">
-          <img alt="symbol" src={ICONS[record?.underlyingSymbol]} />
-        </div>
-        <div className="mx-auto">
-          <div className="row1">{record?.underlyingName}</div>
-          <div className="row2">{record?.underlyingSymbol}</div>
-        </div>
-      </div>
-    )
-  },
-  {
-    title: 'Total Supply',
-    dataIndex: 'totalSuplly',
-    key: 'totalSupply',
-    render: (action, record) => (
-      <div className="total-supply">
-        <div className="row1">
-          <div>{currencyFormatter(record.totalSupplyUsd)}</div>
-        </div>
-        <div className="row2">
-          {format(
-            new BigNumber(record?.totalSupplyUsd)
-              .div(new BigNumber(record?.tokenPrice))
 
-              .dp(0, 1)
-              .toString(10)
-          )}{' '}
-          {record?.underlyingSymbol}
-        </div>
-      </div>
-    )
-  },
-  {
-    title: 'Supply APY',
-    dataImdex: 'supplyAPY',
-    key: 'supplyAPY',
-    render: (action, record) => (
-      <div className="total-supply">
-        <div className="row1">
-          <div>{record.sAPY}%</div>
-        </div>
-        <div className="row2">
-          {new BigNumber(record?.supplyStrikeApy).dp(2, 1).toString(10)}
-          {`%`}
-        </div>
-      </div>
-    )
-  },
-  {
-    title: 'Total Borrow',
-    dataIndex: 'totalBorrow',
-    key: 'totalBorrow',
-    render: (action, record) => (
-      <div className="total-supply">
-        <div className="row1">
-          <span>{currencyFormatter(record.totalBorrowsUsd)}</span>
-        </div>
-        <div className="row2">
-          {format(
-            new BigNumber(record.totalBorrowsUsd)
-              .div(new BigNumber(record.tokenPrice))
-              .dp(0, 1)
-              .toString(10)
-          )}{' '}
-          {record.underlyingSymbol}
-        </div>
-      </div>
-    )
-  },
-  {
-    title: 'Borrow APY',
-    dataIndex: 'borrowAPY',
-    key: 'borrowAPY',
-    render: (action, record) => (
-      <div className="total-supply">
-        <div className="row1">
-          <span>{record.bAPY}%</span>
-        </div>
-        <div className="row2">
-          {new BigNumber(record?.borrowStrikeApy).dp(2, 1).toString(10)}
-          {`%`}
-        </div>
-      </div>
-    )
-  }
-];
 function MarketsAvailable({ getGovernanceStrikeWithParam }) {
-  const [isMobile] = useWindowResizeMobile(768);
+  const [isMobile] = useWindowResizeMobile(1025);
   const [markets, setMarkets] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [current, setCurrent] = useState(1);
-  const [sortInfo, setSortInfo] = useState({ field: '', sort: 'desc' });
-  const history = useHistory();
+  const [currentMarket, setCurrentMarket] = useState(null);
 
-  const getMarkets = async ({ offset, limit }) => {
+  const getMarkets = async () => {
     const res = await promisify(getGovernanceStrikeWithParam, {
-      offset,
-      limit
+      offset: 0,
+      limit: 30
     });
     const data = res?.data.markets
       .filter(m => m.underlyingSymbol !== 'ZRX' && m.underlyingSymbol !== 'BAT')
@@ -171,46 +75,135 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
           .toNumber();
       });
     setMarkets(data);
-    setTotal(res?.data?.total);
-  };
-  const onChangePage = value => {
-    setCurrent(value);
-    getMarkets({ offset: (value - 1) * 5, limit: 5 });
-  };
-  const onRow = record => {
-    history.push(`/market/${record.underlyingSymbol}`);
   };
 
   useEffect(() => {
-    let mounted = true;
-    getMarkets({ offset: 0, limit: 5 });
-    return () => (mounted = false);
+    getMarkets();
   }, []);
 
   return (
     <div className="markets-available">
       <div className="markets-available-content">
         <div className="title">12 Markets Available</div>
-        <Card className="markets-table">
-          <div className="title-table">All markets</div>
-          <Table
-            columns={columns}
-            dataSource={markets}
-            pagination={false}
-            className="table-market"
-            onRow={record => ({
-              onClick: () => history.push(`/market/${record.underlyingSymbol}`)
-            })}
+        <div className="markets-slider-area">
+          <MarketSlider
+            setCurrentMarket={setCurrentMarket}
+            markets={markets}
+            startIndex={0}
+            speed={80}
           />
-          <div className="pagination">
-            <Pagination
-              onChange={onChangePage}
-              total={total}
-              pageSize={5}
-              current={current}
-            />
-          </div>
-        </Card>
+          <MarketSlider
+            setCurrentMarket={setCurrentMarket}
+            markets={markets}
+            startIndex={9}
+            speed={50}
+          />
+          <MarketSlider
+            setCurrentMarket={setCurrentMarket}
+            markets={markets}
+            startIndex={6}
+            speed={100}
+          />
+          {currentMarket && !isMobile && (
+            <div
+              className="market-detail"
+              onMouseEnter={() => setCurrentMarket(currentMarket)}
+              onMouseLeave={() => setCurrentMarket(null)}
+            >
+              <div className="market-title">Market</div>
+              <div className="market-header">
+                <img src={ICONS[currentMarket.underlyingSymbol]} alt="asset" />
+                <div>
+                  <div className="market-name">
+                    {currentMarket.underlyingName}
+                  </div>
+                  <div className="market-symbol">
+                    {currentMarket.underlyingSymbol}
+                  </div>
+                </div>
+              </div>
+
+              <div className="divider1" />
+
+              <div className="item">
+                <div className="label">Total Supply</div>
+                <div>
+                  <div className="value yellow">
+                    {currencyFormatter(currentMarket.totalSupplyUsd)}
+                  </div>
+                  <div className="value">
+                    {format(
+                      new BigNumber(currentMarket.totalSupplyUsd)
+                        .div(new BigNumber(currentMarket.tokenPrice))
+
+                        .dp(0, 1)
+                        .toString(10)
+                    )}{' '}
+                    {currentMarket.underlyingSymbol}
+                  </div>
+                </div>
+              </div>
+
+              <div className="divider2" />
+
+              <div className="item">
+                <div className="label">Supply APY</div>
+                <div>
+                  <div className="value green">
+                    {shortenNumberFormatter(currentMarket.sAPY)}%
+                  </div>
+                  <div className="value">
+                    {shortenNumberFormatter(
+                      new BigNumber(currentMarket.supplyStrikeApy)
+                        .dp(2, 1)
+                        .toString(10)
+                    )}
+                    {`%`}
+                  </div>
+                </div>
+              </div>
+
+              <div className="divider2" />
+
+              <div className="item">
+                <div className="label">Total Borrow</div>
+                <div>
+                  <div className="value yellow">
+                    {currencyFormatter(currentMarket.totalBorrowsUsd)}
+                  </div>
+                  <div className="value">
+                    {format(
+                      new BigNumber(currentMarket.totalBorrowsUsd)
+                        .div(new BigNumber(currentMarket.tokenPrice))
+                        .dp(0, 1)
+                        .toString(10)
+                    )}{' '}
+                    {currentMarket.underlyingSymbol}
+                  </div>
+                </div>
+              </div>
+
+              <div className="divider2" />
+
+              <div className="item">
+                <div className="label">Borrow APY</div>
+                <div>
+                  <div className="value green">
+                    {shortenNumberFormatter(currentMarket.bAPY)}%
+                  </div>
+                  <div className="value">
+                    {shortenNumberFormatter(
+                      new BigNumber(currentMarket.borrowStrikeApy)
+                        .dp(2, 1)
+                        .toString(10)
+                    )}
+                    {`%`}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

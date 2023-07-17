@@ -1,0 +1,173 @@
+.market-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 300px;
+  padding: 20px;
+  background: #37323D;
+  color: var(--color-text-main);
+  margin-right: 40px;
+  cursor: pointer;
+
+  .right {
+    width: 100%;
+  }
+
+  .asset-name {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+
+  .apy-area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 400;
+
+    .divider {
+      height: 20px;
+      border-left: 1px solid #fff;
+    }
+
+    .apy {
+      padding: 4px 8px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.1);
+      width: 65px;
+      margin-top: 5px;
+      text-align: center;
+    }
+  }
+
+  img {
+    width: 72px;
+    height: 72px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    gap: 10px;
+    padding: 8px 12px;
+    width: 200px;
+
+    .asset-name {
+      font-size: 12px;
+    }
+  
+    .apy-area {
+      font-size: 9px;
+  
+      .apy {
+        padding: 4px 8px;
+        width: 45px;
+        margin-top: 5px;
+      }
+    }
+
+    img {
+      width: 39px;
+      height: 39px;
+    }
+  }
+}
+
+.market-card-mobile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 360px;
+  padding: 11px;
+  background: #37323D;
+  color: var(--color-text-main);
+  margin-right: 40px;
+  cursor: pointer;
+
+  .asset-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      width: 26px;
+      height: 26px;
+    }
+
+    .asset-name {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 17px;
+    }
+  }
+
+  .apy-area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9px;
+    font-weight: 400;
+    padding-top: 5px;
+    padding-left: 5px;
+
+    .divider {
+      height: 20px;
+      border-left: 1px solid #fff;
+    }
+
+    .apy-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .apy2 {
+        margin-top: 5px;
+        color: #4FD000;
+      }
+
+      .apy {
+        padding: 2px 4px;
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.1);
+        width: 40px;
+        margin-top: 5px;
+        text-align: center;
+      }
+    }
+  }
+
+  .usd-area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9px;
+    font-weight: 400;
+    padding-top: 5px;
+    padding-left: 5px;
+
+    .divider {
+      height: 20px;
+      border-left: 1px solid #fff;
+    }
+
+    .value1 {
+      text-align: right;
+      margin-top: 5px;
+      color: #FFD03D;
+    }
+
+    .value2 {
+      text-align: right;
+      margin-top: 5px;
+    }
+  }
+
+  .divider2 {
+    height: 38px;
+    border-left: 1px solid #464646;
+  }
+}
