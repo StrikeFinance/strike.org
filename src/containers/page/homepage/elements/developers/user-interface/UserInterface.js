@@ -1,6 +1,7 @@
 import React from 'react';
 import './UserInterface.scss';
 import imgAppUI from 'assets/img/homepage/app-ui.png';
+import imgAppUIMobile from 'assets/img/homepage/app-ui-mobile.png';
 import imgUp from 'assets/img/up.svg';
 
 const StrikeProtocol = () => {
@@ -27,6 +28,11 @@ const StrikeProtocol = () => {
       <div className="strike-protocol-content">
         <div className="img-dev">
           <img src={imgAppUI} className="img-app-ui" alt="app-ui" />
+          <img
+            src={imgAppUIMobile}
+            className="img-app-ui-mobile"
+            alt="app-ui"
+          />
         </div>
         <div className="content">
           <div className="text-layer">

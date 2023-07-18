@@ -1,5 +1,5 @@
 import React from 'react';
-import footerImg from 'assets/img/footer-logo.svg';
+import footerImg from 'assets/img/logo.png';
 import './Footer.scss';
 import { Col, Row } from 'antd';
 import { useWindowResizeMobile } from 'utilities/hook';
@@ -66,20 +66,27 @@ const CommunityOption = [
 ];
 
 const Footer = () => {
-  const [isMobile] = useWindowResizeMobile(620);
+  const [isMobile] = useWindowResizeMobile(769);
   const history = useHistory();
   return (
     <div className="footer">
-      <div className="footer-top" />
       <div className="footer-content flex just-between">
-        <div className="footer-logo">
-          <img src={footerImg} alt="footer" />
-        </div>
         <div className="footer-options">
           {isMobile ? (
             <>
+              <Row>
+                <Col xs={24}>
+                  <div className="about-title">About Us</div>
+                  <div className="about-description">
+                    The Strike Finance is a centralized money market built on
+                    the Ethereum that enables users to borrow and supply
+                    collateral onto the platform without central authority or
+                    control.
+                  </div>
+                </Col>
+              </Row>
               <Row gutter={[20, 20]}>
-                <Col xs={12} sm={12} md={6} lg={6} xl={6}>
+                <Col xs={12} sm={12} lg={6} xl={6}>
                   <div className="title">Protocol</div>
                   <div className="options">
                     {ProtocolOption.map((protocol, index) => (
@@ -101,7 +108,7 @@ const Footer = () => {
                     ))}
                   </div>
                 </Col>
-                <Col xs={12} sm={12} md={6} lg={6} xl={6}>
+                <Col xs={12} sm={12} lg={6} xl={6}>
                   <div className="title">Governance</div>
                   <div className="options">
                     {GovernanceOption.map((protocol, index) => (
@@ -119,7 +126,7 @@ const Footer = () => {
                 </Col>
               </Row>
               <Row gutter={[20, 20]}>
-                <Col xs={12} sm={12} md={6} lg={6} xl={6}>
+                <Col xs={12} sm={12} lg={6} xl={6}>
                   <div className="title">Comunity</div>
                   <div className="options">
                     {CommunityOption.map((protocol, index) => (
@@ -139,7 +146,15 @@ const Footer = () => {
             </>
           ) : (
             <div className="desktop-menu">
-              <div className="menu1">
+              <div className="menu">
+                <div className="title">About Us</div>
+                <div className="description">
+                  The Strike Finance is a centralized money market built on the
+                  Ethereum that enables users to borrow and supply collateral
+                  onto the platform without central authority or control.
+                </div>
+              </div>
+              <div className="menu">
                 <div className="title">Protocol</div>
                 <div className="options">
                   {ProtocolOption.map((protocol, index) => (
@@ -161,7 +176,7 @@ const Footer = () => {
                   ))}
                 </div>
               </div>
-              <div className="menu2">
+              <div className="menu">
                 <div className="title">Governance</div>
                 <div className="options">
                   {GovernanceOption.map((protocol, index) => (
@@ -173,7 +188,7 @@ const Footer = () => {
                   ))}
                 </div>
               </div>
-              <div className="menu3">
+              <div className="menu">
                 <div className="title">Comunity</div>
                 <div className="options">
                   {CommunityOption.map((protocol, index) => (
@@ -190,6 +205,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="latest-block-wrapper">
+        <div className="footer-logo">
+          <img src={footerImg} alt="footer" />
+        </div>
         <div className="copyright">
           © Strike.org {new Date().getUTCFullYear()} all rights reserved.
         </div>

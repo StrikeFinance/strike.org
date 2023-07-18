@@ -78,84 +78,90 @@ const Governance = ({ getGovernance, history }) => {
             to the protocol.
           </div>
           <div className="recent-proposals">
-            <div className="title-proposals">Governance Proposals</div>
+            <div className="recent-proposals-inner">
+              <div className="title-proposals">Governance Proposals</div>
 
-            {governance.map((item, index) => (
-              <div className="recent-list" key={index}>
-                <div
-                  onClick={() =>
-                    window.open(
-                      `https://app.strike.org/vote/proposal/${item.id}`,
-                      '_blank'
-                    )
-                  }
-                  className="recent-item flex just-between"
-                >
-                  <div>
-                    <div className="description">
-                      {item?.description.replace('# ', '').split('\n')[0]}
-                    </div>
-                    {isMobile ? (
-                      <div className="">
-                        <div className="mx-auto time">
-                          {moment(item?.createdAt).format('MMMM Do, YYYY')}
-                        </div>
-                        <div
-                          className={`mx-auto ${
-                            getStatus(item) === 'Failed' ? 'failed' : 'status'
-                          }`}
-                        >
-                          {getStatus(item)}
-                        </div>
+              {governance.map((item, index) => (
+                <div className="recent-list" key={index}>
+                  <div
+                    onClick={() =>
+                      window.open(
+                        `https://app.strike.org/vote/proposal/${item.id}`,
+                        '_blank'
+                      )
+                    }
+                    className="recent-item flex just-between"
+                  >
+                    <div>
+                      <div className="description">
+                        {item?.description.replace('# ', '').split('\n')[0]}
                       </div>
-                    ) : (
-                      <div className="flex">
-                        <div
-                          className={`${
-                            isMobile
-                              ? `mx-auto ${
-                                  getStatus(item) === 'Failed'
-                                    ? 'failed'
-                                    : 'status'
-                                }`
-                              : `mr-1 mx-auto ${
-                                  getStatus(item) === 'Failed'
-                                    ? 'failed'
-                                    : 'status'
-                                }`
-                          }`}
-                        >
-                          {getStatus(item)}
+                      {isMobile ? (
+                        <div className="">
+                          <div className="mx-auto time">
+                            {moment(item?.createdAt).format('MMMM Do, YYYY')}
+                          </div>
+                          <div
+                            className={`mx-auto ${
+                              getStatus(item) === 'Failed' ? 'failed' : 'status'
+                            }`}
+                          >
+                            {getStatus(item)}
+                          </div>
                         </div>
-                        <div className="mx-auto time">
-                          {moment(item?.createdAt).format('MMMM Do, YYYY')}
+                      ) : (
+                        <div className="flex">
+                          <div
+                            className={`${
+                              isMobile
+                                ? `mx-auto ${
+                                    getStatus(item) === 'Failed'
+                                      ? 'failed'
+                                      : 'status'
+                                  }`
+                                : `mr-1 mx-auto ${
+                                    getStatus(item) === 'Failed'
+                                      ? 'failed'
+                                      : 'status'
+                                  }`
+                            }`}
+                          >
+                            {getStatus(item)}
+                          </div>
+                          <div className="mx-auto time">
+                            {moment(item?.createdAt).format('MMMM Do, YYYY')}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className={`${isMobile ? 'flex mt-1' : 'flex mx-auto'}`}>
-                    <div className="mr-1">
-                      <img
-                        alt="status"
-                        src={`${
-                          getStatus(item) === 'Failed' ? cancel : completed
-                        }`}
-                      />
+                      )}
                     </div>
-                    <div className={`${isMobile ? 'state' : 'mx-auto state'}`}>
-                      {item.state}
+                    <div
+                      className={`${isMobile ? 'flex mt-1' : 'flex mx-auto'}`}
+                    >
+                      <div className="mr-1">
+                        <img
+                          alt="status"
+                          src={`${
+                            getStatus(item) === 'Failed' ? cancel : completed
+                          }`}
+                        />
+                      </div>
+                      <div
+                        className={`${isMobile ? 'state' : 'mx-auto state'}`}
+                      >
+                        {item.state}
+                      </div>
                     </div>
                   </div>
                 </div>
+              ))}
+              <div className="pagination">
+                <Pagination
+                  onChange={onChangePage}
+                  total={total}
+                  pageSize={5}
+                  current={current}
+                />
               </div>
-            ))}
-            <div className="pagination">
-              <Pagination
-                onChange={onChangePage}
-                total={total}
-                pageSize={5}
-                current={current}
-              />
             </div>
           </div>
         </div>

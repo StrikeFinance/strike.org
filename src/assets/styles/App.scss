@@ -21,6 +21,12 @@ body {
     &::-webkit-scrollbar-thumb:hover {
         background: #555; 
     }
+    background: var(--color-bg-main);
+    background-image: url('../../assets/img/grid.png');
+
+    @media screen and (max-width: 768px) {
+        background-image: url('../../assets/img/grid-small.png');
+    }
 }
 .switch-wrapper {
     position: relative;

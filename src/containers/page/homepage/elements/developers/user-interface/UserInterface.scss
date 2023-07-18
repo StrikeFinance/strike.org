@@ -16,6 +16,19 @@
       .img-app-ui {
         width: 100%;
       }
+      .img-app-ui-mobile {
+        display: none;
+      }
+      @media screen and (max-width: 540px) {
+        .img-app-ui {
+          display: none;
+        }
+
+        .img-app-ui-mobile {
+          margin: 0 auto;
+          display: block;
+        }
+      }
     }
     .content {
       padding: 60px 60px 60px 50px;
