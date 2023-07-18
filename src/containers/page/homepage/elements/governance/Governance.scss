@@ -66,13 +66,19 @@
             margin-top: 42px;
           }
           .ant-pagination-item-link {
-            border: 1px solid #3b54b5 !important;
             background: none;
+
+            .ant-pagination-item-container {
+              border: none;
+            }
 
             i.anticon.anticon-left {
               color: var(--color-text-main) !important;
             }
             i.anticon.anticon-right {
+              color: var(--color-text-main) !important;
+            }
+            .ant-pagination-item-ellipsis {
               color: var(--color-text-main) !important;
             }
           }
@@ -81,7 +87,6 @@
           }
           .ant-pagination-item {
             background: none !important;
-            border: 1px solid #3b54b5 !important;
           }
           .ant-pagination-item:focus a,
           .ant-pagination-item:hover a {

@@ -160,6 +160,7 @@ const Governance = ({ getGovernance, history }) => {
                   total={total}
                   pageSize={5}
                   current={current}
+                  size={isMobile ? 'small' : 'default'}
                 />
               </div>
             </div>

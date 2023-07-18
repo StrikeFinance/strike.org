@@ -83,6 +83,24 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
 
   return (
     <div className="markets-available">
+      <div className="slider-animation">
+        <div className="slider">
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+        </div>
+        <div className="slider">
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">THE FLOW</span>
+        </div>
+      </div>
       <div className="markets-available-content">
         <div className="title">12 Markets Available</div>
         <div className="markets-slider-area">
