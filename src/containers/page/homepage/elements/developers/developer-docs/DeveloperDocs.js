@@ -45,13 +45,15 @@ const DeveloperDocs = () => {
               the Strike protocol.
             </span>
           </div>
-          <div
-            onClick={() => window.open('https://docs.strike.org/', '_blank')}
+          <a
+            href="https://docs.strike.org/"
+            target="_blank"
+            rel="noreferrer"
             className="button"
           >
             <span className="button-dev">Read More</span>
             <img src={imgUp} alt="up" />
-          </div>
+          </a>
         </div>
         <div className="img-dev">
           <img src={imgBlockChain} className="img-blockchain" alt="developer" />

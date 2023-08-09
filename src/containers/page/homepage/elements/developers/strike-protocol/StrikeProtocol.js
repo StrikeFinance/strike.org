@@ -38,15 +38,15 @@ function StrikeProtocol() {
               supported digital assets all on-chain.
             </span>
           </div>
-          <div
-            onClick={() =>
-              window.open('https://strike.org/Whitepaper.pdf', '_blank')
-            }
+          <a
+            href="https://strike.org/Whitepaper.pdf"
+            target="_blank"
+            rel="noreferrer"
             className="btn-whitepaper"
           >
             <span>Learn More</span>
             <img src={imgUp} alt="up" />
-          </div>
+          </a>
         </div>
       </div>
     </div>

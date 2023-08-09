@@ -43,13 +43,15 @@ const StrikeProtocol = () => {
               smart contracts.
             </span>
           </div>
-          <div
-            onClick={() => window.open('https://app.strike.org/', '_blank')}
+          <a
+            href="https://app.strike.org/"
+            target="_blank"
+            rel="noreferrer"
             className="btn-launchapp"
           >
             <span>Launch App</span>
             <img src={imgUp} alt="up" />
-          </div>
+          </a>
         </div>
       </div>
     </div>

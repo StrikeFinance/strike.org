@@ -97,25 +97,22 @@ const Header = ({ showMenuHead }) => {
                     ))}
                   </div>
                   <div className="nav-btn-mobile">
-                    <div
-                      onClick={() =>
-                        window.open('https://app.strike.org/', '_blank')
-                      }
+                    <a
+                      href="https://app.strike.org/"
+                      target="_blank"
+                      rel="noreferrer"
                       className="launch-app-btn"
                     >
                       Launch App
-                    </div>
-                    <div
-                      onClick={() =>
-                        window.open(
-                          'https://strike.org/Whitepaper.pdf',
-                          '_blank'
-                        )
-                      }
+                    </a>
+                    <a
+                      href="https://strike.org/Whitepaper.pdf"
+                      target="_blank"
+                      rel="noreferrer"
                       className="whitepaper-btn"
                     >
                       Whitepaper
-                    </div>
+                    </a>
                   </div>
                 </div>
               </Drawer>
@@ -140,23 +137,23 @@ const Header = ({ showMenuHead }) => {
                 ) : null}
               </div>
               <div className="nav-btn flex align-center">
-                <div
-                  onClick={() =>
-                    window.open('https://app.strike.org/', '_blank')
-                  }
+                <a
+                  href="https://app.strike.org/"
+                  target="_blank"
+                  rel="noreferrer"
                   className="launch-app-btn"
                 >
                   Launch App
-                </div>
+                </a>
                 {showMenuHead ? (
-                  <div
-                    onClick={() =>
-                      window.open('https://strike.org/Whitepaper.pdf', '_blank')
-                    }
+                  <a
+                    href="https://strike.org/Whitepaper.pdf"
+                    target="_blank"
+                    rel="noreferrer"
                     className="whitepaper-btn"
                   >
                     Whitepaper
-                  </div>
+                  </a>
                 ) : null}
               </div>
             </>
