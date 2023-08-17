@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { compose } from 'recompose';
+import { Drawer } from 'antd';
+import { useHistory, withRouter } from 'react-router-dom';
+import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { useWindowResizeMobile } from 'utilities/hook';
 import logoImg from 'assets/img/logo.png';
 import MenuTabImg from 'assets/img/homepage/menu-tab.svg';
 import CloseMenuImg from 'assets/img/homepage/close-menu.svg';
 import './Header.scss';
-import { compose } from 'recompose';
-import { useHistory, withRouter } from 'react-router-dom';
-import { useWindowResizeMobile } from 'utilities/hook';
-import { Drawer } from 'antd';
-import { NavHashLink as NavLink } from 'react-router-hash-link';
 
 const HomePageLink = [
   {
@@ -162,6 +163,14 @@ const Header = ({ showMenuHead }) => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  showMenuHead: PropTypes.bool
+};
+
+Header.defaultProps = {
+  showMenuHead: true
 };
 
 export default compose(withRouter)(Header);

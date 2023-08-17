@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import { compose } from 'recompose';
 import { connectAccount } from 'core';
 import logoImg from 'assets/img/footer-logo.png';
-import { useHistory } from 'react-router-dom';
+
 
 const FooterWrapper = styled.div`
   padding: 75px 75px 44px;

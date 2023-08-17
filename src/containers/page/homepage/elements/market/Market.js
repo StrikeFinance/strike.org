@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import Borrow from './borrow/';
+import Borrow from './borrow';
 import './Market.scss';
 import TotalSupply from './total-supply';
 import MarketsAvailable from './markets-available/MarketsAvailable';
@@ -13,11 +13,10 @@ const Market = ({ markets }) => {
   const [supplierCount, setSupplierCount] = useState(0);
   const [totalBorrow, setTotalBorrow] = useState('0');
   const [borrowerCount, setBorrowerCount] = useState(0);
-  const [supplyVolume, setSupplyVolume] = useState(0);
-  const [borrowVolume, setBorrowVolume] = useState(0);
+  const [supplyVolume, setSupplyVolume] = useState('0');
+  const [borrowVolume, setBorrowVolume] = useState('0');
 
   useEffect(() => {
-    let mounted = true;
     if (markets.markets) {
       const tempTS = (markets.markets || []).reduce((accumulator, market) => {
         return new BigNumber(accumulator).plus(
@@ -40,13 +39,16 @@ const Market = ({ markets }) => {
       setTotalBorrow(tempTB.dp(2, 1).toString(10));
       setBorrowerCount(tempBC);
       setSupplyVolume(
-        markets.marketVolumeLog ? markets.marketVolumeLog.totalSupplyUsd24h : 0
+        markets.marketVolumeLog
+          ? markets.marketVolumeLog.totalSupplyUsd24h
+          : '0'
       );
       setBorrowVolume(
-        markets.marketVolumeLog ? markets.marketVolumeLog.totalBorrowsUsd24h : 0
+        markets.marketVolumeLog
+          ? markets.marketVolumeLog.totalBorrowsUsd24h
+          : '0'
       );
     }
-    return () => (mounted = false);
   }, [markets]);
   return (
     <div className="market-homepage">

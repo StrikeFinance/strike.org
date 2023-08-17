@@ -1,11 +1,12 @@
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import BigNumber from 'bignumber.js';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import React, { useEffect, useState } from 'react';
 import './SynchronizeChart.scss';
 import { currencyFormatter } from 'utilities/common';
 
-export const SynchronizeChart = ({ marketType, data }) => {
+const SynchronizeChart = ({ marketType, data }) => {
   const [options, setoption] = useState({
     chart: {
       zoomType: '',
@@ -106,11 +107,19 @@ export const SynchronizeChart = ({ marketType, data }) => {
     const supplyOrBorrow = [];
     data.forEach(item => {
       if (marketType === 'supply') {
-        totalSupplyOrBorrow.push(new BigNumber(item.totalSupply.toFixed(2)).toNumber());
-        supplyOrBorrow.push(new BigNumber(item.supplyApy.toFixed(2)).toNumber());
+        totalSupplyOrBorrow.push(
+          new BigNumber(item.totalSupply.toFixed(2)).toNumber()
+        );
+        supplyOrBorrow.push(
+          new BigNumber(item.supplyApy.toFixed(2)).toNumber()
+        );
       } else {
-        totalSupplyOrBorrow.push(new BigNumber(item.totalBorrow.toFixed(2)).toNumber());
-        supplyOrBorrow.push(new BigNumber(item.borrowApy.toFixed(2)).toNumber());
+        totalSupplyOrBorrow.push(
+          new BigNumber(item.totalBorrow.toFixed(2)).toNumber()
+        );
+        supplyOrBorrow.push(
+          new BigNumber(item.borrowApy.toFixed(2)).toNumber()
+        );
       }
     });
     setoption({
@@ -118,7 +127,9 @@ export const SynchronizeChart = ({ marketType, data }) => {
       series: [
         {
           name: `${marketType === 'supply' ? ' Supply APY' : 'Borrow APY'}`,
-          color: `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`,
+          color: `${
+            marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'
+          }`,
           data: supplyOrBorrow,
           lineWidth: 5,
           fillColor: {
@@ -129,7 +140,14 @@ export const SynchronizeChart = ({ marketType, data }) => {
               y2: 0.8
             },
             stops: [
-              [0, `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`],
+              [
+                0,
+                `${
+                  marketType === 'supply'
+                    ? 'rgb(39, 126, 230)'
+                    : 'rgb(249, 5, 62)'
+                }`
+              ],
               [1, '#ffff']
             ]
           }
@@ -144,22 +162,32 @@ export const SynchronizeChart = ({ marketType, data }) => {
         column: {
           states: {
             hover: {
-              color: `${marketType === 'supply' ? 'rgb(39, 126, 230)' : 'rgb(249, 5, 62)'}`
+              color: `${
+                marketType === 'supply'
+                  ? 'rgb(39, 126, 230)'
+                  : 'rgb(249, 5, 62)'
+              }`
             }
           }
         }
       },
       tooltip: {
-        formatter: function () {
-          const points = this.points;
+        formatter: points => {
           const pointsLength = points.length;
           const tooltipMarkup = pointsLength
             ? `<div>
-                <div> ${Highcharts.dateFormat('%A %b %e, %Y',
-                new Date(points[0].x))}</div><br>
-                <div>${points[0].series.name}:  <strong>${points[0].y}%</strong></div><br>
-                <div>${points[1].series.name}:  <strong>${currencyFormatter(points[1].y)}</strong></div>
-              </div>` : '';
+                <div> ${Highcharts.dateFormat(
+                  '%A %b %e, %Y',
+                  new Date(points[0].x)
+                )}</div><br>
+                <div>${points[0].series.name}:  <strong>${
+                points[0].y
+              }%</strong></div><br>
+                <div>${points[1].series.name}:  <strong>${currencyFormatter(
+                points[1].y
+              )}</strong></div>
+              </div>`
+            : '';
           return tooltipMarkup;
         },
         shared: false
@@ -172,6 +200,16 @@ export const SynchronizeChart = ({ marketType, data }) => {
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
+};
+
+SynchronizeChart.propTypes = {
+  marketType: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.object)
+};
+
+SynchronizeChart.defaultProps = {
+  marketType: '',
+  data: []
 };
 
 export default SynchronizeChart;

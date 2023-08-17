@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Marquee from 'react-fast-marquee';
-import { currencyFormatter, shortenNumberFormatter } from 'utilities/common';
-import { useWindowResizeMobile } from 'utilities/hook';
 import BigNumber from 'bignumber.js';
 import commaNumber from 'comma-number';
-
+import { currencyFormatter, shortenNumberFormatter } from 'utilities/common';
+import { useWindowResizeMobile } from 'utilities/hook';
 import './MarketSlider.scss';
 
 import ethImg from 'assets/img/eth.png';
@@ -51,8 +50,8 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
       {markets
         .slice(startIndex)
         .concat(markets.slice(0, startIndex))
-        .map(item => (
-          <>
+        .map((item, index) => (
+          <div key={`market-card-${index}`}>
             {isMobile && currentAsset === item.underlyingSymbol ? (
               <div
                 className="market-card-mobile"
@@ -182,7 +181,7 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
                 </div>
               </div>
             )}
-          </>
+          </div>
         ))}
     </Marquee>
   );

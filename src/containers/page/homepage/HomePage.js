@@ -1,4 +1,5 @@
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
@@ -61,6 +62,13 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
     </WrapLayout>
   );
 };
+
+HomePage.propTypes = {
+  getGovernanceStrike: PropTypes.func.isRequired,
+  setSetting: PropTypes.func.isRequired
+};
+
+HomePage.defaultProps = {};
 
 const mapDispatchToProps = dispatch => {
   const {

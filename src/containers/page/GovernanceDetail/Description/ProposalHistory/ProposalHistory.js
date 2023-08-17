@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import styled from 'styled-components';
-import { Steps, Icon, Divider } from 'antd';
+import { Steps, Divider } from 'antd';
 import { Card } from 'components/Basic/Card';
 import './styles.scss';
 import completeIcon from 'assets/img/governance-detail/complete-icon.png';
@@ -44,7 +43,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.createdTimestamp * 1000).format('LLL')
                   : ''
               }
-              component={() => <img src={completeIcon} />}
+              component={() => <img src={completeIcon} alt="complete" />}
               disabled
             />
             <Step
@@ -54,16 +53,15 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.startTimestamp * 1000).format('LLL')
                   : ''
               }
-              component={() => <img src={completeIcon} />}
+              component={() => <img src={completeIcon} alt="complete" />}
               disabled
             />
             <Step
               title={
-                governanceInfo.state === 'Canceled' ||
-                governanceInfo.state === 'Defeated'
-                  ? governanceInfo.state === 'Defeated'
-                    ? 'Failed'
-                    : 'Canceled'
+                governanceInfo.state === 'Canceled'
+                  ? 'Canceled'
+                  : governanceInfo.state === 'Defeated'
+                  ? 'Failed'
                   : `${
                       governanceInfo.state === 'Succeeded'
                         ? 'Succeeded'
@@ -75,7 +73,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.endTimestamp * 1000).format('LLL')
                   : ''
               }
-              component={() => <img src={completeIcon} />}
+              component={() => <img src={completeIcon} alt="complete" />}
               disabled
             />
             <Step
@@ -87,7 +85,7 @@ function ProposalHistory({ governanceInfo }) {
                   ? moment(governanceInfo.queuedTimestamp * 1000).format('LLL')
                   : ''
               }
-              component={() => <img src={completeIcon} />}
+              component={() => <img src={completeIcon} alt="complete" />}
               disabled
             />
             <Step
@@ -107,7 +105,7 @@ function ProposalHistory({ governanceInfo }) {
                     )
                   : ''
               }
-              component={() => <img src={completeIcon} />}
+              component={() => <img src={completeIcon} alt="complete" />}
               disabled
             />
           </Steps>

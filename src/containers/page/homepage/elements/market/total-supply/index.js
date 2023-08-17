@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Progress, Typography } from 'antd';
 import commaNumber from 'comma-number';
 import BigNumber from 'bignumber.js';
@@ -71,9 +72,9 @@ function Totalsupply(props) {
                 ))}
             <div className="footer-content flex just-between">
               <div className="footer-content__left">
-                <Typography className="footer-content__left__number">{`$${format(
-                  new BigNumber(supplyVolume).toFormat(2)
-                )}`}</Typography>
+                <Typography className="footer-content__left__number">
+                  {`$${format(new BigNumber(supplyVolume).toFormat(2))}`}
+                </Typography>
                 <Typography className="footer-content__left__title">
                   24h Supply Volume
                 </Typography>
@@ -93,5 +94,19 @@ function Totalsupply(props) {
     </div>
   );
 }
+
+Totalsupply.propTypes = {
+  markets: PropTypes.object,
+  totalSupply: PropTypes.string,
+  supplierCount: PropTypes.number,
+  supplyVolume: PropTypes.string
+};
+
+Totalsupply.defaultProps = {
+  markets: null,
+  totalSupply: '',
+  supplierCount: 0,
+  supplyVolume: ''
+};
 
 export default Totalsupply;

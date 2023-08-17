@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
-import { Icon, Progress, Pagination, Divider, Typography } from 'antd';
+import { Icon, Divider, Typography } from 'antd';
 
 function Mobile(props) {
   const { data, address } = props;
@@ -19,7 +20,7 @@ function Mobile(props) {
         <Divider />
 
         {data &&
-          data.map((item, index) => {
+          data.map(item => {
             return (
               <div className="children-content__info">
                 <div className="action">
@@ -57,5 +58,15 @@ function Mobile(props) {
     </div>
   );
 }
+
+Mobile.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  address: PropTypes.string
+};
+
+Mobile.defaultProps = {
+  data: [],
+  address: ''
+};
 
 export default Mobile;

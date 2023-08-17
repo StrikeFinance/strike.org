@@ -1,13 +1,13 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import BigNumber from 'bignumber.js';
 import commaNumber from 'comma-number';
-import React from 'react';
 import { currencyFormatter } from 'utilities/common';
 import './MarketSummary.scss';
 
 const format = commaNumber.bindWith(',', '.');
 
 const MarketSummary = ({ marketInfo, currentAsset, decimal }) => {
-
   return (
     <div className="market-summary">
       <p className="title">Market Details</p>
@@ -18,7 +18,7 @@ const MarketSummary = ({ marketInfo, currentAsset, decimal }) => {
           {`$${new BigNumber(marketInfo.underlyingPrice || 0)
             .div(
               new BigNumber(10).pow(
-                18 + 18 - parseInt(decimal.decimal[currentAsset].token)
+                18 + 18 - parseInt(decimal.decimal[currentAsset].token, 10)
               )
             )
             .dp(8, 1)
@@ -112,8 +112,14 @@ const MarketSummary = ({ marketInfo, currentAsset, decimal }) => {
                 new BigNumber(marketInfo.exchangeRate).div(
                   new BigNumber(10).pow(
                     18 +
-                      +parseInt(decimal.decimal[currentAsset || 'usdc'].token) -
-                      +parseInt(decimal.decimal[currentAsset || 'usdc'].stoken)
+                      +parseInt(
+                        decimal.decimal[currentAsset || 'usdc'].token,
+                        10
+                      ) -
+                      +parseInt(
+                        decimal.decimal[currentAsset || 'usdc'].stoken,
+                        10
+                      )
                   )
                 )
               )
@@ -123,6 +129,18 @@ const MarketSummary = ({ marketInfo, currentAsset, decimal }) => {
       </div>
     </div>
   );
+};
+
+MarketSummary.propTypes = {
+  marketInfo: PropTypes.object,
+  currentAsset: PropTypes.object,
+  decimal: PropTypes.number
+};
+
+MarketSummary.defaultProps = {
+  marketInfo: null,
+  currentAsset: null,
+  decimal: 0
 };
 
 export default MarketSummary;
