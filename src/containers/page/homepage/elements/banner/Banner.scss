@@ -1,10 +1,16 @@
 .banner-homepage {
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 86px;
   padding-bottom: 58px;
   @media screen and (max-width: 812px) {
     padding-bottom: 61px;
   }
+
+  @media screen and (max-height: 760px) {
+    padding-top: 60px;
+    min-height: calc(100vh + 140px);
+  }
+
   .banner-content {
     height: calc(100vh - 170px);
     padding: 50px 0px;
@@ -157,5 +163,8 @@
     }
   }
   .scroll-image {
+    @media screen and (max-width: 768px) {
+      display: none;
+  }
   }
 }
