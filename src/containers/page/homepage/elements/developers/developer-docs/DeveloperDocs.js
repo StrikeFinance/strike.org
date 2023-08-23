@@ -4,9 +4,6 @@ import imgBlockChain from 'assets/img/homepage/img-vector.png';
 import imgUp from 'assets/img/up.svg';
 
 const DeveloperDocs = () => {
-  const handleLink = url => {
-    window.open(url, '_blank');
-  };
   return (
     <div className="developer-docs">
       <div className="slider-animation">

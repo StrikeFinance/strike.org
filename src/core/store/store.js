@@ -1,8 +1,6 @@
-/* globals window */
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
-import { createLogger } from 'redux-logger';
 import sagas from 'core/store/sagas';
 // import { loadState, saveState } from 'utilities/localStorage';
 import rootReducer from 'core/store/reducers';

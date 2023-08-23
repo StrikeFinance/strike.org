@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Chart from 'react-apexcharts';
-import './InterestRateModel.scss';
-import { promisify } from 'utilities';
+import BigNumber from 'bignumber.js';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
+import './InterestRateModel.scss';
+import { promisify } from 'utilities';
 import { accountActionCreators, connectAccount } from 'core';
-import BigNumber from 'bignumber.js';
 
-const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo, decimal }) => {
+const InterestRateModel = ({
+  currentAsset,
+  getInterateModel,
+  marketInfo,
+  decimal
+}) => {
   const [percent, setPercent] = useState(null);
   const [tickerPos, setTickerPos] = useState(null);
   const [currentPos, setCurrentPos] = useState(30);
@@ -24,15 +30,15 @@ const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo, decimal
       data: []
     }
   ]);
-  const [colors, setColors] = useState(['#277ee6', '#f9053e']);
-  const [options, setOptions] = useState({
+  const colors = ['#277ee6', '#f9053e'];
+  const options = {
     chart: {
       id: 'line-percent',
       type: 'line',
       height: '100%',
       toolbar: {
         show: false
-      },
+      }
     },
     colors: ['#277ee6', '#f9053e'],
     dataLabels: {
@@ -72,12 +78,12 @@ const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo, decimal
     //   show: false
     // },
     yaxis: {
-      show: false,
+      show: false
     },
     grid: {
       show: false
     }
-  });
+  };
 
   const getGraphData = async asset => {
     const vbepContract = await promisify(getInterateModel, { asset });
@@ -91,10 +97,17 @@ const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo, decimal
     let cash = marketInfo.cash || [];
     cash = new BigNumber(cash).div(new BigNumber(10).pow(18));
     const borrows = new BigNumber(marketInfo.totalBorrows2);
-    const reserves = new BigNumber(marketInfo.totalReserves || 0).div(new BigNumber(10).pow(decimal.decimal[asset].token));
-    const currentUtilizationRate = borrows.div(cash.plus(borrows).minus(reserves));
+    const reserves = new BigNumber(marketInfo.totalReserves || 0).div(
+      new BigNumber(10).pow(decimal.decimal[asset].token)
+    );
+    const currentUtilizationRate = borrows.div(
+      cash.plus(borrows).minus(reserves)
+    );
 
-    const tempCurrentPercent = parseInt(+currentUtilizationRate.toString(10) * 100, 10);
+    const tempCurrentPercent = parseInt(
+      +currentUtilizationRate.toString(10) * 100,
+      10
+    );
     setCurrentPercent(tempCurrentPercent || 0);
     const lineElement = document.getElementById('line');
     if (lineElement) {
@@ -103,20 +116,36 @@ const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo, decimal
     for (let i = 0; i <= 1; i += 0.01) {
       const utilizationRate = i;
       // Borrow Rate
-      const borrowRate = new BigNumber(utilizationRate).multipliedBy(new BigNumber(multiplierPerBlock)).plus(new BigNumber(baseRatePerBlock));
+      const borrowRate = new BigNumber(utilizationRate)
+        .multipliedBy(new BigNumber(multiplierPerBlock))
+        .plus(new BigNumber(baseRatePerBlock));
 
       // Supply Rate
       const rateToPool = borrowRate.multipliedBy(oneMinusReserveFactor);
-      const supplyRate = new BigNumber(utilizationRate).multipliedBy(rateToPool);
+      const supplyRate = new BigNumber(utilizationRate).multipliedBy(
+        rateToPool
+      );
       // supply apy, borrow apy
       const blocksPerDay = 20 * 60 * 24;
       const daysPerYear = 365;
 
       const mantissa = new BigNumber(10).pow(18);
-      const supplyBase = supplyRate.div(mantissa).times(blocksPerDay).plus(1);
-      const borrowBase = borrowRate.div(mantissa).times(blocksPerDay).plus(1);
-      const supplyApy = supplyBase.pow(daysPerYear - 1).minus(1).times(100);
-      const borrowApy = borrowBase.pow(daysPerYear - 1).minus(1).times(100);
+      const supplyBase = supplyRate
+        .div(mantissa)
+        .times(blocksPerDay)
+        .plus(1);
+      const borrowBase = borrowRate
+        .div(mantissa)
+        .times(blocksPerDay)
+        .plus(1);
+      const supplyApy = supplyBase
+        .pow(daysPerYear - 1)
+        .minus(1)
+        .times(100);
+      const borrowApy = borrowBase
+        .pow(daysPerYear - 1)
+        .minus(1)
+        .times(100);
 
       data.push({
         percent: i,
@@ -208,6 +237,19 @@ const InterestRateModel = ({ currentAsset, getInterateModel, marketInfo, decimal
       </div>
     </div>
   );
+};
+
+InterestRateModel.propTypes = {
+  currentAsset: PropTypes.object,
+  getInterateModel: PropTypes.func.isRequired,
+  marketInfo: PropTypes.object,
+  decimal: PropTypes.number
+};
+
+InterestRateModel.defaultProps = {
+  currentAsset: null,
+  marketInfo: null,
+  decimal: 0
 };
 
 const mapDispatchToProps = dispatch => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import arrowRightImg from 'assets/img/arrow-right.png';
 import './BackButton.scss';
@@ -26,6 +27,14 @@ const BackButton = ({ title }) => {
       </div>
     </div>
   );
+};
+
+BackButton.propTypes = {
+  title: PropTypes.string
+};
+
+BackButton.defaultProps = {
+  title: ''
 };
 
 export default BackButton;

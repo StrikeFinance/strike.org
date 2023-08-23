@@ -1,9 +1,9 @@
 import React from 'react';
+import { Col, Row } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { useWindowResizeMobile } from 'utilities/hook';
 import footerImg from 'assets/img/logo.png';
 import './Footer.scss';
-import { Col, Row } from 'antd';
-import { useWindowResizeMobile } from 'utilities/hook';
-import { useHistory } from 'react-router-dom';
 
 const ProtocolOption = [
   {

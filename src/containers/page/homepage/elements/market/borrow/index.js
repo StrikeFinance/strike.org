@@ -1,8 +1,9 @@
 import React from 'react';
-import './styles.scss';
-import { Progress, Typography } from 'antd';
+import PropTypes from 'prop-types';
 import commaNumber from 'comma-number';
 import BigNumber from 'bignumber.js';
+import { Progress, Typography } from 'antd';
+import './styles.scss';
 
 function TotalBorrow(props) {
   const { markets, totalBorrow, borrowerCount, borrowVolume } = props;
@@ -70,9 +71,9 @@ function TotalBorrow(props) {
                 ))}
             <div className="footer-content flex just-between">
               <div className="footer-content__left">
-                <Typography className="footer-content__left__number">{`$${format(
-                  new BigNumber(borrowVolume).toFormat(2)
-                )}`}</Typography>
+                <Typography className="footer-content__left__number">
+                  {`$${format(new BigNumber(borrowVolume).toFormat(2))}`}
+                </Typography>
                 <Typography className="footer-content__left__title">
                   24h Borrow Volume
                 </Typography>
@@ -92,5 +93,19 @@ function TotalBorrow(props) {
     </div>
   );
 }
+
+TotalBorrow.propTypes = {
+  markets: PropTypes.object,
+  totalBorrow: PropTypes.string,
+  borrowerCount: PropTypes.number,
+  borrowVolume: PropTypes.string
+};
+
+TotalBorrow.defaultProps = {
+  markets: null,
+  totalBorrow: '',
+  borrowerCount: 0,
+  borrowVolume: ''
+};
 
 export default TotalBorrow;

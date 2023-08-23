@@ -1,11 +1,11 @@
-import BannerImg from 'assets/img/homepage/banner.png';
-import MouseImg from 'assets/img/homepage/mouse.svg';
-import BigNumber from 'bignumber.js';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
+import BigNumber from 'bignumber.js';
+import PropTypes from 'prop-types';
+import BannerImg from 'assets/img/homepage/banner.png';
+import MouseImg from 'assets/img/homepage/mouse.svg';
 import './Banner.scss';
 
 const Banner = ({ markets }) => {

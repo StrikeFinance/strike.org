@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { accountActionCreators, connectAccount } from 'core';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
-import { promisify } from 'utilities';
 import { BigNumber } from 'bignumber.js';
-import { useWindowResizeMobile } from 'utilities/hook';
 import commaNumber from 'comma-number';
+import { accountActionCreators, connectAccount } from 'core';
+import { promisify } from 'utilities';
+import { currencyFormatter, shortenNumberFormatter } from 'utilities/common';
+import { useWindowResizeMobile } from 'utilities/hook';
 import ethImg from 'assets/img/eth.png';
 import wbtcImg from 'assets/img/wbtc.png';
 import usdcImg from 'assets/img/usdc.png';
@@ -22,9 +23,8 @@ import apeImg from 'assets/img/ape.png';
 import ustImg from 'assets/img/ust.png';
 import daiImg from 'assets/img/dai.png';
 import xcnImg from 'assets/img/xcn.png';
-import './MarketsAvailable.scss';
-import { currencyFormatter, shortenNumberFormatter } from 'utilities/common';
 import MarketSlider from './MarketSlider';
+import './MarketsAvailable.scss';
 
 const format = commaNumber.bindWith(',', '.');
 const ICONS = {

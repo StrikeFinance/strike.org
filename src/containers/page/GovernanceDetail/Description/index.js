@@ -1,23 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 import { Divider } from 'antd';
-import complete from 'assets/img/governance-detail/complete.svg';
 import ReactMarkdown from 'react-markdown';
 import ProposalHistory from './ProposalHistory/ProposalHistory.js';
-import { useWindowResizeMobile } from 'utilities/hook';
 
 function Description(props) {
   const { governanceInfo, description } = props;
-  const [isMobile] = useWindowResizeMobile(1024);
-  const [visibile, setVisible] = useState(false);
-
-  const handleClickShowMore = () => {
-    setVisible(true);
-  };
-
-  const handleClickShowLess = () => {
-    setVisible(false);
-  };
 
   return (
     <div className="description-content flex just-between">
@@ -33,7 +22,7 @@ function Description(props) {
         <Divider />
         <div className="main-content">
           <span className="title">Description</span>
-          <ReactMarkdown children={description} />
+          <ReactMarkdown>{description}</ReactMarkdown>
 
           {/* <div className="summary">
             <span className="summary__title">Overview</span>
@@ -286,5 +275,15 @@ function Description(props) {
     </div>
   );
 }
+
+Description.propTypes = {
+  governanceInfo: PropTypes.object,
+  description: PropTypes.string
+};
+
+Description.defaultProps = {
+  governanceInfo: null,
+  description: ''
+};
 
 export default Description;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 import { Progress, Divider } from 'antd';
-import { Scrollbars } from 'react-custom-scrollbars';
 import BigNumber from 'bignumber.js';
 import Web3 from 'web3';
 import commaNumber from 'comma-number';
@@ -19,8 +19,7 @@ function TableDetail(props) {
     listDataAgainst,
     againstAddressNumber,
     emptyAgainstNumber,
-    onViewAllFor,
-    onViewAllAgainst
+    onViewAllFor
   } = props;
   const [forPercent, setForPercent] = useState(0);
   const [againstPercent, setAgainstPercent] = useState(0);
@@ -28,19 +27,19 @@ function TableDetail(props) {
 
   const history = useHistory();
   useEffect(() => {
-    const total = new BigNumber(parseInt(forVotes)).plus(
-      new BigNumber(parseInt(againstVote))
+    const total = new BigNumber(parseInt(forVotes, 10)).plus(
+      new BigNumber(parseInt(againstVote, 10))
     );
     setForPercent(
-      isNaN(new BigNumber(parseInt(forVotes) * 100).div(total))
+      new BigNumber(parseInt(forVotes, 10) * 100).div(total).isNaN()
         ? '0'
-        : new BigNumber(parseInt(forVotes) * 100).div(total).toString(10)
+        : new BigNumber(parseInt(forVotes, 10) * 100).div(total).toString(10)
     );
 
     setAgainstPercent(
-      isNaN(new BigNumber(parseInt(againstVote) * 100).div(total))
+      new BigNumber(parseInt(againstVote, 10) * 100).div(total).isNaN()
         ? '0'
-        : new BigNumber(parseInt(againstVote) * 100).div(total).toString(10)
+        : new BigNumber(parseInt(againstVote, 10) * 100).div(total).toString(10)
     );
   }, [forVotes, againstVote]);
 
@@ -189,5 +188,28 @@ function TableDetail(props) {
     </div>
   );
 }
+
+TableDetail.propTypes = {
+  forVotes: PropTypes.string,
+  againstVote: PropTypes.string,
+  emptyNumber: PropTypes.number,
+  list: PropTypes.arrayOf(PropTypes.object),
+  addressNumber: PropTypes.number,
+  listDataAgainst: PropTypes.arrayOf(PropTypes.object),
+  againstAddressNumber: PropTypes.number,
+  emptyAgainstNumber: PropTypes.number,
+  onViewAllFor: PropTypes.func.isRequired
+};
+
+TableDetail.defaultProps = {
+  forVotes: '',
+  againstVote: '',
+  emptyNumber: 0,
+  list: [],
+  addressNumber: 0,
+  listDataAgainst: [],
+  againstAddressNumber: 0,
+  emptyAgainstNumber: 0
+};
 
 export default TableDetail;

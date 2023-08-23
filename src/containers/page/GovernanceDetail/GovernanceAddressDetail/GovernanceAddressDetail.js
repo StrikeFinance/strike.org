@@ -1,19 +1,20 @@
+import React, { useEffect, useState } from 'react';
+import { useHistory, withRouter } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { compose } from 'recompose';
+import moment from 'moment';
+import { Icon, Progress, Pagination, Divider } from 'antd';
+import commaNumber from 'comma-number';
+import PropTypes from 'prop-types';
+import BigNumber from 'bignumber.js';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
 import BackButton from 'containers/page/homepage/elements/backButton/BackButton';
 import { accountActionCreators } from 'core/modules/account/actions';
 import { connectAccount } from 'core/modules/account/connectAccount';
-import React, { useEffect, useState } from 'react';
-import { useHistory, withRouter } from 'react-router';
-import { compose } from 'recompose';
-import { bindActionCreators } from 'redux';
 import './GovernanceAddressDetail.scss';
-import PropTypes from 'prop-types';
-import BigNumber from 'bignumber.js';
 import { promisify } from 'utilities';
 import launchicon from 'assets/img/governance-detail/launch.svg';
-import commaNumber from 'comma-number';
-import { Icon, Progress, Pagination, Divider } from 'antd';
-import moment from 'moment';
+
 import user from 'assets/img/governance-detail/user.png';
 import complete from 'assets/img/governance-detail/Shape.png';
 import { useWindowResizeMobile } from 'utilities/hook';
@@ -145,9 +146,9 @@ const GovernanceAddressDetail = ({
     const totalPercent = new BigNumber(item.proposal.forVotes).plus(
       new BigNumber(item.proposal.againstVotes)
     );
-    return isNaN(
-      new BigNumber(item.proposal.againstVotes * 100).div(totalPercent)
-    )
+    return new BigNumber(item.proposal.againstVotes * 100)
+      .div(totalPercent)
+      .isNaN()
       ? '0'
       : new BigNumber(item.proposal.againstVotes * 100)
           .div(totalPercent)
@@ -158,7 +159,7 @@ const GovernanceAddressDetail = ({
     const totalPercent = new BigNumber(item.proposal.forVotes).plus(
       new BigNumber(item.proposal.againstVotes)
     );
-    return isNaN(new BigNumber(item.proposal.forVotes * 100).div(totalPercent))
+    return new BigNumber(item.proposal.forVotes * 100).div(totalPercent).isNaN()
       ? '0'
       : new BigNumber(item.proposal.forVotes * 100)
           .div(totalPercent)
@@ -176,6 +177,7 @@ const GovernanceAddressDetail = ({
       default:
         break;
     }
+    return '';
   };
 
   return (
@@ -205,7 +207,7 @@ const GovernanceAddressDetail = ({
                   {format(holdingInfo.votes || '0.0000')}
                 </div>
                 <div className="voting-count">
-                  <Icon component={() => <img src={user} />} />
+                  <Icon component={() => <img src={user} alt="user" />} />
                   <span>{holdingInfo.delegateCount || 0}</span>
                 </div>
               </div>
@@ -280,25 +282,25 @@ const GovernanceAddressDetail = ({
                       <span className={`${convertState(item.proposal.state)}`}>
                         {convertState(item.proposal.state)}
                       </span>
-                      <span className="completed-date">{`${
-                        item.proposal.id
-                      } - ${item.proposal.state} ${moment(
-                        item.proposal.createdAt
-                      ).format('MMMM Do, YYYY')}`}</span>
+                      <span className="completed-date">
+                        {`${item.proposal.id} - ${item.proposal.state} ${moment(
+                          item.proposal.createdAt
+                        ).format('MMMM Do, YYYY')}`}
+                      </span>
                     </div>
                   </div>
                   <div className="column-2">
-                    {parseInt(calcForPercent(item)) === 0 ? null : (
+                    {parseInt(calcForPercent(item), 10) === 0 ? null : (
                       <Progress
-                        percent={parseInt(calcForPercent(item))}
+                        percent={parseInt(calcForPercent(item), 10)}
                         strokeColor="#277ee6"
                         strokeWidth={7}
                         showInfo={false}
                       />
                     )}
-                    {parseInt(calcAgaintsPercent(item)) === 0 ? null : (
+                    {parseInt(calcAgaintsPercent(item), 10) === 0 ? null : (
                       <Progress
-                        percent={parseInt(calcAgaintsPercent(item))}
+                        percent={parseInt(calcAgaintsPercent(item), 10)}
                         strokeColor="#277ee6"
                         strokeWidth={7}
                         showInfo={false}
@@ -309,7 +311,7 @@ const GovernanceAddressDetail = ({
                     <Icon
                       className={item.support ? 'agree' : 'against'}
                       theme="filled"
-                      component={() => <img src={complete} />}
+                      component={() => <img src={complete} alt="complete" />}
                     />
                     <span className="for-or-against">
                       {item.support ? 'For' : 'Against'}
@@ -338,7 +340,8 @@ const GovernanceAddressDetail = ({
 
 GovernanceAddressDetail.propTypes = {
   match: PropTypes.object,
-  getVoterDetail: PropTypes.func.isRequired
+  getVoterDetail: PropTypes.func.isRequired,
+  getVoterHistory: PropTypes.func.isRequired
 };
 
 GovernanceAddressDetail.defaultProps = {

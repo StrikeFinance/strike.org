@@ -8,14 +8,14 @@ import { promisify } from 'utilities/promisify';
 import * as constants from 'utilities/constants';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
 import BackButton from 'containers/page/homepage/elements/backButton/BackButton';
+import SynchronizeChart from 'containers/page/homepage/elements/synchronizeChart/SynchronizeChart';
 import LoadingSpinner from 'components/Basic/LoadingSpinner';
+import { accountActionCreators } from 'core/modules/account/actions';
+import { connectAccount } from 'core/modules/account/connectAccount';
 import InterestRateModel from './interestRateModel/InterestRateModel';
 import './MarketDetail.scss';
 import MarketInfo from './marketInfo/MarketInfo';
 import MarketSummary from './marketSummary/MarketSummary';
-import SynchronizeChart from 'containers/page/homepage/elements/synchronizeChart/SynchronizeChart';
-import { accountActionCreators } from 'core/modules/account/actions';
-import { connectAccount } from 'core/modules/account/connectAccount';
 
 let timeStamp = 0;
 const abortController = new AbortController();
@@ -181,7 +181,8 @@ MarketDetail.propTypes = {
   match: PropTypes.object,
   settings: PropTypes.object,
   getMarketHistory: PropTypes.func.isRequired,
-  getGovernanceStrike: PropTypes.func.isRequired
+  getGovernanceStrike: PropTypes.func.isRequired,
+  getDecimals: PropTypes.func.isRequired
 };
 
 MarketDetail.defaultProps = {

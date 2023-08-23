@@ -4,16 +4,16 @@ import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import './Governance.scss';
-import completed from 'assets/img/homepage/success.svg';
-import cancel from 'assets/img/landingpage/cancel.png';
-import { Col, Row, Pagination } from 'antd';
+import { Pagination } from 'antd';
 import { useWindowResizeMobile } from 'utilities/hook';
 import { promisify } from 'utilities/promisify';
 import { accountActionCreators } from 'core/modules/account/actions';
 import { connectAccount } from 'core/modules/account/connectAccount';
+import completed from 'assets/img/homepage/success.svg';
+import cancel from 'assets/img/landingpage/cancel.png';
+import './Governance.scss';
 
-const Governance = ({ getGovernance, history }) => {
+const Governance = ({ getGovernance }) => {
   const getStatus = p => {
     if (p.state === 'Executed') {
       return 'Passed';
@@ -44,9 +44,7 @@ const Governance = ({ getGovernance, history }) => {
   };
 
   useEffect(() => {
-    let mounted = true;
     getGovernanceData({ offset: 0, limit: 5 });
-    return () => (mounted = false);
   }, []);
   return (
     <div className="governance" id="gorvernance">

@@ -4,17 +4,15 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
-import enMessages from '../lang/en.json';
-// import Home from 'containers/Main/Home';
-// import Terms from 'containers/Main/Terms';
-import HomePage from './page/homepage/HomePage';
-import TermsPage from './page/term/TermsPage';
-import { store } from '../core';
-import Theme from './Theme';
+import HomePage from 'containers/page/homepage/HomePage';
+import TermsPage from 'containers/page/term/TermsPage';
+import { store } from 'core';
+import Theme from 'containers/Theme';
 import 'assets/styles/App.scss';
-import GovernanceDetail from 'containers/page/GovernanceDetail'
-import MarketDetail from './page/homepage/elements/marketDetail/MarketDetail';
+import GovernanceDetail from 'containers/page/GovernanceDetail';
+import MarketDetail from 'containers/page/homepage/elements/marketDetail/MarketDetail';
 import GovernanceAddressDetail from 'containers/page/GovernanceDetail/GovernanceAddressDetail/GovernanceAddressDetail';
+import enMessages from 'lang/en.json';
 
 addLocaleData([...en]);
 const initialLang = 'en';

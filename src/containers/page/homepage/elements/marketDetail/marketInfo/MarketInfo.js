@@ -1,8 +1,9 @@
 import React from 'react';
-import './MarketInfo.scss';
-import * as constants from 'utilities/constants';
+import PropTypes from 'prop-types';
 import BigNumber from 'bignumber.js';
 import commaNumber from 'comma-number';
+import './MarketInfo.scss';
+import * as constants from 'utilities/constants';
 
 const format = commaNumber.bindWith(',', '.');
 const MarketInfo = ({ marketInfo, marketType }) => {
@@ -113,6 +114,16 @@ const MarketInfo = ({ marketInfo, marketType }) => {
       </div>
     </div>
   );
+};
+
+MarketInfo.propTypes = {
+  marketInfo: PropTypes.object,
+  marketType: PropTypes.string
+};
+
+MarketInfo.defaultProps = {
+  marketInfo: null,
+  marketType: ''
 };
 
 export default MarketInfo;
