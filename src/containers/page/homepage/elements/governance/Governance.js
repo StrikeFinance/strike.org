@@ -92,7 +92,8 @@ const Governance = ({ getGovernance }) => {
                   >
                     <div>
                       <div className="description">
-                        {item?.description.replace('# ', '').split('\n')[0]}
+                        {item?.description.replace('# ', '').split('\n')[0] ||
+                          item?.description.replace('# ', '').split('\n')[1]}
                       </div>
                       {isMobile ? (
                         <div className="">
