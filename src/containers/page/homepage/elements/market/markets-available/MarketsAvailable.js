@@ -102,7 +102,7 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
         </div>
       </div>
       <div className="markets-available-content">
-        <div className="title">12 Markets Available</div>
+        <div className="title">{markets?.length} Markets Available</div>
         <div className="markets-slider-area">
           <MarketSlider
             setCurrentMarket={setCurrentMarket}
