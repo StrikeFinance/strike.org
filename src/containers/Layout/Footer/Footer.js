@@ -127,7 +127,7 @@ const Footer = () => {
               </Row>
               <Row gutter={[20, 20]}>
                 <Col xs={12} sm={12} lg={6} xl={6}>
-                  <div className="title">Comunity</div>
+                  <div className="title">Community</div>
                   <div className="options">
                     {CommunityOption.map((protocol, index) => (
                       <div key={index} className="option">
@@ -189,7 +189,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="menu">
-                <div className="title">Comunity</div>
+                <div className="title">Community</div>
                 <div className="options">
                   {CommunityOption.map((protocol, index) => (
                     <div key={index} className="option">
