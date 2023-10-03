@@ -21,6 +21,7 @@ import apeImg from 'assets/img/ape.png';
 import ustImg from 'assets/img/ust.png';
 import daiImg from 'assets/img/dai.png';
 import xcnImg from 'assets/img/xcn.png';
+import wstethImg from 'assets/img/wsteth.png';
 
 const ICONS = {
   UNI: uniImg,
@@ -36,7 +37,8 @@ const ICONS = {
   APE: apeImg,
   UST: ustImg,
   DAI: daiImg,
-  XCN: xcnImg
+  XCN: xcnImg,
+  wstETH: wstethImg
 };
 
 const format = commaNumber.bindWith(',', '.');
