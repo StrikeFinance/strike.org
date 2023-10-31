@@ -12,6 +12,8 @@ import 'assets/styles/App.scss';
 import GovernanceDetail from 'containers/page/GovernanceDetail';
 import MarketDetail from 'containers/page/homepage/elements/marketDetail/MarketDetail';
 import GovernanceAddressDetail from 'containers/page/GovernanceDetail/GovernanceAddressDetail/GovernanceAddressDetail';
+import BlogsPage from 'containers/page/blogs/BlogsPage';
+import BlogsDetailPage from 'containers/page/blogDetails/BlogDetails';
 import enMessages from 'lang/en.json';
 
 addLocaleData([...en]);
@@ -55,6 +57,12 @@ class App extends React.Component {
                   exact
                   path="/governance-detail/:id"
                   component={GovernanceDetail}
+                />
+                <Route exact path="/blogs" component={BlogsPage} />
+                <Route
+                  exact
+                  path="/blog-detail/:id"
+                  component={BlogsDetailPage}
                 />
                 <Redirect from="/" to="/" />
               </Switch>
