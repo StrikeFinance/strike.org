@@ -12,6 +12,7 @@ import Banner from 'containers/page/homepage/elements/banner/Banner';
 import Market from 'containers/page/homepage/elements/market/Market';
 import Governance from 'containers/page/homepage/elements/governance/Governance';
 import Developers from 'containers/page/homepage/elements/developers/Developers';
+import Faq from 'containers/page/homepage/elements/faq/Faq';
 import './HomePage.scss';
 
 const HomePage = ({ getGovernanceStrike, setSetting }) => {
@@ -49,6 +50,9 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
           </div>
           <div>
             <Developers />
+          </div>
+          <div>
+            <Faq />
           </div>
         </div>
       ) : (
