@@ -25,4 +25,3 @@ TopBlogsCard.propTypes = {
 };
 
 export default TopBlogsCard;
- 
