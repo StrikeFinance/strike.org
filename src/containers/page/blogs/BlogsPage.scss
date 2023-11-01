@@ -39,6 +39,9 @@
       row-gap: 50px;
       column-gap: 28px;
     }
+    a {
+      margin-top: 50px;
+    }
     button {
       padding: 12px 24px;
       position: relative;
@@ -49,7 +52,6 @@
       font-weight: 700;
       line-height: 36px;
       max-width: 169px;
-      margin-top: 50px;
       span {
         margin-right: 19px;
       }

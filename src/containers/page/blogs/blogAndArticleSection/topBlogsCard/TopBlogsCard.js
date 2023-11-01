@@ -1,23 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
+import PlaceHolderImage from 'assets/img/blogs/t-blog-2.png';
 import './TopBlogsCard.scss';
 
-const TopBlogsCard = ({ PlaceHolderBlog }) => {
+const TopBlogsCard = ({ item }) => {
   return (
-    <div className="flex align-center">
-      <img alt="blog placeholder" src={PlaceHolderBlog} />
+    <Link
+      to={`/blog-detail/${item.slug.current}`}
+      className="flex align-center"
+    >
+      <img alt="blog placeholder" src={PlaceHolderImage} />
       <div className="detail">
-        <p className="blog-date">Jul 20, 2023</p>
-        <p className="description">
-          Consectures Content Velitpato officia consequat duis enim velit mollit
-        </p>
+        <p className="blog-date">{moment(item.publishedAt).format('ll')}</p>
+        <p className="description">{item.title}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
 TopBlogsCard.propTypes = {
-  PlaceHolderBlog: PropTypes.string.isRequired
+  item: PropTypes.object.isRequired
 };
 
 export default TopBlogsCard;

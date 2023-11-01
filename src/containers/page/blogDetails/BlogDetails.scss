@@ -4,4 +4,105 @@
   margin-right: auto;
   padding: 197px 20px 0px;
   color: white;
+
+  .blog-details {
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+    border-bottom: 1px solid var(--color-text-gray);
+    padding: 0px 100px 10%;
+    .top {
+      .author {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .line {
+        width: 76px;
+        height: 1px;
+        background: var(--color-text-gray);
+        margin: 0px 15px;
+      }
+      .author-name {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .blog-image-container {
+        margin-top: 15px;
+        .first-column {
+          margin-right: 15px;
+          border: unset !important;
+          button {
+            cursor: pointer;
+            background: unset;
+            border: unset !important;
+          }
+          button:focus {
+            outline: none !important;
+          }
+          button:hover {
+            background: unset !important;
+          }
+          button:not(:first-child) {
+            margin-top: 40px;
+          }
+        }
+        .date {
+          margin-left: 15px;
+          width: 86px;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          border-top: 1px solid #fff;
+          border-bottom: 1px solid #fff;
+          .day {
+            color: #fff;
+            font-size: 42px;
+            font-style: italic;
+            font-weight: bold;
+            line-height: 84px;
+          }
+          .month {
+            color: var(--color-text-gray);
+            font-size: 18px;
+            width: 56px;
+            line-height: 84px;
+            border-top: 1px solid var(--color-text-gray);
+            border-bottom: 1px solid var(--color-text-gray);
+          }
+          .year {
+            color: var(--color-text-gray);
+            font-size: 18px;
+            line-height: 84px;
+          }
+        }
+      }
+    }
+    .content-blocks {
+      .header {
+        padding: 0px 36px;
+        .head {
+          color: #fff;
+          font-size: 48px;
+          font-weight: bold;
+          line-height: 50px;
+          margin-top: 54px;
+        }
+        .author {
+          color: var(--color-text-gray);
+          font-size: 18px;
+          margin-top: 15px;
+          font-weight: 400;
+          line-height: 30px;
+        }
+      }
+      .content {
+        margin-top: 32px;
+        color: var(--color-text-gray);
+        font-size: 18px;
+        line-height: 30px;
+      }
+    }
+  }
 }
