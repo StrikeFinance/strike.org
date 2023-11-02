@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "bignumber.js": "^9.0.1",
     "comma-number": "^2.0.1",
+    "groq": "^3.19.0",
     "highcharts": "^9.3.0",
     "highcharts-react-official": "^3.1.0",
     "lodash": "^4.17.10",
