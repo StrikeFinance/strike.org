@@ -67,7 +67,11 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
                 <div>
                   <div className="asset-header">
                     <img src={ICONS[item.underlyingSymbol]} alt="asset" />
-                    <div className="asset-name">{item.underlyingName}</div>
+                    <div className="asset-name">
+                      {item.symbol !== 'sWSTETH'
+                        ? item.underlyingName
+                        : 'WST ETH'}
+                    </div>
                   </div>
 
                   <div className="apy-area">
@@ -162,7 +166,11 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
               >
                 <img src={ICONS[item.underlyingSymbol]} alt="asset" />
                 <div className="right">
-                  <div className="asset-name">{item.underlyingName}</div>
+                  <div className="asset-name">
+                    {item.symbol !== 'sWSTETH'
+                      ? item.underlyingName
+                      : 'WST ETH'}
+                  </div>
                   <div className="apy-area">
                     <div>
                       <div>Supply APY</div>
