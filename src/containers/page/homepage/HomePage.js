@@ -15,7 +15,6 @@ import Developers from 'containers/page/homepage/elements/developers/Developers'
 import './HomePage.scss';
 import Partner from './elements/partner/Partner';
 import Exchange from './elements/exchange/Exchange';
-import Faq from './elements/faq/Faq';
 
 const HomePage = ({ getGovernanceStrike, setSetting }) => {
   const [markets, setmarkets] = useState();
@@ -59,7 +58,6 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
         <Governance />
         <Developers />
         <Exchange />
-        <Faq />
       </div>
     </WrapLayout>
   );
