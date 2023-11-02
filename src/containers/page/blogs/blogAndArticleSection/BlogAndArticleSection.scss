@@ -1,6 +1,9 @@
 .wrap-blogs-top {
   margin-top: 72px;
-
+  .sanity-image {
+    max-width: 100%;
+    height: auto;
+  }
   .main {
     width: 50%;
   }

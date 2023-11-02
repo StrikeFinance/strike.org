@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import PlaceHolderImage from 'assets/img/blogs/t-blog-2.png';
+import urlFor from 'utilities/sanityImageBuilder';
 import './TopBlogsCard.scss';
 
 const TopBlogsCard = ({ item }) => {
@@ -11,7 +11,13 @@ const TopBlogsCard = ({ item }) => {
       to={`/blog-detail/${item.slug.current}`}
       className="flex align-center"
     >
-      <img alt="blog placeholder" src={PlaceHolderImage} />
+      <div className="">
+        <img
+          className="sanity-image"
+          alt="blog placeholder"
+          src={urlFor(item.featureImage).url()}
+        />
+      </div>
       <div className="detail">
         <p className="blog-date">{moment(item.publishedAt).format('ll')}</p>
         <p className="description">{item.title}</p>

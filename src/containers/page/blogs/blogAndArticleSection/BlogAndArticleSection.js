@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Typography } from 'antd';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import urlFor from 'utilities/sanityImageBuilder';
 import { fetchAllPosts } from 'utilities/fetchSanityPosts';
-import PlaceHolderBlog from 'assets/img/blogs/t-blog-1.png';
 import TopBlogsCard from './topBlogsCard/TopBlogsCard';
 import './BlogAndArticleSection.scss';
 
@@ -24,7 +24,13 @@ const BlogAndArticleSection = () => {
     posts.length > 0 && (
       <div className="wrap-blogs-top flex">
         <Link to={`/blog-detail/${posts[0].slug.current}`} className="main">
-          <img alt="placeholder blog" src={PlaceHolderBlog} />
+          <div>
+            <img
+              className="sanity-image"
+              alt="placeholder blog"
+              src={urlFor(posts[0].featureImage).url()}
+            />
+          </div>
           <p className="blog-date main-margin">
             {moment(posts[0].publishedAt).format('ll')}
           </p>

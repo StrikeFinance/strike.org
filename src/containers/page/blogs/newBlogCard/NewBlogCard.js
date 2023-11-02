@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from 'antd';
 import moment from 'moment';
-import PlaceHolderImage from 'assets/img/blogs/t-blog-3.png';
-// import urlFor from 'utilities/sanityImageBuilder';
+import urlFor from 'utilities/sanityImageBuilder';
 import './NewBlogCard.scss';
 
 const NewBlogCard = ({ data }) => {
-  // console.log(urlFor(data.featureImage.asset['_ref']), 'builder response ');
   return (
     <div className="new-blog-card">
-      <img alt="placeholder blog" src={PlaceHolderImage} />
+      <div className="sanity-image-wrapper">
+        <img
+          className="sanity-image"
+          alt="placeholder blog"
+          src={urlFor(data.featureImage).url()}
+        />
+      </div>
       <p className="date">{moment(data.publishedAt).format('ll')}</p>
       <Typography className="title">{data.title}</Typography>
       <p className="description">{data.description}</p>
