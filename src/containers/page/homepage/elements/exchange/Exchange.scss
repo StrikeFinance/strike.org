@@ -1,0 +1,61 @@
+.exchange {
+  padding: 0px 120px;
+  display: block;
+  margin: auto;
+  @media screen and (max-width: 1023px) {
+    padding: 0px 20px;
+  }
+
+  .exchange-content {
+    padding: 84px 0px;
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap:25px;
+      margin: auto;
+      padding: 0px 32px;
+      @media screen and (max-width: 1280px) {
+        padding: 0px 32px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        padding: 0px 32px;
+      }
+
+      @media screen and (max-width: 812px) {
+        padding: 0px 32px;
+      }
+
+      .img-exchange {
+        display: flex;
+        width: 265px;
+        height: 250px;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #37323D;
+        background: rgba(30, 26, 34, 0.75);
+
+        &:hover {
+          background: #37323D;          
+        }
+  
+        @media screen and (max-width: 1200px) {
+          
+        }
+  
+        @media screen and (max-width: 992px) {
+          
+        }
+  
+        img {
+          max-width: 100%;
+          @media screen and (max-width: 812px) {
+            margin: auto;
+          }
+        }
+      }
+    }    
+  }
+}

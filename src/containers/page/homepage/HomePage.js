@@ -13,6 +13,9 @@ import Market from 'containers/page/homepage/elements/market/Market';
 import Governance from 'containers/page/homepage/elements/governance/Governance';
 import Developers from 'containers/page/homepage/elements/developers/Developers';
 import './HomePage.scss';
+import Partner from './elements/partner/Partner';
+import Exchange from './elements/exchange/Exchange';
+import Faq from './elements/faq/Faq';
 
 const HomePage = ({ getGovernanceStrike, setSetting }) => {
   const [markets, setmarkets] = useState();
@@ -38,27 +41,26 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
 
   return (
     <WrapLayout>
-      {markets ? (
-        <div className="main-container">
-          <Banner markets={markets} />
+      <div className="main-container">
+        <Banner markets={markets} />
+        <Partner />
+        {markets ? (
           <div className="market-area" id="market">
             <Market markets={markets} />
           </div>
-          <div>
-            <Governance />
+        ) : (
+          <div
+            className="loading-spinner"
+            style={{ height: `calc(100vh - 443px)` }}
+          >
+            <LoadingSpinner />
           </div>
-          <div>
-            <Developers />
-          </div>
-        </div>
-      ) : (
-        <div
-          className="loading-spinner"
-          style={{ height: `calc(100vh - 443px)` }}
-        >
-          <LoadingSpinner />
-        </div>
-      )}
+        )}
+        <Governance />
+        <Developers />
+        <Exchange />
+        <Faq />
+      </div>
     </WrapLayout>
   );
 };

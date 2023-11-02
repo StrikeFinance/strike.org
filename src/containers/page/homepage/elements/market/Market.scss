@@ -45,3 +45,13 @@
 .slider-text {
     margin-right: 250px;
 }
+
+.loading-spinner {
+    height: fit-content;
+    width: 100%;
+    background: var(--color-bg-main);
+
+    @media only screen and (max-width: 1440px) {
+        height: 70vh;
+    }
+}

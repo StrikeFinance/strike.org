@@ -15,19 +15,31 @@ const Banner = ({ markets }) => {
         <div className="left">
           <div className="title">
             The Strike protocol currently has{' '}
-            <span className="text-highlight">
-              $
-              {new Intl.NumberFormat({
-                maximumSignificantDigits: 3
-              }).format(
-                markets?.markets.reduce(
-                  (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
-                  new BigNumber('0')
-                )
-              )}
-            </span>{' '}
+            {markets ? (
+              <span className="text-highlight">
+                $
+                {new Intl.NumberFormat({
+                  maximumSignificantDigits: 3
+                }).format(
+                  markets?.markets.reduce(
+                    (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
+                    new BigNumber('0')
+                  )
+                )}
+              </span>
+            ) : (
+              <div className="load-wraper">
+                <div className="activity" />
+              </div>
+            )}{' '}
             TVL across{' '}
-            <span className="text-highlight">{markets?.markets.length}</span>{' '}
+            {markets ? (
+              <span className="text-highlight">{markets?.markets.length}</span>
+            ) : (
+              <div className="load-wraper2">
+                <div className="activity" />
+              </div>
+            )}{' '}
             sToken markets
           </div>
           <div className="description">
@@ -58,7 +70,7 @@ const Banner = ({ markets }) => {
       </div>
       <div className="scroll-image">
         <div className="flex just-center">
-          <NavLink to="/#market" smooth>
+          <NavLink to="/#partners" smooth>
             <img src={MouseImg} alt="" />
           </NavLink>
         </div>
