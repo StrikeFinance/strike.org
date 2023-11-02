@@ -37,10 +37,6 @@
         border: 1px solid #37323D;
         background: rgba(30, 26, 34, 1);
 
-        &:hover {
-          background: #37323D;          
-        }
-  
         @media screen and (max-width: 1200px) {
           
         }
@@ -54,6 +50,27 @@
           @media screen and (max-width: 812px) {
             margin: auto;
           }
+        }
+      }
+
+      .img-exchange.blue {
+        &:hover {
+          border: 5px solid #0062DF;
+          transition: 0.2s;
+        }
+      }
+
+      .img-exchange.green {
+        &:hover {
+          border: 5px solid #01BC8D;
+          transition: 0.2s;
+        }
+      }
+
+      .img-exchange.white {
+        &:hover {
+          border: 5px solid white;
+          transition: 0.2s;
         }
       }
     }    
