@@ -11,6 +11,7 @@ const fetchAllPosts = async () => {
       description,
     publishedAt,
     featureImage,
+    "imageUrl": mainImage.asset -> url,
     featured,
     _createdAt,
     slug

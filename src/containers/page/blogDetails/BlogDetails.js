@@ -17,7 +17,6 @@ const BlogDetails = props => {
     try {
       const data = await fetchPostDetail(match.params.id);
       setPostData(data);
-      console.log(postData);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }

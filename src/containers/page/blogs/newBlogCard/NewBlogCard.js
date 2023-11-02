@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { Typography } from 'antd';
 import moment from 'moment';
 import PlaceHolderImage from 'assets/img/blogs/t-blog-3.png';
+// import urlFor from 'utilities/sanityImageBuilder';
 import './NewBlogCard.scss';
 
 const NewBlogCard = ({ data }) => {
+  // console.log(urlFor(data.featureImage.asset['_ref']), 'builder response ');
   return (
     <div className="new-blog-card">
       <img alt="placeholder blog" src={PlaceHolderImage} />
