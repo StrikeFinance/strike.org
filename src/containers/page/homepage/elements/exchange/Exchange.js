@@ -29,19 +29,19 @@ function Exchange() {
       </div>
       <div className="exchange-content">
         <div className="content">
-          <div className="img-exchange">
+          <div className="img-exchange blue">
             <img src={imgExchangeUpbit} alt="whitepaper" />
           </div>
 
-          <div className="img-exchange">
+          <div className="img-exchange green">
             <img src={imgExchangeKucoin} alt="whitepaper" />
           </div>
 
-          <div className="img-exchange">
+          <div className="img-exchange white">
             <img src={imgExchangeUniswap} alt="whitepaper" />
           </div>
 
-          <div className="img-exchange">
+          <div className="img-exchange blue">
             <img src={imgExchangeBittrex} alt="whitepaper" />
           </div>
         </div>
