@@ -22,27 +22,11 @@ const fetchAllPosts = async () => {
 };
 
 const fetchPostDetail = async (slug = '') => {
-  // const posts = await client.fetch(
-  //   groq`*[slug.current == $slug]{
-  //     title,
-  //     description,
-  //   publishedAt,
-  //   featureImage,
-  //   "imageUrl": mainImage.asset -> url,
-  //   featured,
-  //   _createdAt,
-  //   slug,
-  //   content
-  //  }`,
-  //   { slug }
-  // );
-  console.log(slug);
   const posts = await client.fetch(
-    groq`*[
-      _type == "post"
-    ][0]`
+    groq`
+  *[_type == "post" && slug.current == $slug][0]`,
+    { slug }
   );
-  console.log(posts);
   return posts;
 };
 
