@@ -21,24 +21,28 @@ const fetchAllPosts = async () => {
   return posts;
 };
 
-const fetchPostDetail = async id => {
+const fetchPostDetail = async (slug = '') => {
+  // const posts = await client.fetch(
+  //   groq`*[slug.current == $slug]{
+  //     title,
+  //     description,
+  //   publishedAt,
+  //   featureImage,
+  //   "imageUrl": mainImage.asset -> url,
+  //   featured,
+  //   _createdAt,
+  //   slug,
+  //   content
+  //  }`,
+  //   { slug }
+  // );
+  console.log(slug);
   const posts = await client.fetch(
     groq`*[
-      _type == "post" && references(*[_type == "postCategory" && slug.current == "${id}"]._id)
-    ]|order(date desc){
-      title,
-      subtitle,
-      "imageUrl": mainImage.asset -> url,
-      "slug": "blog/"+slug.current,
-      "textPreview":pt::text(text[0..1]),
-      category->{
-        title,
-        "slug": slug.current
-      },
-      date,
-      "readingTime": round(length(pt::text(text)) / 5 / 180 )
-    }`
+      _type == "post"
+    ][0]`
   );
+  console.log(posts);
   return posts;
 };
 
