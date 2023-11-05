@@ -58,12 +58,8 @@ class App extends React.Component {
                   path="/governance-detail/:id"
                   component={GovernanceDetail}
                 />
-                <Route exact path="/blogs" component={BlogsPage} />
-                <Route
-                  exact
-                  path="/blog-detail/:id"
-                  component={BlogsDetailPage}
-                />
+                <Route exact path="/blog" component={BlogsPage} />
+                <Route exact path="/blog/:id" component={BlogsDetailPage} />
                 <Redirect from="/" to="/" />
               </Switch>
             </BrowserRouter>

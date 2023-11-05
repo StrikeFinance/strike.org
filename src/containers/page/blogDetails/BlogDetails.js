@@ -5,9 +5,9 @@ import moment from 'moment';
 import client from 'utilities/client';
 import urlFor from 'utilities/sanityImageBuilder';
 // import AuthorImage from 'assets/img/blogs/author.png';
-import FavouriteSVG from 'assets/img/blogs/svgs/icons8.svg';
-import ShareSVG from 'assets/img/blogs/svgs/icons8_right.svg';
-import GlassesSVG from 'assets/img/blogs/svgs/icons8_glasses.svg';
+// import FavouriteSVG from 'assets/img/blogs/svgs/icons8.svg';
+// import ShareSVG from 'assets/img/blogs/svgs/icons8_right.svg';
+// import GlassesSVG from 'assets/img/blogs/svgs/icons8_glasses.svg';
 import { fetchPostDetail } from 'utilities/fetchSanityPosts';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
 import BlogAndArticleSection from '../blogs/blogAndArticleSection/BlogAndArticleSection';
@@ -33,13 +33,13 @@ const BlogDetails = props => {
         <div className="wrap-blogs-container">
           <div className="blog-details">
             <div className="top">
-              <div className="flex align-center">
-                {/* <img alt="author" src={AuthorImage} className="author" /> */}
+              {/* <div className="flex align-center">
+                <img alt="author" src={AuthorImage} className="author" />
                 <div className="line" />
                 <span className="author-name">Mathew</span>
-              </div>
+              </div> */}
               <div className="blog-image-container flex align-center just-center">
-                <div className="first-column flex flex-column">
+                {/* <div className="first-column flex flex-column">
                   <button type="button">
                     <img alt="favourite" src={FavouriteSVG} />
                   </button>
@@ -49,7 +49,7 @@ const BlogDetails = props => {
                   <button type="button">
                     <img alt="favourite" src={GlassesSVG} />
                   </button>
-                </div>
+                </div> */}
                 <div>
                   <img
                     className="sanity-image"

@@ -23,7 +23,7 @@ const BlogAndArticleSection = () => {
   return (
     posts.length > 0 && (
       <div className="wrap-blogs-top flex">
-        <Link to={`/blog-detail/${posts[0].slug.current}`} className="main">
+        <Link to={`/blog/${posts[0].slug.current}`} className="main">
           <div>
             <img
               className="sanity-image"

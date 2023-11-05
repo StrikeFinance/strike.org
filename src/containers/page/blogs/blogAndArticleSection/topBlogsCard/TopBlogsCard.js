@@ -7,10 +7,7 @@ import './TopBlogsCard.scss';
 
 const TopBlogsCard = ({ item }) => {
   return (
-    <Link
-      to={`/blog-detail/${item.slug.current}`}
-      className="flex align-center"
-    >
+    <Link to={`/blog/${item.slug.current}`} className="flex align-center">
       <div className="">
         <img
           className="sanity-image"

@@ -9,8 +9,8 @@ const fetchAllPosts = async () => {
       ]|order(date desc){
       title,
       description,
-    publishedAt,
     featureImage,
+    publishedAt,
     "imageUrl": mainImage.asset -> url,
     featured,
     _createdAt,
