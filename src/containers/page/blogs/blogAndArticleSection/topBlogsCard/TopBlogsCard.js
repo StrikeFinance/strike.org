@@ -7,8 +7,14 @@ import './TopBlogsCard.scss';
 
 const TopBlogsCard = ({ item }) => {
   return (
-    <Link to={`/blog/${item.slug.current}`} className="flex align-center">
-      <div className="">
+    <Link
+      onClick={() => {
+        window.scrollTo(0, 0);
+      }}
+      to={`/blog/${item.slug.current}`}
+      className="flex align-center"
+    >
+      <div className="wrapper">
         <img
           className="sanity-image"
           alt="blog placeholder"

@@ -12,7 +12,8 @@ const BlogAndArticleSection = () => {
   const fetchData = async () => {
     try {
       const data = await fetchAllPosts();
-      setPosts(data);
+      const filteredData = data.filter(item => item.featured);
+      setPosts(filteredData);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
@@ -23,7 +24,13 @@ const BlogAndArticleSection = () => {
   return (
     posts.length > 0 && (
       <div className="wrap-blogs-top flex">
-        <Link to={`/blog/${posts[0].slug.current}`} className="main">
+        <Link
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+          to={`/blog/${posts[0].slug.current}`}
+          className="main"
+        >
           <div>
             <img
               className="sanity-image"

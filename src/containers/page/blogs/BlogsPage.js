@@ -31,10 +31,6 @@ const BlogPage = () => {
         {posts.length > 0 && <BlogAndArticleSection posts={posts} />}
         <div className="new-blogs">
           <Typography className="heading-descriptions">New Blogs </Typography>
-          <p className="description">
-            Lorem ipsum dolor sit amet consectetur. Molestie est risus lacinia
-            luctus orci quisque sagittis.
-          </p>
           <div className="flex align-center just-center flex-column">
             <div className="new-blogs-grid">
               {posts.length > 0 &&

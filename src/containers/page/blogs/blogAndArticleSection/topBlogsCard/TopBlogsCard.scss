@@ -1,6 +1,12 @@
-.sanity-image {
-  max-width: 100%;
-  height: auto;
+.wrapper {
+  max-width: 200px;
+  height: 160px;
+  width: 100%;
+  .sanity-image {
+    max-width: 100%;
+    height: 100% !important;
+    object-fit: cover;
+  }
 }
 .detail {
   margin-left: 26px;
