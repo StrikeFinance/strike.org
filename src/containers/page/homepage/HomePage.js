@@ -12,6 +12,7 @@ import Banner from 'containers/page/homepage/elements/banner/Banner';
 import Market from 'containers/page/homepage/elements/market/Market';
 import Governance from 'containers/page/homepage/elements/governance/Governance';
 import Developers from 'containers/page/homepage/elements/developers/Developers';
+import Faq from 'containers/page/homepage/elements/faq/Faq';
 import './HomePage.scss';
 import Partner from './elements/partner/Partner';
 import Exchange from './elements/exchange/Exchange';
@@ -58,6 +59,7 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
         <Governance />
         <Developers />
         <Exchange />
+        <Faq />
       </div>
     </WrapLayout>
   );

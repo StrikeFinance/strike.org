@@ -1,0 +1,48 @@
+.faq {
+  .faq-wrapper {
+    position: relative;
+    .faq-content {
+      padding: 120px 100px 100px 100px;
+      max-width: 1150px;
+      margin-left: auto;
+      margin-right: auto;
+      .faq-wrapper {
+        padding: 15px 30px;
+        border: 1px solid #aaa;
+        background: #1e1a22;
+        .question {
+          color: #fff;
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 30px;
+        }
+        button {
+          background: unset;
+          border: 0;
+          cursor: pointer;
+        }
+        button:hover {
+          background: unset !important;
+        }
+        .ans {
+          transition: all 300ms ease-in-out;
+          color: #aaa;
+          font-size: 18px;
+          line-height: 40px;
+        }
+        .open {
+          max-height: 500px;
+          opacity: 1;
+          margin-top: 10px;
+        }
+        .collapse {
+          max-height: 0;
+          opacity: 0;
+        }
+      }
+      .faq-wrapper:not(:last-child) {
+        margin-bottom: 35px;
+      }
+    }
+  }
+}
