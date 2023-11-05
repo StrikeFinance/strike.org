@@ -5,7 +5,7 @@ const fetchAllPosts = async () => {
   const posts = await client.fetch(
     groq`
     *[
-      _type == "post"
+      _type == "post" && isPublished
       ]|order(date desc){
       title,
       description,

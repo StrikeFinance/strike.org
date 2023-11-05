@@ -26,7 +26,7 @@ const BlogDetails = props => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [match]);
   return (
     <WrapLayout>
       {postData && (
