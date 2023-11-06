@@ -13,9 +13,9 @@ function Totalsupply(props) {
       <div className="total-supply-content">
         <div className="total-supply-content__left">
           {/* <Typography className="title">Market</Typography> */}
-          <Typography className="title-desciption">
+          <h1 className="title-desciption">
             Supply collateral to Strike while controlling your keys
-          </Typography>
+          </h1>
           <Typography className="title-strike">
             Strike users control all of their digital assets on a non-custodial
             protocol while earning a variable rate based on market demands of
