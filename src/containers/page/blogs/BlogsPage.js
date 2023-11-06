@@ -28,7 +28,7 @@ const BlogPage = () => {
         <Typography className="heading-descriptions">
           Blog & Article{' '}
         </Typography>
-        {posts.length > 0 && <BlogAndArticleSection posts={posts} />}
+        {posts.length > 0 && <BlogAndArticleSection data={posts} />}
         <div className="new-blogs">
           <Typography className="heading-descriptions">New Blogs </Typography>
           <div className="flex align-center just-center flex-column">
