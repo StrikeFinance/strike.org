@@ -120,10 +120,11 @@ const Faq = () => {
           {faq.map((item, idx) => {
             return (
               <div className="faq-wrapper" id={idx}>
-                <div className="flex align-center just-between">
+                <div className="flex align-center just-between faq-wrapper-question">
                   <span className="question">{item.q}</span>
                   <button
                     type="button"
+                    className="icon-btn"
                     onClick={() => setAns(idx === ans ? -1 : idx)}
                   >
                     <img alt="icon" src={idx === ans ? Minus : Plus} />

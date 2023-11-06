@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Typography } from 'antd';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import urlFor from 'utilities/sanityImageBuilder';
-import { fetchAllPosts } from 'utilities/fetchSanityPosts';
 import TopBlogsCard from './topBlogsCard/TopBlogsCard';
 import './BlogAndArticleSection.scss';
 
-const BlogAndArticleSection = () => {
+const BlogAndArticleSection = ({ data }) => {
   const [posts, setPosts] = useState([]);
   const fetchData = async () => {
-    try {
-      const data = await fetchAllPosts();
-      const filteredData = data.filter(item => item.featured);
-      setPosts(filteredData);
-    } catch (error) {
-      console.error('Error fetching posts:', error);
-    }
+    const filteredData = data.filter(item => item.featured);
+    setPosts(filteredData);
   };
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (data) {
+      fetchData();
+    }
+  }, [data]);
   return (
     posts.length > 0 && (
       <div className="wrap-blogs-top flex">
@@ -52,6 +49,9 @@ const BlogAndArticleSection = () => {
       </div>
     )
   );
+};
+BlogAndArticleSection.propTypes = {
+  data: PropTypes.array.isRequired
 };
 
 export default BlogAndArticleSection;

@@ -8,7 +8,7 @@ import urlFor from 'utilities/sanityImageBuilder';
 // import FavouriteSVG from 'assets/img/blogs/svgs/icons8.svg';
 // import ShareSVG from 'assets/img/blogs/svgs/icons8_right.svg';
 // import GlassesSVG from 'assets/img/blogs/svgs/icons8_glasses.svg';
-import { fetchPostDetail } from 'utilities/fetchSanityPosts';
+import { fetchPostDetail, fetchAllPosts } from 'utilities/fetchSanityPosts';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
 import BlogAndArticleSection from '../blogs/blogAndArticleSection/BlogAndArticleSection';
 import './BlogDetails.scss';
@@ -16,10 +16,13 @@ import './BlogDetails.scss';
 const BlogDetails = props => {
   const { match } = props;
   const [postData, setPostData] = useState(null);
+  const [allPostsData, setAllPostsData] = useState(null);
   const fetchData = async () => {
     try {
       const data = await fetchPostDetail(match.params.id);
+      const allPosts = await fetchAllPosts();
       setPostData(data);
+      setAllPostsData(allPosts);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
@@ -72,6 +75,9 @@ const BlogDetails = props => {
               </div>
             </div>
             <div className="content-blocks">
+              <div className="header">
+                <p className="head">{postData.title}</p>
+              </div>
               <BlockContent
                 className="content"
                 blocks={postData.content}
@@ -81,7 +87,7 @@ const BlogDetails = props => {
             </div>
           </div>
           <p className="bread-crumb">News & Article</p>
-          <BlogAndArticleSection />
+          <BlogAndArticleSection data={allPostsData} />
         </div>
       )}
     </WrapLayout>
