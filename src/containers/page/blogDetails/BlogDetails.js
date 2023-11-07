@@ -120,7 +120,7 @@ const BlogDetails = props => {
               </div>
               <div className="content-blocks">
                 <div className="header">
-                  <p className="head">{postData.title}</p>
+                  <h1 className="head">{postData.title}</h1>
                 </div>
                 <BlockContent
                   className="content"
