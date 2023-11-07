@@ -16,6 +16,7 @@ import Faq from 'containers/page/homepage/elements/faq/Faq';
 import './HomePage.scss';
 import Partner from './elements/partner/Partner';
 import Exchange from './elements/exchange/Exchange';
+import Blogs from './elements/blogs/Blogs';
 
 const HomePage = ({ getGovernanceStrike, setSetting }) => {
   const [markets, setmarkets] = useState();
@@ -59,6 +60,7 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
         <Governance />
         <Developers />
         <Exchange />
+        <Blogs />
         <Faq />
       </div>
     </WrapLayout>

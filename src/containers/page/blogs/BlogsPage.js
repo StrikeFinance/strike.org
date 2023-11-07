@@ -36,7 +36,11 @@ const BlogPage = () => {
               {posts.length > 0 &&
                 posts.map((item, idx) => {
                   return (
-                    <Link key={idx} to={`/blog/${item.slug.current}`}>
+                    <Link
+                      className="blogs-card-single"
+                      key={idx}
+                      to={`/blog/${item.slug.current}`}
+                    >
                       <NewBlogCard data={item} />
                     </Link>
                   );

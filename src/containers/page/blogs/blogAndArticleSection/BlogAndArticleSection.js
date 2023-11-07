@@ -20,7 +20,7 @@ const BlogAndArticleSection = ({ data }) => {
   }, [data]);
   return (
     posts.length > 0 && (
-      <div className="wrap-blogs-top flex">
+      <div className="wrap-blogs-top">
         <Link
           onClick={() => {
             window.scrollTo(0, 0);
