@@ -77,6 +77,9 @@
       line-height: 36px;
       max-width: 169px;
       margin-top: 50px;
+      @media (max-width: 812px) {
+        margin-top: 24px;
+      }
       span {
         margin-right: 19px;
       }
