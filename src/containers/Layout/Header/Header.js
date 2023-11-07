@@ -30,6 +30,11 @@ const HomePageLink = [
     to: '/#developer',
     title: 'Developers',
     altTitle: ''
+  },
+  {
+    to: '/#blog',
+    title: 'Blog',
+    altTitle: ''
   }
 ];
 const Header = ({ showMenuHead }) => {
