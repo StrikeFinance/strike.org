@@ -14,7 +14,7 @@ import Governance from 'containers/page/homepage/elements/governance/Governance'
 import Developers from 'containers/page/homepage/elements/developers/Developers';
 import Faq from 'containers/page/homepage/elements/faq/Faq';
 import './HomePage.scss';
-import Partner from './elements/partner/Partner';
+// import Partner from './elements/partner/Partner';
 import Exchange from './elements/exchange/Exchange';
 import Blogs from './elements/blogs/Blogs';
 
@@ -44,7 +44,7 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
     <WrapLayout>
       <div className="main-container">
         <Banner markets={markets} />
-        <Partner />
+        {/* <Partner /> */}
         {markets ? (
           <div className="market-area" id="market">
             <Market markets={markets} />
