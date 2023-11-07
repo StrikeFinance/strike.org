@@ -35,21 +35,21 @@
         }
       }
       .recent-proposals {
-        padding: 6px;        
+        padding: 6px;
         max-width: 1200px;
         margin: 0 auto;
         background: linear-gradient(
-          to bottom, 
+          to bottom,
           #0146d0,
           #0146d0,
           rgba(255, 255, 255, 0.7),
           rgba(255, 255, 255, 0.5),
           rgba(30, 26, 34, 0.8),
-          #1E1A22
+          #1e1a22
         );
 
         .recent-proposals-inner {
-          background: #1E1F25;
+          background: #1e1f25;
           padding: 20px 30px 52px 30px;
         }
 
@@ -104,7 +104,7 @@
           font-weight: 800;
           font-size: 20px;
           padding-bottom: 10px;
-          border-bottom: 1px solid #34384C;
+          border-bottom: 1px solid #34384c;
           @media screen and (max-width: 812px) {
             font-size: 16px;
           }
@@ -112,7 +112,7 @@
         .recent-list {
           .recent-item {
             padding: 10px 0;
-            border-bottom: 1px solid #34384C;
+            border-bottom: 1px solid #34384c;
             cursor: pointer;
             .description {
               color: #ffffff;
