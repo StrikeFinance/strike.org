@@ -2,6 +2,10 @@
   max-width: 200px;
   height: 160px;
   width: 100%;
+  @media (max-width: 812px) {
+    max-width: 100px;
+    height: 88px;
+  }
   .sanity-image {
     max-width: 100%;
     height: 100% !important;
@@ -16,5 +20,13 @@
     font-weight: bold;
     line-height: 34px;
     margin-top: 8px;
+    @media (max-width: 812px) {
+      font-size: 20px;
+      line-height: 20px;
+      letter-spacing: -1px;
+    }
+  }
+  @media (max-width: 812px) {
+    margin-left: 16px;
   }
 }
