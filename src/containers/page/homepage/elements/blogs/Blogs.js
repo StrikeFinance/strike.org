@@ -14,7 +14,6 @@ function Blogs() {
     try {
       const data = await fetchAllPosts();
       setPosts(data);
-      console.log(data, posts);
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
