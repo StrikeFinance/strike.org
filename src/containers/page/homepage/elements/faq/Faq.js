@@ -119,7 +119,7 @@ const Faq = () => {
         <div className="faq-content">
           {faq.map((item, idx) => {
             return (
-              <div className="faq-wrapper" id={idx}>
+              <div key={idx} className="faq-wrapper" id={idx}>
                 <div className="flex align-center just-between faq-wrapper-question">
                   <span className="question">{item.q}</span>
                   <button

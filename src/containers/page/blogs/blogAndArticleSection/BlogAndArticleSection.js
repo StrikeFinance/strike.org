@@ -3,7 +3,7 @@ import { Typography } from 'antd';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import urlFor from 'utilities/sanityImageBuilder';
+// import urlFor from 'utilities/sanityImageBuilder';
 import TopBlogsCard from './topBlogsCard/TopBlogsCard';
 import './BlogAndArticleSection.scss';
 
@@ -19,6 +19,7 @@ const BlogAndArticleSection = ({ data }) => {
     }
   }, [data]);
   return (
+    data &&
     posts.length > 0 && (
       <div className="wrap-blogs-top">
         <Link
@@ -29,11 +30,11 @@ const BlogAndArticleSection = ({ data }) => {
           className="main"
         >
           <div>
-            <img
+            {/* <img
               className="sanity-image"
               alt="placeholder blog"
               src={urlFor(posts[0].featureImage).url()}
-            />
+            /> */}
           </div>
           <p className="blog-date main-margin">
             {moment(posts[0].publishedAt).format('ll')}

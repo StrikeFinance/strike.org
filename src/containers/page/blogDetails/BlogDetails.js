@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import moment from 'moment';
 import { Helmet } from 'react-helmet';
-import client from 'utilities/client';
 import urlFor from 'utilities/sanityImageBuilder';
 // import AuthorImage from 'assets/img/blogs/author.png';
 // import FavouriteSVG from 'assets/img/blogs/svgs/icons8.svg';
@@ -38,8 +37,8 @@ const BlogDetails = props => {
           <title>{postData?.metaTitle || ''}</title>
           <meta name="robots" content="all" />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta name="apple-mobile-web-app-title" content="strike.org" />
-          <meta name="application-name" content="strike.org" />
+          <meta name="apple-mobile-web-app-title" content="mph" />
+          <meta name="application-name" content="mph" />
           <meta
             name="thumbnail"
             content={urlFor(postData?.featureImage).url() || ''}
@@ -54,8 +53,8 @@ const BlogDetails = props => {
 
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://strike.org" />
-          <meta property="og:site_name" content="strike.org" />
+          <meta property="og:url" content="https://mph.com/" />
+          <meta property="og:site_name" content="mph" />
           <meta property="og:image:width" content="1280" />
           <meta property="og:image:height" content="720" />
           <meta property="og:image:type" content="image/png" />
@@ -70,6 +69,7 @@ const BlogDetails = props => {
             property="twitter:description"
             content={postData?.description}
           />
+          <meta property="twitter:card" content="summary_large_image" />
           <meta
             property="twitter:image"
             content={urlFor(postData?.featureImage).url() || ''}
@@ -99,8 +99,8 @@ const BlogDetails = props => {
                   <div className="image-wrapper">
                     <img
                       className="sanity-image"
-                      alt={postData.featureImage?.caption}
-                      src={urlFor(postData?.featureImage).url()}
+                      alt="placeholder blog"
+                      src={urlFor(postData.featureImage).url()}
                     />
                   </div>
                   <div className="date">
@@ -119,13 +119,13 @@ const BlogDetails = props => {
               </div>
               <div className="content-blocks">
                 <div className="header">
-                  <h1 className="head">{postData.title}</h1>
+                  <p className="head">{postData.title}</p>
                 </div>
                 <BlockContent
                   className="content"
                   blocks={postData.content}
-                  projectId={client.projectId}
-                  dataset={client.dataset}
+                  projectId="m2neccov"
+                  dataset="production"
                 />
               </div>
             </div>
