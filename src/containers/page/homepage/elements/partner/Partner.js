@@ -1,9 +1,8 @@
 import React from 'react';
 import imgPartnerImmunefi from 'assets/img/homepage/partner-immunefi.svg';
 import imgPartnerCertik from 'assets/img/homepage/partner-certik.svg';
-import imgPartnerTrueUsd from 'assets/img/homepage/partner-trueusd.svg';
-import imgPartnerOndo from 'assets/img/homepage/partner-ondo.svg';
-import imgPartnerHyve from 'assets/img/homepage/partner-hyve.svg';
+import imgPartnerCoinbase from 'assets/img/homepage/partner-coinbase.svg';
+import imgPartnerBandprotocol from 'assets/img/homepage/partner-bandprotocol.svg';
 
 import './Partner.scss';
 
@@ -31,23 +30,19 @@ function Partner() {
       <div className="partner-content">
         <div className="content">
           <div className="img-partner">
-            <img src={imgPartnerImmunefi} alt="whitepaper" />
+            <img src={imgPartnerImmunefi} alt="Immunefi" />
           </div>
 
           <div className="img-partner">
-            <img src={imgPartnerCertik} alt="whitepaper" />
+            <img src={imgPartnerCertik} alt="Certik" />
           </div>
 
           <div className="img-partner">
-            <img src={imgPartnerTrueUsd} alt="whitepaper" />
+            <img src={imgPartnerCoinbase} alt="Coinbase" />
           </div>
 
           <div className="img-partner">
-            <img src={imgPartnerOndo} alt="whitepaper" />
-          </div>
-
-          <div className="img-partner">
-            <img src={imgPartnerHyve} alt="whitepaper" />
+            <img src={imgPartnerBandprotocol} alt="Bandprotocol" />
           </div>
         </div>
       </div>
