@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 import moment from 'moment';
 import { Helmet } from 'react-helmet';
-import client from 'utilities/client';
 import urlFor from 'utilities/sanityImageBuilder';
 // import AuthorImage from 'assets/img/blogs/author.png';
 // import FavouriteSVG from 'assets/img/blogs/svgs/icons8.svg';
@@ -124,8 +123,8 @@ const BlogDetails = props => {
                 <BlockContent
                   className="content"
                   blocks={postData.content}
-                  projectId={client.projectId}
-                  dataset={client.dataset}
+                  projectId="m2neccov"
+                  dataset="production"
                 />
               </div>
             </div>
