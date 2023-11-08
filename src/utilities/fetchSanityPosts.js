@@ -6,7 +6,7 @@ const fetchAllPosts = async () => {
     groq`
     *[
       _type == "post" && isPublished
-      ]|order(date desc){
+      ]|order(_createdAt desc){
       title,
       description,
     featureImage,
