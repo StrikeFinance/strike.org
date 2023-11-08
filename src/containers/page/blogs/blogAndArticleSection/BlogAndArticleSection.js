@@ -42,7 +42,7 @@ const BlogAndArticleSection = ({ data }) => {
           <p className="main-description">{posts[0].description}</p>
         </Link>
         <div className="col-2 flex flex-column">
-          {posts.slice(1, posts.length).map((item, idx) => {
+          {posts.slice(1, 4).map((item, idx) => {
             return <TopBlogsCard key={idx} item={item} />;
           })}
         </div>
