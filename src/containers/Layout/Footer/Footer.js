@@ -149,9 +149,10 @@ const Footer = () => {
               <div className="menu">
                 <div className="title">About Us</div>
                 <div className="description">
-                  The Strike Finance is a decentralized money market built on the
-                  Ethereum that enables users to borrow and supply collateral
-                  onto the platform without central authority or control.
+                  The Strike Finance is a decentralized money market built on
+                  the Ethereum that enables users to borrow and supply
+                  collateral onto the platform without central authority or
+                  control.
                 </div>
               </div>
               <div className="menu">
