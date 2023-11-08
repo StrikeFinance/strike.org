@@ -53,7 +53,7 @@ function Blogs() {
                     <div className="image-wrapper">
                       <img
                         className="sanity-image"
-                        alt={`blog ${idx}`}
+                        alt={item?.featureImage?.caption}
                         src={urlFor(item?.featureImage).url()}
                       />
                     </div>
