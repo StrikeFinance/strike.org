@@ -32,7 +32,7 @@ const HomePageLink = [
     altTitle: ''
   },
   {
-    to: '/#blog',
+    to: '/blog',
     title: 'Blog',
     altTitle: ''
   }

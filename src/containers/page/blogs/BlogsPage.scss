@@ -93,3 +93,44 @@
     }
   }
 }
+
+.pagination {
+  text-align: right;
+  margin-top: 20px;
+  @media screen and (max-width: 812px) {
+    margin-top: 42px;
+  }
+  .ant-pagination-item-link {
+    background: none !important;
+
+    .ant-pagination-item-container {
+      border: none;
+    }
+
+    i.anticon.anticon-left {
+      color: var(--color-text-main) !important;
+    }
+    i.anticon.anticon-right {
+      color: var(--color-text-main) !important;
+    }
+    .ant-pagination-item-ellipsis {
+      color: var(--color-text-main) !important;
+    }
+  }
+  .ant-pagination-item a {
+    color: #666;
+  }
+  .ant-pagination-item {
+    background: none !important;
+  }
+  .ant-pagination-item:focus a,
+  .ant-pagination-item:hover a {
+    color: var(--color-text-main);
+  }
+
+  .ant-pagination-item-active {
+    a {
+      color: var(--color-text-main);
+    }
+  }
+}
