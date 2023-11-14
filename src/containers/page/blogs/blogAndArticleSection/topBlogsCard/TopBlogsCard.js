@@ -22,7 +22,9 @@ const TopBlogsCard = ({ item }) => {
         />
       </div>
       <div className="detail">
-        <p className="blog-date">{moment(item.publishedAt).format('ll')}</p>
+        <p className="blog-date">
+          {moment.utc(item.publishedAt).format('MMM DD,YYYY')}
+        </p>
         <p className="description">{item.title}</p>
       </div>
     </Link>

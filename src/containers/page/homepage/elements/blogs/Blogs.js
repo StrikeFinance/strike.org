@@ -58,7 +58,7 @@ function Blogs() {
                       />
                     </div>
                     <p className="date">
-                      {moment(item.publishedAt).format('ll')}
+                      {moment.utc(item.publishedAt).format('MMM DD,YYYY')}
                     </p>
                     <p className="title">{item.title}</p>
                     <p className="description">{item.description}</p>
