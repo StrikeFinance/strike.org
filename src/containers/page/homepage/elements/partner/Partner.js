@@ -1,8 +1,9 @@
 import React from 'react';
 import imgPartnerImmunefi from 'assets/img/homepage/partner-immunefi.svg';
 import imgPartnerCertik from 'assets/img/homepage/partner-certik.svg';
-import imgPartnerCoinbase from 'assets/img/homepage/partner-coinbase.svg';
+import imgPartnerCoinbasewallet from 'assets/img/homepage/partner-coinbasewallet.svg';
 import imgPartnerBandprotocol from 'assets/img/homepage/partner-bandprotocol.svg';
+import imgPartnerHyve from 'assets/img/homepage/partner-hyve.svg';
 
 import './Partner.scss';
 
@@ -38,11 +39,15 @@ function Partner() {
           </div>
 
           <div className="img-partner">
-            <img src={imgPartnerCoinbase} alt="Coinbase" />
+            <img src={imgPartnerCoinbasewallet} alt="Coinbase Wallet" />
           </div>
 
           <div className="img-partner">
             <img src={imgPartnerBandprotocol} alt="Bandprotocol" />
+          </div>
+
+          <div className="img-partner">
+            <img src={imgPartnerHyve} alt="Hyve works" />
           </div>
         </div>
       </div>
