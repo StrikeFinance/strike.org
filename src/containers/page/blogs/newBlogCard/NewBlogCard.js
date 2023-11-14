@@ -15,7 +15,7 @@ const NewBlogCard = ({ data }) => {
           src={urlFor(data.featureImage).url()}
         />
       </div>
-      <p className="date">{moment(data.publishedAt).format('ll')}</p>
+      <p className="date">{moment.utc(data.publishedAt).format('ll')}</p>
       <Typography className="title">{data.title}</Typography>
       <p className="description">{data.description}</p>
       <div className="line" />
