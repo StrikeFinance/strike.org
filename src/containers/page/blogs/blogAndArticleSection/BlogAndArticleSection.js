@@ -36,7 +36,7 @@ const BlogAndArticleSection = ({ data }) => {
             />
           </div>
           <p className="blog-date main-margin">
-            {moment(posts[0].publishedAt).format('ll')}
+            {moment.utc(posts[0].publishedAt).format('MMM DD,YYYY')}
           </p>
           <Typography className="blog-titlt-main">{posts[0].title}</Typography>
           <p className="main-description">{posts[0].description}</p>
