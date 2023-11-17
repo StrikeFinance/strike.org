@@ -29,21 +29,38 @@ function Exchange() {
       </div>
       <div className="exchange-content">
         <div className="content">
-          <div className="img-exchange blue">
-            <img src={imgExchangeUpbit} alt="whitepaper" />
-          </div>
-
-          <div className="img-exchange green">
-            <img src={imgExchangeKucoin} alt="whitepaper" />
-          </div>
-
-          <div className="img-exchange white">
-            <img src={imgExchangeUniswap} alt="whitepaper" />
-          </div>
-
-          <div className="img-exchange blue">
-            <img src={imgExchangeBittrex} alt="whitepaper" />
-          </div>
+          <a target="__blank" className="pointer" href="https://upbit.com">
+            <div className="img-exchange blue">
+              <img src={imgExchangeUpbit} alt="Upbit" />
+            </div>
+          </a>
+          <a
+            target="__blank"
+            className="pointer"
+            href="https://www.kucoin.com/trade/STRK-ETH"
+          >
+            <div className="img-exchange green">
+              <img src={imgExchangeKucoin} alt="Kucoin" />
+            </div>
+          </a>
+          <a
+            target="__blank"
+            className="pointer"
+            href="https://app.uniswap.org/swap?outputCurrency=0x74232704659ef37c08995e386a2e26cc27a8d7b1&chain=mainnet"
+          >
+            <div className="img-exchange white">
+              <img src={imgExchangeUniswap} alt="Uniswap" />
+            </div>
+          </a>
+          <a
+            target="__blank"
+            className="pointer"
+            href="https://bittrexglobal.com"
+          >
+            <div className="img-exchange blue">
+              <img src={imgExchangeBittrex} alt="Bittrex" />
+            </div>
+          </a>
         </div>
       </div>
     </div>
