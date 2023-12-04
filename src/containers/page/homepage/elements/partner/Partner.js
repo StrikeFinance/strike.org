@@ -4,6 +4,7 @@ import imgPartnerCertik from 'assets/img/homepage/partner-certik.svg';
 import imgPartnerCoinbasewallet from 'assets/img/homepage/partner-coinbasewallet.svg';
 import imgPartnerBandprotocol from 'assets/img/homepage/partner-bandprotocol.svg';
 import imgPartnerHyve from 'assets/img/homepage/partner-hyve.svg';
+import imgPartnerHalborn from 'assets/img/homepage/partner-halborn.svg';
 
 import './Partner.scss';
 
@@ -48,6 +49,10 @@ function Partner() {
 
           <div className="img-partner">
             <img src={imgPartnerHyve} alt="Hyve works" />
+          </div>
+
+          <div className="img-partner">
+            <img src={imgPartnerHalborn} alt="Halborn" />
           </div>
         </div>
       </div>
