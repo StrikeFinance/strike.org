@@ -3,6 +3,7 @@ import imgExchangeUpbit from 'assets/img/homepage/exchange-upbit.svg';
 import imgExchangeKucoin from 'assets/img/homepage/exchange-kucoin.svg';
 import imgExchangeUniswap from 'assets/img/homepage/exchange-uniswap.svg';
 import imgExchangeBittrex from 'assets/img/homepage/exchange-bittrex.svg';
+import imgExchangeMexc from 'assets/img/homepage/exchange-mexc.svg';
 
 import './Exchange.scss';
 
@@ -59,6 +60,15 @@ function Exchange() {
           >
             <div className="img-exchange blue">
               <img src={imgExchangeBittrex} alt="Bittrex" />
+            </div>
+          </a>
+          <a
+            target="__blank"
+            className="pointer"
+            href="https://www.mexc.com/exchange/STRK_USDT?_from=header"
+          >
+            <div className="img-exchange blue">
+              <img src={imgExchangeMexc} alt="Mexc" />
             </div>
           </a>
         </div>
