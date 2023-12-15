@@ -46,6 +46,24 @@
     font-weight: 700;
 }
 
+@font-face {
+    font-family: "Euclid";
+    src: url("../font/Euclid/Euclid-Circular-A-Regular.ttf");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Euclid";
+    src: url("../font/Euclid/Euclid-Circular-A-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Euclid";
+    src: url("../font/Euclid/Euclid-Circular-A-Bold.ttf");
+    font-weight: 700;
+}
+
 body * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;

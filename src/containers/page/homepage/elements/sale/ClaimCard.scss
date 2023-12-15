@@ -1,0 +1,216 @@
+.claim-card {
+  width: 100%;
+  height: 100%;
+  min-width: 560px;
+
+  @media screen and (max-width: 812px) {
+  }
+
+  @media screen and (max-width: 580px) {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .not-connect-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0px;
+    border: 1px solid #AAA;
+    background: #1E1A22;
+
+    .title {
+      text-align: center;
+      max-width: 320px;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+
+      .text-highlight {
+        color: #107def;
+      }
+
+      @media screen and (max-width: 1440px) {
+        .text-highlight {
+        }
+      }
+
+      @media screen and (max-width: 1200px) {
+        .text-highlight {
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .text-highlight {
+        }
+      }
+
+      @media screen and (max-width: 812px) {
+        .text-highlight {
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .text-highlight {
+        }
+      }
+    }
+    
+    .connect-btn {
+      width: 80%;
+    }
+
+    @media screen and (max-width: 768px) {
+      .logo {
+        width: 100%;
+      }
+    }
+
+  }
+
+  .connect-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+
+    .buy-card {
+      padding: 24px 24px;
+      border: 1px solid #AAA;
+      background: #1E1A22;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 16px;;
+
+      .network-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .network {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          padding: 10px 20px;
+          border: 1px solid #34384C;
+  
+          font-size: 20px;
+          font-weight: 700;
+  
+          img {
+            width: 24px;
+            height: 24px;
+          }
+
+          &:hover {
+            border: 1px solid #AAA;          
+            background: rgba(93, 101, 136, 0.40);
+          }
+        }
+
+        .network.active {
+          border: 1px solid #AAA;          
+          background: rgba(93, 101, 136, 0.40);
+        }
+
+        @media screen and (max-width: 480px) {
+          .network {
+            padding: 8px 16px;
+            font-size: 14px;
+   
+            img {
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }
+      }
+
+      .round-row {
+        display: grid;
+        grid-template-columns: 65px 130px 130px 1fr;
+        align-items: center;
+        justify-items: end;
+        margin-top: 20px;
+
+        .round {
+          width: 100%;
+        }
+
+        .mobile-long {
+          display: none;
+        }
+
+        .desktop-long {
+          display: block;
+        }
+
+        .actions {
+          display: flex;
+          gap: 10px;
+        }
+
+        .claim-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 90px;
+          padding: 10px 20px;
+          color: #AAA;
+          background: #34384C;
+          cursor: pointer;
+        }
+
+        .claim-btn.enable {
+          color: white;
+          background: #107DEF;
+          cursor: pointer;
+        }
+
+        @media screen and (max-width: 1960px) {
+          grid-template-columns: 65px 1fr 120px;
+          font-size: 14px;
+          
+          .rewards {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+          }
+
+          .mobile-long {
+            display: block;
+            text-align: right;
+          }
+
+          .desktop-long {
+            text-align: right;
+            display: none;
+          }
+
+          .actions {
+            flex-direction: column;
+          }
+        }
+      }
+
+      .round-row.header {
+        color: #107DEF;
+      }
+    }
+
+    .history-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      cursor: pointer;
+      color: white;
+      padding: 12px 24px;
+      border: 1px solid white;
+      background: #1E1A22;
+    }
+  }
+}
