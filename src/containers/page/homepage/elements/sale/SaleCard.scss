@@ -222,6 +222,11 @@
         }
       }
 
+      .asset-balance, .available-strk {
+        user-select: none;
+        cursor: pointer;
+      }
+
       .input-option {
         display: grid;
         grid-template-columns: 1fr 1fr;
