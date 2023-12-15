@@ -138,7 +138,7 @@ const Sale = () => {
                 percent={Number(
                   (roundSold.strkAmount / roundSold.offeringAmount) * 100
                 ).toFixed(2)}
-                strokeColor="white"
+                strokeColor="#107DEF"
                 strokeWidth={18}
                 showInfo={false}
               />
