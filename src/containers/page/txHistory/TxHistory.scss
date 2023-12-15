@@ -1,0 +1,191 @@
+.tx-history-homepage {
+    padding-top: 86px;
+    padding-bottom: 58px;
+    margin-bottom: 100px;
+  
+    @media screen and (max-width: 1960px) {
+      min-height: 100vh;
+    }
+  
+    @media screen and (max-width: 1200px) {
+      max-height: unset;
+    }
+  
+    @media screen and (max-width: 812px) {
+      margin-bottom: 20px;
+    }
+  
+    .tx-history-content {
+      height: calc(100vh - 170px);
+      padding: 70px 120px 0px;
+  
+      @media screen and (max-width: 1400px) {
+        padding: 70px 50px 0px;
+        height: 100%;
+      }
+  
+      @media screen and (max-width: 1200px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+      }
+  
+      @media screen and (max-width: 812px) {
+        padding: 0px 20px;
+      }
+
+      .title {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--color-text-main);
+
+        @media screen and (max-width: 812px) {
+          font-size: 36px;
+        }
+
+        @media screen and (max-width: 390px) {
+          font-size: 32px;
+        }
+      }
+  
+      .description {
+        color: #aaaaaa;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 30px;
+        max-width: 550px;
+      }
+  
+
+      .history-card {
+        display: flex;
+        border: 2px solid #34384C;
+        background: rgba(30, 31, 37, 0.80);
+        width: 100%;
+        height: 575px;
+        margin-top: 30px;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+        
+        /* Track */
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+        
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: #888;
+        }
+        
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+
+        .empty-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .history-table {
+            width: 100%;
+            padding: 10px;
+
+            .tbl-header {
+                display: grid;
+                grid-template-columns: 50px 100px 70px 120px 2fr 1fr 1fr 150px;
+                color: white;
+                background: #5D6588;
+                border-left: 1px solid rgba(30, 31, 37, 0.80);
+                border-right: 1px solid rgba(30, 31, 37, 0.80);
+                
+                .tbl-col {
+                    font-size: 16px;
+                    font-weight: 700;
+                    padding: 8px;
+                    border-left: 1px solid rgba(30, 31, 37, 0.80);
+                    border-right: 1px solid rgba(30, 31, 37, 0.80);
+                }
+
+                .tbl-col:first-child {
+                    text-align: center;
+                }
+
+                .tbl-col:last-child {
+                    text-align: center;
+                }
+            }
+
+            .tbl-row {
+                display: grid;
+                grid-template-columns: 50px 100px 70px 120px 2fr 1fr 1fr 150px;
+                color: #5D6588;
+                background: #34384C;
+                border: 1px solid rgba(30, 31, 37, 0.80);
+
+                &:hover {
+                    color: white;
+                    background: #5D6588;
+                    border: 1px solid white;
+
+                    .tbl-col {
+                        border-left: 1px solid white;
+                        border-right: 1px solid white;
+                    }
+                }
+
+                .tbl-col {
+                    margin-top: 1px;
+                    font-size: 16px;
+                    padding: 8px;
+                    border-left: 1px solid rgba(30, 31, 37, 0.80);
+                    border-right: 1px solid rgba(30, 31, 37, 0.80);
+                }
+                
+                .tbl-col:first-child {
+                    text-align: center;
+                }
+
+                .tbl-col:last-child div {
+                    text-align: center;
+                    // cursor: pointer;
+                    // color: #107def;
+                    // font-weight: bold;
+                }
+
+                .tbl-mobile-col {
+                    display: none;
+                }
+            }
+
+            @media screen and (max-width: 1023px) {
+                .tbl-header {
+                    display: none;
+                }
+
+                .tbl-row {
+                    display: flex;
+                    flex-direction: column;
+
+                    .tbl-col {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+    
+                    .tbl-mobile-col {
+                        display: block;
+                    }
+                }                
+            }
+        }
+      }
+    }
+  }

@@ -146,3 +146,14 @@ h5 {
 .mt-2 {
     margin-top: 20px;
 }
+
+.connect-modal {
+    .ant-modal-content {
+        border-radius: 6px;
+        background-color: #1d1f25;
+        .ant-modal-body {
+            padding: 0;
+            border-radius: 6px;
+        }
+    }
+}
