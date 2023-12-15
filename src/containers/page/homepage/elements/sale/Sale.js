@@ -22,8 +22,8 @@ const Sale = () => {
   const [round, setRound] = useState(0);
   const [openStatus, setOpenStatus] = useState('Coming');
   const [currentPrice, setCurrentPrice] = useState('$0');
-  const [totalSoldReload, setTotalSoldReload] = useState(0);
-  const { totalSold } = useSoldInfo(round, totalSoldReload);
+  const [roundSoldReload, setRoundSoldReload] = useState(0);
+  const { roundSold } = useSoldInfo(round, roundSoldReload);
 
   useEffect(() => {
     const currentTimestamp = Math.floor(new Date().getTime() / 1000);
@@ -136,7 +136,7 @@ const Sale = () => {
             <div className="progress-bar">
               <Progress
                 percent={Number(
-                  (totalSold.strkAmount / totalRaiseStrk) * 100
+                  (roundSold.strkAmount / roundSold.offeringAmount) * 100
                 ).toFixed(2)}
                 strokeColor="white"
                 strokeWidth={18}
@@ -146,9 +146,9 @@ const Sale = () => {
 
             <div className="round-bar">
               <span className="sale-amount">
-                {Number((totalSold.strkAmount / totalRaiseStrk) * 100).toFixed(
-                  2
-                )}
+                {Number(
+                  (roundSold.strkAmount / roundSold.offeringAmount) * 100
+                ).toFixed(2)}
                 %
               </span>
               <span className="round">Round {round + 1}/4</span>
@@ -162,7 +162,7 @@ const Sale = () => {
               round={round}
               openStatus={openStatus}
               onSoldReload={() =>
-                setTotalSoldReload(prevState => prevState + 1)
+                setRoundSoldReload(prevState => prevState + 1)
               }
               setCurrentPrice={price => setCurrentPrice(price)}
             />

@@ -52,7 +52,7 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
   const { roundSold } = useSoldInfo(round, roundSoldReload);
 
   const { getComputeAmount } = useComputeAmount(chainId || requiredChainId);
-  const [vestingPlan, setVestingPlan] = useState(0);
+  const [vestingPlan, setVestingPlan] = useState(1);
   const [assetName, setAssetName] = useState('eth');
   const [inAssetValue, setInAssetValue] = useState('');
   const [outAssetValue, setOutAssetValue] = useState('');
