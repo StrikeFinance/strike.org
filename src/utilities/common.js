@@ -67,13 +67,24 @@ export const getBigNumber = value => {
   return new BigNumber(value);
 };
 
-export const getReadableNumber = (number, decimal = 0) => {
-  return format(
-    getBigNumber(number)
-      .div(new BigNumber(10).pow(decimal))
-      .dp(2, 0)
-      .toString(10)
-  );
+export const getReadableNumber = (
+  number,
+  decimal = 0,
+  formatFlag = true,
+  position = 2,
+  round = 0
+) => {
+  if (formatFlag)
+    return format(
+      getBigNumber(number)
+        .div(new BigNumber(10).pow(decimal))
+        .dp(position, round)
+        .toString(10)
+    );
+  return getBigNumber(number)
+    .div(new BigNumber(10).pow(decimal))
+    .dp(position, round)
+    .toString(10);
 };
 
 export function shortenAddr(addr, first = 6, last = 4) {

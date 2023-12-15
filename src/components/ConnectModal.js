@@ -206,6 +206,13 @@ function ConnectModal({ visible, onCancel }) {
     }
   };
 
+  useEffect(() => {
+    if (localStorage.getItem('connectorId'))
+      tryActivation(
+        connectors[parseInt(localStorage.getItem('connectorId'), 10) - 1]
+      );
+  }, []);
+
   return (
     <Modal
       className="connect-modal"

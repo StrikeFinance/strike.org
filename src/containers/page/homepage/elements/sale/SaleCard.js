@@ -125,6 +125,17 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
     );
   };
 
+  const calcOutAssetValue = async value => {
+    const outAmount = await getComputeAmount(
+      assetName,
+      value,
+      round,
+      vestingPlan
+    );
+
+    setOutAssetValue(outAmount);
+  };
+
   const onInAssetChange = async e => {
     const regex =
       assetName === 'eth'
@@ -141,33 +152,13 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
     clearTimeout(timer);
 
     const newTimer = setTimeout(async () => {
-      const outAmount = await getComputeAmount(
-        assetName,
-        value,
-        round,
-        vestingPlan
-      );
-
-      setOutAssetValue(outAmount);
+      calcOutAssetValue(value);
     }, 350);
 
     setTimer(newTimer);
   };
 
-  const onOutAssetChange = e => {
-    const regex =
-      assetName === 'eth'
-        ? /([0-9]*[.|,]{0,1}[0-9]{0,17})/s
-        : /([0-9]*[.|,]{0,1}[0-9]{0,5})/s;
-    const value = e.target.value.match(regex)[0];
-
-    if (value.length > 1 && value[0] === '0' && value[1] !== '.') {
-      setInAssetValue('0');
-      return;
-    }
-
-    setOutAssetValue(value);
-
+  const calcInAssetValue = value => {
     if (value !== '') {
       if (assetName === 'eth')
         setInAssetValue(
@@ -207,6 +198,21 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
     } else {
       setInAssetValue('');
     }
+  };
+  const onOutAssetChange = e => {
+    const regex =
+      assetName === 'eth'
+        ? /([0-9]*[.|,]{0,1}[0-9]{0,17})/s
+        : /([0-9]*[.|,]{0,1}[0-9]{0,5})/s;
+    const value = e.target.value.match(regex)[0];
+
+    if (value.length > 1 && value[0] === '0' && value[1] !== '.') {
+      setInAssetValue('0');
+      return;
+    }
+
+    setOutAssetValue(value);
+    calcInAssetValue(value);
   };
 
   const onConfirm = () => {
@@ -393,18 +399,68 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
             </div> */}
 
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <div>
+              <div
+                className="asset-balance"
+                onClick={() => {
+                  setInAssetValue(
+                    getReadableNumber(
+                      balance,
+                      ASSET[chainId || requiredChainId][assetName].decimal,
+                      false,
+                      4,
+                      1
+                    )
+                  );
+                  calcOutAssetValue(
+                    getReadableNumber(
+                      balance,
+                      ASSET[chainId || requiredChainId][assetName].decimal,
+                      false,
+                      4,
+                      1
+                    )
+                  );
+                }}
+              >
                 Balance :{' '}
                 {getReadableNumber(
                   balance,
-                  ASSET[chainId || requiredChainId][assetName].decimal
+                  ASSET[chainId || requiredChainId][assetName].decimal,
+                  true,
+                  4,
+                  1
                 )}
               </div>
-              <div>
+              <div
+                className="available-strk"
+                onClick={() => {
+                  setOutAssetValue(
+                    getReadableNumber(
+                      roundSold.offeringAmount - roundSold.strkAmount,
+                      0,
+                      false,
+                      4,
+                      1
+                    )
+                  );
+                  calcInAssetValue(
+                    getReadableNumber(
+                      roundSold.offeringAmount - roundSold.strkAmount,
+                      0,
+                      false,
+                      4,
+                      1
+                    )
+                  );
+                }}
+              >
                 Available :{' '}
                 {getReadableNumber(
                   roundSold.offeringAmount - roundSold.strkAmount,
-                  0
+                  0,
+                  true,
+                  4,
+                  1
                 )}{' '}
                 STRK
               </div>
