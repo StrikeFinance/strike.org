@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 import Countdown, { zeroPad } from 'react-countdown';
-import { Progress } from 'antd';
+import { Progress, Tooltip } from 'antd';
 import useRefresh from 'hooks/useRefresh';
 import { useSaleInfo } from 'hooks/useSaleInfo';
 import { useSoldInfo } from 'hooks/useSoldInfo';
 import { useWeb3, useActiveWeb3React } from 'hooks';
+import infoImg from 'assets/img/homepage/question.png';
 import SaleCard from './SaleCard';
 import ClaimCard from './ClaimCard';
 import './Sale.scss';
@@ -130,6 +131,37 @@ const Sale = () => {
               <div className="price">
                 Current round price:{' '}
                 <span className="high-light">{currentPrice}</span>
+                <Tooltip
+                  placement="top"
+                  title={
+                    <div>
+                      <div style={{ marginBottom: '10px' }}>
+                        Round 1 - start price $9.99 with 3 months vesting /
+                        vesting price $10.59 with 1 month vesting and 30%
+                        release at the end of the private round for 40k $STRK
+                      </div>
+                      <div style={{ marginBottom: '10px' }}>
+                        Round 2 - start price $10.29 with 3 months vesting /
+                        vesting price $10.89 with 1 month vesting and 30%
+                        release at the end of the private round for 30k $STRK
+                      </div>
+                      <div style={{ marginBottom: '10px' }}>
+                        Round 3 - start price $10.59 / vesting price $11.19 with
+                        20k $STRK
+                      </div>
+                      <div>
+                        Round 4 - start price $10.89 / vesting price $11.49 with
+                        10k $STRK
+                      </div>
+                    </div>
+                  }
+                >
+                  <img
+                    style={{ marginLeft: '10px' }}
+                    src={infoImg}
+                    alt="info"
+                  />
+                </Tooltip>
               </div>
             </div>
 
