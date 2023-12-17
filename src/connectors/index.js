@@ -20,7 +20,7 @@ const [web3CoinbaseWallet, web3CoinbaseWalletHooks] = initializeConnector(
       actions,
       options: {
         url: WEB3_PROVIDER[CHAIN_IDS[localStorage.getItem('network') || 0]],
-        appName: 'AquariusLoan'
+        appName: 'Strike'
         // appLogoUrl: coinbaseWallet,
         // reloadOnDisconnect: false,
       }
