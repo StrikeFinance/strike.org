@@ -5,8 +5,8 @@ import { CoinbaseWallet } from '@web3-react/coinbase-wallet';
 import { BitgetWallet } from './Bitkeep';
 import { WEB3_PROVIDER } from '../utilities/constants';
 
-const MAIN_CHAIN_IDS = [1, 42161, 56];
-const TEST_CHAIN_IDS = [5, 421613, 97];
+const MAIN_CHAIN_IDS = [1];
+const TEST_CHAIN_IDS = [5];
 export const CHAIN_IDS =
   process.env.REACT_APP_ENV === 'prod' ? MAIN_CHAIN_IDS : TEST_CHAIN_IDS;
 
@@ -20,7 +20,7 @@ const [web3CoinbaseWallet, web3CoinbaseWalletHooks] = initializeConnector(
       actions,
       options: {
         url: WEB3_PROVIDER[CHAIN_IDS[localStorage.getItem('network') || 0]],
-        appName: 'AquariusLoan'
+        appName: 'Strike'
         // appLogoUrl: coinbaseWallet,
         // reloadOnDisconnect: false,
       }
@@ -36,7 +36,7 @@ const [web3WalletConnect, web3WalletConnectHooks] = initializeConnector(
         chains: CHAIN_IDS,
         optionalChains: CHAIN_IDS,
         showQrModal: true,
-        rpcMap: [WEB3_PROVIDER[1], WEB3_PROVIDER[42161]]
+        rpcMap: [WEB3_PROVIDER[1]]
       }
     })
 );
