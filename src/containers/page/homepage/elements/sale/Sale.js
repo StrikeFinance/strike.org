@@ -167,9 +167,13 @@ const Sale = () => {
 
             <div className="progress-bar">
               <Progress
-                percent={Number(
-                  (roundSold.strkAmount / roundSold.offeringAmount) * 100
-                ).toFixed(2)}
+                percent={
+                  Number(roundSold.offeringAmount) > 0
+                    ? Number(
+                        (roundSold.strkAmount / roundSold.offeringAmount) * 100
+                      ).toFixed(2)
+                    : 0
+                }
                 strokeColor="#107DEF"
                 strokeWidth={18}
                 showInfo={false}
@@ -178,9 +182,11 @@ const Sale = () => {
 
             <div className="round-bar">
               <span className="sale-amount">
-                {Number(
-                  (roundSold.strkAmount / roundSold.offeringAmount) * 100
-                ).toFixed(2)}
+                {Number(roundSold.offeringAmount) > 0
+                  ? Number(
+                      (roundSold.strkAmount / roundSold.offeringAmount) * 100
+                    ).toFixed(2)
+                  : 0}
                 %
               </span>
               <span className="round">Round {round + 1}/4</span>
