@@ -6,6 +6,7 @@ import { Modal, Spin, Icon } from 'antd';
 import { useActiveWeb3React } from 'hooks';
 import strkImg from 'assets/img/homepage/strk.svg';
 import closeImg from 'assets/img/homepage/close.png';
+import { useTokenApproval } from 'hooks/useTokenApproval';
 import { useSaleAction } from 'hooks/useSaleAction';
 import { getReadableNumber } from 'utilities/common';
 import { ASSET } from 'utilities/constants';
@@ -95,17 +96,34 @@ function ConfirmModal({
   outAmount,
   ethPrice,
   visible,
+  approveReload,
+  setApproveReload,
   onCancel,
   onConfirm
 }) {
   const { account, chainId } = useActiveWeb3React();
   const { depositPool } = useSaleAction(chainId, account);
+  const { approveToken } = useTokenApproval(
+    chainId,
+    account,
+    inAsset,
+    approveReload
+  );
   const [pending, setPending] = useState();
 
   const handleConfirm = async () => {
     try {
       if (pending) return;
       setPending(true);
+      if (visible === 'approve') {
+        await approveToken(
+          new BigNumber(inAmount)
+            .times(new BigNumber(10).pow(ASSET[chainId][inAsset].decimal))
+            .toString(10)
+        );
+        setApproveReload();
+      }
+
       await depositPool(inAsset, pid, inAmount, vestingPlan);
       setPending(false);
       onCancel();
@@ -118,7 +136,7 @@ function ConfirmModal({
     <Modal
       className="connect-modal"
       width={480}
-      visible={visible}
+      visible={visible !== ''}
       onCancel={onCancel}
       footer={null}
       closable={false}
@@ -197,7 +215,9 @@ ConfirmModal.propTypes = {
   strkPrice: PropTypes.string,
   outAmount: PropTypes.string,
   ethPrice: PropTypes.number,
-  visible: PropTypes.bool,
+  visible: PropTypes.string,
+  approveReload: PropTypes.number,
+  setApproveReload: PropTypes.func,
   onCancel: PropTypes.func,
   onConfirm: PropTypes.func
 };
@@ -210,8 +230,10 @@ ConfirmModal.defaultProps = {
   planName: '',
   strkPrice: '',
   outAmount: '',
-  visible: false,
+  visible: '',
   ethPrice: 0,
+  approveReload: 0,
+  setApproveReload: () => {},
   onCancel: () => {},
   onConfirm: () => {}
 };
