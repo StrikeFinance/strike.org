@@ -298,9 +298,11 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
                   = STRK
                 </div>
                 <div>
-                  {saleInfo.poolInfos[round].shortVestingPercentage}%{' '}
-                  {saleInfo.poolInfos[round].shortVestingDuration} Months daily
-                  linear vesting
+                  {100 -
+                    Number(saleInfo.poolInfos[round].shortVestingPercentage)}
+                  % immediately release
+                  {/* {saleInfo.poolInfos[round].shortVestingDuration} Months daily
+                  linear vesting */}
                 </div>
               </div>
               <div
