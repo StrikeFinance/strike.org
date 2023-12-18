@@ -13,6 +13,7 @@ const initSalePoolInfo = [
     endTime: 0,
     offeringAmount: new BigNumber(0),
     soldAmount: new BigNumber(0),
+    minStrkAmount: new BigNumber(0),
     userLimitAmount: new BigNumber(0),
     shortPrice: new BigNumber(0),
     longPrice: new BigNumber(0),
@@ -28,6 +29,7 @@ const initSalePoolInfo = [
     endTime: 0,
     offeringAmount: new BigNumber(0),
     soldAmount: new BigNumber(0),
+    minStrkAmount: new BigNumber(0),
     userLimitAmount: new BigNumber(0),
     shortPrice: new BigNumber(0),
     longPrice: new BigNumber(0),
@@ -43,6 +45,7 @@ const initSalePoolInfo = [
     endTime: 0,
     offeringAmount: new BigNumber(0),
     soldAmount: new BigNumber(0),
+    minStrkAmount: new BigNumber(0),
     userLimitAmount: new BigNumber(0),
     shortPrice: new BigNumber(0),
     longPrice: new BigNumber(0),
@@ -58,6 +61,7 @@ const initSalePoolInfo = [
     endTime: 0,
     offeringAmount: new BigNumber(0),
     soldAmount: new BigNumber(0),
+    minStrkAmount: new BigNumber(0),
     userLimitAmount: new BigNumber(0),
     shortPrice: new BigNumber(0),
     longPrice: new BigNumber(0),
@@ -73,6 +77,7 @@ const initSalePoolInfo = [
   //   endTime: 0,
   //   offeringAmount: new BigNumber(0),
   //   soldAmount: new BigNumber(0),
+  //   minStrkAmount: new BigNumber(0),
   //   userLimitAmount: new BigNumber(0),
   //   shortPrice: new BigNumber(0),
   //   longPrice: new BigNumber(0),
@@ -271,6 +276,9 @@ export const useSaleInfo = (web3, chainId) => {
           soldAmount: new BigNumber(
             data.results.poolInfo0.callsReturnContext[0].returnValues[3].hex
           ),
+          minStrkAmount: new BigNumber(
+            data.results.poolInfo0.callsReturnContext[0].returnValues[4].hex
+          ),
           userLimitAmount: new BigNumber(
             data.results.poolInfo0.callsReturnContext[0].returnValues[5].hex
           ),
@@ -314,6 +322,9 @@ export const useSaleInfo = (web3, chainId) => {
           ),
           soldAmount: new BigNumber(
             data.results.poolInfo1.callsReturnContext[0].returnValues[3].hex
+          ),
+          minStrkAmount: new BigNumber(
+            data.results.poolInfo1.callsReturnContext[0].returnValues[4].hex
           ),
           userLimitAmount: new BigNumber(
             data.results.poolInfo1.callsReturnContext[0].returnValues[5].hex
@@ -359,6 +370,9 @@ export const useSaleInfo = (web3, chainId) => {
           soldAmount: new BigNumber(
             data.results.poolInfo2.callsReturnContext[0].returnValues[3].hex
           ),
+          minStrkAmount: new BigNumber(
+            data.results.poolInfo2.callsReturnContext[0].returnValues[4].hex
+          ),
           userLimitAmount: new BigNumber(
             data.results.poolInfo2.callsReturnContext[0].returnValues[5].hex
           ),
@@ -403,6 +417,9 @@ export const useSaleInfo = (web3, chainId) => {
           soldAmount: new BigNumber(
             data.results.poolInfo3.callsReturnContext[0].returnValues[3].hex
           ),
+          minStrkAmount: new BigNumber(
+            data.results.poolInfo3.callsReturnContext[0].returnValues[4].hex
+          ),
           userLimitAmount: new BigNumber(
             data.results.poolInfo3.callsReturnContext[0].returnValues[5].hex
           ),
@@ -446,6 +463,10 @@ export const useSaleInfo = (web3, chainId) => {
         //   ),
         //   soldAmount: new BigNumber(
         //     data.results.poolInfo4.callsReturnContext[0].returnValues[3].hex
+        //   ),
+
+        //   minStrkAmount: new BigNumber(
+        //     data.results.poolInfo4.callsReturnContext[0].returnValues[4].hex
         //   ),
         //   userLimitAmount: new BigNumber(
         //     data.results.poolInfo4.callsReturnContext[0].returnValues[5].hex
