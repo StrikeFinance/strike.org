@@ -22,6 +22,7 @@ import TxHistoryImg from 'assets/img/homepage/tx-history.svg';
 import infoImg from 'assets/img/homepage/question.png';
 
 import './ClaimCard.scss';
+import BigNumber from 'bignumber.js';
 
 const antIcon = (
   <Icon type="loading" style={{ fontSize: 18, marginRight: '5px' }} spin />
@@ -170,7 +171,9 @@ const ClaimCard = () => {
                           18
                         )
                       : getReadableNumber(
-                          userInfo.shortRewards[item].times(
+                          (
+                            userInfo.shortRewards[item] || new BigNumber(0)
+                          ).times(
                             (100 -
                               Number(
                                 saleInfo.poolInfos[item].longVestingPercentage
@@ -250,7 +253,9 @@ const ClaimCard = () => {
                           18
                         )
                       : getReadableNumber(
-                          userInfo.longRewards[item].times(
+                          (
+                            userInfo.longRewards[item] || new BigNumber(0)
+                          ).times(
                             (100 -
                               Number(
                                 saleInfo.poolInfos[item].longVestingPercentage
@@ -331,7 +336,7 @@ const ClaimCard = () => {
                         18
                       )
                     : getReadableNumber(
-                        userInfo.longRewards[item].times(
+                        (userInfo.longRewards[item] || new BigNumber(0)).times(
                           (100 -
                             Number(
                               saleInfo.poolInfos[item].longVestingPercentage

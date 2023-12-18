@@ -690,7 +690,7 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
                   ) : (
                     <div
                       className={`buy-btn ${
-                        // openStatus === 'Open' &&
+                        openStatus === 'Open' &&
                         new BigNumber(inAssetValue).gt(0) &&
                         new BigNumber(balance).gte(
                           new BigNumber(inAssetValue).times(
