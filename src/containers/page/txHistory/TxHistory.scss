@@ -4,7 +4,7 @@
     margin-bottom: 100px;
   
     @media screen and (max-width: 1960px) {
-      min-height: 100vh;
+      min-height: 800px;
     }
   
     @media screen and (max-width: 1200px) {
@@ -13,6 +13,10 @@
   
     @media screen and (max-width: 812px) {
       margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 768px) {
+      min-height: 100vh;
     }
   
     .tx-history-content {
