@@ -20,7 +20,7 @@ const Sale = () => {
   const { fastRefresh } = useRefresh();
   const saleInfo = useSaleInfo(web3, chainId || requiredChainId);
   const [timeToWait, setTimeToWait] = useState(new Date().getTime());
-  const [round, setRound] = useState(0);
+  const [round, setRound] = useState(-1);
   const [openStatus, setOpenStatus] = useState('Coming');
   const [currentPrice, setCurrentPrice] = useState('$0');
   const [roundSoldReload, setRoundSoldReload] = useState(0);
@@ -189,7 +189,9 @@ const Sale = () => {
                   : 0}
                 %
               </span>
-              <span className="round">Round {round + 1}/4</span>
+              <span className="round">
+                Round {round >= 0 ? round + 1 : '?'}/4
+              </span>
               <span className="raise-amount">100%</span>
             </div>
           </div>
