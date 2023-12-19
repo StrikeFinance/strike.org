@@ -19,6 +19,7 @@ export const useSoldInfo = (round, reload) => {
 
   useAsyncEffect(async () => {
     try {
+      if (round < 0) return;
       const totalData0 = await axios.post(
         constants.SUBGRAPH_API_URL[CHAIN_IDS[0]],
         {

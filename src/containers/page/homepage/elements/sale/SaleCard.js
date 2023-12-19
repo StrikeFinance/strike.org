@@ -82,18 +82,19 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
   );
 
   useEffect(() => {
-    setCurrentPrice(
-      `$ ${getReadableNumber(
-        vestingPlan === 0
-          ? saleInfo.poolInfos[round].shortPrice
-          : saleInfo.poolInfos[round].longPrice,
-        18
-      )}`
-    );
+    if (round >= 0)
+      setCurrentPrice(
+        `$ ${getReadableNumber(
+          vestingPlan === 0
+            ? saleInfo.poolInfos[round].shortPrice
+            : saleInfo.poolInfos[round].longPrice,
+          18
+        )}`
+      );
   }, [saleInfo, round, vestingPlan]);
 
   useEffect(() => {
-    if (account && saleInfo) {
+    if (account && saleInfo && round >= 0) {
       setUserPurchaseAvailable(
         saleInfo.poolInfos[round].userLimitAmount.div(1e18).minus(
           userInfo.shortRewards[round]
@@ -603,7 +604,7 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
               </div>
             </div>
 
-            <div>
+            <div className="limit-info">
               <div>
                 Maximum purchase amount:{' '}
                 {saleInfo.poolInfos[round].userLimitAmount.eq(0)
@@ -613,7 +614,16 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
                       18
                     )}`}
               </div>
-              <div>
+              <div
+                className={
+                  saleInfo.poolInfos[round].minStrkAmount.gt(0) &&
+                  new BigNumber(outAssetValue)
+                    .times(1e18)
+                    .lt(saleInfo.poolInfos[round].minStrkAmount)
+                    ? 'red'
+                    : ''
+                }
+              >
                 Minimum purchase amount:{' '}
                 {saleInfo.poolInfos[round].minStrkAmount.eq(0)
                   ? 'No limit'
@@ -658,6 +668,15 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
                     <div
                       className={`buy-btn ${
                         !pending &&
+                        new BigNumber(inAssetValue).gt(0) &&
+                        new BigNumber(balance).gte(
+                          new BigNumber(inAssetValue).times(
+                            new BigNumber(10).pow(
+                              ASSET[chainId || requiredChainId][assetName]
+                                .decimal
+                            )
+                          )
+                        ) &&
                         (saleInfo.poolInfos[round].userLimitAmount.eq(0) ||
                           userPurchaseAvailable.gte(inAmountInUSD)) &&
                         (saleInfo.poolInfos[round].minStrkAmount.eq(0) ||
@@ -670,6 +689,15 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
                       onClick={() => {
                         if (
                           !pending &&
+                          new BigNumber(inAssetValue).gt(0) &&
+                          new BigNumber(balance).gte(
+                            new BigNumber(inAssetValue).times(
+                              new BigNumber(10).pow(
+                                ASSET[chainId || requiredChainId][assetName]
+                                  .decimal
+                              )
+                            )
+                          ) &&
                           (saleInfo.poolInfos[round].userLimitAmount.eq(0) ||
                             userPurchaseAvailable.gte(inAmountInUSD)) &&
                           (saleInfo.poolInfos[round].minStrkAmount.eq(0) ||

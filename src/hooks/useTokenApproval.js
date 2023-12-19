@@ -36,10 +36,12 @@ export const useTokenApproval = (chainId, account, assetName, reload) => {
             [constants.CONTRACT_ADDRESS[chainId].sale, amount],
             account
           );
+          return true;
         } catch (error) {
           console.log(error);
         }
       }
+      return false;
     },
     [tokenContract, chainId, account]
   );
