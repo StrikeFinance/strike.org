@@ -34,10 +34,12 @@ export const useSaleAction = (chainId, account) => {
               ? new BigNumber(amount).times(1e18).toString(10)
               : null
           );
+          return 'success';
         } catch (error) {
-          console.log(error);
+          if (error.code === 4001) return 'reject';
         }
       }
+      return 'fail';
     },
     [saleContract, chainId]
   );
