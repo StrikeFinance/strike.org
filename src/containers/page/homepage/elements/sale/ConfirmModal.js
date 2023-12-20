@@ -115,7 +115,7 @@ function ConfirmModal({
     try {
       if (pending) return;
       setPending(true);
-      let result = true;
+      let result = 'success';
       if (visible === 'approve') {
         result = await approveToken(
           new BigNumber(inAmount)
@@ -125,12 +125,12 @@ function ConfirmModal({
         setApproveReload();
       }
 
-      if (result) {
-        await depositPool(inAsset, pid, inAmount, vestingPlan);
+      if (result === 'success') {
+        result = await depositPool(inAsset, pid, inAmount, vestingPlan);
       }
       setPending(false);
       onCancel();
-      onConfirm();
+      onConfirm(result);
     } catch (error) {
       setPending(false);
     }

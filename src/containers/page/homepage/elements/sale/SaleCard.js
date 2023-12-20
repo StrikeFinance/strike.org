@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { compose } from 'recompose';
 import { initOnRamp } from '@coinbase/cbpay-js';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { Spin, Icon } from 'antd';
 import BigNumber from 'bignumber.js';
 import ConnectWalletButton from 'components/ConnectWalletButton';
@@ -65,6 +66,7 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
     new BigNumber(0)
   );
   const [inAmountInUSD, setInAmountInUSD] = useState(new BigNumber(0));
+  const [purchaseEnable, setPurchaseEnable] = useState(false);
 
   const [tokenBalanceReload, setTokenBalanceReload] = useState(0);
   const [approveReload, setApproveReload] = useState(0);
@@ -109,6 +111,45 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
       );
     }
   }, [saleInfo, userInfo, round, account]);
+
+  useEffect(() => {
+    if (round >= 0)
+      setPurchaseEnable(
+        !pending &&
+          openStatus === 'Open' &&
+          new BigNumber(inAssetValue).gt(0) &&
+          new BigNumber(balance).gte(
+            new BigNumber(inAssetValue).times(
+              new BigNumber(10).pow(
+                ASSET[chainId || requiredChainId][assetName].decimal
+              )
+            )
+          ) &&
+          (!saleInfo.poolInfos[round].whitelistEnable ||
+            (saleInfo.poolInfos[round].whitelistEnable &&
+              userInfo.isWhitelisted)) &&
+          (saleInfo.poolInfos[round].userLimitAmount.eq(0) ||
+            userPurchaseAvailable.gte(inAmountInUSD)) &&
+          (saleInfo.poolInfos[round].minStrkAmount.eq(0) ||
+            new BigNumber(outAssetValue)
+              .times(1e18)
+              .gte(saleInfo.poolInfos[round].minStrkAmount)) &&
+          Number(outAssetValue) <=
+            Number(roundSold.offeringAmount - roundSold.strkAmount)
+      );
+  }, [
+    openStatus,
+    userInfo,
+    saleInfo,
+    roundSold,
+    inAssetValue,
+    outAssetValue,
+    balance,
+    userPurchaseAvailable,
+    inAmountInUSD,
+    round,
+    pending
+  ]);
 
   useEffect(() => {
     if (assetName === 'eth')
@@ -251,14 +292,25 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
     calcInAssetValue(value);
   };
 
-  const onConfirm = () => {
-    setPending(false);
-    onSoldReload();
-    setUserInfoReload(prevState => prevState + 1);
-    setTokenBalanceReload(prevState => prevState + 1);
-    setRoundSoldReload(prevState => prevState + 1);
-    setInAssetValue('');
-    setOutAssetValue('');
+  const onConfirm = status => {
+    if (status === 'success') {
+      onSoldReload();
+      setUserInfoReload(prevState => prevState + 1);
+      setTokenBalanceReload(prevState => prevState + 1);
+      setRoundSoldReload(prevState => prevState + 1);
+      setInAssetValue('');
+      setOutAssetValue('');
+      toast.success('Purchased successfully!', {
+        theme: 'colored'
+      });
+    } else if (status === 'reject') {
+      toast.error('User denied transaction signature.', {
+        theme: 'colored'
+      });
+    } else if (status === 'fail')
+      toast.error('Purchase failed unexpectedly.', {
+        theme: 'colored'
+      });
   };
 
   // const onApprove = async () => {
@@ -605,7 +657,14 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
             </div>
 
             <div className="limit-info">
-              <div>
+              <div
+                className={
+                  saleInfo.poolInfos[round].userLimitAmount.gt(0) &&
+                  userPurchaseAvailable.lt(inAmountInUSD)
+                    ? 'red'
+                    : ''
+                }
+              >
                 Maximum purchase amount:{' '}
                 {saleInfo.poolInfos[round].userLimitAmount.eq(0)
                   ? 'No limit'
@@ -637,7 +696,14 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
                     )}`}
               </div>
               {account && (
-                <div>
+                <div
+                  className={
+                    saleInfo.poolInfos[round].userLimitAmount.gt(0) &&
+                    userPurchaseAvailable.lt(inAmountInUSD)
+                      ? 'red'
+                      : ''
+                  }
+                >
                   Your purchased amount: $
                   {getReadableNumber(
                     userInfo.shortRewards[round]
@@ -666,45 +732,9 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
                     )
                   ) ? (
                     <div
-                      className={`buy-btn ${
-                        !pending &&
-                        new BigNumber(inAssetValue).gt(0) &&
-                        new BigNumber(balance).gte(
-                          new BigNumber(inAssetValue).times(
-                            new BigNumber(10).pow(
-                              ASSET[chainId || requiredChainId][assetName]
-                                .decimal
-                            )
-                          )
-                        ) &&
-                        (saleInfo.poolInfos[round].userLimitAmount.eq(0) ||
-                          userPurchaseAvailable.gte(inAmountInUSD)) &&
-                        (saleInfo.poolInfos[round].minStrkAmount.eq(0) ||
-                          new BigNumber(outAssetValue)
-                            .times(1e18)
-                            .gte(saleInfo.poolInfos[round].minStrkAmount))
-                          ? 'enable'
-                          : ''
-                      }`}
+                      className={`buy-btn ${purchaseEnable ? 'enable' : ''}`}
                       onClick={() => {
-                        if (
-                          !pending &&
-                          new BigNumber(inAssetValue).gt(0) &&
-                          new BigNumber(balance).gte(
-                            new BigNumber(inAssetValue).times(
-                              new BigNumber(10).pow(
-                                ASSET[chainId || requiredChainId][assetName]
-                                  .decimal
-                              )
-                            )
-                          ) &&
-                          (saleInfo.poolInfos[round].userLimitAmount.eq(0) ||
-                            userPurchaseAvailable.gte(inAmountInUSD)) &&
-                          (saleInfo.poolInfos[round].minStrkAmount.eq(0) ||
-                            new BigNumber(outAssetValue)
-                              .times(1e18)
-                              .gte(saleInfo.poolInfos[round].minStrkAmount))
-                        ) {
+                        if (purchaseEnable) {
                           setPending(true);
                           setConfirmModalOpen('approve');
                         }
@@ -717,54 +747,17 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
                     </div>
                   ) : (
                     <div
-                      className={`buy-btn ${
-                        openStatus === 'Open' &&
-                        new BigNumber(inAssetValue).gt(0) &&
-                        new BigNumber(balance).gte(
-                          new BigNumber(inAssetValue).times(
-                            new BigNumber(10).pow(
-                              ASSET[chainId || requiredChainId][assetName]
-                                .decimal
-                            )
-                          )
-                        ) &&
-                        (!saleInfo.poolInfos[round].whitelistEnable ||
-                          (saleInfo.poolInfos[round].whitelistEnable &&
-                            userInfo.isWhitelisted)) &&
-                        (saleInfo.poolInfos[round].userLimitAmount.eq(0) ||
-                          userPurchaseAvailable.gte(inAmountInUSD)) &&
-                        (saleInfo.poolInfos[round].minStrkAmount.eq(0) ||
-                          new BigNumber(outAssetValue)
-                            .times(1e18)
-                            .gte(saleInfo.poolInfos[round].minStrkAmount))
-                          ? 'enable'
-                          : ''
-                      }`}
+                      className={`buy-btn ${purchaseEnable ? 'enable' : ''}`}
                       onClick={() => {
-                        if (
-                          openStatus === 'Open' &&
-                          new BigNumber(inAssetValue).gt(0) &&
-                          new BigNumber(balance).gte(
-                            new BigNumber(inAssetValue).times(
-                              new BigNumber(10).pow(
-                                ASSET[chainId || requiredChainId][assetName]
-                                  .decimal
-                              )
-                            )
-                          ) &&
-                          (!saleInfo.poolInfos[round].whitelistEnable ||
-                            (saleInfo.poolInfos[round].whitelistEnable &&
-                              userInfo.isWhitelisted)) &&
-                          (saleInfo.poolInfos[round].userLimitAmount.eq(0) ||
-                            userPurchaseAvailable.gte(inAmountInUSD)) &&
-                          (saleInfo.poolInfos[round].minStrkAmount.eq(0) ||
-                            new BigNumber(outAssetValue)
-                              .times(1e18)
-                              .gte(saleInfo.poolInfos[round].minStrkAmount))
-                        )
+                        if (purchaseEnable) {
+                          setPending(true);
                           setConfirmModalOpen('buy');
+                        }
                       }}
                     >
+                      {pending && (
+                        <Spin className="spinner" indicator={antIcon} />
+                      )}
                       Buy Now
                     </div>
                   )}
@@ -820,7 +813,7 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
           setApproveReload={() => setApproveReload(prevState => prevState + 1)}
           approveReload={approveReload}
           ethPrice={saleInfo.ethPrice}
-          onConfirm={() => onConfirm()}
+          onConfirm={status => onConfirm(status)}
         />
       )}
     </div>
