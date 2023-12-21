@@ -606,7 +606,7 @@ function Section3({
     setSetting({
       ...setSetting,
       selectedAddress: item.address,
-      markets: markets.markets
+      markets: markets.markets.filter(m => m.deprecated === false)
     });
     history.push(`/market/${item.underlyingSymbol}`);
   };
@@ -663,7 +663,7 @@ function Section3({
               </TableHead>
 
               <TableBody>
-                {markets.markets.map((item, index) => {
+                {markets.markets.filter(m => m.deprecated === false).map((item, index) => {
                   return (
                     <TableRow key={index}>
                       <TableCell width="20%" className="tableCellBody">
