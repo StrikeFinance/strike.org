@@ -79,7 +79,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
     if (!res.status) {
       return;
     }
-    setMarkets(res.data.markets);
+    setMarkets(res.data.markets.filter(m => m.deprecated === false));
   };
 
   const getGovernanceFunc = async () => {
@@ -123,7 +123,7 @@ function Home({ history, getGovernanceStrike, getDecimals, setSetting, getGovern
     <MainLayout isHeader={false}>
       {data && governance && markets ? (
         <HomeWrapper>
-          <Section1 markets={markets} />
+          <Section1 markets={markets.filter(m => m.deprecated === false)} />
           <Section2 data={data} />
           <Section3 markets={section3Market} governance={governance} total={data.total} onChangePage={handleChangePage} setSetting={setSetting} />
           <Section4 />
