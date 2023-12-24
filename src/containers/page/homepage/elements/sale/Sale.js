@@ -90,8 +90,8 @@ const Sale = ({ xmasSale, claim }) => {
   };
 
   if (
-    (xmasSale && round === 4 && openStatus !== 'Done') ||
-    (((round === 4 && openStatus === 'Done') || account) && claim)
+    (xmasSale && ((round === 4 && openStatus !== 'Done') || round < 4)) ||
+    ((openStatus === 'Done' || account) && claim)
   )
     return (
       <div className="sale-homepage">
