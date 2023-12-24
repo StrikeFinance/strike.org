@@ -1,25 +1,7 @@
-import Web3 from 'web3';
+import { Multicall } from 'ethereum-multicall';
 import * as constants from './constants';
-
-const instance = new Web3(window.ethereum);
-// const instance = new Web3('http://3.10.133.254:8575');
-
-const TOKEN_ABI = {
-  usdc: constants.CONTRACT_USDC_TOKEN_ABI,
-  usdt: constants.CONTRACT_USDT_TOKEN_ABI,
-  busd: constants.CONTRACT_BUSD_TOKEN_ABI,
-  strk: constants.CONTRACT_STRK_TOKEN_ABI,
-  sxp: constants.CONTRACT_SXP_TOKEN_ABI,
-  wbtc: constants.CONTRACT_WBTC_TOKEN_ABI,
-  link: constants.CONTRACT_LINK_TOKEN_ABI,
-  comp: constants.CONTRACT_COMP_TOKEN_ABI,
-  uni: constants.CONTRACT_UNI_TOKEN_ABI,
-  ape: constants.CONTRACT_APE_TOKEN_ABI,
-  ust: constants.CONTRACT_UST_TOKEN_ABI,
-  dai: constants.CONTRACT_DAI_TOKEN_ABI,
-  xcn: constants.CONTRACT_XCN_TOKEN_ABI,
-  wsteth: constants.CONTRACT_WSTETH_TOKEN_ABI
-};
+import erc20Abi from './abis/erc20.json';
+import saleAbi from './abis/sale.json';
 
 const call = (method, params) => {
   return new Promise((resolve, reject) => {
@@ -34,10 +16,10 @@ const call = (method, params) => {
   });
 };
 
-const send = (method, params, from) => {
+const send = (method, params, from, value = null) => {
   return new Promise((resolve, reject) => {
     method(...params)
-      .send({ from })
+      .send({ from, value: value || undefined })
       .then(res => {
         resolve(res);
       })
@@ -47,53 +29,30 @@ const send = (method, params, from) => {
   });
 };
 
-export const getTokenContract = name => {
-  return new instance.eth.Contract(
-    JSON.parse(TOKEN_ABI[name]),
-    constants.CONTRACT_TOKEN_ADDRESS[name || 'usdc'].address
+const ethMulticall = (web3, contractCallContext) => {
+  const multicall = new Multicall({
+    web3Instance: web3,
+    tryAggregate: true
+  });
+  return multicall.call(contractCallContext);
+};
+
+export const getTokenContract = (web3, assetName, chainId = 1) => {
+  return new web3.eth.Contract(
+    erc20Abi,
+    constants.CONTRACT_ADDRESS[chainId][assetName]
   );
 };
 
-export const getSbepContract = name => {
-  return new instance.eth.Contract(
-    JSON.parse(
-      name !== 'eth' ? constants.CONTRACT_SBEP_ABI : constants.CONTRACT_SETH_ABI
-    ),
-    constants.CONTRACT_SBEP_ADDRESS[name || 'usdc'].address
-  );
-};
-
-export const getComptrollerContract = () => {
-  return new instance.eth.Contract(
-    JSON.parse(constants.CONTRACT_COMPTROLLER_ABI),
-    constants.CONTRACT_COMPTROLLER_ADDRESS
-  );
-};
-
-export const getPriceOracleContract = (
-  address = constants.CONTRACT_PRICE_ORACLE_ADDRESS
-) => {
-  return new instance.eth.Contract(
-    JSON.parse(constants.CONTRACT_PRICE_ORACLE_ABI),
-    address
-  );
-};
-
-export const getVoteContract = () => {
-  return new instance.eth.Contract(
-    JSON.parse(constants.CONTRACT_VOTE_ABI),
-    constants.CONTRACT_VOTE_ADDRESS
-  );
-};
-
-export const getInterestModelContract = address => {
-  return new instance.eth.Contract(
-    JSON.parse(constants.CONTRACT_INTEREST_MODEL_ABI),
-    address
+export const getSaleContract = (web3, chainId = 1) => {
+  return new web3.eth.Contract(
+    saleAbi,
+    constants.CONTRACT_ADDRESS[chainId].sale
   );
 };
 
 export const methods = {
   call,
-  send
+  send,
+  ethMulticall
 };

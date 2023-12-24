@@ -647,22 +647,30 @@ function Section2({ history, data }) {
 
   useEffect(() => {
     if (data.markets && data.marketVolumeLog && data.dailyStrike) {
-      const tempTS = (data.markets || []).reduce((accumulator, market) => {
-        return new BigNumber(accumulator).plus(
-          new BigNumber(market.totalSupplyUsd)
-        );
-      }, 0);
-      const tempSC = (data.markets || []).reduce((accumulator, market) => {
-        return accumulator + market.supplierCount;
-      }, 0);
-      const tempTB = (data.markets || []).reduce((accumulator, market) => {
-        return new BigNumber(accumulator).plus(
-          new BigNumber(market.totalBorrowsUsd)
-        );
-      }, 0);
-      const tempBC = (data.markets || []).reduce((accumulator, market) => {
-        return accumulator + market.borrowerCount;
-      }, 0);
+      const tempTS = (data.markets || [])
+        .filter(m => m.deprecated === false)
+        .reduce((accumulator, market) => {
+          return new BigNumber(accumulator).plus(
+            new BigNumber(market.totalSupplyUsd)
+          );
+        }, 0);
+      const tempSC = (data.markets || [])
+        .filter(m => m.deprecated === false)
+        .reduce((accumulator, market) => {
+          return accumulator + market.supplierCount;
+        }, 0);
+      const tempTB = (data.markets || [])
+        .filter(m => m.deprecated === false)
+        .reduce((accumulator, market) => {
+          return new BigNumber(accumulator).plus(
+            new BigNumber(market.totalBorrowsUsd)
+          );
+        }, 0);
+      const tempBC = (data.markets || [])
+        .filter(m => m.deprecated === false)
+        .reduce((accumulator, market) => {
+          return accumulator + market.borrowerCount;
+        }, 0);
       setTotalSupply(tempTS.dp(2, 1).toString(10));
       setSupplierCount(tempSC);
       setTotalBorrow(tempTB.dp(2, 1).toString(10));
@@ -697,11 +705,7 @@ function Section2({ history, data }) {
             <div className="progress-bar">
               {data.markets &&
                 (data.markets || [])
-                  .filter(
-                    m =>
-                      m.underlyingSymbol !== 'ZRX' &&
-                      m.underlyingSymbol !== 'BAT'
-                  )
+                  .filter(m => m.deprecated === false)
                   .sort((a, b) => {
                     return +new BigNumber(b.totalBorrowsUsd)
                       .minus(new BigNumber(a.totalBorrowsUsd))
@@ -773,11 +777,7 @@ function Section2({ history, data }) {
             <div className="progress-bar">
               {data.markets &&
                 (data.markets || [])
-                  .filter(
-                    m =>
-                      m.underlyingSymbol !== 'ZRX' &&
-                      m.underlyingSymbol !== 'BAT'
-                  )
+                  .filter(m => m.deprecated === false)
                   .sort((a, b) => {
                     return +new BigNumber(b.totalBorrowsUsd)
                       .minus(new BigNumber(a.totalBorrowsUsd))

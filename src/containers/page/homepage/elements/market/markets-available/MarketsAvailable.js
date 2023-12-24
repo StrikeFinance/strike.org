@@ -57,7 +57,7 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
       limit: 30
     });
     const data = res?.data.markets
-      .filter(m => m.underlyingSymbol !== 'ZRX' && m.underlyingSymbol !== 'BAT')
+      .filter(m => m.deprecated === false)
       .map(market => {
         return {
           ...market,

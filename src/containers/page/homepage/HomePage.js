@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'recompose';
 import React, { useEffect, useState } from 'react';
 import { bindActionCreators } from 'redux';
+import { ToastContainer } from 'react-toastify';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
 import LoadingSpinner from 'components/Basic/LoadingSpinner';
 import { accountActionCreators } from 'core/modules/account/actions';
@@ -17,6 +18,8 @@ import './HomePage.scss';
 import Partner from './elements/partner/Partner';
 import Exchange from './elements/exchange/Exchange';
 import Blogs from './elements/blogs/Blogs';
+import Sale from './elements/sale/Sale';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = ({ getGovernanceStrike, setSetting }) => {
   const [markets, setmarkets] = useState();
@@ -43,6 +46,8 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
   return (
     <WrapLayout>
       <div className="main-container">
+        <Sale xmasSale />
+        <Sale claim />
         <Banner markets={markets} />
         <Partner />
         {markets ? (
@@ -62,6 +67,7 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
         <Exchange />
         <Blogs />
         <Faq />
+        <ToastContainer />
       </div>
     </WrapLayout>
   );

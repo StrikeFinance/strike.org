@@ -46,8 +46,8 @@ const MarketDetail = ({
     if (!res.status) {
       return;
     }
-    if (res.data.markets && res.data.markets.length > 0 && currentAsset) {
-      const info = res.data.markets.find(
+    if (res.data.markets && res.data.markets.filter(m => m.deprecated === false).length > 0 && currentAsset) {
+      const info = res.data.markets.filter(m => m.deprecated === false).find(
         item => item.underlyingSymbol.toLowerCase() === currentAsset
       );
       setmarketInfo(info || {});
