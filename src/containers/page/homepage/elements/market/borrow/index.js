@@ -30,10 +30,7 @@ function TotalBorrow(props) {
             <Typography className="top-markets">Top 3 Markets</Typography>
             {markets.markets &&
               (markets.markets || [])
-                .filter(
-                  m =>
-                    m.underlyingSymbol !== 'ZRX' && m.underlyingSymbol !== 'BAT'
-                )
+                .filter(m => m.deprecated === false)
                 .sort((a, b) => {
                   return +new BigNumber(b.totalBorrowsUsd)
                     .minus(new BigNumber(a.totalBorrowsUsd))
