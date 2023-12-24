@@ -1,7 +1,12 @@
 .sale-homepage {
-  max-height: 1000px;
+  // max-height: 1000px;
   padding-top: 86px;
-  padding-bottom: 58px;
+  // padding-bottom: 58px;
+
+  .christmas-banner {
+    width: 100%;
+    margin-top: -30px;
+  }
 
   @media screen and (max-width: 1960px) {
     min-height: 800px;
@@ -13,17 +18,30 @@
 
   @media screen and (max-width: 768px) {
     min-height: 100vh;
+    .christmas-banner {
+      width: 100%;
+      margin-top: unset;
+    }
   }
 
-  .sale-content {
-    height: calc(100vh - 170px);
-    padding: 70px 120px 0px;
-    display: flex;
-    justify-content: space-between;
+  .sale-content-wrapper {
+    padding: 70px 120px 0px;   
 
     @media screen and (max-width: 1400px) {
       padding: 70px 50px 0px;
-      height: 100%;
+    }
+
+    @media screen and (max-width: 812px) {
+      padding: 50px 20px 0px;      
+    }
+  }
+  
+  .sale-content {
+    display: flex;
+    justify-content: space-between;
+    z-index: 50;
+
+    @media screen and (max-width: 1400px) {
     }
 
     @media screen and (max-width: 1200px) {
@@ -33,7 +51,6 @@
     }
 
     @media screen and (max-width: 812px) {
-      padding: 0px 20px;
     }
 
     .left {
@@ -42,18 +59,40 @@
       justify-content: space-between;
       max-width: 550px;
       max-height: 720px;
+      position: relative;
 
-      @media screen and (max-width: 812px) {
+      .santa-hat {
+        width: 120px;
+        position: absolute;
+        left: -85px;
+        top: -80px;
+      }
+
+      
+      @media screen and (max-width: 1400px) {
+        .santa-hat {
+          left: -65px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        max-height: unset;
+        .santa-hat {
+          width: 80px;
+          left: -30px;
+          top: -50px;
+        }
       }
 
       .title {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 400;
         color: var(--color-text-main);
       }
   
       .sub-title {
-        font-size: 48px;
+        padding: 10px 0px;
+        font-size: 26px;
         font-weight: 700;
   
         .text-highlight {
@@ -61,37 +100,18 @@
         }
   
         @media screen and (max-width: 1440px) {
-          .text-highlight {
-            font-size: 45px;
-          }
         }
   
         @media screen and (max-width: 1200px) {
-          font-size: 33px;
-          .text-highlight {
-            font-size: 40px;
-          }
         }
   
         @media screen and (max-width: 1024px) {
-          font-size: 30px;
-          .text-highlight {
-            font-size: 36px;
-          }
         }
   
         @media screen and (max-width: 812px) {
-          font-size: 33px;
-          .text-highlight {
-            font-size: 40px;
-          }
         }
   
         @media screen and (max-width: 480px) {
-          font-size: 28px;
-          .text-highlight {
-            font-size: 36px;
-          }
         }
       }
   

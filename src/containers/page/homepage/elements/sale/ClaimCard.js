@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
@@ -28,7 +29,7 @@ const antIcon = (
   <Icon type="loading" style={{ fontSize: 18, marginRight: '5px' }} spin />
 );
 
-const ClaimCard = () => {
+const ClaimCard = ({ xmasSaleDone }) => {
   // const currentNetworkId =
   //   useSelector(({ application }) => application.currentNetworkId) ||
   //   localStorage.getItem('network');
@@ -165,7 +166,7 @@ const ClaimCard = () => {
               </div>
               <span className="desktop-long">Vesting 2</span>
             </div>
-            {[0, 1, 2, 3].map(item => (
+            {(xmasSaleDone ? [0, 1, 2, 3, 4] : [0, 1, 2, 3]).map(item => (
               <div className="round-row" key={`round-row-${item}`}>
                 <spa className="round">Round {item + 1}</spa>
                 <div className="rewards">
@@ -181,7 +182,7 @@ const ClaimCard = () => {
                           ).times(
                             (100 -
                               Number(
-                                saleInfo.poolInfos[item].longVestingPercentage
+                                saleInfo.poolInfos[item].shortVestingPercentage
                               )) /
                               100
                           ),

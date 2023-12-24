@@ -342,12 +342,18 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
           </div>
           <img src={StrkLogoImg} className="logo" alt="logo" />
           {(round > 0 || openStatus === 'Done') && (
-            <NavLink to="/history" style={{ width: '100%' }}>
-              <div className="history-btn">
-                <img src={TxHistoryImg} alt="tx-history" />
-                Transaction History
+            <>
+              <NavLink to="/history" style={{ width: '100%' }}>
+                <div className="history-btn">
+                  <img src={TxHistoryImg} alt="tx-history" />
+                  Transaction History
+                </div>
+              </NavLink>
+
+              <div className="connect-btn">
+                <ConnectWalletButton />
               </div>
-            </NavLink>
+            </>
           )}
         </div>
       ) : (
