@@ -154,8 +154,8 @@ function MarketDetail({ match, settings, getMarketHistory }) {
   );
 
   const getGovernanceData = useCallback(async () => {
-    if (settings.markets && settings.markets.length > 0 && currentAsset) {
-      const info = settings.markets.find(
+    if (settings.markets && settings.markets.filter(m => m.deprecated === false).length > 0 && currentAsset) {
+      const info = settings.markets.filter(m => m.deprecated === false).find(
         item => item.underlyingSymbol.toLowerCase() === currentAsset
       );
       setMarketInfo(info || {});
