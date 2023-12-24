@@ -67,23 +67,26 @@ export const getBigNumber = value => {
   return new BigNumber(value);
 };
 
-export const checkIsValidNetwork = () => {
-  if (window.ethereum) {
-    const netId = window.ethereum.networkVersion
-      ? +window.ethereum.networkVersion
-      : +window.ethereum.chainId;
-    if (netId) {
-      if (netId === 1 || netId === 3) {
-        if (netId === 3 && process.env.REACT_APP_ENV === 'prod') {
-          return false;
-        }
-        if (netId === 1 && process.env.REACT_APP_ENV === 'dev') {
-          return false;
-        }
-        return true;
-      }
-      return false;
-    }
-  }
-  return false;
+export const getReadableNumber = (
+  number,
+  decimal = 0,
+  formatFlag = true,
+  position = 2,
+  round = 0
+) => {
+  if (formatFlag)
+    return format(
+      getBigNumber(number)
+        .div(new BigNumber(10).pow(decimal))
+        .dp(position, round)
+        .toString(10)
+    );
+  return getBigNumber(number)
+    .div(new BigNumber(10).pow(decimal))
+    .dp(position, round)
+    .toString(10);
 };
+
+export function shortenAddr(addr, first = 6, last = 4) {
+  return [String(addr).slice(0, first), String(addr).slice(-last)].join('...');
+}

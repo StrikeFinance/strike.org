@@ -21,10 +21,12 @@ const Banner = ({ markets }) => {
                 {new Intl.NumberFormat({
                   maximumSignificantDigits: 3
                 }).format(
-                  markets?.markets.reduce(
-                    (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
-                    new BigNumber('0')
-                  )
+                  markets?.markets
+                    .filter(m => m.deprecated === false)
+                    .reduce(
+                      (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
+                      new BigNumber('0')
+                    )
                 )}
               </span>
             ) : (
@@ -34,7 +36,9 @@ const Banner = ({ markets }) => {
             )}{' '}
             TVL across{' '}
             {markets ? (
-              <span className="text-highlight">{markets?.markets.length}</span>
+              <span className="text-highlight">
+                {markets?.markets.filter(m => m.deprecated === false).length}
+              </span>
             ) : (
               <div className="load-wraper2">
                 <div className="activity" />
