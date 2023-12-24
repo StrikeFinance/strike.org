@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router';
@@ -9,13 +11,15 @@ import { useSaleInfo } from 'hooks/useSaleInfo';
 import { useSoldInfo } from 'hooks/useSoldInfo';
 import { useWeb3, useActiveWeb3React } from 'hooks';
 import infoImg from 'assets/img/homepage/question.png';
+import santaHatImg from 'assets/img/homepage/santa-hat.svg';
+import christmasBannerImg from 'assets/img/homepage/christmas-banner.svg';
 import SaleCard from './SaleCard';
 import ClaimCard from './ClaimCard';
 import './Sale.scss';
 
-const Sale = () => {
+const Sale = ({ xmasSale, claim }) => {
   const totalRaiseStrk = process.env.REACT_APP_TOTAL_RAISE_STRK;
-  const { chainId, requiredChainId } = useActiveWeb3React();
+  const { account, chainId, requiredChainId } = useActiveWeb3React();
   const web3 = useWeb3();
   const { fastRefresh } = useRefresh();
   const saleInfo = useSaleInfo(web3, chainId || requiredChainId);
@@ -51,7 +55,7 @@ const Sale = () => {
         setRound(i);
         setOpenStatus('Open');
         break;
-      } else if (i === 3) {
+      } else if (i === 4) {
         setTimeToWait(new Date().getTime());
         setRound(i);
         setOpenStatus('Done');
@@ -85,134 +89,210 @@ const Sale = () => {
     );
   };
 
-  return (
-    <div className="sale-homepage">
-      <div className="sale-content">
-        <div className="left">
-          <div>
-            <div className="title">
-              WE ARE ABOUT TO CONQUER WEB3
-              <div className="sub-title">
-                <span className="text-highlight">STRK Sale</span> IS HERE
-              </div>
-            </div>
-            <div className="description">
-              After four years of relentless development, we are approaching the
-              goal of our mission. Our objectives are ambitious, aiming beyond
-              the ordinary.
-            </div>
-            <div className="register-link">
-              Register{' '}
-              <a
-                href="https://forms.gle/bVgJeV6Bo9SWR6bk8"
-                target="_blank"
-                rel="noreferrer"
-              >
-                here
-              </a>{' '}
-              for the Elite Group
-            </div>
-          </div>
-
-          <div>
-            <div className="status">
-              <span className={`dot ${openStatus}`} />
-              <span>{openStatus.toUpperCase()}</span>
-            </div>
-
-            <Countdown
-              key={`timer_${timeToWait}`}
-              date={timeToWait}
-              renderer={renderer}
-            />
-
-            <div className="price-bar">
-              <div className="label" />
-              <div className="price">
-                Current round price:{' '}
-                <span className="high-light">{currentPrice}</span>
-                <Tooltip
-                  placement="top"
-                  title={
-                    <div>
-                      <div style={{ marginBottom: '10px' }}>
-                        Round 1 - start price $9.99 with 3 months vesting /
-                        vesting price $10.59 with 1 month vesting and 30%
-                        release at the end of the private round for 40k $STRK
-                      </div>
-                      <div style={{ marginBottom: '10px' }}>
-                        Round 2 - start price $10.29 with 3 months vesting /
-                        vesting price $10.89 with 1 month vesting and 30%
-                        release at the end of the private round for 30k $STRK
-                      </div>
-                      <div style={{ marginBottom: '10px' }}>
-                        Round 3 - start price $10.59 / vesting price $11.19 with
-                        20k $STRK
-                      </div>
-                      <div>
-                        Round 4 - start price $10.89 / vesting price $11.49 with
-                        10k $STRK
-                      </div>
-                    </div>
-                  }
-                >
+  if (
+    (xmasSale && round === 4 && openStatus !== 'Done') ||
+    (((round === 4 && openStatus === 'Done') || account) && claim)
+  )
+    return (
+      <div className="sale-homepage">
+        <div className="sale-content-wrapper">
+          <div className="sale-content">
+            <div className="left">
+              {xmasSale ? (
+                <div>
                   <img
-                    style={{ marginLeft: '10px' }}
-                    src={infoImg}
-                    alt="info"
+                    src={santaHatImg}
+                    alt="santa-hat"
+                    className="santa-hat"
                   />
-                </Tooltip>
-              </div>
-            </div>
+                  <div className="title">
+                    JOIN OUR CHRISTMAS CELEBRATION AT STRIKE FINANCE
+                    <div className="sub-title">
+                      🎄
+                      <span className="text-highlight">STRK TOKEN SALE</span>-
+                      HOLIDAY SPECIAL!🌟
+                    </div>
+                  </div>
+                  <div className="description">
+                    This festive season, Strike Finance brings you an exciting
+                    opportunity. Join us in our special Christmas STRK Token
+                    Sale. It&apos;s time to add some holiday cheer to our
+                    journey.
+                    <br />
+                    <br />
+                    Check out our easy-to-follow{' '}
+                    <a
+                      href="https://strike-finance.medium.com/how-to-purchase-strk-tokens-in-the-strk-token-sale-039e21d81507"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      guide
+                    </a>{' '}
+                    to participate in the token sale and celebrate this holiday
+                    season with us at Strike Finance.
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="title">
+                    <div className="sub-title">IT&apos;S TIME TO CLAIM!</div>
+                  </div>
+                  <div className="description">
+                    Thank you for participating in our STRK Token Sale. The sale
+                    has now concluded, and it&apos;s time to claim the STRK
+                    tokens you&apos;ve purchased.
+                    <br />
+                    <br />
+                    If you have any questions or need assistance, please read
+                    our{' '}
+                    <a
+                      href="https://strike-finance.medium.com/harvesting-and-claiming-strk-tokens-a-step-by-step-guide-41a1d41a61cb"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      claim tutorial
+                    </a>{' '}
+                    or contact our{' '}
+                    <a
+                      href="https://t.me/StrikeFinance"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      support team
+                    </a>
+                    .
+                    <br />
+                    <br />
+                    We thank you for your participation and look forward to your
+                    continued engagement with Strike Finance!
+                  </div>
+                </div>
+              )}
 
-            <div className="progress-bar">
-              <Progress
-                percent={
-                  Number(roundSold.offeringAmount) > 0
-                    ? Number(
-                        (roundSold.strkAmount / roundSold.offeringAmount) * 100
-                      ).toFixed(2)
-                    : 0
-                }
-                strokeColor="#107DEF"
-                strokeWidth={18}
-                showInfo={false}
-              />
-            </div>
+              {xmasSale && (
+                <div>
+                  <div className="status">
+                    <span className={`dot ${openStatus}`} />
+                    <span>{openStatus.toUpperCase()}</span>
+                  </div>
 
-            <div className="round-bar">
-              <span className="sale-amount">
-                {Number(roundSold.offeringAmount) > 0
-                  ? Number(
-                      (roundSold.strkAmount / roundSold.offeringAmount) * 100
-                    ).toFixed(2)
-                  : 0}
-                %
-              </span>
-              <span className="round">
-                Round {round >= 0 ? round + 1 : '?'}/4
-              </span>
-              <span className="raise-amount">100%</span>
+                  <Countdown
+                    key={`timer_${timeToWait}`}
+                    date={timeToWait}
+                    renderer={renderer}
+                  />
+
+                  <div className="price-bar">
+                    <div className="label" />
+                    <div className="price">
+                      Current round price:{' '}
+                      <span className="high-light">{currentPrice}</span>
+                      <Tooltip
+                        placement="top"
+                        title={
+                          <div>
+                            <div style={{ marginBottom: '10px' }}>
+                              Round 1 - start price $9.99 with 3 months vesting
+                              / vesting price $10.59 with 1 month vesting and
+                              30% release at the end of the private round for
+                              40k $STRK
+                            </div>
+                            <div style={{ marginBottom: '10px' }}>
+                              Round 2 - start price $10.29 with 3 months vesting
+                              / vesting price $10.89 with 1 month vesting and
+                              30% release at the end of the private round for
+                              30k $STRK
+                            </div>
+                            <div style={{ marginBottom: '10px' }}>
+                              Round 3 - start price $10.59 / vesting price
+                              $11.19 with 20k $STRK
+                            </div>
+                            <div style={{ marginBottom: '10px' }}>
+                              Round 4 - start price $10.89 / vesting price
+                              $11.49 with 10k $STRK
+                            </div>
+                            <div>
+                              Round 5 - start price $9.99 with 3 months vesting
+                              / vesting price $10.59 with 1 month vesting and
+                              30% release at the end of the private round for
+                              40k $STRK
+                            </div>
+                          </div>
+                        }
+                      >
+                        <img
+                          style={{ marginLeft: '10px' }}
+                          src={infoImg}
+                          alt="info"
+                        />
+                      </Tooltip>
+                    </div>
+                  </div>
+
+                  <div className="progress-bar">
+                    <Progress
+                      percent={
+                        Number(roundSold.offeringAmount) > 0
+                          ? Number(
+                              (roundSold.strkAmount /
+                                roundSold.offeringAmount) *
+                                100
+                            ).toFixed(2)
+                          : 0
+                      }
+                      strokeColor="#107DEF"
+                      strokeWidth={18}
+                      showInfo={false}
+                    />
+                  </div>
+
+                  <div className="round-bar">
+                    <span className="sale-amount">
+                      {Number(roundSold.offeringAmount) > 0
+                        ? Number(
+                            (roundSold.strkAmount / roundSold.offeringAmount) *
+                              100
+                          ).toFixed(2)
+                        : 0}
+                      %
+                    </span>
+                    <span className="round">
+                      Round {round >= 0 ? round + 1 : '?'}/5
+                    </span>
+                    <span className="raise-amount">100%</span>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="right">
+              {xmasSale ? (
+                <SaleCard
+                  round={round}
+                  openStatus={openStatus}
+                  onSoldReload={() =>
+                    setRoundSoldReload(prevState => prevState + 1)
+                  }
+                  setCurrentPrice={price => setCurrentPrice(price)}
+                />
+              ) : (
+                <ClaimCard
+                  xmasSaleDone={round === 4 && openStatus === 'Done'}
+                />
+              )}
             </div>
           </div>
         </div>
-        <div className="right">
-          {Number(process.env.REACT_APP_CLAIM_OPEN) === 0 ? (
-            <SaleCard
-              round={round}
-              openStatus={openStatus}
-              onSoldReload={() =>
-                setRoundSoldReload(prevState => prevState + 1)
-              }
-              setCurrentPrice={price => setCurrentPrice(price)}
-            />
-          ) : (
-            <ClaimCard />
-          )}
-        </div>
+        {xmasSale && (
+          <img
+            src={christmasBannerImg}
+            alt="christmas-banner"
+            className="christmas-banner"
+          />
+        )}
       </div>
-    </div>
-  );
+    );
+
+  return <></>;
 };
 
 export default compose(withRouter)(Sale);

@@ -50,18 +50,18 @@ const initUserInfo = [
     claimedAmount1: new BigNumber(0),
     claimableAmount1: new BigNumber(0),
     harvest: false
+  },
+  {
+    vestingId0: '',
+    vestingId1: '',
+    totalAmount0: new BigNumber(0),
+    claimedAmount0: new BigNumber(0),
+    claimableAmount0: new BigNumber(0),
+    totalAmount1: new BigNumber(0),
+    claimedAmount1: new BigNumber(0),
+    claimableAmount1: new BigNumber(0),
+    harvest: false
   }
-  // {
-  //   vestingId0: '',
-  //   vestingId1: '',
-  //   totalAmount0: new BigNumber(0),
-  //   claimedAmount0: new BigNumber(0),
-  //   claimableAmount0: new BigNumber(0),
-  //   totalAmount1: new BigNumber(0),
-  //   claimedAmount1: new BigNumber(0),
-  //   claimableAmount1: new BigNumber(0),
-  //   harvest: false
-  // }
 ];
 
 export const useUserInfo = (web3, chainId, account, reload) => {
@@ -72,15 +72,15 @@ export const useUserInfo = (web3, chainId, account, reload) => {
       new BigNumber(0),
       new BigNumber(0),
       new BigNumber(0),
+      new BigNumber(0),
       new BigNumber(0)
-      // new BigNumber(0)
     ],
     longRewards: [
       new BigNumber(0),
       new BigNumber(0),
       new BigNumber(0),
+      new BigNumber(0),
       new BigNumber(0)
-      // new BigNumber(0)
     ],
     userInfos: [...initUserInfo]
   });
@@ -95,7 +95,7 @@ export const useUserInfo = (web3, chainId, account, reload) => {
         calls: [
           {
             methodName: 'viewUserOfferingAmountsForPools',
-            methodParameters: [account, [0, 1, 2, 3]]
+            methodParameters: [account, [0, 1, 2, 3, 4]]
           }
         ]
       },
@@ -187,28 +187,28 @@ export const useUserInfo = (web3, chainId, account, reload) => {
           }
         ]
       },
-      // {
-      //   reference: 'vestingId40',
-      //   contractAddress: constants.CONTRACT_ADDRESS[chainId]?.sale,
-      //   abi: saleAbi,
-      //   calls: [
-      //     {
-      //       methodName: 'computeVestingScheduleIdForAddressAndPid',
-      //       methodParameters: [account, 4, 0]
-      //     }
-      //   ]
-      // },
-      // {
-      //   reference: 'vestingId41',
-      //   contractAddress: constants.CONTRACT_ADDRESS[chainId]?.sale,
-      //   abi: saleAbi,
-      //   calls: [
-      //     {
-      //       methodName: 'computeVestingScheduleIdForAddressAndPid',
-      //       methodParameters: [account, 4, 1]
-      //     }
-      //   ]
-      // },
+      {
+        reference: 'vestingId40',
+        contractAddress: constants.CONTRACT_ADDRESS[chainId]?.sale,
+        abi: saleAbi,
+        calls: [
+          {
+            methodName: 'computeVestingScheduleIdForAddressAndPid',
+            methodParameters: [account, 4, 0]
+          }
+        ]
+      },
+      {
+        reference: 'vestingId41',
+        contractAddress: constants.CONTRACT_ADDRESS[chainId]?.sale,
+        abi: saleAbi,
+        calls: [
+          {
+            methodName: 'computeVestingScheduleIdForAddressAndPid',
+            methodParameters: [account, 4, 1]
+          }
+        ]
+      },
       {
         reference: 'userInfo',
         contractAddress: constants.CONTRACT_ADDRESS[chainId]?.sale,
@@ -216,7 +216,7 @@ export const useUserInfo = (web3, chainId, account, reload) => {
         calls: [
           {
             methodName: 'viewUserInfo',
-            methodParameters: [account, [0, 1, 2, 3]]
+            methodParameters: [account, [0, 1, 2, 3, 4]]
           }
         ]
       },
@@ -258,10 +258,10 @@ export const useUserInfo = (web3, chainId, account, reload) => {
       data.results.vestingId30.callsReturnContext[0].returnValues[0];
     const vestingId31 =
       data.results.vestingId31.callsReturnContext[0].returnValues[0];
-    // const vestingId40 =
-    //   data.results.vestingId40.callsReturnContext[0].returnValues[0];
-    // const vestingId41 =
-    //   data.results.vestingId41.callsReturnContext[0].returnValues[0];
+    const vestingId40 =
+      data.results.vestingId40.callsReturnContext[0].returnValues[0];
+    const vestingId41 =
+      data.results.vestingId41.callsReturnContext[0].returnValues[0];
 
     const harvest0 =
       data.results.userInfo.callsReturnContext[0].returnValues[1][0];
@@ -271,8 +271,8 @@ export const useUserInfo = (web3, chainId, account, reload) => {
       data.results.userInfo.callsReturnContext[0].returnValues[1][2];
     const harvest3 =
       data.results.userInfo.callsReturnContext[0].returnValues[1][3];
-    // const harvest4 =
-    //   data.results.userInfo.callsReturnContext[0].returnValues[1][4];
+    const harvest4 =
+      data.results.userInfo.callsReturnContext[0].returnValues[1][4];
 
     const claimableRewardCalls = [
       {
@@ -450,51 +450,51 @@ export const useUserInfo = (web3, chainId, account, reload) => {
             methodParameters: [vestingId31]
           }
         ]
+      },
+      {
+        reference: 'vestingSchedule40',
+        contractAddress: constants.CONTRACT_ADDRESS[chainId].sale,
+        abi: saleAbi,
+        calls: [
+          {
+            methodName: 'getVestingSchedule',
+            methodParameters: [vestingId40]
+          }
+        ]
+      },
+      {
+        reference: 'claimableAmount40',
+        contractAddress: constants.CONTRACT_ADDRESS[chainId].sale,
+        abi: saleAbi,
+        calls: [
+          {
+            methodName: 'computeReleasableAmount',
+            methodParameters: [vestingId40]
+          }
+        ]
+      },
+      {
+        reference: 'vestingSchedule41',
+        contractAddress: constants.CONTRACT_ADDRESS[chainId].sale,
+        abi: saleAbi,
+        calls: [
+          {
+            methodName: 'getVestingSchedule',
+            methodParameters: [vestingId41]
+          }
+        ]
+      },
+      {
+        reference: 'claimableAmount41',
+        contractAddress: constants.CONTRACT_ADDRESS[chainId].sale,
+        abi: saleAbi,
+        calls: [
+          {
+            methodName: 'computeReleasableAmount',
+            methodParameters: [vestingId41]
+          }
+        ]
       }
-      // {
-      //   reference: 'vestingSchedule40',
-      //   contractAddress: constants.CONTRACT_ADDRESS[chainId].sale,
-      //   abi: saleAbi,
-      //   calls: [
-      //     {
-      //       methodName: 'getVestingSchedule',
-      //       methodParameters: [vestingId40]
-      //     }
-      //   ]
-      // },
-      // {
-      //   reference: 'claimableAmount40',
-      //   contractAddress: constants.CONTRACT_ADDRESS[chainId].sale,
-      //   abi: saleAbi,
-      //   calls: [
-      //     {
-      //       methodName: 'computeReleasableAmount',
-      //       methodParameters: [vestingId40]
-      //     }
-      //   ]
-      // },
-      // {
-      //   reference: 'vestingSchedule41',
-      //   contractAddress: constants.CONTRACT_ADDRESS[chainId].sale,
-      //   abi: saleAbi,
-      //   calls: [
-      //     {
-      //       methodName: 'getVestingSchedule',
-      //       methodParameters: [vestingId41]
-      //     }
-      //   ]
-      // },
-      // {
-      //   reference: 'claimableAmount41',
-      //   contractAddress: constants.CONTRACT_ADDRESS[chainId].sale,
-      //   abi: saleAbi,
-      //   calls: [
-      //     {
-      //       methodName: 'computeReleasableAmount',
-      //       methodParameters: [vestingId41]
-      //     }
-      //   ]
-      // }
     ];
     const claimableRewardData = await methods.ethMulticall(
       web3,
@@ -516,10 +516,10 @@ export const useUserInfo = (web3, chainId, account, reload) => {
         ),
         new BigNumber(
           data.results.reward.callsReturnContext[0].returnValues[3][0].hex
+        ),
+        new BigNumber(
+          data.results.reward.callsReturnContext[0].returnValues[4][0].hex
         )
-        // new BigNumber(
-        //   data.results.reward.callsReturnContext[0].returnValues[4][0].hex
-        // )
       ],
       longRewards: [
         new BigNumber(
@@ -533,10 +533,10 @@ export const useUserInfo = (web3, chainId, account, reload) => {
         ),
         new BigNumber(
           data.results.reward.callsReturnContext[0].returnValues[3][1].hex
+        ),
+        new BigNumber(
+          data.results.reward.callsReturnContext[0].returnValues[4][1].hex
         )
-        // new BigNumber(
-        //   data.results.reward.callsReturnContext[0].returnValues[4][1].hex
-        // )
       ],
       userInfos: [
         {
@@ -654,36 +654,36 @@ export const useUserInfo = (web3, chainId, account, reload) => {
             claimableRewardData.results.vestingSchedule31.callsReturnContext[0].returnValues[5].hex
           ),
           harvest: harvest3
+        },
+        {
+          vestingId0: vestingId40,
+          vestingId1: vestingId41,
+          claimableAmount0: harvest4
+            ? new BigNumber(
+                claimableRewardData.results.claimableAmount40
+                  .callsReturnContext[0].returnValues[0]?.hex || 0
+              )
+            : new BigNumber(0),
+          totalAmount0: new BigNumber(
+            claimableRewardData.results.vestingSchedule40.callsReturnContext[0].returnValues[4].hex
+          ),
+          claimedAmount0: new BigNumber(
+            claimableRewardData.results.vestingSchedule40.callsReturnContext[0].returnValues[5].hex
+          ),
+          claimableAmount1: harvest4
+            ? new BigNumber(
+                claimableRewardData.results.claimableAmount41
+                  .callsReturnContext[0].returnValues[0]?.hex || 0
+              )
+            : new BigNumber(0),
+          totalAmount1: new BigNumber(
+            claimableRewardData.results.vestingSchedule41.callsReturnContext[0].returnValues[4].hex
+          ),
+          claimedAmount1: new BigNumber(
+            claimableRewardData.results.vestingSchedule41.callsReturnContext[0].returnValues[5].hex
+          ),
+          harvest: harvest4
         }
-        // {
-        //   vestingId0: vestingId40,
-        //   vestingId1: vestingId41,
-        //   claimableAmount0: harvest4
-        //     ? new BigNumber(
-        //         claimableRewardData.results.claimableAmount40
-        //           .callsReturnContext[0].returnValues[0]?.hex || 0
-        //       )
-        //     : new BigNumber(0),
-        //   totalAmount0: new BigNumber(
-        //     claimableRewardData.results.vestingSchedule40.callsReturnContext[0].returnValues[4].hex
-        //   ),
-        //   claimedAmount0: new BigNumber(
-        //     claimableRewardData.results.vestingSchedule40.callsReturnContext[0].returnValues[5].hex
-        //   ),
-        //   claimableAmount1: harvest4
-        //     ? new BigNumber(
-        //         claimableRewardData.results.claimableAmount41
-        //           .callsReturnContext[0].returnValues[0]?.hex || 0
-        //       )
-        //     : new BigNumber(0),
-        //   totalAmount1: new BigNumber(
-        //     claimableRewardData.results.vestingSchedule41.callsReturnContext[0].returnValues[4].hex
-        //   ),
-        //   claimedAmount1: new BigNumber(
-        //     claimableRewardData.results.vestingSchedule41.callsReturnContext[0].returnValues[5].hex
-        //   ),
-        //   harvest: harvest4
-        // }
       ]
     });
   }, [web3, slowRefresh, calls, reload]);
