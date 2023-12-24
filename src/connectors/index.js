@@ -36,7 +36,7 @@ const [web3WalletConnect, web3WalletConnectHooks] = initializeConnector(
         chains: CHAIN_IDS,
         optionalChains: CHAIN_IDS,
         showQrModal: true,
-        rpcMap: [WEB3_PROVIDER[1]]
+        rpcMap: [WEB3_PROVIDER[process.env.REACT_APP_ENV === 'prod' ? 1 : 5]]
       }
     })
 );
