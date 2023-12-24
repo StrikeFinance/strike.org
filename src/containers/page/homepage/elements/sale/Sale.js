@@ -215,7 +215,7 @@ const Sale = ({ xmasSale, claim }) => {
                               Round 5 - start price $9.99 with 3 months vesting
                               / vesting price $10.59 with 1 month vesting and
                               30% release at the end of the private round for
-                              40k $STRK
+                              50k $STRK
                             </div>
                           </div>
                         }
