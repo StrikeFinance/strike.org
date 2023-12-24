@@ -90,7 +90,7 @@ const Sale = ({ xmasSale, claim }) => {
   };
 
   if (
-    (xmasSale && openStatus !== 'Done') ||
+    (xmasSale && ((round === 4 && openStatus !== 'Done') || round < 4)) ||
     ((openStatus === 'Done' || account) && claim)
   )
     return (
