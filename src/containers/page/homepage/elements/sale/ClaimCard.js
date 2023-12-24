@@ -47,7 +47,12 @@ const ClaimCard = () => {
 
   const onHarvest = async pid => {
     try {
-      if (pending || !saleInfo.harvestAllowed) return;
+      if (
+        pending ||
+        !saleInfo.harvestAllowed ||
+        (userInfo.shortRewards[pid].eq(0) && userInfo.longRewards[pid].eq(0))
+      )
+        return;
       setPending(true);
       setAction(`harvest${pid}`);
       await harvestPool(pid);
