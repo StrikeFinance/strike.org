@@ -182,7 +182,7 @@ const ClaimCard = ({ xmasSaleDone }) => {
                           ).times(
                             (100 -
                               Number(
-                                saleInfo.poolInfos[item].longVestingPercentage
+                                saleInfo.poolInfos[item].shortVestingPercentage
                               )) /
                               100
                           ),
