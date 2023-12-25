@@ -157,11 +157,7 @@ function Section6({ settings, setSetting, getGovernanceStrike, getDecimals }) {
       return;
     }
     setSetting({
-      markets: [
-        ...res.data.markets.filter(
-          m => m.underlyingSymbol !== 'ZRX' && m.underlyingSymbol !== 'BAT'
-        )
-      ],
+      markets: [...res.data.markets.filter(m => m.deprecated === false)],
       marketVolumeLog: res.data.marketVolumeLog,
       dailyStrike: res.data.dailyStrike,
       // TODO: need update by state when click detail record

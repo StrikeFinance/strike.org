@@ -18,20 +18,28 @@ const Market = ({ markets }) => {
 
   useEffect(() => {
     if (markets.markets) {
-      const tempTS = (markets.markets || []).reduce((accumulator, market) => {
+      const tempTS = (
+        markets.markets.filter(m => m.deprecated === false) || []
+      ).reduce((accumulator, market) => {
         return new BigNumber(accumulator).plus(
           new BigNumber(market.totalSupplyUsd)
         );
       }, 0);
-      const tempSC = (markets.markets || []).reduce((accumulator, market) => {
+      const tempSC = (
+        markets.markets.filter(m => m.deprecated === false) || []
+      ).reduce((accumulator, market) => {
         return accumulator + market.supplierCount;
       }, 0);
-      const tempTB = (markets.markets || []).reduce((accumulator, market) => {
+      const tempTB = (
+        markets.markets.filter(m => m.deprecated === false) || []
+      ).reduce((accumulator, market) => {
         return new BigNumber(accumulator).plus(
           new BigNumber(market.totalBorrowsUsd)
         );
       }, 0);
-      const tempBC = (markets.markets || []).reduce((accumulator, market) => {
+      const tempBC = (
+        markets.markets.filter(m => m.deprecated === false) || []
+      ).reduce((accumulator, market) => {
         return accumulator + market.borrowerCount;
       }, 0);
       setTotalSupply(tempTS.dp(2, 1).toString(10));
