@@ -10,54 +10,22 @@ export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 export const CONTRACT_ADDRESS = {
   1: {
     eth: ZERO_ADDRESS,
-    usdt: process.env.REACT_APP_MAIN_ETH_USDT_ADDRESS,
-    usdc: process.env.REACT_APP_MAIN_ETH_USDC_ADDRESS,
-    dai: process.env.REACT_APP_MAIN_ETH_DAI_ADDRESS,
-    wbtc: process.env.REACT_APP_MAIN_ETH_WBTC_ADDRESS,
-    strk: process.env.REACT_APP_MAIN_ETH_STRK_ADDRESS,
-    sale: process.env.REACT_APP_MAIN_ETH_SALE_ADDRESS
+    usdt: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+    usdc: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+    dai: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+    wbtc: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
+    strk: '0x74232704659ef37c08995e386A2E26cc27a8d7B1',
+    sale: '0xf645d9b7ceff958a34a1e78ec091f82bd086f691'
   },
-  // 56: {
-  //   eth: ZERO_ADDRESS,
-  //   usdt: process.env.REACT_APP_MAIN_BNB_USDT_ADDRESS,
-  //   usdc: process.env.REACT_APP_MAIN_BNB_USDC_ADDRESS,
-  //   dai: process.env.REACT_APP_MAIN_BNB_DAI_ADDRESS,
-  //   strk: process.env.REACT_APP_MAIN_BNB_STRK_ADDRESS,
-  //   sale: process.env.REACT_APP_MAIN_BNB_SALE_ADDRESS
-  // },
-  // 42161: {
-  //   eth: ZERO_ADDRESS,
-  //   usdt: process.env.REACT_APP_MAIN_ARB_USDT_ADDRESS,
-  //   usdc: process.env.REACT_APP_MAIN_ARB_USDC_ADDRESS,
-  //   dai: process.env.REACT_APP_MAIN_ARB_DAI_ADDRESS,
-  //   strk: process.env.REACT_APP_MAIN_ARB_STRK_ADDRESS,
-  //   sale: process.env.REACT_APP_MAIN_ARB_SALE_ADDRESS
-  // },
   5: {
     eth: ZERO_ADDRESS,
-    usdt: process.env.REACT_APP_TEST_ETH_USDT_ADDRESS,
-    usdc: process.env.REACT_APP_TEST_ETH_USDC_ADDRESS,
-    dai: process.env.REACT_APP_TEST_ETH_DAI_ADDRESS,
-    wbtc: process.env.REACT_APP_TEST_ETH_WBTC_ADDRESS,
-    strk: process.env.REACT_APP_TEST_ETH_STRK_ADDRESS,
-    sale: process.env.REACT_APP_TEST_ETH_SALE_ADDRESS
+    usdt: '0x7DC7649B86e53bE7c1f2b3b97e416fE27C55C611',
+    usdc: '0x5315BdB4991aB879432E059137405D5A053A03d0',
+    dai: '0x3f8144A8E672758aDbE245788fbB8E92f483a9Cc',
+    wbtc: '0xaeacE1A4B0A8bC686600A74DDb9FD0A629133F69',
+    strk: '0x0a4CC7200FF099154caE7C660b1341ba4a1c3dd8',
+    sale: '0x69571683B3C4594B231893dC68bD7fFBC5938141'
   }
-  // 97: {
-  //   eth: ZERO_ADDRESS,
-  //   usdt: process.env.REACT_APP_TEST_BNB_USDT_ADDRESS,
-  //   usdc: process.env.REACT_APP_TEST_BNB_USDC_ADDRESS,
-  //   dai: process.env.REACT_APP_TEST_BNB_DAI_ADDRESS,
-  //   strk: process.env.REACT_APP_TEST_BNB_STRK_ADDRESS,
-  //   sale: process.env.REACT_APP_TEST_BNB_SALE_ADDRESS
-  // },
-  // 421613: {
-  //   eth: ZERO_ADDRESS,
-  //   usdt: process.env.REACT_APP_TEST_ARB_USDT_ADDRESS,
-  //   usdc: process.env.REACT_APP_TEST_ARB_USDC_ADDRESS,
-  //   dai: process.env.REACT_APP_TEST_ARB_DAI_ADDRESS,
-  //   strk: process.env.REACT_APP_TEST_ARB_STRK_ADDRESS,
-  //   sale: process.env.REACT_APP_TEST_ARB_SALE_ADDRESS
-  // }
 };
 
 export const ASSET = {
@@ -83,42 +51,6 @@ export const ASSET = {
       decimal: 8
     }
   },
-  // 56: {
-  //   eth: {
-  //     image: bnbImg,
-  //     decimal: 18
-  //   },
-  //   usdt: {
-  //     image: usdtImg,
-  //     decimal: 18
-  //   },
-  //   usdc: {
-  //     image: usdcImg,
-  //     decimal: 18
-  //   },
-  //   dai: {
-  //     image: daiImg,
-  //     decimal: 18
-  //   }
-  // },
-  // 42161: {
-  //   eth: {
-  //     image: ethImg,
-  //     decimal: 18
-  //   },
-  //   usdt: {
-  //     image: usdtImg,
-  //     decimal: 6
-  //   },
-  //   usdc: {
-  //     image: usdcImg,
-  //     decimal: 6
-  //   },
-  //   dai: {
-  //     image: daiImg,
-  //     decimal: 18
-  //   }
-  // },
   5: {
     eth: {
       image: ethImg,
@@ -141,60 +73,16 @@ export const ASSET = {
       decimal: 8
     }
   }
-  // 97: {
-  //   eth: {
-  //     image: bnbImg,
-  //     decimal: 18
-  //   },
-  //   usdt: {
-  //     image: usdtImg,
-  //     decimal: 18
-  //   },
-  //   usdc: {
-  //     image: usdcImg,
-  //     decimal: 18
-  //   },
-  //   dai: {
-  //     image: daiImg,
-  //     decimal: 18
-  //   }
-  // },
-  // 421613: {
-  //   eth: {
-  //     image: ethImg,
-  //     decimal: 18
-  //   },
-  //   usdt: {
-  //     image: usdtImg,
-  //     decimal: 6
-  //   },
-  //   usdc: {
-  //     image: usdcImg,
-  //     decimal: 6
-  //   },
-  //   dai: {
-  //     image: daiImg,
-  //     decimal: 18
-  //   }
-  // }
 };
 
 export const SUBGRAPH_API_URL = {
   1: process.env.REACT_APP_MAIN_ETH_THE_GRAPH,
-  // 56: process.env.REACT_APP_MAIN_BNB_THE_GRAPH,
-  // 42161: process.env.REACT_APP_MAIN_ARB_THE_GRAPH,
   5: process.env.REACT_APP_TEST_ETH_THE_GRAPH
-  // 97: process.env.REACT_APP_TEST_BNB_THE_GRAPH,
-  // 421613: process.env.REACT_APP_TEST_ARB_THE_GRAPH
 };
 
 export const WEB3_PROVIDER = {
   1: process.env.REACT_APP_MAIN_ETH_WEB3_PROVIDER,
-  // 56: process.env.REACT_APP_MAIN_BNB_WEB3_PROVIDER,
-  // 42161: process.env.REACT_APP_MAIN_ARB_WEB3_PROVIDER,
   5: process.env.REACT_APP_TEST_ETH_WEB3_PROVIDER
-  // 97: process.env.REACT_APP_TEST_BNB_WEB3_PROVIDER,
-  // 421613: process.env.REACT_APP_TEST_ARB_WEB3_PROVIDER
 };
 
 export const getAssetDecimal = (tokenAddress, chainId) => {
