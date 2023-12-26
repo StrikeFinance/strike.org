@@ -18,7 +18,6 @@ import ClaimCard from './ClaimCard';
 import './Sale.scss';
 
 const Sale = ({ xmasSale, claim }) => {
-  const totalRaiseStrk = process.env.REACT_APP_TOTAL_RAISE_STRK;
   const { account, chainId, requiredChainId } = useActiveWeb3React();
   const web3 = useWeb3();
   const { fastRefresh } = useRefresh();
