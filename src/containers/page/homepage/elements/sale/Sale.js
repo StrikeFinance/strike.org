@@ -138,7 +138,7 @@ const Sale = ({ sale, claim }) => {
                       <div className="price">
                         Current round price:{' '}
                         <span className="high-light">{currentPrice}</span>
-                        {saleInfo.poolLength && (
+                        {saleInfo.poolLength > 0 && (
                           <Tooltip
                             placement="top"
                             title={
