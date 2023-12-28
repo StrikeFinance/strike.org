@@ -46,7 +46,7 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
   return (
     <WrapLayout>
       <div className="main-container">
-        <Sale xmasSale />
+        <Sale sale />
         <Sale claim />
         <Banner markets={markets} />
         <Partner />
