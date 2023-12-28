@@ -269,6 +269,8 @@ const Sale = ({ sale, claim }) => {
                   }
                   setCurrentPrice={price => setCurrentPrice(price)}
                 />
+              ) : round === -1 || (round === 0 && openStatus !== 'Done') ? (
+                <></>
               ) : (
                 <ClaimCard round={round} openStatus={openStatus} />
               )}
