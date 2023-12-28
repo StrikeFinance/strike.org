@@ -167,95 +167,179 @@ const ClaimCard = ({ round, openStatus }) => {
               </div>
               <span className="desktop-long">Vesting 2</span>
             </div>
-            {[
-              ...Array(openStatus === 'Done' ? round : Math.max(round - 1, 0))
-            ].map((item, index) => (
-              <div className="round-row" key={`round-row-${index}`}>
-                <spa className="round">Round {index + 1}</spa>
-                <div className="rewards">
-                  <span className="mobile-long">
-                    {userInfo.userInfos[index].harvest
-                      ? getReadableNumber(
-                          userInfo.userInfos[index].claimableAmount0,
-                          18
-                        )
-                      : getReadableNumber(
-                          (
-                            userInfo.shortRewards[index] || new BigNumber(0)
-                          ).times(
-                            (100 -
-                              Number(
-                                saleInfo.poolInfos[index].shortVestingPercentage
-                              )) /
-                              100
-                          ),
-                          36
-                        )}{' '}
-                    STRK
-                    {userInfo.userInfos[index].harvest && (
-                      <Tooltip
-                        placement="top"
-                        title={
-                          <div>
-                            <div
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                              }}
-                            >
-                              <span>Total:</span>
-                              <span>
-                                {getReadableNumber(
-                                  userInfo.userInfos[index].totalAmount0,
-                                  18
-                                )}{' '}
-                                STRK
-                              </span>
+            {[...Array(openStatus === 'Done' ? round + 1 : round)].map(
+              (item, index) => (
+                <div className="round-row" key={`round-row-${index}`}>
+                  <spa className="round">Round {index + 1}</spa>
+                  <div className="rewards">
+                    <span className="mobile-long">
+                      {userInfo.userInfos[index].harvest
+                        ? getReadableNumber(
+                            userInfo.userInfos[index].claimableAmount0,
+                            18
+                          )
+                        : getReadableNumber(
+                            (
+                              userInfo.shortRewards[index] || new BigNumber(0)
+                            ).times(
+                              (100 -
+                                Number(
+                                  saleInfo.poolInfos[index]
+                                    .shortVestingPercentage
+                                )) /
+                                100
+                            ),
+                            36
+                          )}{' '}
+                      STRK
+                      {userInfo.userInfos[index].harvest && (
+                        <Tooltip
+                          placement="top"
+                          title={
+                            <div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between'
+                                }}
+                              >
+                                <span>Total:</span>
+                                <span>
+                                  {getReadableNumber(
+                                    userInfo.userInfos[index].totalAmount0,
+                                    18
+                                  )}{' '}
+                                  STRK
+                                </span>
+                              </div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between'
+                                }}
+                              >
+                                <span>Claimed:</span>
+                                <span>
+                                  {getReadableNumber(
+                                    userInfo.userInfos[index].claimedAmount0,
+                                    18
+                                  )}{' '}
+                                  STRK
+                                </span>
+                              </div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between'
+                                }}
+                              >
+                                <span style={{ paddingRight: '20px' }}>
+                                  Claimable:
+                                </span>
+                                <span>
+                                  {getReadableNumber(
+                                    userInfo.userInfos[index].claimableAmount0,
+                                    18
+                                  )}{' '}
+                                  STRK
+                                </span>
+                              </div>
                             </div>
-                            <div
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                              }}
-                            >
-                              <span>Claimed:</span>
-                              <span>
-                                {getReadableNumber(
-                                  userInfo.userInfos[index].claimedAmount0,
-                                  18
-                                )}{' '}
-                                STRK
-                              </span>
+                          }
+                        >
+                          <img
+                            style={{ marginLeft: '10px' }}
+                            src={infoImg}
+                            alt="info"
+                          />
+                        </Tooltip>
+                      )}
+                    </span>
+                    <span className="mobile-long">
+                      {userInfo.userInfos[index].harvest
+                        ? getReadableNumber(
+                            userInfo.userInfos[index].claimableAmount1,
+                            18
+                          )
+                        : getReadableNumber(
+                            (
+                              userInfo.longRewards[index] || new BigNumber(0)
+                            ).times(
+                              (100 -
+                                Number(
+                                  saleInfo.poolInfos[index]
+                                    .longVestingPercentage
+                                )) /
+                                100
+                            ),
+                            36
+                          )}{' '}
+                      STRK
+                      {userInfo.userInfos[index].harvest && (
+                        <Tooltip
+                          placement="top"
+                          title={
+                            <div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between'
+                                }}
+                              >
+                                <span>Total:</span>
+                                <span>
+                                  {getReadableNumber(
+                                    userInfo.userInfos[index].totalAmount1,
+                                    18
+                                  )}{' '}
+                                  STRK
+                                </span>
+                              </div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between'
+                                }}
+                              >
+                                <span>Claimed:</span>
+                                <span>
+                                  {getReadableNumber(
+                                    userInfo.userInfos[index].claimedAmount1,
+                                    18
+                                  )}{' '}
+                                  STRK
+                                </span>
+                              </div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  justifyContent: 'space-between'
+                                }}
+                              >
+                                <span style={{ paddingRight: '20px' }}>
+                                  Claimable:
+                                </span>
+                                <span>
+                                  {getReadableNumber(
+                                    userInfo.userInfos[index].claimableAmount1,
+                                    18
+                                  )}{' '}
+                                  STRK
+                                </span>
+                              </div>
                             </div>
-                            <div
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                              }}
-                            >
-                              <span style={{ paddingRight: '20px' }}>
-                                Claimable:
-                              </span>
-                              <span>
-                                {getReadableNumber(
-                                  userInfo.userInfos[index].claimableAmount0,
-                                  18
-                                )}{' '}
-                                STRK
-                              </span>
-                            </div>
-                          </div>
-                        }
-                      >
-                        <img
-                          style={{ marginLeft: '10px' }}
-                          src={infoImg}
-                          alt="info"
-                        />
-                      </Tooltip>
-                    )}
-                  </span>
-                  <span className="mobile-long">
+                          }
+                        >
+                          <img
+                            style={{ marginLeft: '10px' }}
+                            src={infoImg}
+                            alt="info"
+                          />
+                        </Tooltip>
+                      )}
+                    </span>
+                  </div>
+                  <span className="desktop-long">
                     {userInfo.userInfos[index].harvest
                       ? getReadableNumber(
                           userInfo.userInfos[index].claimableAmount1,
@@ -274,159 +358,79 @@ const ClaimCard = ({ round, openStatus }) => {
                           36
                         )}{' '}
                     STRK
-                    {userInfo.userInfos[index].harvest && (
-                      <Tooltip
-                        placement="top"
-                        title={
-                          <div>
-                            <div
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                              }}
-                            >
-                              <span>Total:</span>
-                              <span>
-                                {getReadableNumber(
-                                  userInfo.userInfos[index].totalAmount1,
-                                  18
-                                )}{' '}
-                                STRK
-                              </span>
-                            </div>
-                            <div
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                              }}
-                            >
-                              <span>Claimed:</span>
-                              <span>
-                                {getReadableNumber(
-                                  userInfo.userInfos[index].claimedAmount1,
-                                  18
-                                )}{' '}
-                                STRK
-                              </span>
-                            </div>
-                            <div
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'space-between'
-                              }}
-                            >
-                              <span style={{ paddingRight: '20px' }}>
-                                Claimable:
-                              </span>
-                              <span>
-                                {getReadableNumber(
-                                  userInfo.userInfos[index].claimableAmount1,
-                                  18
-                                )}{' '}
-                                STRK
-                              </span>
-                            </div>
-                          </div>
-                        }
-                      >
-                        <img
-                          style={{ marginLeft: '10px' }}
-                          src={infoImg}
-                          alt="info"
-                        />
-                      </Tooltip>
-                    )}
                   </span>
-                </div>
-                <span className="desktop-long">
-                  {userInfo.userInfos[index].harvest
-                    ? getReadableNumber(
-                        userInfo.userInfos[index].claimableAmount1,
-                        18
-                      )
-                    : getReadableNumber(
-                        (userInfo.longRewards[index] || new BigNumber(0)).times(
-                          (100 -
-                            Number(
-                              saleInfo.poolInfos[index].longVestingPercentage
-                            )) /
-                            100
-                        ),
-                        36
-                      )}{' '}
-                  STRK
-                </span>
-                <div className="actions">
-                  {userInfo.userInfos[index].harvest ? (
-                    <>
+                  <div className="actions">
+                    {userInfo.userInfos[index].harvest ? (
+                      <>
+                        <div
+                          className={`claim-btn ${
+                            pending ||
+                            userInfo.userInfos[index].claimableAmount0.eq(0)
+                              ? ''
+                              : 'enable'
+                          }`}
+                          onClick={() => {
+                            if (
+                              !pending &&
+                              userInfo.userInfos[index].claimableAmount0.gt(0)
+                            )
+                              onClaim(
+                                `${index}0`,
+                                userInfo.userInfos[index].vestingId0
+                              );
+                          }}
+                        >
+                          {action === `claim${index}0` && (
+                            <Spin className="spinner" indicator={antIcon} />
+                          )}
+                          Claim
+                        </div>
+                        <div
+                          className={`claim-btn ${
+                            pending ||
+                            userInfo.userInfos[index].claimableAmount1.eq(0)
+                              ? ''
+                              : 'enable'
+                          }`}
+                          onClick={() => {
+                            if (
+                              !pending &&
+                              userInfo.userInfos[index].claimableAmount1.gt(0)
+                            )
+                              onClaim(
+                                `${index}1`,
+                                userInfo.userInfos[index].vestingId1
+                              );
+                          }}
+                        >
+                          {action === `claim${index}1` && (
+                            <Spin className="spinner" indicator={antIcon} />
+                          )}
+                          Claim
+                        </div>
+                      </>
+                    ) : (
                       <div
                         className={`claim-btn ${
                           pending ||
-                          userInfo.userInfos[index].claimableAmount0.eq(0)
+                          !saleInfo.harvestAllowed ||
+                          (userInfo.shortRewards[index].eq(0) &&
+                            userInfo.longRewards[index].eq(0))
                             ? ''
                             : 'enable'
                         }`}
-                        onClick={() => {
-                          if (
-                            !pending &&
-                            userInfo.userInfos[index].claimableAmount0.gt(0)
-                          )
-                            onClaim(
-                              `${index}0`,
-                              userInfo.userInfos[index].vestingId0
-                            );
-                        }}
+                        onClick={() => onHarvest(index)}
                       >
-                        {action === `claim${index}0` && (
+                        {action === `harvest${index}` && (
                           <Spin className="spinner" indicator={antIcon} />
                         )}
-                        Claim
+                        Harvest
                       </div>
-                      <div
-                        className={`claim-btn ${
-                          pending ||
-                          userInfo.userInfos[index].claimableAmount1.eq(0)
-                            ? ''
-                            : 'enable'
-                        }`}
-                        onClick={() => {
-                          if (
-                            !pending &&
-                            userInfo.userInfos[index].claimableAmount1.gt(0)
-                          )
-                            onClaim(
-                              `${index}1`,
-                              userInfo.userInfos[index].vestingId1
-                            );
-                        }}
-                      >
-                        {action === `claim${index}1` && (
-                          <Spin className="spinner" indicator={antIcon} />
-                        )}
-                        Claim
-                      </div>
-                    </>
-                  ) : (
-                    <div
-                      className={`claim-btn ${
-                        pending ||
-                        !saleInfo.harvestAllowed ||
-                        (userInfo.shortRewards[index].eq(0) &&
-                          userInfo.longRewards[index].eq(0))
-                          ? ''
-                          : 'enable'
-                      }`}
-                      onClick={() => onHarvest(index)}
-                    >
-                      {action === `harvest${index}` && (
-                        <Spin className="spinner" indicator={antIcon} />
-                      )}
-                      Harvest
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
 
             <div className="connect-btn">
               <ConnectWalletButton tokenBalanceReload={tokenBalanceReload} />
