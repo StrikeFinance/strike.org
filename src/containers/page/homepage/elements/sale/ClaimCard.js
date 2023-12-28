@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { withRouter } from 'react-router';
@@ -29,7 +30,7 @@ const antIcon = (
   <Icon type="loading" style={{ fontSize: 18, marginRight: '5px' }} spin />
 );
 
-const ClaimCard = ({ xmasSaleDone }) => {
+const ClaimCard = ({ round, openStatus }) => {
   // const currentNetworkId =
   //   useSelector(({ application }) => application.currentNetworkId) ||
   //   localStorage.getItem('network');
@@ -166,30 +167,32 @@ const ClaimCard = ({ xmasSaleDone }) => {
               </div>
               <span className="desktop-long">Vesting 2</span>
             </div>
-            {(xmasSaleDone ? [0, 1, 2, 3, 4] : [0, 1, 2, 3]).map(item => (
-              <div className="round-row" key={`round-row-${item}`}>
-                <spa className="round">Round {item + 1}</spa>
+            {[
+              ...Array(openStatus === 'Done' ? round : Math.max(round - 1, 0))
+            ].map((item, index) => (
+              <div className="round-row" key={`round-row-${index}`}>
+                <spa className="round">Round {index + 1}</spa>
                 <div className="rewards">
                   <span className="mobile-long">
-                    {userInfo.userInfos[item].harvest
+                    {userInfo.userInfos[index].harvest
                       ? getReadableNumber(
-                          userInfo.userInfos[item].claimableAmount0,
+                          userInfo.userInfos[index].claimableAmount0,
                           18
                         )
                       : getReadableNumber(
                           (
-                            userInfo.shortRewards[item] || new BigNumber(0)
+                            userInfo.shortRewards[index] || new BigNumber(0)
                           ).times(
                             (100 -
                               Number(
-                                saleInfo.poolInfos[item].shortVestingPercentage
+                                saleInfo.poolInfos[index].shortVestingPercentage
                               )) /
                               100
                           ),
                           36
                         )}{' '}
                     STRK
-                    {userInfo.userInfos[item].harvest && (
+                    {userInfo.userInfos[index].harvest && (
                       <Tooltip
                         placement="top"
                         title={
@@ -203,7 +206,7 @@ const ClaimCard = ({ xmasSaleDone }) => {
                               <span>Total:</span>
                               <span>
                                 {getReadableNumber(
-                                  userInfo.userInfos[item].totalAmount0,
+                                  userInfo.userInfos[index].totalAmount0,
                                   18
                                 )}{' '}
                                 STRK
@@ -218,7 +221,7 @@ const ClaimCard = ({ xmasSaleDone }) => {
                               <span>Claimed:</span>
                               <span>
                                 {getReadableNumber(
-                                  userInfo.userInfos[item].claimedAmount0,
+                                  userInfo.userInfos[index].claimedAmount0,
                                   18
                                 )}{' '}
                                 STRK
@@ -235,7 +238,7 @@ const ClaimCard = ({ xmasSaleDone }) => {
                               </span>
                               <span>
                                 {getReadableNumber(
-                                  userInfo.userInfos[item].claimableAmount0,
+                                  userInfo.userInfos[index].claimableAmount0,
                                   18
                                 )}{' '}
                                 STRK
@@ -253,25 +256,25 @@ const ClaimCard = ({ xmasSaleDone }) => {
                     )}
                   </span>
                   <span className="mobile-long">
-                    {userInfo.userInfos[item].harvest
+                    {userInfo.userInfos[index].harvest
                       ? getReadableNumber(
-                          userInfo.userInfos[item].claimableAmount1,
+                          userInfo.userInfos[index].claimableAmount1,
                           18
                         )
                       : getReadableNumber(
                           (
-                            userInfo.longRewards[item] || new BigNumber(0)
+                            userInfo.longRewards[index] || new BigNumber(0)
                           ).times(
                             (100 -
                               Number(
-                                saleInfo.poolInfos[item].longVestingPercentage
+                                saleInfo.poolInfos[index].longVestingPercentage
                               )) /
                               100
                           ),
                           36
                         )}{' '}
                     STRK
-                    {userInfo.userInfos[item].harvest && (
+                    {userInfo.userInfos[index].harvest && (
                       <Tooltip
                         placement="top"
                         title={
@@ -285,7 +288,7 @@ const ClaimCard = ({ xmasSaleDone }) => {
                               <span>Total:</span>
                               <span>
                                 {getReadableNumber(
-                                  userInfo.userInfos[item].totalAmount1,
+                                  userInfo.userInfos[index].totalAmount1,
                                   18
                                 )}{' '}
                                 STRK
@@ -300,7 +303,7 @@ const ClaimCard = ({ xmasSaleDone }) => {
                               <span>Claimed:</span>
                               <span>
                                 {getReadableNumber(
-                                  userInfo.userInfos[item].claimedAmount1,
+                                  userInfo.userInfos[index].claimedAmount1,
                                   18
                                 )}{' '}
                                 STRK
@@ -317,7 +320,7 @@ const ClaimCard = ({ xmasSaleDone }) => {
                               </span>
                               <span>
                                 {getReadableNumber(
-                                  userInfo.userInfos[item].claimableAmount1,
+                                  userInfo.userInfos[index].claimableAmount1,
                                   18
                                 )}{' '}
                                 STRK
@@ -336,16 +339,16 @@ const ClaimCard = ({ xmasSaleDone }) => {
                   </span>
                 </div>
                 <span className="desktop-long">
-                  {userInfo.userInfos[item].harvest
+                  {userInfo.userInfos[index].harvest
                     ? getReadableNumber(
-                        userInfo.userInfos[item].claimableAmount1,
+                        userInfo.userInfos[index].claimableAmount1,
                         18
                       )
                     : getReadableNumber(
-                        (userInfo.longRewards[item] || new BigNumber(0)).times(
+                        (userInfo.longRewards[index] || new BigNumber(0)).times(
                           (100 -
                             Number(
-                              saleInfo.poolInfos[item].longVestingPercentage
+                              saleInfo.poolInfos[index].longVestingPercentage
                             )) /
                             100
                         ),
@@ -354,27 +357,27 @@ const ClaimCard = ({ xmasSaleDone }) => {
                   STRK
                 </span>
                 <div className="actions">
-                  {userInfo.userInfos[item].harvest ? (
+                  {userInfo.userInfos[index].harvest ? (
                     <>
                       <div
                         className={`claim-btn ${
                           pending ||
-                          userInfo.userInfos[item].claimableAmount0.eq(0)
+                          userInfo.userInfos[index].claimableAmount0.eq(0)
                             ? ''
                             : 'enable'
                         }`}
                         onClick={() => {
                           if (
                             !pending &&
-                            userInfo.userInfos[item].claimableAmount0.gt(0)
+                            userInfo.userInfos[index].claimableAmount0.gt(0)
                           )
                             onClaim(
-                              `${item}0`,
-                              userInfo.userInfos[item].vestingId0
+                              `${index}0`,
+                              userInfo.userInfos[index].vestingId0
                             );
                         }}
                       >
-                        {action === `claim${item}0` && (
+                        {action === `claim${index}0` && (
                           <Spin className="spinner" indicator={antIcon} />
                         )}
                         Claim
@@ -382,22 +385,22 @@ const ClaimCard = ({ xmasSaleDone }) => {
                       <div
                         className={`claim-btn ${
                           pending ||
-                          userInfo.userInfos[item].claimableAmount1.eq(0)
+                          userInfo.userInfos[index].claimableAmount1.eq(0)
                             ? ''
                             : 'enable'
                         }`}
                         onClick={() => {
                           if (
                             !pending &&
-                            userInfo.userInfos[item].claimableAmount1.gt(0)
+                            userInfo.userInfos[index].claimableAmount1.gt(0)
                           )
                             onClaim(
-                              `${item}1`,
-                              userInfo.userInfos[item].vestingId1
+                              `${index}1`,
+                              userInfo.userInfos[index].vestingId1
                             );
                         }}
                       >
-                        {action === `claim${item}1` && (
+                        {action === `claim${index}1` && (
                           <Spin className="spinner" indicator={antIcon} />
                         )}
                         Claim
@@ -408,14 +411,14 @@ const ClaimCard = ({ xmasSaleDone }) => {
                       className={`claim-btn ${
                         pending ||
                         !saleInfo.harvestAllowed ||
-                        (userInfo.shortRewards[item].eq(0) &&
-                          userInfo.longRewards[item].eq(0))
+                        (userInfo.shortRewards[index].eq(0) &&
+                          userInfo.longRewards[index].eq(0))
                           ? ''
                           : 'enable'
                       }`}
-                      onClick={() => onHarvest(item)}
+                      onClick={() => onHarvest(index)}
                     >
-                      {action === `harvest${item}` && (
+                      {action === `harvest${index}` && (
                         <Spin className="spinner" indicator={antIcon} />
                       )}
                       Harvest
