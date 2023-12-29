@@ -161,18 +161,14 @@ const ClaimCard = ({ round, openStatus }) => {
 
             <div className="round-row header">
               <spa className="round">Round</spa>
-              <div className="rewards">
-                <span className="desktop-long">Vesting 1</span>
-                <span className="mobile-long">Vestings</span>
-              </div>
-              <span className="desktop-long">Vesting 2</span>
+              <div className="rewards">Vestings</div>
             </div>
             {[...Array(openStatus === 'Done' ? round + 1 : round)].map(
               (item, index) => (
                 <div className="round-row" key={`round-row-${index}`}>
                   <spa className="round">Round {index + 1}</spa>
                   <div className="rewards">
-                    <span className="mobile-long">
+                    <span className="value">
                       {userInfo.userInfos[index].harvest
                         ? getReadableNumber(
                             userInfo.userInfos[index].claimableAmount0,
@@ -255,7 +251,7 @@ const ClaimCard = ({ round, openStatus }) => {
                         </Tooltip>
                       )}
                     </span>
-                    <span className="mobile-long">
+                    <span className="value">
                       {userInfo.userInfos[index].harvest
                         ? getReadableNumber(
                             userInfo.userInfos[index].claimableAmount1,
@@ -339,26 +335,6 @@ const ClaimCard = ({ round, openStatus }) => {
                       )}
                     </span>
                   </div>
-                  <span className="desktop-long">
-                    {userInfo.userInfos[index].harvest
-                      ? getReadableNumber(
-                          userInfo.userInfos[index].claimableAmount1,
-                          18
-                        )
-                      : getReadableNumber(
-                          (
-                            userInfo.longRewards[index] || new BigNumber(0)
-                          ).times(
-                            (100 -
-                              Number(
-                                saleInfo.poolInfos[index].longVestingPercentage
-                              )) /
-                              100
-                          ),
-                          36
-                        )}{' '}
-                    STRK
-                  </span>
                   <div className="actions">
                     {userInfo.userInfos[index].harvest ? (
                       <>
