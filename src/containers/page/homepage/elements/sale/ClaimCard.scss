@@ -136,7 +136,7 @@
 
       .round-row {
         display: grid;
-        grid-template-columns: 65px 130px 130px 1fr;
+        grid-template-columns: 65px 1fr 130px;
         align-items: center;
         justify-items: end;
         margin-top: 20px;
@@ -145,16 +145,19 @@
           width: 100%;
         }
 
-        .mobile-long {
-          display: none;
+        .value {
+          text-align: right;
         }
-
-        .desktop-long {
-          display: block;
+        
+        .rewards {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
         }
 
         .actions {
           display: flex;
+          flex-direction: column;
           gap: 10px;
         }
 
@@ -179,25 +182,7 @@
           grid-template-columns: 65px 1fr 120px;
           font-size: 14px;
           
-          .rewards {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-          }
-
-          .mobile-long {
-            display: block;
-            text-align: right;
-          }
-
-          .desktop-long {
-            text-align: right;
-            display: none;
-          }
-
-          .actions {
-            flex-direction: column;
-          }
+          
         }
       }
 
