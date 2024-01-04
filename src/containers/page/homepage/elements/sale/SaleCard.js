@@ -792,7 +792,6 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
         <ConfirmModal
           visible={confirmModalOpen}
           onCancel={() => {
-            setPending(false);
             setConfirmModalOpen('');
           }}
           pid={round}
@@ -820,6 +819,7 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
           approveReload={approveReload}
           ethPrice={saleInfo.ethPrice}
           onConfirm={status => onConfirm(status)}
+          stopPending={() => setPending(false)}
         />
       )}
     </div>
