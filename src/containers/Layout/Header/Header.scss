@@ -29,6 +29,9 @@
             height: 32px;
           }
         }
+        @media screen and (max-width: 1279px) {
+          width: 220px;
+        }
       }
       .nav-links {
         .links {
@@ -71,6 +74,16 @@
           justify-content: center;
           margin-right: 20px;
           cursor: pointer;
+        }
+
+        @media screen and (max-width: 1279px) {
+          font-size: 14px;
+          .whitepaper-btn {
+            width: 100px;
+          }
+          .launch-app-btn {
+            width: 100px;
+          }
         }
       }
     }
