@@ -4,6 +4,7 @@ import imgExchangeKucoin from 'assets/img/homepage/exchange-kucoin.svg';
 import imgExchangeUniswap from 'assets/img/homepage/exchange-uniswap.svg';
 import imgExchangeBittrex from 'assets/img/homepage/exchange-bittrex.svg';
 import imgExchangeMexc from 'assets/img/homepage/exchange-mexc.svg';
+import imgExchangeBitget from 'assets/img/homepage/exchange-bitget.svg';
 
 import './Exchange.scss';
 
@@ -69,6 +70,15 @@ function Exchange() {
           >
             <div className="img-exchange blue">
               <img src={imgExchangeMexc} alt="Mexc" />
+            </div>
+          </a>
+          <a
+            target="__blank"
+            className="pointer"
+            href="https://www.bitget.com/"
+          >
+            <div className="img-exchange cyan">
+              <img src={imgExchangeBitget} alt="Bitget" />
             </div>
           </a>
         </div>
