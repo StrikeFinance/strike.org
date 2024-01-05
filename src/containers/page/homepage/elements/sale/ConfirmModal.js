@@ -99,7 +99,8 @@ function ConfirmModal({
   approveReload,
   setApproveReload,
   onCancel,
-  onConfirm
+  onConfirm,
+  stopPending
 }) {
   const { account, chainId } = useActiveWeb3React();
   const { depositPool } = useSaleAction(chainId, account);
@@ -109,7 +110,7 @@ function ConfirmModal({
     inAsset,
     approveReload
   );
-  const [pending, setPending] = useState();
+  const [pending, setPending] = useState(false);
 
   const handleConfirm = async () => {
     try {
@@ -131,6 +132,7 @@ function ConfirmModal({
       setPending(false);
       onCancel();
       onConfirm(result);
+      stopPending();
     } catch (error) {
       setPending(false);
     }
@@ -222,7 +224,8 @@ ConfirmModal.propTypes = {
   approveReload: PropTypes.number,
   setApproveReload: PropTypes.func,
   onCancel: PropTypes.func,
-  onConfirm: PropTypes.func
+  onConfirm: PropTypes.func,
+  stopPending: PropTypes.func
 };
 
 ConfirmModal.defaultProps = {
@@ -238,7 +241,8 @@ ConfirmModal.defaultProps = {
   approveReload: 0,
   setApproveReload: () => {},
   onCancel: () => {},
-  onConfirm: () => {}
+  onConfirm: () => {},
+  stopPending: () => {}
 };
 
 export default ConfirmModal;
