@@ -73,6 +73,13 @@
           transition: 0.2s;
         }
       }
+
+      .img-exchange.cyan {
+        &:hover {
+          border: 5px solid #00E0FF;
+          transition: 0.2s;
+        }
+      }
     }    
   }
 }
