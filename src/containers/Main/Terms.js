@@ -372,25 +372,6 @@ function Terms({ history, getGovernanceStrike }) {
             on the award rendered by the arbitrator may be entered in any court
             of competent jurisdiction.
           </div>
-          <div className="terms-body">
-            Any claim or controversy arising out of or relating to the
-            Interface, this Agreement, or any other acts or omissions for which
-            you may contend that we are liable, including (but not limited to)
-            any claim or controversy as to arbitrability (“Dispute”), shall be
-            finally and exclusively settled by arbitration under SIAC Rules
-            2016.{' '}
-            <span>
-              You understand that you are required to resolve all Disputes by
-              binding arbitration.
-            </span>{' '}
-            The arbitration shall be held on a confidential basis before a
-            single arbitrator, who shall be selected pursuant to SIAC rules. The
-            arbitration will be held in Singapore, unless you and we both agree
-            to hold it elsewhere. Unless we agree otherwise, the arbitrator may
-            not consolidate your claims with those of any other party. Any
-            judgment on the award rendered by the arbitrator may be entered in
-            any court of competent jurisdiction.
-          </div>
         </div>
         <div className="terms-section">
           <div className="terms-header">
