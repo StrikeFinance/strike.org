@@ -282,14 +282,14 @@ function Terms({ history, getGovernanceStrike }) {
           <div className="terms-header">13. Indemnity</div>
           <div className="terms-body">
             You agree to hold harmless, release, defend, and indemnify us and
-            our contractors, agents, affiliates,
-            and subsidiaries from and against all claims, damages, obligations,
-            losses, liabilities, costs, and expenses arising from: (a) your
-            access and use of the Interface; (b) your violation of any term or
-            condition of this Agreement, the right of any third party, or any
-            other applicable law, rule, or regulation; and (c) any other party’s
-            access and use of the Interface with your assistance or using any
-            device or account that you own or control.
+            our contractors, agents, affiliates, and subsidiaries from and
+            against all claims, damages, obligations, losses, liabilities,
+            costs, and expenses arising from: (a) your access and use of the
+            Interface; (b) your violation of any term or condition of this
+            Agreement, the right of any third party, or any other applicable
+            law, rule, or regulation; and (c) any other party’s access and use
+            of the Interface with your assistance or using any device or account
+            that you own or control.
           </div>
         </div>
         <div className="terms-section">
@@ -315,20 +315,19 @@ function Terms({ history, getGovernanceStrike }) {
             damage incurred as a result of the use of, any content made
             available through the Interface; and (g) the defamatory, offensive,
             or illegal conduct of any third party. Under no circumstances shall
-            we or any of our contractors,
-            agents, affiliates, or subsidiaries be liable to you for any claims,
-            proceedings, liabilities, obligations, damages, losses, or costs in
-            an amount exceeding the amount you paid to us in exchange for access
-            to and use of the Interface, or $100.00, whichever is greater. This
-            limitation of liability applies regardless of whether the alleged
-            liability is based on contract, tort, negligence, strict liability,
-            or any other basis, and even if we have been advised of the
-            possibility of such liability. Some jurisdictions do not allow the
-            exclusion of certain warranties or the limitation or exclusion of
-            certain liabilities and damages. Accordingly, some of the
-            disclaimers and limitations set forth in this Agreement may not
-            apply to you. This limitation of liability shall apply to the
-            fullest extent permitted by law.
+            we or any of our contractors, agents, affiliates, or subsidiaries be
+            liable to you for any claims, proceedings, liabilities, obligations,
+            damages, losses, or costs in an amount exceeding the amount you paid
+            to us in exchange for access to and use of the Interface, or
+            $100.00, whichever is greater. This limitation of liability applies
+            regardless of whether the alleged liability is based on contract,
+            tort, negligence, strict liability, or any other basis, and even if
+            we have been advised of the possibility of such liability. Some
+            jurisdictions do not allow the exclusion of certain warranties or
+            the limitation or exclusion of certain liabilities and damages.
+            Accordingly, some of the disclaimers and limitations set forth in
+            this Agreement may not apply to you. This limitation of liability
+            shall apply to the fullest extent permitted by law.
           </div>
         </div>
         <div className="terms-section">
@@ -354,20 +353,24 @@ function Terms({ history, getGovernanceStrike }) {
             damage incurred as a result of the use of, any content made
             available through the Interface; and (g) the defamatory, offensive,
             or illegal conduct of any third party. Under no circumstances shall
-            we or any of our contractors,
-            agents, affiliates, or subsidiaries be liable to you for any claims,
-            proceedings, liabilities, obligations, damages, losses, or costs in
-            an amount exceeding the amount you paid to us in exchange for access
-            to and use of the Interface, or $100.00, whichever is greater. This
-            limitation of liability applies regardless of whether the alleged
-            liability is based on contract, tort, negligence, strict liability,
-            or any other basis, and even if we have been advised of the
-            possibility of such liability. Some jurisdictions do not allow the
-            exclusion of certain warranties or the limitation or exclusion of
-            certain liabilities and damages. Accordingly, some of the
-            disclaimers and limitations set forth in this Agreement may not
-            apply to you. This limitation of liability shall apply to the
-            fullest extent permitted by law.
+            we or any of our contractors, agents, affiliates, or subsidiaries be
+            liable to you for any claims, proceedings, liabilities, obligations,
+            damages, losses, or costs in an amount exceeding the amount you paid
+            to us in exchange for access to and use of the Interface, or
+            $100.00, whichever is greater. This limitation of liability applies
+            regardless of whether the alleged liability is based on contract,
+            tort, negligence, strict liability, or any other basis, and even if
+            we have been advised of the possibility of such liability. Some
+            jurisdictions do not allow the exclusion of certain warranties or
+            the limitation or exclusion of certain liabilities and damages.
+            Accordingly, some of the disclaimers and limitations set forth in
+            this Agreement may not apply to you. This limitation of liability
+            shall apply to the fullest extent permitted by law. The arbitration
+            will be held in Bulgaria, unless you and we both agree to hold it
+            elsewhere. Unless we agree otherwise, the arbitrator may not
+            consolidate your claims with those of any other party. Any judgment
+            on the award rendered by the arbitrator may be entered in any court
+            of competent jurisdiction.
           </div>
           <div className="terms-body">
             Any claim or controversy arising out of or relating to the
@@ -413,9 +416,6 @@ function Terms({ history, getGovernanceStrike }) {
             rise to general or specific personal jurisdiction in any forum
             outside Singapore. Any arbitration conducted pursuant to this
             Agreement shall be governed by the Federal Arbitration Act.
-            
-            
-            
           </div>
         </div>
         <div className="terms-section">
