@@ -17,6 +17,7 @@ import 'assets/styles/App.scss';
 // import GovernanceAddressDetail from 'containers/page/GovernanceDetail/GovernanceAddressDetail/GovernanceAddressDetail';
 import BlogsPage from 'containers/page/blogs/BlogsPage';
 import BlogsDetailPage from 'containers/page/blogDetails/BlogDetails';
+import SalePage from 'containers/page/sale';
 import TxHistory from 'containers/page/txHistory/TxHistory';
 import enMessages from 'lang/en.json';
 import { libraries } from '../connectors';
@@ -70,6 +71,7 @@ class App extends React.Component {
                 /> */}
                     <Route exact path="/blog" component={BlogsPage} />
                     <Route exact path="/blog/:id" component={BlogsDetailPage} />
+                    <Route exact path="/sale" component={SalePage} />
                     <Route exact path="/history" component={TxHistory} />
                     <Redirect from="/" to="/" />
                   </Switch>

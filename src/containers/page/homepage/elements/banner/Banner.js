@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import BannerImg from 'assets/img/homepage/banner.png';
 import MouseImg from 'assets/img/homepage/mouse.svg';
 import './Banner.scss';
+import { Link } from 'react-router-dom';
 
 const Banner = ({ markets }) => {
   return (
@@ -51,6 +52,9 @@ const Banner = ({ markets }) => {
             protocol while earning a variable rate based on market demands of
             that asset. Rates are earned per Ethereum block mined.
           </div>
+          <Link to="/sale" className="claim-pc-btn">
+            <div>Claim STRK</div>
+          </Link>
           <div className="btn-mobile">
             <div
               onClick={() => window.open('https://app.strike.org/', '_blank')}
@@ -66,6 +70,9 @@ const Banner = ({ markets }) => {
             >
               Whitepaper
             </div>
+            <Link to="/sale" className="claim-btn">
+              Claim STRK
+            </Link>
           </div>
         </div>
         <div className="image-banner">
