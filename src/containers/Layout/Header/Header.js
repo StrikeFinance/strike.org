@@ -17,6 +17,11 @@ const HomePageLink = [
     altTitle: ''
   },
   {
+    to: '/sale',
+    title: 'Sale',
+    altTitle: ''
+  },
+  {
     to: '/#market',
     title: 'Market',
     altTitle: ''

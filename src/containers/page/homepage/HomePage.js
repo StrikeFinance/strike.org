@@ -18,7 +18,6 @@ import './HomePage.scss';
 import Partner from './elements/partner/Partner';
 import Exchange from './elements/exchange/Exchange';
 import Blogs from './elements/blogs/Blogs';
-import Sale from './elements/sale/Sale';
 import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = ({ getGovernanceStrike, setSetting }) => {
@@ -46,8 +45,6 @@ const HomePage = ({ getGovernanceStrike, setSetting }) => {
   return (
     <WrapLayout>
       <div className="main-container">
-        <Sale sale />
-        <Sale claim />
         <Banner markets={markets} />
         <Partner />
         {markets ? (
