@@ -75,7 +75,7 @@ function Exchange() {
           <a
             target="__blank"
             className="pointer"
-            href="https://www.bitget.com/"
+            href="https://www.bitget.com/spot/STRIKEUSDT"
           >
             <div className="img-exchange cyan">
               <img src={imgExchangeBitget} alt="Bitget" />
