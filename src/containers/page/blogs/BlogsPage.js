@@ -40,9 +40,7 @@ const BlogPage = () => {
     <WrapLayout>
       <div className="wrap-blogs-container">
         <p className="bread-crumb">News & Article</p>
-        <Typography className="heading-descriptions">
-          Blog & Article{' '}
-        </Typography>
+        <h1 className="heading-descriptions">Blog & Article </h1>
         {posts.length > 0 && <BlogAndArticleSection data={posts} />}
         <div className="new-blogs">
           <Typography className="heading-descriptions">New Blogs </Typography>
