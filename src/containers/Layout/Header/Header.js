@@ -16,11 +16,11 @@ const HomePageLink = [
     title: 'Home',
     altTitle: ''
   },
-  {
-    to: '/sale',
-    title: 'Sale',
-    altTitle: ''
-  },
+  // {
+  //   to: '/sale',
+  //   title: 'Sale',
+  //   altTitle: ''
+  // },
   {
     to: '/#market',
     title: 'Market',
