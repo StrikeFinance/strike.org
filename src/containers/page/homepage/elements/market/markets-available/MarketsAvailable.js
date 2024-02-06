@@ -24,6 +24,7 @@ import ustImg from 'assets/img/ust.png';
 import daiImg from 'assets/img/dai.png';
 import xcnImg from 'assets/img/xcn.png';
 import wstethImg from 'assets/img/wsteth.png';
+import rethImg from 'assets/img/reth.png';
 import MarketSlider from './MarketSlider';
 import './MarketsAvailable.scss';
 
@@ -43,7 +44,8 @@ const ICONS = {
   UST: ustImg,
   DAI: daiImg,
   XCN: xcnImg,
-  wstETH: wstethImg
+  wstETH: wstethImg,
+  rETH: rethImg
 };
 
 function MarketsAvailable({ getGovernanceStrikeWithParam }) {

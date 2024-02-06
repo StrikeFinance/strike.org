@@ -18,6 +18,7 @@ import ustImg from 'assets/img/ust.png';
 import daiImg from 'assets/img/dai.png';
 import xcnImg from 'assets/img/xcn.png';
 import wstethImg from 'assets/img/wsteth.png';
+import rethImg from 'assets/img/reth.png';
 import vector3 from 'assets/img/landingpage/Vector-3.png';
 import vector4 from 'assets/img/landingpage/Vector-4.png';
 import vector14 from 'assets/img/landingpage/Vector-14.png';
@@ -626,7 +627,8 @@ const ICONS = {
   UST: ustImg,
   DAI: daiImg,
   XCN: xcnImg,
-  wstETH: wstethImg
+  wstETH: wstethImg,
+  rETH: rethImg
 };
 
 const format = commaNumber.bindWith(',', '.');
