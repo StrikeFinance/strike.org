@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 import WrapLayout from 'containers/Layout/WrapLayout/WrapLayout';
@@ -17,7 +18,9 @@ const TxHistory = () => {
     <WrapLayout>
       <div className="tx-history-homepage">
         <div className="tx-history-content">
-          <div className="title">Transactions History</div>
+          <div className="title">
+            <FormattedMessage id="Transaction_History" />
+          </div>
           {/* <div className="description">
             Earn 20% of deposits of your referrals. 15% in the token they
             deposited + 5% in DEFI tokens.
@@ -28,40 +31,66 @@ const TxHistory = () => {
                 {false ? (
                   <div className="empty-card">
                     <img src={EmptyBoxImg} alt="empty-box" />
-                    <span>You don&apos;t have any transactions yet</span>
+                    <span>
+                      <FormattedMessage id="You_do_not_have_transactions" />
+                    </span>
                   </div>
                 ) : (
                   <div className="history-table">
                     <div className="tbl-header">
-                      <div className="tbl-col">No.</div>
-                      <div className="tbl-col">Chain</div>
-                      <div className="tbl-col">Round</div>
-                      <div className="tbl-col">Vesting</div>
-                      <div className="tbl-col">txhash</div>
-                      <div className="tbl-col">Asset</div>
+                      <div className="tbl-col">
+                        <FormattedMessage id="No" />.
+                      </div>
+                      <div className="tbl-col">
+                        <FormattedMessage id="Chain" />
+                      </div>
+                      <div className="tbl-col">
+                        <FormattedMessage id="Round" />
+                      </div>
+                      <div className="tbl-col">
+                        <FormattedMessage id="Vesting" />
+                      </div>
+                      <div className="tbl-col">
+                        <FormattedMessage id="txhash" />
+                      </div>
+                      <div className="tbl-col">
+                        <FormattedMessage id="Asset" />
+                      </div>
                       <div className="tbl-col">STRK</div>
-                      <div className="tbl-col">Date</div>
+                      <div className="tbl-col">
+                        <FormattedMessage id="Date" />
+                      </div>
                     </div>
                     {userTxHistory.map((item, index) => (
                       <div className="tbl-row" key={`row_${index}`}>
                         <div className="tbl-col">
-                          <span className="tbl-mobile-col">No:</span>
+                          <span className="tbl-mobile-col">
+                            <FormattedMessage id="No" />:
+                          </span>
                           <span>{index + 1}</span>
                         </div>
                         <div className="tbl-col">
-                          <span className="tbl-mobile-col">Chain:</span>
+                          <span className="tbl-mobile-col">
+                            <FormattedMessage id="Chain" />:
+                          </span>
                           <span>{item.chain}</span>
                         </div>
                         <div className="tbl-col">
-                          <span className="tbl-mobile-col">Round:</span>
+                          <span className="tbl-mobile-col">
+                            <FormattedMessage id="Round" />:
+                          </span>
                           <span>{item.pid >= 0 ? item.pid + 1 : ''}</span>
                         </div>
                         <div className="tbl-col">
-                          <span className="tbl-mobile-col">Plan:</span>
+                          <span className="tbl-mobile-col">
+                            <FormattedMessage id="Plan" />:
+                          </span>
                           <span>{item.plan}</span>
                         </div>
                         <div className="tbl-col">
-                          <span className="tbl-mobile-col">txhash:</span>
+                          <span className="tbl-mobile-col">
+                            <FormattedMessage id="txhash" />:
+                          </span>
                           <a
                             href={item.txHash}
                             target="_blank"
@@ -71,7 +100,9 @@ const TxHistory = () => {
                           </a>
                         </div>
                         <div className="tbl-col">
-                          <span className="tbl-mobile-col">Asset:</span>
+                          <span className="tbl-mobile-col">
+                            <FormattedMessage id="Asset" />:
+                          </span>
                           <span>
                             {item.amount} {item.asset}
                           </span>
@@ -81,7 +112,9 @@ const TxHistory = () => {
                           <span>{item.boughtAmount} STRK</span>
                         </div>
                         <div className="tbl-col">
-                          <span className="tbl-mobile-col">Date:</span>
+                          <span className="tbl-mobile-col">
+                            <FormattedMessage id="Date" />:
+                          </span>
                           <div>{item.date}</div>
                         </div>
                       </div>
@@ -92,7 +125,7 @@ const TxHistory = () => {
             ) : (
               <div className="empty-card">
                 <span style={{ marginBottom: '20px' }}>
-                  Please connect your wallet
+                  <FormattedMessage id="Please_connect_your_wallet" />
                 </span>
                 <div className="connect-btn">
                   <ConnectWalletButton />

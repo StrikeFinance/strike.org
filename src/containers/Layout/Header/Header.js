@@ -116,7 +116,7 @@ const Header = ({ showMenuHead }) => {
                 trigger={['click']}
                 overlayStyle={{ position: 'fixed' }}
               >
-                <span className="flex flex-start align-center gap-menu dropdown-link link-item">
+                <span className="flex flex-start align-center gap-menu dropdown-link link-item cursor-pointer">
                   <img src={selectedLan.icon} alt="lang" />{' '}
                   <Icon type="down" style={{ color: 'white' }} />
                 </span>
@@ -205,7 +205,7 @@ const Header = ({ showMenuHead }) => {
                       trigger={['click']}
                       overlayStyle={{ position: 'fixed' }}
                     >
-                      <span className="flex flex-start align-center gap-menu dropdown-link link-item">
+                      <span className="flex flex-start align-center gap-menu dropdown-link link-item cursor-pointer">
                         <img src={selectedLan.icon} alt="lang" />{' '}
                         {selectedLan.label} <Icon type="down" />
                       </span>

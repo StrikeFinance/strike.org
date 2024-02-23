@@ -1,5 +1,5 @@
 import { hot } from 'react-hot-loader/root';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { RefreshContextProvider } from 'contexts/RefreshContext';
 import { Web3ReactProvider } from '@web3-react/core';
@@ -26,6 +26,7 @@ import enMessages from 'lang/en';
 import zhMessages from 'lang/zh';
 import esMessages from 'lang/es';
 import trMessages from 'lang/tr';
+import moment from 'moment';
 import { libraries } from '../connectors';
 
 addLocaleData([...en, ...zh, ...es, ...tr]);
@@ -43,6 +44,14 @@ window.Buffer = window.Buffer || require('buffer').Buffer;
 function App() {
   const lang = localStorage.getItem('language') || 'en';
   const message = messages[localStorage.getItem('language') || 'en'];
+
+  useEffect(() => {
+    if (lang === 'zh') {
+      moment.locale('zh-cn');
+    } else {
+      moment.locale(lang);
+    }
+  }, [lang]);
 
   return (
     <Theme>

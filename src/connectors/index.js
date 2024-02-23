@@ -76,13 +76,13 @@ const connectors = [
 
 export const installExtentionLinks = {
   1: {
-    desc: 'Metamask not installed',
-    linkDesc: 'You can download here',
+    desc: 'Metamask_not_installed',
+    linkDesc: 'You_can_download_here',
     link: 'https://metamask.io'
   },
   2: {
-    desc: 'Bitget not installed',
-    linkDesc: 'You can download here',
+    desc: 'Bitget_not_installed',
+    linkDesc: 'You_can_download_here',
     link: 'https://web3.bitget.com/en/wallet-download'
   }
 };

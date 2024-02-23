@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Typography, Pagination } from 'antd';
 import { Link } from 'react-router-dom';
 import { fetchAllPosts } from 'utilities/fetchSanityPosts';
@@ -39,11 +40,17 @@ const BlogPage = () => {
   return (
     <WrapLayout>
       <div className="wrap-blogs-container">
-        <p className="bread-crumb">News & Article</p>
-        <h1 className="heading-descriptions">Blog & Article </h1>
+        <p className="bread-crumb">
+          <FormattedMessage id="News_Article" />
+        </p>
+        <h1 className="heading-descriptions">
+          <FormattedMessage id="Blog_Article" />
+        </h1>
         {posts.length > 0 && <BlogAndArticleSection data={posts} />}
         <div className="new-blogs">
-          <Typography className="heading-descriptions">New Blogs </Typography>
+          <Typography className="heading-descriptions">
+            <FormattedMessage id="New_Blogs" />
+          </Typography>
           <div className="flex align-center just-center flex-column">
             {posts.length > 0 && (
               <div>
@@ -80,7 +87,9 @@ const BlogPage = () => {
                 type="button"
                 className="flex pointer align-center just-cente"
               >
-                <span>Learn More</span>
+                <span>
+                  <FormattedMessage id="Learn_More" />
+                </span>
                 <img alt="vector" src={Vector} />
               </button>
             </a>

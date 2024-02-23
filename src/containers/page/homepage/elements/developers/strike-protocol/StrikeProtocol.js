@@ -55,12 +55,8 @@ function StrikeProtocol() {
         </div>
         <div className="content">
           <div className="text-layer">
-            <span>
-              <FormattedMessage id="Section_7" />
-            </span>
-            <span>
-              <FormattedMessage id="Section_7_desc" />
-            </span>
+            <FormattedMessage id="Section_7" />
+            <FormattedMessage id="Section_7_desc" />
           </div>
           <a
             href="https://strike.org/Whitepaper.pdf"

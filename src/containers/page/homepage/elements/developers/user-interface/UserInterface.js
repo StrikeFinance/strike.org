@@ -61,12 +61,8 @@ const StrikeProtocol = () => {
         </div>
         <div className="content">
           <div className="text-layer">
-            <span>
-              <FormattedMessage id="Section_6" />
-            </span>
-            <span>
-              <FormattedMessage id="Section_6_desc" />
-            </span>
+            <FormattedMessage id="Section_6" />
+            <FormattedMessage id="Section_6_desc" />
           </div>
           <a
             href="https://app.strike.org/"

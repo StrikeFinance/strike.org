@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useRef, useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -337,8 +338,11 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
       {openStatus !== 'Open' ? (
         <div className="not-connect-card">
           <div className="title">
-            A New <span className="text-highlight">STRK SALE</span> Round is
-            loading: sit tight!
+            <FormattedMessage id="A_New" />
+            <span className="text-highlight">
+              <FormattedMessage id="STRK_Sale" />
+            </span>
+            <FormattedMessage id="Round_is_loading" />
           </div>
           <img src={StrkLogoImg} className="logo" alt="logo" />
           {(round > 0 || openStatus === 'Done') && (
@@ -346,7 +350,7 @@ const SaleCard = ({ round, openStatus, onSoldReload, setCurrentPrice }) => {
               <NavLink to="/history" style={{ width: '100%' }}>
                 <div className="history-btn">
                   <img src={TxHistoryImg} alt="tx-history" />
-                  Transaction History
+                  <FormattedMessage id="Transaction_History" />
                 </div>
               </NavLink>
 
