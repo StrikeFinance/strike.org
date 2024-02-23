@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import imgExchangeUpbit from 'assets/img/homepage/exchange-upbit.svg';
 import imgExchangeKucoin from 'assets/img/homepage/exchange-kucoin.svg';
 import imgExchangeUniswap from 'assets/img/homepage/exchange-uniswap.svg';
@@ -13,20 +14,44 @@ function Exchange() {
     <div className="exchange" id="exchange">
       <div className="slider-animation">
         <div className="slider">
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
         </div>
         <div className="slider">
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
-          <span className="slider-text">EXCHANGE LIST</span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="EXCHANGE_LIST" />
+          </span>
         </div>
       </div>
       <div className="exchange-content">

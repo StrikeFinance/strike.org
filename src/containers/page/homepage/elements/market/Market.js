@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -62,22 +63,50 @@ const Market = ({ markets }) => {
     <div className="market-homepage">
       <div className="slider-animation">
         <div className="slider">
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
         </div>
         <div className="slider">
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
-          <span className="slider-text">MARKETS</span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="MARKETS" />
+          </span>
         </div>
       </div>
       <TotalSupply

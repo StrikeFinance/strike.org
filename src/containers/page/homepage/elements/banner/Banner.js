@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 import BigNumber from 'bignumber.js';
@@ -10,50 +11,88 @@ import './Banner.scss';
 import { Link } from 'react-router-dom';
 
 const Banner = ({ markets }) => {
+  const lang = localStorage.getItem('language') || 'en';
+
   return (
     <div className="banner-homepage">
       <div className="banner-content flex just-between">
         <div className="left">
-          <div className="title">
-            The Strike protocol currently has{' '}
-            {markets ? (
-              <span className="text-highlight">
-                $
-                {new Intl.NumberFormat({
-                  maximumSignificantDigits: 3
-                }).format(
-                  markets?.markets
-                    .filter(m => m.deprecated === false)
-                    .reduce(
-                      (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
-                      new BigNumber('0')
-                    )
-                )}
-              </span>
-            ) : (
-              <div className="load-wraper">
-                <div className="activity" />
-              </div>
-            )}{' '}
-            TVL across{' '}
-            {markets ? (
-              <span className="text-highlight">
-                {markets?.markets.filter(m => m.deprecated === false).length}
-              </span>
-            ) : (
-              <div className="load-wraper2">
-                <div className="activity" />
-              </div>
-            )}{' '}
-            sToken markets
-          </div>
+          {lang === 'zh' ? (
+            <div className="title">
+              <FormattedMessage id="Section_1_1" />
+              {markets ? (
+                <span className="text-highlight">
+                  {markets?.markets.filter(m => m.deprecated === false).length}
+                </span>
+              ) : (
+                <div className="load-wraper2">
+                  <div className="activity" />
+                </div>
+              )}
+              <FormattedMessage id="Section_1_2" />
+              {markets ? (
+                <span className="text-highlight">
+                  $
+                  {new Intl.NumberFormat({
+                    maximumSignificantDigits: 3
+                  }).format(
+                    markets?.markets
+                      .filter(m => m.deprecated === false)
+                      .reduce(
+                        (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
+                        new BigNumber('0')
+                      )
+                  )}
+                </span>
+              ) : (
+                <div className="load-wraper">
+                  <div className="activity" />
+                </div>
+              )}
+              <FormattedMessage id="Section_1_3" />
+            </div>
+          ) : (
+            <div className="title">
+              <FormattedMessage id="Section_1_1" />
+              {markets ? (
+                <span className="text-highlight">
+                  $
+                  {new Intl.NumberFormat({
+                    maximumSignificantDigits: 3
+                  }).format(
+                    markets?.markets
+                      .filter(m => m.deprecated === false)
+                      .reduce(
+                        (a, b) => a.plus(new BigNumber(b.totalSupplyUsd)),
+                        new BigNumber('0')
+                      )
+                  )}
+                </span>
+              ) : (
+                <div className="load-wraper">
+                  <div className="activity" />
+                </div>
+              )}
+              <FormattedMessage id="Section_1_2" />
+              {markets ? (
+                <span className="text-highlight">
+                  {markets?.markets.filter(m => m.deprecated === false).length}
+                </span>
+              ) : (
+                <div className="load-wraper2">
+                  <div className="activity" />
+                </div>
+              )}
+              <FormattedMessage id="Section_1_3" />
+            </div>
+          )}
           <div className="description">
-            Strike users control all of their digital assets on a non-custodial
-            protocol while earning a variable rate based on market demands of
-            that asset. Rates are earned per Ethereum block mined.
+            <FormattedMessage id="Section_1_desc" />
           </div>
           <Link to="/sale" className="claim-pc-btn">
-            <div>Claim STRK</div>
+            <div>
+              <FormattedMessage id="Claim_STRK" />
+            </div>
           </Link>
           <div className="btn-mobile">
             <div
