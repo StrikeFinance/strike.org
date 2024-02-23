@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -51,33 +52,61 @@ const Governance = ({ getGovernance }) => {
       <div className="governance-wrapper">
         <div className="slider-animation">
           <div className="slider">
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
           </div>
           <div className="slider">
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
-            <span className="slider-text">GOVERNANCE</span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="GOVERNANCE" />
+            </span>
           </div>
         </div>
         <div className="governance-content">
           <div className="desc">
-            Strike is managed by a decentralized community of Strike
-            token-holders and their delegates, who propose and vote on upgrades
-            to the protocol.
+            <FormattedMessage id="Section_4_desc" />
           </div>
           <div className="recent-proposals">
             <div className="recent-proposals-inner">
-              <div className="title-proposals">Governance Proposals</div>
+              <div className="title-proposals">
+                <FormattedMessage id="Governance_Proposals" />
+              </div>
 
               {governance.map((item, index) => (
                 <div className="recent-list" key={index}>
@@ -125,7 +154,9 @@ const Governance = ({ getGovernance }) => {
                                   }`
                             }`}
                           >
-                            {getStatus(item)}
+                            {getStatus(item) && (
+                              <FormattedMessage id={getStatus(item)} />
+                            )}
                           </div>
                           <div className="mx-auto time">
                             {moment(item?.createdAt).format('MMMM Do, YYYY')}
@@ -147,7 +178,7 @@ const Governance = ({ getGovernance }) => {
                       <div
                         className={`${isMobile ? 'state' : 'mx-auto state'}`}
                       >
-                        {item.state}
+                        {item.state && <FormattedMessage id={item.state} />}
                       </div>
                     </div>
                   </div>

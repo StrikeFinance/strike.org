@@ -247,22 +247,24 @@ const Header = ({ showMenuHead }) => {
                   </NavLink>
                 </li>
                 <li className="header-menu__item">
-                  <NavLink exact className="header-menu__link" to="/#gorvernance">
+                  <NavLink
+                    exact
+                    className="header-menu__link"
+                    to="/#gorvernance"
+                  >
                     Governance
                   </NavLink>
                 </li>
                 <li className="header-menu__item">
-                  <NavLink
-                    exact
-                    className="header-menu__link"
-                    to="/#developer"
-                  >
+                  <NavLink exact className="header-menu__link" to="/#developer">
                     Developers
                   </NavLink>
                 </li>
                 <div
                   className="header-menu__btn_white"
-                  onClick={() => handleLink('https://strike.org/Whitepaper.pdf')}
+                  onClick={() =>
+                    handleLink('https://strike.org/Whitepaper.pdf')
+                  }
                 >
                   Whitepaper
                 </div>

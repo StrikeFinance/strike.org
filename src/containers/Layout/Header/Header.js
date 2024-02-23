@@ -25,7 +25,7 @@ const languages = [
 const HomePageLink = [
   {
     to: '/#',
-    title: 'Home',
+    title: <FormattedMessage id="Home" />,
     altTitle: ''
   },
   // {
@@ -35,22 +35,22 @@ const HomePageLink = [
   // },
   {
     to: '/#market',
-    title: 'Market',
+    title: <FormattedMessage id="Market" />,
     altTitle: ''
   },
   {
     to: '/#gorvernance',
-    title: 'Governance',
+    title: <FormattedMessage id="Governance" />,
     altTitle: ''
   },
   {
     to: '/#developer',
-    title: 'Developers',
+    title: <FormattedMessage id="Developers" />,
     altTitle: ''
   },
   {
     to: '/blog',
-    title: 'Blog',
+    title: <FormattedMessage id="Blog" />,
     altTitle: ''
   }
 ];
@@ -111,7 +111,11 @@ const Header = ({ showMenuHead }) => {
           </div>
           {isMobile ? (
             <div className="header-mobile">
-              <Dropdown overlay={languageItems} trigger={['click']}>
+              <Dropdown
+                overlay={languageItems}
+                trigger={['click']}
+                overlayStyle={{ position: 'fixed' }}
+              >
                 <span className="flex flex-start align-center gap-menu dropdown-link link-item">
                   <img src={selectedLan.icon} alt="lang" />{' '}
                   <Icon type="down" style={{ color: 'white' }} />
@@ -166,7 +170,7 @@ const Header = ({ showMenuHead }) => {
                       rel="noreferrer"
                       className="launch-app-btn"
                     >
-                      Launch App
+                      <FormattedMessage id="Launch_App" />
                     </a>
                     <a
                       href="https://strike.org/Whitepaper.pdf"
@@ -174,7 +178,7 @@ const Header = ({ showMenuHead }) => {
                       rel="noreferrer"
                       className="whitepaper-btn"
                     >
-                      Whitepaper
+                      <FormattedMessage id="Whitepaper" />
                     </a>
                   </div>
                 </div>
@@ -196,7 +200,11 @@ const Header = ({ showMenuHead }) => {
                         {link?.title}
                       </NavLink>
                     ))}
-                    <Dropdown overlay={languageItems} trigger={['click']}>
+                    <Dropdown
+                      overlay={languageItems}
+                      trigger={['click']}
+                      overlayStyle={{ position: 'fixed' }}
+                    >
                       <span className="flex flex-start align-center gap-menu dropdown-link link-item">
                         <img src={selectedLan.icon} alt="lang" />{' '}
                         {selectedLan.label} <Icon type="down" />
@@ -212,7 +220,7 @@ const Header = ({ showMenuHead }) => {
                   rel="noreferrer"
                   className="launch-app-btn"
                 >
-                  Launch App
+                  <FormattedMessage id="Launch_App" />
                 </a>
                 {showMenuHead ? (
                   <a
@@ -221,7 +229,7 @@ const Header = ({ showMenuHead }) => {
                     rel="noreferrer"
                     className="whitepaper-btn"
                   >
-                    Whitepaper
+                    <FormattedMessage id="Whitepaper" />
                   </a>
                 ) : null}
               </div>

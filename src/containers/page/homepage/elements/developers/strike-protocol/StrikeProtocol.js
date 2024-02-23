@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import imgWhitepaper from 'assets/img/homepage/img-whitepaper.png';
 import imgUp from 'assets/img/up.svg';
 import './StrikeProtocol.scss';
@@ -8,20 +9,44 @@ function StrikeProtocol() {
     <div className="strike-whitepaper">
       <div className="slider-animation">
         <div className="slider">
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
         </div>
         <div className="slider">
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
-          <span className="slider-text">TRY STRIKE FINANCE</span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="TRY_STRIKE_FINANCE" />
+          </span>
         </div>
       </div>
       <div className="strike-whitepaper-content">
@@ -30,12 +55,11 @@ function StrikeProtocol() {
         </div>
         <div className="content">
           <div className="text-layer">
-            <span>Strike Protocol</span>
             <span>
-              Strike enables users and developers to supply digital assets onto
-              the platform to earn from dynamic rates provided by the protocol
-              and use that supplied asset as collateral to borrow other
-              supported digital assets all on-chain.
+              <FormattedMessage id="Section_7" />
+            </span>
+            <span>
+              <FormattedMessage id="Section_7_desc" />
             </span>
           </div>
           <a
@@ -44,7 +68,9 @@ function StrikeProtocol() {
             rel="noreferrer"
             className="btn-whitepaper"
           >
-            <span>Learn More</span>
+            <span>
+              <FormattedMessage id="Learn_More" />
+            </span>
             <img src={imgUp} alt="up" />
           </a>
         </div>
