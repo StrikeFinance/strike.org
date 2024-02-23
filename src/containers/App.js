@@ -29,6 +29,10 @@ import trMessages from 'lang/tr';
 import moment from 'moment';
 import { libraries } from '../connectors';
 
+import 'moment/locale/es';
+import 'moment/locale/tr';
+import 'moment/locale/zh-cn';
+
 addLocaleData([...en, ...zh, ...es, ...tr]);
 
 const messages = {
