@@ -17,7 +17,7 @@ const Banner = ({ markets }) => {
     <div className="banner-homepage">
       <div className="banner-content flex just-between">
         <div className="left">
-          {lang === 'zh' ? (
+          {lang === 'zh' || lang === 'tr' ? (
             <div className="title">
               <FormattedMessage id="Section_1_1" />
               {markets ? (
