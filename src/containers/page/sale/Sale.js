@@ -258,7 +258,7 @@ const Sale = ({ sale, claim }) => {
                     >
                       <FormattedMessage id="IT_IS_TIME_TO_CLAIM_desc_4" />
                     </a>
-                    .
+                    <FormattedMessage id="IT_IS_TIME_TO_CLAIM_desc_6" />
                     <br />
                     <br />
                     <FormattedMessage id="IT_IS_TIME_TO_CLAIM_desc_5" />
