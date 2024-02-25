@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import ConnectModal from 'components/ConnectModal';
 import ConnectWalletImg from 'assets/img/homepage/connect-wallet.svg';
@@ -217,7 +218,9 @@ function ConnectWalletButton({ tokenBalanceReload }) {
     <>
       {account ? (
         <StyledWalletInfoPopup>
-          <StyledCopied showCopied={showCopied}>Copied!</StyledCopied>
+          <StyledCopied showCopied={showCopied}>
+            <FormattedMessage id="Copied" />
+          </StyledCopied>
           <ConnectBtn
             onMouseUp={e => {
               e.preventDefault();
@@ -231,7 +234,8 @@ function ConnectWalletButton({ tokenBalanceReload }) {
           {showPopup && (
             <StyledPopup ref={wrapperRef}>
               <StyledWalletBalance>
-                Balance: {getReadableNumber(strkBalance, 18)} STRK
+                <FormattedMessage id="Balance" />:{' '}
+                {getReadableNumber(strkBalance, 18)} STRK
               </StyledWalletBalance>
               <StyledDivider />
               <StyledWalletAddress>
@@ -278,7 +282,7 @@ function ConnectWalletButton({ tokenBalanceReload }) {
                     fill="#E02B2B"
                   />
                 </svg>
-                Disconnect
+                <FormattedMessage id="Disconnect" />
               </StyledDisconnect>
             </StyledPopup>
           )}
@@ -286,7 +290,7 @@ function ConnectWalletButton({ tokenBalanceReload }) {
       ) : (
         <ConnectBtn onClick={() => setOpenConnectModal(true)}>
           <img src={ConnectWalletImg} alt="connect-wallet" />
-          Connect Wallet
+          <FormattedMessage id="Connect_Wallet" />
         </ConnectBtn>
       )}
       <ConnectModal

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { bindActionCreators } from 'redux';
@@ -89,24 +90,50 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
     <div className="markets-available">
       <div className="slider-animation">
         <div className="slider">
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
         </div>
         <div className="slider">
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
-          <span className="slider-text">THE FLOW</span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
+          <span className="slider-text">
+            <FormattedMessage id="THE_FLOW" />
+          </span>
         </div>
       </div>
       <div className="markets-available-content">
-        <div className="title">{markets?.length} Markets Available</div>
+        <div className="title">
+          {markets?.length} <FormattedMessage id="Markets_Available" />
+        </div>
         <div className="markets-slider-area">
           <MarketSlider
             setCurrentMarket={setCurrentMarket}
@@ -132,7 +159,9 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
               onMouseEnter={() => setCurrentMarket(currentMarket)}
               onMouseLeave={() => setCurrentMarket(null)}
             >
-              <div className="market-title">Market</div>
+              <div className="market-title">
+                <FormattedMessage id="Market" />
+              </div>
               <div className="market-header">
                 <img src={ICONS[currentMarket.underlyingSymbol]} alt="asset" />
                 <div>
@@ -148,7 +177,9 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
               <div className="divider1" />
 
               <div className="item">
-                <div className="label">Total Supply</div>
+                <div className="label">
+                  <FormattedMessage id="Total_Supply" />
+                </div>
                 <div>
                   <div className="value yellow">
                     {currencyFormatter(currentMarket.totalSupplyUsd)}
@@ -169,7 +200,9 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
               <div className="divider2" />
 
               <div className="item">
-                <div className="label">Supply APY</div>
+                <div className="label">
+                  <FormattedMessage id="Supply_APY" />
+                </div>
                 <div>
                   <div className="value green">
                     {shortenNumberFormatter(currentMarket.sAPY)}%
@@ -188,7 +221,9 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
               <div className="divider2" />
 
               <div className="item">
-                <div className="label">Total Borrow</div>
+                <div className="label">
+                  <FormattedMessage id="Total_Borrow" />
+                </div>
                 <div>
                   <div className="value yellow">
                     {currencyFormatter(currentMarket.totalBorrowsUsd)}
@@ -208,7 +243,9 @@ function MarketsAvailable({ getGovernanceStrikeWithParam }) {
               <div className="divider2" />
 
               <div className="item">
-                <div className="label">Borrow APY</div>
+                <div className="label">
+                  <FormattedMessage id="Borrow_APY" />
+                </div>
                 <div>
                   <div className="value green">
                     {shortenNumberFormatter(currentMarket.bAPY)}%

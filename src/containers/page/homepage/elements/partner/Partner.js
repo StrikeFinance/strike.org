@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import imgPartnerImmunefi from 'assets/img/homepage/partner-immunefi.svg';
 import imgPartnerCertik from 'assets/img/homepage/partner-certik.svg';
 import imgPartnerCoinbasewallet from 'assets/img/homepage/partner-coinbasewallet.svg';
@@ -15,20 +16,48 @@ function Partner() {
     <div className="partners" id="partners">
       <div className="slider-animation">
         <div className="slider">
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
+          <div className="slider">
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+          </div>
         </div>
         <div className="slider">
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
-          <span className="slider-text">PARTNERS</span>
+          <div className="slider">
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="PARTNERS" />
+            </span>
+          </div>
         </div>
       </div>
       <div className="partner-content">

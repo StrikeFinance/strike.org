@@ -43,7 +43,7 @@ export const useUserInfo = (web3, chainId, account, reload) => {
   });
 
   const calls = useMemo(() => {
-    if (!account) return [];
+    if (!account || !chainId) return [];
     return [
       {
         reference: 'reward',

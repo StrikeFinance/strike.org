@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { WalletConnect } from '@web3-react/walletconnect-v2';
@@ -163,7 +164,7 @@ function ConnectModal({ visible, onCancel }) {
         .catch(error => {
           console.log(error);
           if (error?.code === 4001) {
-            setPendingError({ desc: 'User rejected' });
+            setPendingError({ desc: 'User_Rejected' });
           } else {
             setPendingError({ desc: error?.message });
           }
@@ -198,7 +199,7 @@ function ConnectModal({ visible, onCancel }) {
               link: installExtentionLinks[p.id].link
             });
           } else if (error?.code === 4001) {
-            setPendingError({ desc: 'User Rejected' });
+            setPendingError({ desc: 'User_Rejected' });
           } else {
             setPendingError({ desc: error?.message });
           }
@@ -349,17 +350,21 @@ function ConnectModal({ visible, onCancel }) {
 
         {pendingError && (
           <div className="error-status">
-            <div className="error-msg">{pendingError.desc}</div>
+            <div className="error-msg">
+              <FormattedMessage id={pendingError.desc} />
+            </div>
             {pendingError.link && (
               <a href={pendingError.link} target="_blank" rel="noreferrer">
-                <b>{pendingError.linkDesc}</b>
+                <b>
+                  <FormattedMessage id={pendingError.linkDesc} />
+                </b>
               </a>
             )}
           </div>
         )}
 
         <div className="terms">
-          By connecting, I accept Strike’s{' '}
+          <FormattedMessage id="By_connecting" />
           <a href="https://strike.org/terms" target="_blank" rel="noreferrer">
             Terms of Service
           </a>
