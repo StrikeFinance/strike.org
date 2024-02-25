@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import Marquee from 'react-fast-marquee';
 import BigNumber from 'bignumber.js';
 import commaNumber from 'comma-number';
@@ -78,7 +79,9 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
 
                   <div className="apy-area">
                     <div>
-                      <div>Supply APY</div>
+                      <div>
+                        <FormattedMessage id="Supply_APY" />
+                      </div>
                       <div className="apy-item">
                         <div className="apy2">
                           {shortenNumberFormatter(
@@ -97,7 +100,9 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
                     <div className="divider" />
 
                     <div>
-                      <div>Borrow APY</div>
+                      <div>
+                        <FormattedMessage id="Borrow_APY" />
+                      </div>
                       <div className="apy-item">
                         <div className="apy2">
                           {shortenNumberFormatter(
@@ -119,7 +124,9 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
 
                 <div className="usd-area">
                   <div>
-                    <div>Total Supply</div>
+                    <div>
+                      <FormattedMessage id="Total_Supply" />
+                    </div>
                     <div className="value1">
                       {currencyFormatter(item.totalSupplyUsd)}
                     </div>
@@ -138,7 +145,9 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
                   <div className="divider" />
 
                   <div>
-                    <div>Borrow Supply</div>
+                    <div>
+                      <FormattedMessage id="Borrow_Supply" />
+                    </div>
                     <div className="value1">
                       {currencyFormatter(item.totalBorrowsUsd)}
                     </div>
@@ -175,7 +184,9 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
                   </div>
                   <div className="apy-area">
                     <div>
-                      <div>Supply APY</div>
+                      <div>
+                        <FormattedMessage id="Supply_APY" />
+                      </div>
                       <div className="apy">
                         {shortenNumberFormatter(item.sAPY)}%
                       </div>
@@ -184,7 +195,9 @@ const MarketSlider = ({ setCurrentMarket, markets, startIndex, speed }) => {
                     <div className="divider" />
 
                     <div>
-                      <div>Borrow APY</div>
+                      <div>
+                        <FormattedMessage id="Borrow_APY" />
+                      </div>
                       <div className="apy">
                         {shortenNumberFormatter(item.bAPY)}%
                       </div>
