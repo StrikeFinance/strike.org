@@ -99,7 +99,7 @@ const Banner = ({ markets }) => {
               onClick={() => window.open('https://app.strike.org/', '_blank')}
               className="launch-app-btn"
             >
-              Launch App
+              <FormattedMessage id="Launch_App" />
             </div>
             <div
               onClick={() =>
@@ -107,10 +107,10 @@ const Banner = ({ markets }) => {
               }
               className="whitepaper-btn"
             >
-              Whitepaper
+              <FormattedMessage id="Whitepaper" />
             </div>
             <Link to="/sale" className="claim-btn">
-              Claim STRK
+              <FormattedMessage id="Claim_STRK" />
             </Link>
           </div>
         </div>

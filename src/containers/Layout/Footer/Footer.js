@@ -86,7 +86,7 @@ const Footer = () => {
                 </Col>
               </Row>
               <Row gutter={[20, 20]}>
-                <Col xs={12} sm={12} lg={6} xl={6}>
+                <Col xs={24} sm={12} lg={6} xl={6}>
                   <div className="title">
                     <FormattedMessage id="Protocol" />
                   </div>
@@ -110,7 +110,7 @@ const Footer = () => {
                     ))}
                   </div>
                 </Col>
-                <Col xs={12} sm={12} lg={6} xl={6}>
+                <Col xs={24} sm={12} lg={6} xl={6}>
                   <div className="title">
                     <FormattedMessage id="Governance" />
                   </div>
@@ -130,7 +130,7 @@ const Footer = () => {
                 </Col>
               </Row>
               <Row gutter={[20, 20]}>
-                <Col xs={12} sm={12} lg={6} xl={6}>
+                <Col xs={24} sm={12} lg={6} xl={6}>
                   <div className="title">
                     <FormattedMessage id="Community" />
                   </div>
