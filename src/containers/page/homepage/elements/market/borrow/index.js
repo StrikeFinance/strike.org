@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import commaNumber from 'comma-number';
 import BigNumber from 'bignumber.js';
 import { Progress, Typography } from 'antd';
@@ -14,20 +15,23 @@ function TotalBorrow(props) {
         <div className="total-borrow-content__left">
           {/* <Typography className="title">Market</Typography> */}
           <Typography className="title-desciption">
-            Access Liquidity from Strike on-demand on any asset
+            <FormattedMessage id="Section_3" />
           </Typography>
           <Typography className="title-strike">
-            With the Strike protocols decentralized nature, users and developers
-            can access liquidity on-demand from their supplied collateral
+            <FormattedMessage id="Section_3_desc" />
           </Typography>
         </div>
         <div className="total-borrow-content__right">
           <div className="children-content">
-            <Typography className="title-content">Total Borrow</Typography>
+            <Typography className="title-content">
+              <FormattedMessage id="Total_Borrow" />
+            </Typography>
             <Typography className="money-borrow">
               ${format(totalBorrow)}
             </Typography>
-            <Typography className="top-markets">Top 3 Markets</Typography>
+            <Typography className="top-markets">
+              <FormattedMessage id="Top_3_Markets" />
+            </Typography>
             {markets.markets &&
               (markets.markets || [])
                 .filter(m => m.deprecated === false)
@@ -72,7 +76,7 @@ function TotalBorrow(props) {
                   {`$${format(new BigNumber(borrowVolume).toFormat(2))}`}
                 </Typography>
                 <Typography className="footer-content__left__title">
-                  24h Borrow Volume
+                  <FormattedMessage id="24h_Borrow_Volume" />
                 </Typography>
               </div>
               <div className="footer-content__right">
@@ -80,7 +84,7 @@ function TotalBorrow(props) {
                   {borrowerCount}
                 </Typography>
                 <Typography className="footer-content__right__title">
-                  # of Borrowers
+                  <FormattedMessage id="of_Borrowers" />
                 </Typography>
               </div>
             </div>

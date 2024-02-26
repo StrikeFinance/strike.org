@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Col, Row } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { useWindowResizeMobile } from 'utilities/hook';
@@ -19,7 +20,7 @@ const ProtocolOption = [
     href: ''
   },
   {
-    label: 'Bug Bounty',
+    label: 'Bug_Bounty',
     href: 'https://www.immunefi.com/bounty/strikefinance'
   }
 ];
@@ -37,7 +38,7 @@ const GovernanceOption = [
     href: 'https://app.strike.org/vote/leaderboard'
   },
   {
-    label: 'Grant Program',
+    label: 'Grant_Program',
     href: 'https://forms.gle/jas762TF1Zzs3HU8A'
   }
 ];
@@ -60,7 +61,7 @@ const CommunityOption = [
     href: 'https://github.com/StrikeFinance'
   },
   {
-    label: 'DeFi Pulse',
+    label: 'DeFi_Pulse',
     href: 'https://defipulse.com/'
   }
 ];
@@ -76,24 +77,25 @@ const Footer = () => {
             <>
               <Row>
                 <Col xs={24}>
-                  <div className="about-title">About Us</div>
+                  <div className="about-title">
+                    <FormattedMessage id="About_Us" />
+                  </div>
                   <div className="about-description">
-                    The Strike Finance is a decentralized money market built on
-                    the Ethereum that enables users to borrow and supply
-                    collateral onto the platform without central authority or
-                    control.
+                    <FormattedMessage id="About_Us_desc" />
                   </div>
                 </Col>
               </Row>
               <Row gutter={[20, 20]}>
-                <Col xs={12} sm={12} lg={6} xl={6}>
-                  <div className="title">Protocol</div>
+                <Col xs={24} sm={12} lg={6} xl={6}>
+                  <div className="title">
+                    <FormattedMessage id="Protocol" />
+                  </div>
                   <div className="options">
                     {ProtocolOption.map((protocol, index) => (
                       <div key={index} className="option">
                         {protocol?.label === 'Terms' ? (
                           <div onClick={() => history.push('/terms')}>
-                            {protocol?.label}
+                            <FormattedMessage id={protocol?.label} />
                           </div>
                         ) : (
                           <a
@@ -101,15 +103,17 @@ const Footer = () => {
                             target="_blank"
                             rel="noreferrer"
                           >
-                            {protocol?.label}
+                            <FormattedMessage id={protocol?.label} />
                           </a>
                         )}
                       </div>
                     ))}
                   </div>
                 </Col>
-                <Col xs={12} sm={12} lg={6} xl={6}>
-                  <div className="title">Governance</div>
+                <Col xs={24} sm={12} lg={6} xl={6}>
+                  <div className="title">
+                    <FormattedMessage id="Governance" />
+                  </div>
                   <div className="options">
                     {GovernanceOption.map((protocol, index) => (
                       <div key={index} className="option">
@@ -118,7 +122,7 @@ const Footer = () => {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {protocol?.label}
+                          <FormattedMessage id={protocol?.label} />
                         </a>
                       </div>
                     ))}
@@ -126,8 +130,10 @@ const Footer = () => {
                 </Col>
               </Row>
               <Row gutter={[20, 20]}>
-                <Col xs={12} sm={12} lg={6} xl={6}>
-                  <div className="title">Community</div>
+                <Col xs={24} sm={12} lg={6} xl={6}>
+                  <div className="title">
+                    <FormattedMessage id="Community" />
+                  </div>
                   <div className="options">
                     {CommunityOption.map((protocol, index) => (
                       <div key={index} className="option">
@@ -136,7 +142,7 @@ const Footer = () => {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {protocol?.label}
+                          <FormattedMessage id={protocol?.label} />
                         </a>
                       </div>
                     ))}
@@ -147,22 +153,23 @@ const Footer = () => {
           ) : (
             <div className="desktop-menu">
               <div className="menu">
-                <div className="title">About Us</div>
+                <div className="title">
+                  <FormattedMessage id="About_Us" />
+                </div>
                 <div className="description">
-                  The Strike Finance is a decentralized money market built on
-                  the Ethereum that enables users to borrow and supply
-                  collateral onto the platform without central authority or
-                  control.
+                  <FormattedMessage id="About_Us_desc" />
                 </div>
               </div>
               <div className="menu">
-                <div className="title">Protocol</div>
+                <div className="title">
+                  <FormattedMessage id="Protocol" />
+                </div>
                 <div className="options">
                   {ProtocolOption.map((protocol, index) => (
                     <div key={index} className="option">
                       {protocol?.label === 'Terms' ? (
                         <div onClick={() => history.push('/terms')}>
-                          {protocol?.label}
+                          <FormattedMessage id={protocol?.label} />
                         </div>
                       ) : (
                         <a
@@ -170,7 +177,7 @@ const Footer = () => {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {protocol?.label}
+                          <FormattedMessage id={protocol?.label} />
                         </a>
                       )}
                     </div>
@@ -178,24 +185,28 @@ const Footer = () => {
                 </div>
               </div>
               <div className="menu">
-                <div className="title">Governance</div>
+                <div className="title">
+                  <FormattedMessage id="Governance" />
+                </div>
                 <div className="options">
                   {GovernanceOption.map((protocol, index) => (
                     <div key={index} className="option">
                       <a href={protocol?.href} target="_blank" rel="noreferrer">
-                        {protocol?.label}
+                        <FormattedMessage id={protocol?.label} />
                       </a>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="menu">
-                <div className="title">Community</div>
+                <div className="title">
+                  <FormattedMessage id="Community" />
+                </div>
                 <div className="options">
                   {CommunityOption.map((protocol, index) => (
                     <div key={index} className="option">
                       <a href={protocol?.href} target="_blank" rel="noreferrer">
-                        {protocol?.label}
+                        <FormattedMessage id={protocol?.label} />
                       </a>
                     </div>
                   ))}
@@ -210,7 +221,8 @@ const Footer = () => {
           <img src={footerImg} alt="footer" />
         </div>
         <div className="copyright">
-          © Strike.org {new Date().getUTCFullYear()} all rights reserved.
+          © Strike.org {new Date().getUTCFullYear()}{' '}
+          <FormattedMessage id="all_rights_reserved" />
         </div>
       </div>
     </div>

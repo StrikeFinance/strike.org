@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { Progress, Typography } from 'antd';
 import commaNumber from 'comma-number';
 import BigNumber from 'bignumber.js';
@@ -14,21 +15,23 @@ function Totalsupply(props) {
         <div className="total-supply-content__left">
           {/* <Typography className="title">Market</Typography> */}
           <h1 className="title-desciption">
-            Supply collateral to Strike while controlling your keys
+            <FormattedMessage id="Section_2" />
           </h1>
           <Typography className="title-strike">
-            Strike users control all of their digital assets on a non-custodial
-            protocol while earning a variable rate based on market demands of
-            that asset. Rates are earned per Ethereum block mined
+            <FormattedMessage id="Section_2_desc" />
           </Typography>
         </div>
         <div className="total-supply-content__right">
           <div className="children-content">
-            <Typography className="title-content">Total Supply</Typography>
+            <Typography className="title-content">
+              <FormattedMessage id="Total_Supply" />
+            </Typography>
             <Typography className="money-supply">
               ${format(totalSupply)}
             </Typography>
-            <Typography className="top-markets">Top 3 Markets</Typography>
+            <Typography className="top-markets">
+              <FormattedMessage id="Top_3_Markets" />
+            </Typography>
             {markets?.markets &&
               (markets?.markets || [])
                 .filter(m => m.deprecated === false)
@@ -73,7 +76,7 @@ function Totalsupply(props) {
                   {`$${format(new BigNumber(supplyVolume).toFormat(2))}`}
                 </Typography>
                 <Typography className="footer-content__left__title">
-                  24h Supply Volume
+                  <FormattedMessage id="24h_Supply_Volume" />
                 </Typography>
               </div>
               <div className="footer-content__right">
@@ -81,7 +84,7 @@ function Totalsupply(props) {
                   {supplierCount}
                 </Typography>
                 <Typography className="footer-content__right__title">
-                  # of Suppliers
+                  <FormattedMessage id="of_Suppliers" />
                 </Typography>
               </div>
             </div>

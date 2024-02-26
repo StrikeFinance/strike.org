@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { fetchAllPosts } from 'utilities/fetchSanityPosts';
@@ -26,22 +27,50 @@ function Blogs() {
       <div className="blog-wrapper">
         <div className="slider-animation">
           <div className="slider">
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
           </div>
           <div className="slider">
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
-            <span className="slider-text">BLOGS</span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
+            <span className="slider-text">
+              <FormattedMessage id="BLOGS" />
+            </span>
           </div>
         </div>
         <div className="blog-content">
@@ -68,7 +97,9 @@ function Blogs() {
             })}
           </div>
           <Link to="/blog" className="btn-whitepaper">
-            <span>View All</span>
+            <span>
+              <FormattedMessage id="View_All" />
+            </span>
             <img src={imgUp} alt="up" />
           </Link>
         </div>

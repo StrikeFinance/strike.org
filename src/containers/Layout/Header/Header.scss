@@ -1,3 +1,6 @@
+.gap-menu {
+  gap: 10px;
+}
 .page-header {
   top: 0;
   z-index: 1000;
@@ -17,7 +20,10 @@
       @media screen and (max-width: 1280px) {
         padding: 20px 20px;
       }
-
+      .header-mobile {
+        display: flex;
+        gap: 20px;
+      }
       .logo {
         cursor: pointer;
         width: 300px;
@@ -65,7 +71,7 @@
           cursor: pointer;
         }
         .launch-app-btn {
-          width: 140px;
+          width: 160px;
           height: 40px;
           color: #107def;
           background: #ffffff;
@@ -74,6 +80,7 @@
           justify-content: center;
           margin-right: 20px;
           cursor: pointer;
+          white-space: nowrap;
         }
 
         @media screen and (max-width: 1279px) {
@@ -82,7 +89,7 @@
             width: 100px;
           }
           .launch-app-btn {
-            width: 100px;
+            width: 160px;
           }
         }
       }
@@ -128,7 +135,7 @@
         margin: 0 auto;
       }
       .launch-app-btn {
-        width: 140px;
+        width: 160px;
         height: 40px;
         color: #107def;
         background: #ffffff;

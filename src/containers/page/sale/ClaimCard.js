@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { compose } from 'recompose';
@@ -86,7 +87,8 @@ const ClaimCard = ({ round, openStatus }) => {
       {!account ? (
         <div className="not-connect-card">
           <div className="title">
-            Please claim your <span className="text-highlight">STRK</span>!
+            <FormattedMessage id="Please_claim_your" />
+            <span className="text-highlight">STRK</span>!
           </div>
           <img src={StrkLogoImg} className="logo" alt="logo" />
           <div className="connect-btn">
@@ -160,13 +162,19 @@ const ClaimCard = ({ round, openStatus }) => {
             </div> */}
 
             <div className="round-row header">
-              <spa className="round">Round</spa>
-              <div className="rewards">Vestings</div>
+              <spa className="round">
+                <FormattedMessage id="Round" />
+              </spa>
+              <div className="rewards">
+                <FormattedMessage id="Vestings" />
+              </div>
             </div>
             {[...Array(openStatus === 'Done' ? round + 1 : round)].map(
               (item, index) => (
                 <div className="round-row" key={`round-row-${index}`}>
-                  <spa className="round">Round {index + 1}</spa>
+                  <spa className="round">
+                    <FormattedMessage id="Round" /> {index + 1}
+                  </spa>
                   <div className="rewards">
                     <span className="value">
                       {userInfo.userInfos[index].harvest
@@ -199,7 +207,9 @@ const ClaimCard = ({ round, openStatus }) => {
                                   justifyContent: 'space-between'
                                 }}
                               >
-                                <span>Total:</span>
+                                <span>
+                                  <FormattedMessage id="Total" />:
+                                </span>
                                 <span>
                                   {getReadableNumber(
                                     userInfo.userInfos[index].totalAmount0,
@@ -214,7 +224,9 @@ const ClaimCard = ({ round, openStatus }) => {
                                   justifyContent: 'space-between'
                                 }}
                               >
-                                <span>Claimed:</span>
+                                <span>
+                                  <FormattedMessage id="Claimed" />:
+                                </span>
                                 <span>
                                   {getReadableNumber(
                                     userInfo.userInfos[index].claimedAmount0,
@@ -230,7 +242,7 @@ const ClaimCard = ({ round, openStatus }) => {
                                 }}
                               >
                                 <span style={{ paddingRight: '20px' }}>
-                                  Claimable:
+                                  <FormattedMessage id="Claimable" />:
                                 </span>
                                 <span>
                                   {getReadableNumber(
@@ -282,7 +294,9 @@ const ClaimCard = ({ round, openStatus }) => {
                                   justifyContent: 'space-between'
                                 }}
                               >
-                                <span>Total:</span>
+                                <span>
+                                  <FormattedMessage id="Total" />:
+                                </span>
                                 <span>
                                   {getReadableNumber(
                                     userInfo.userInfos[index].totalAmount1,
@@ -297,7 +311,9 @@ const ClaimCard = ({ round, openStatus }) => {
                                   justifyContent: 'space-between'
                                 }}
                               >
-                                <span>Claimed:</span>
+                                <span>
+                                  <FormattedMessage id="Claimed" />:
+                                </span>
                                 <span>
                                   {getReadableNumber(
                                     userInfo.userInfos[index].claimedAmount1,
@@ -313,7 +329,7 @@ const ClaimCard = ({ round, openStatus }) => {
                                 }}
                               >
                                 <span style={{ paddingRight: '20px' }}>
-                                  Claimable:
+                                  <FormattedMessage id="Claimable" />:
                                 </span>
                                 <span>
                                   {getReadableNumber(
@@ -359,7 +375,7 @@ const ClaimCard = ({ round, openStatus }) => {
                           {action === `claim${index}0` && (
                             <Spin className="spinner" indicator={antIcon} />
                           )}
-                          Claim
+                          <FormattedMessage id="Claim" />
                         </div>
                         <div
                           className={`claim-btn ${
@@ -382,7 +398,7 @@ const ClaimCard = ({ round, openStatus }) => {
                           {action === `claim${index}1` && (
                             <Spin className="spinner" indicator={antIcon} />
                           )}
-                          Claim
+                          <FormattedMessage id="Claim" />
                         </div>
                       </>
                     ) : (
@@ -400,7 +416,7 @@ const ClaimCard = ({ round, openStatus }) => {
                         {action === `harvest${index}` && (
                           <Spin className="spinner" indicator={antIcon} />
                         )}
-                        Harvest
+                        <FormattedMessage id="Harvest" />
                       </div>
                     )}
                   </div>
@@ -415,7 +431,7 @@ const ClaimCard = ({ round, openStatus }) => {
             <NavLink to="/history" style={{ width: '100%' }}>
               <div className="history-btn">
                 <img src={TxHistoryImg} alt="tx-history" />
-                Transaction History
+                <FormattedMessage id="Transaction_History" />
               </div>
             </NavLink>
           </div>
