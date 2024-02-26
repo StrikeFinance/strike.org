@@ -134,7 +134,9 @@ const Governance = ({ getGovernance }) => {
                               getStatus(item) === 'Failed' ? 'failed' : 'status'
                             }`}
                           >
-                            {getStatus(item)}
+                            {getStatus(item) && (
+                              <FormattedMessage id={getStatus(item)} />
+                            )}
                           </div>
                         </div>
                       ) : (
