@@ -20,6 +20,7 @@ import daiImg from 'assets/img/dai.png';
 import xcnImg from 'assets/img/xcn.png';
 import wstethImg from 'assets/img/wsteth.png';
 import rethImg from 'assets/img/reth.png';
+import crvusdImg from 'assets/img/crvusd.png';
 import completed from 'assets/img/landingpage/Shape.png';
 import cancel from 'assets/img/landingpage/cancel.png';
 import dailogo from 'assets/img/landingpage/image-8.png';
@@ -571,7 +572,8 @@ const ICONS = {
   DAI: daiImg,
   XCN: xcnImg,
   wstETH: wstethImg,
-  rETH: rethImg
+  rETH: rethImg,
+  crvUSD: crvusdImg
 };
 const format = commaNumber.bindWith(',', '.');
 function Section3({
