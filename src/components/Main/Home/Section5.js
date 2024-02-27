@@ -20,6 +20,7 @@ import daiImg from 'assets/img/dai.png';
 import xcnImg from 'assets/img/xcn.png';
 import wstethImg from 'assets/img/wsteth.png';
 import rethImg from 'assets/img/reth.png';
+import crvusdImg from 'assets/img/crvusd.png';
 import LineProgressBar from '../../Basic/LineProgressBar';
 
 const Section2Wrapper = styled.div`
@@ -244,7 +245,8 @@ const ICONS = {
   DAI: daiImg,
   XCN: xcnImg,
   wstETH: wstethImg,
-  rETH: rethImg
+  rETH: rethImg,
+  crvUSD: crvusdImg
 }
 
 function Section2({ history, markets }) {
