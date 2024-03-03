@@ -26,7 +26,7 @@ const Banner = ({ markets }) => {
           </div>
           <div className="buttons flex">
             <a
-              href="https://app.strike.org/vault"
+              href={`${process.env.REACT_APP_URL}/vault`}
               target="_blank"
               rel="noreferrer"
               className="btn-calc"
