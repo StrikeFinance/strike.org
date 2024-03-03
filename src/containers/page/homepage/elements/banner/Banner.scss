@@ -16,15 +16,106 @@
     min-height: calc(100vh + 140px);
   }
 
-  .banner-content {
-    padding: 50px 0px;
-    position: relative;
+  .reward-banner {
+    margin: 120px 120px 0px 120px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: 1px solid #333;
+    border-radius: 12px;
 
-    @media screen and (max-width: 1960px) {
-      height: calc(100vh - 170px);
+    .left {
+      padding: 24px;
+
+      .title {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .description {
+        margin-top: 14px;
+        font-size: 14px;
+        color: #999;
+      }
+
+      .buttons {
+        align-items: center;
+        margin-top: 16px;
+        gap: 24px;
+      }
+
+      .btn-calc {
+        display: inline-block;
+        color: white;
+        border: 1px solid white;
+        border-radius: 6px;
+        padding: 8px 32px;
+      }
+
+      .btn-learn {
+        color: white;
+      }      
+    }
+    
+    @media screen and (max-width: 1280px) {
+      .left {
+        padding: 24px;
+  
+        .title {
+          font-size: 20px;
+        }
+  
+        .description {
+          font-size: 12px;
+        }
+  
+        .btn-calc {
+          font-size: 14px;
+          padding: 8px 20px;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1110px) {
+      .left {
+        padding: 24px;
+  
+        .title {
+          font-size: 16px;
+        }
+  
+        .description {
+          font-size: 12px;
+        }
+  
+        .btn-calc {
+          font-size: 12px;
+          padding: 8px 20px;
+        }
+      }
+    }
+
+    @media screen and (max-width: 996px) {
+      img {
+        display: none;
+      }
     }
 
     @media screen and (max-width: 812px) {
+      margin: 100px 20px 0px 20px;
+    }
+  }
+
+  .banner-content {
+    margin-top: -80px;
+    padding: 0px 0px;
+    position: relative;
+
+    @media screen and (max-width: 1960px) {
+      height: calc(100vh - 220px);
+    }
+
+    @media screen and (max-width: 812px) {
+      margin-top: 0px;
       display: block;
     }
 
