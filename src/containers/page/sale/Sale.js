@@ -267,7 +267,7 @@ const Sale = ({ sale, claim }) => {
               )}
             </div>
             <div className="right">
-              {sale || true ? (
+              {sale ? (
                 <SaleCard
                   round={round}
                   openStatus={openStatus}
