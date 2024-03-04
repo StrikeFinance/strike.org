@@ -134,9 +134,13 @@
         }
       }
 
+      @media screen and (max-width: 480px) {
+        padding: 12px 12px;
+      }
+
       .round-row {
         display: grid;
-        grid-template-columns: 65px 1fr 130px;
+        grid-template-columns: 75px 1fr 130px;
         align-items: center;
         justify-items: end;
         margin-top: 20px;
@@ -179,7 +183,7 @@
         }
 
         @media screen and (max-width: 1960px) {
-          grid-template-columns: 65px 1fr 120px;
+          grid-template-columns: 75px 1fr 120px;
           font-size: 14px;
           
           
