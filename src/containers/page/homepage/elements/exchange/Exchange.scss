@@ -67,6 +67,13 @@
         }
       }
 
+      .img-exchange.green1 {
+        &:hover {
+          border: 5px solid #57FD85;
+          transition: 0.2s;
+        }
+      }
+
       .img-exchange.white {
         &:hover {
           border: 5px solid white;
