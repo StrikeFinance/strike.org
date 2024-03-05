@@ -8,6 +8,8 @@ import imgPartnerHyve from 'assets/img/homepage/partner-hyve.svg';
 import imgPartnerHalborn from 'assets/img/homepage/partner-halborn.svg';
 import imgPartnerMexc from 'assets/img/homepage/partner-mexc.svg';
 import imgPartnerBitget from 'assets/img/homepage/partner-bitget.svg';
+import imgPartnerBika from 'assets/img/homepage/partner-bika.png';
+import imgPartnerWowearn from 'assets/img/homepage/partner-wowearn.png';
 
 import './Partner.scss';
 
@@ -92,6 +94,14 @@ function Partner() {
 
           <div className="img-partner">
             <img src={imgPartnerBitget} alt="Mexc" />
+          </div>
+
+          <div className="img-partner">
+            <img src={imgPartnerBika} alt="bika" />
+          </div>
+
+          <div className="img-partner">
+            <img src={imgPartnerWowearn} alt="Wowearn" />
           </div>
         </div>
       </div>

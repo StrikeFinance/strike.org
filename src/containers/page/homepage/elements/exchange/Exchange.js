@@ -6,6 +6,7 @@ import imgExchangeUniswap from 'assets/img/homepage/exchange-uniswap.svg';
 import imgExchangeBittrex from 'assets/img/homepage/exchange-bittrex.svg';
 import imgExchangeMexc from 'assets/img/homepage/exchange-mexc.svg';
 import imgExchangeBitget from 'assets/img/homepage/exchange-bitget.svg';
+import imgPartnerBika from 'assets/img/homepage/partner-bika.png';
 
 import './Exchange.scss';
 
@@ -104,6 +105,15 @@ function Exchange() {
           >
             <div className="img-exchange cyan">
               <img src={imgExchangeBitget} alt="Bitget" />
+            </div>
+          </a>
+          <a
+            target="__blank"
+            className="pointer"
+            href="https://www.bikaglobal.one/en_US/trade/STRK_USDT"
+          >
+            <div className="img-exchange green1">
+              <img src={imgPartnerBika} alt="Bika" />
             </div>
           </a>
         </div>
