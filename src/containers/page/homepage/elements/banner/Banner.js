@@ -16,38 +16,40 @@ const Banner = ({ markets }) => {
 
   return (
     <div className="banner-homepage">
-      <div className="reward-banner flex just-between">
-        <div className="left">
-          <div className="title">
-            <FormattedMessage id="Reward_Banner_Title" />
+      <div className="reward-banner-wrapper">
+        <div className="reward-banner flex just-between">
+          <div className="left">
+            <div className="title">
+              <FormattedMessage id="Reward_Banner_Title" />
+            </div>
+            <div className="description">
+              <FormattedMessage id="Reward_Banner_Description" />
+            </div>
+            <div className="buttons flex">
+              <a
+                href={`${process.env.REACT_APP_URL}/vault`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-calc"
+              >
+                <span>
+                  <FormattedMessage id="Reward_Banner_Go" />
+                </span>
+              </a>
+              <a
+                href="https://strike-finance.medium.com/unleashing-the-potential-of-defi-with-strike-prime-rewards-a-strategic-leap-forward-01176f33c851"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-learn"
+              >
+                <span>
+                  <FormattedMessage id="Reward_Banner_Learn" />
+                </span>
+              </a>
+            </div>
           </div>
-          <div className="description">
-            <FormattedMessage id="Reward_Banner_Description" />
-          </div>
-          <div className="buttons flex">
-            <a
-              href={`${process.env.REACT_APP_URL}/vault`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-calc"
-            >
-              <span>
-                <FormattedMessage id="Reward_Banner_Go" />
-              </span>
-            </a>
-            <a
-              href="https://strike-finance.medium.com/unleashing-the-potential-of-defi-with-strike-prime-rewards-a-strategic-leap-forward-01176f33c851"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-learn"
-            >
-              <span>
-                <FormattedMessage id="Reward_Banner_Learn" />
-              </span>
-            </a>
-          </div>
+          <img src={rewardBanner} alt="reward-banner" />
         </div>
-        <img src={rewardBanner} alt="reward-banner" />
       </div>
       <div className="banner-content flex just-between">
         <div className="left">
