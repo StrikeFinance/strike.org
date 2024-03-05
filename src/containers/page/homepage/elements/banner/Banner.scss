@@ -17,9 +17,20 @@
     min-height: calc(100vh + 140px);
   }
 
-  .reward-banner {
+  .reward-banner-wrapper {
     margin: 120px 120px 0px 120px;
-    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    background: linear-gradient(to right, #3fd5c6, #3ea7fb);
+    padding: 2px;
+    border-radius: 12px;
+
+    @media screen and (max-width: 812px) {
+      margin: 100px 20px 0px 20px;
+    }
+  }
+
+  .reward-banner {
+    background: #151218;
     color: white;
     border: 1px solid #333;
     border-radius: 12px;
@@ -99,10 +110,6 @@
       img {
         display: none;
       }
-    }
-
-    @media screen and (max-width: 812px) {
-      margin: 100px 20px 0px 20px;
     }
   }
 
