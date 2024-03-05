@@ -7,6 +7,7 @@ import BigNumber from 'bignumber.js';
 import PropTypes from 'prop-types';
 import BannerImg from 'assets/img/homepage/banner.png';
 import MouseImg from 'assets/img/homepage/mouse.svg';
+import rewardBanner from 'assets/img/landingpage/reward_banner.svg';
 import './Banner.scss';
 import { Link } from 'react-router-dom';
 
@@ -15,6 +16,39 @@ const Banner = ({ markets }) => {
 
   return (
     <div className="banner-homepage">
+      <div className="reward-banner flex just-between">
+        <div className="left">
+          <div className="title">
+            <FormattedMessage id="Reward_Banner_Title" />
+          </div>
+          <div className="description">
+            <FormattedMessage id="Reward_Banner_Description" />
+          </div>
+          <div className="buttons flex">
+            <a
+              href={`${process.env.REACT_APP_URL}/vault`}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-calc"
+            >
+              <span>
+                <FormattedMessage id="Reward_Banner_Go" />
+              </span>
+            </a>
+            <a
+              href="https://strike-finance.medium.com/unleashing-the-potential-of-defi-with-strike-prime-rewards-a-strategic-leap-forward-01176f33c851"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-learn"
+            >
+              <span>
+                <FormattedMessage id="Reward_Banner_Learn" />
+              </span>
+            </a>
+          </div>
+        </div>
+        <img src={rewardBanner} alt="reward-banner" />
+      </div>
       <div className="banner-content flex just-between">
         <div className="left">
           {lang === 'zh' || lang === 'tr' ? (
