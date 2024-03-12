@@ -53,6 +53,11 @@ const HomePageLink = [
     title: <FormattedMessage id="Blog" />,
     altTitle: ''
   }
+  // {
+  //   to: '/bond',
+  //   title: <FormattedMessage id="Bond" />,
+  //   altTitle: ''
+  // }
 ];
 const Header = ({ showMenuHead }) => {
   const lang = localStorage.getItem('language') || 'en';

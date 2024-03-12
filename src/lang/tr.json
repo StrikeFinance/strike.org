@@ -8,6 +8,7 @@
   "Governance": "Yönetim",
   "Developers": "Geliştiriciler",
   "Blog": "Blog",
+  "Bond": "Bağlamak",
   "Launch_App": "Uygulamayı başlat",
   "Whitepaper": "Whitepaper",
   "Reward_Banner_Title": "Strike Prime Rewards ile DeFi Potansiyelini Ortaya Çıkarın",
@@ -171,5 +172,7 @@
   "Date": "Tarih",
   "Plan": "Plan",
   "Please_connect_your_wallet": "Lütfen cüzdanınızı bağlayın",
-  "COMING": "GELEN"
+  "COMING": "GELEN",
+  "Total_Reserve_Reward": "Toplam Rezerv Ödülü",
+  "Prime_APR": "Astar vurmak APR"
 }

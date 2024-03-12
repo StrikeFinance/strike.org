@@ -8,6 +8,7 @@
   "Governance": "治理",
   "Developers": "项目方",
   "Blog": "博客",
+  "Bond": "纽带",
   "Launch_App": "启动应用程序",
   "Whitepaper": "白皮书",
   "Reward_Banner_Title": "通过 Strike Prime 奖励释放 DeFi 的潜力",
@@ -171,5 +172,7 @@
   "Date": "日期",
   "Plan": "计划",
   "Please_connect_your_wallet": "请连接您的钱包",
-  "COMING": "未来"
+  "COMING": "未来",
+  "Total_Reserve_Reward": "总储备奖励",
+  "Prime_APR": "主要的 APR"
 }

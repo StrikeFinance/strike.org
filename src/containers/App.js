@@ -22,6 +22,7 @@ import BlogsPage from 'containers/page/blogs/BlogsPage';
 import BlogsDetailPage from 'containers/page/blogDetails/BlogDetails';
 import SalePage from 'containers/page/sale';
 import TxHistory from 'containers/page/txHistory/TxHistory';
+// import BondPage from 'containers/page/bond';
 import enMessages from 'lang/en';
 import zhMessages from 'lang/zh';
 import esMessages from 'lang/es';
@@ -87,6 +88,7 @@ function App() {
                   <Route exact path="/blog/:id" component={BlogsDetailPage} />
                   <Route exact path="/sale" component={SalePage} />
                   <Route exact path="/history" component={TxHistory} />
+                  {/* <Route exact path="/bond" component={BondPage} /> */}
                   <Redirect from="/" to="/" />
                 </Switch>
               </BrowserRouter>
