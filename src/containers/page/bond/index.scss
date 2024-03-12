@@ -1,0 +1,27 @@
+
+.wrap-terms-container {
+  padding: 150px 120px 50px 120px;
+  color: var(--color-text-main);
+  font-size: 16px;
+  background: transparent;
+  @media screen and (max-width: 812px) {
+    padding: 100px 20px 150px 20px;
+  }
+  .terms-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .terms-section {
+    margin: 20px 0;
+
+    .terms-header {
+      font-weight: bold;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
