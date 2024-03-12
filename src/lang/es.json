@@ -8,6 +8,7 @@
   "Governance": "Gobernancia",
   "Developers": "Desarrolladores",
   "Blog": "Blog",
+  "Bond": "Vínculo",
   "Launch_App": "Ejecutar aplicación",
   "Whitepaper": "Papel blanco",
   "Reward_Banner_Title": "Liberando el potencial de DeFi con Strike Prime Rewards",
@@ -171,5 +172,7 @@
   "Date": "Fecha",
   "Plan": "Plan",
   "Please_connect_your_wallet": "Por favor conecta tu billetera",
-  "COMING": "PRÓXIMO"
+  "COMING": "PRÓXIMO",
+  "Total_Reserve_Reward": "Recompensa de reserva total",
+  "Prime_APR": "Principal APR"
 }

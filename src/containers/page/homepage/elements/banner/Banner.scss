@@ -17,9 +17,20 @@
     min-height: calc(100vh + 140px);
   }
 
-  .reward-banner {
+  .reward-banner-wrapper {
     margin: 120px 120px 0px 120px;
-    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    background: linear-gradient(to right, #3fd5c6, #3ea7fb);
+    padding: 2px;
+    border-radius: 12px;
+
+    @media screen and (max-width: 812px) {
+      margin: 100px 20px 0px 20px;
+    }
+  }
+
+  .reward-banner {
+    background: #151218;
     color: white;
     border: 1px solid #333;
     border-radius: 12px;
@@ -28,7 +39,7 @@
       padding: 24px;
 
       .title {
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 700;
       }
 
@@ -74,6 +85,10 @@
           padding: 8px 20px;
         }
       }
+
+      .rewardBannerImg {
+        display: none;
+      }
     }
 
     @media screen and (max-width: 1110px) {
@@ -95,14 +110,102 @@
       }
     }
 
+    @media screen and (max-width: 1024px) {
+      .rewardBannerImg {
+        display: none;
+      }
+    }
+
     @media screen and (max-width: 996px) {
       img {
         display: none;
       }
     }
 
-    @media screen and (max-width: 812px) {
-      margin: 100px 20px 0px 20px;
+    @media only screen and (max-width: 576px) {
+      flex-direction: column;
+    }
+
+    .reward-info {
+      min-width: 360px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+  
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+  
+        .label {
+          color: rgba(256, 256, 256, 0.6);
+          font-size: 18px;
+          font-weight: bold;
+        }
+  
+        .value {
+          color: white;
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+  
+      @media only screen and (max-width: 1280px) {
+        .info {
+          .label {
+            font-size: 18px;
+          }
+  
+          .value {
+            font-size: 24px;
+          }
+        }
+      }
+  
+      @media only screen and (max-width: 1024px) {
+        .info {
+          .label {
+            font-size: 16px;
+          }
+  
+          .value {
+            font-size: 24px;
+          }
+        }
+      }
+  
+      @media only screen and (max-width: 768px) {
+        gap: 20px;
+        padding: 0;
+  
+        .info {
+          .label {
+            font-size: 16px;
+          }
+  
+          .value {
+            font-size: 22px;
+          }
+        }
+      }
+  
+      @media only screen and (max-width: 576px) {
+        min-width: unset;
+        flex-direction: column;
+        padding: 20px;
+        gap: 10px;
+        .info {
+          width: 100%;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+  
+        .divider {
+          display: none;
+        }
+      }
     }
   }
 
