@@ -98,7 +98,7 @@ const Banner = ({ markets }) => {
           <div className="reward-info">
             <div className="info">
               <div className="label">
-                <FormattedMessage id="Total_Reserve_Reward" />
+                <FormattedMessage id="Prime_Reward_Pool" />
               </div>
               <div className="value">${totalReserveReward}</div>
             </div>
