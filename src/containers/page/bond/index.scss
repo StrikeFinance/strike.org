@@ -11,4 +11,12 @@
     width: 100%;
     height: 80vh;
   }
+
+  .loading-spinner {
+    height: fit-content;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    left: 0;
+  }
 }
