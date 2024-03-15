@@ -100,7 +100,13 @@ const Banner = ({ markets }) => {
               <div className="label">
                 <FormattedMessage id="Prime_Reward_Pool" />
               </div>
-              <div className="value">${totalReserveReward}</div>
+              {Number(totalReserveReward) === 0 ? (
+                <div className="load-wraper">
+                  <div className="activity" />
+                </div>
+              ) : (
+                <div className="value">${totalReserveReward}</div>
+              )}
             </div>
 
             <img src={dividerImg} className="divider" alt="divider" />
@@ -109,7 +115,13 @@ const Banner = ({ markets }) => {
               <div className="label">
                 <FormattedMessage id="Prime_APR" />
               </div>
-              <div className="value">{reserveApy}%</div>
+              {Number(reserveApy) === 0 ? (
+                <div className="load-wraper">
+                  <div className="activity" />
+                </div>
+              ) : (
+                <div className="value">{reserveApy}%</div>
+              )}
             </div>
           </div>
           <img
