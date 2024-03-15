@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
 import { compose } from 'recompose';
 import BigNumber from 'bignumber.js';
 import PropTypes from 'prop-types';
-import { useWeb3, useActiveWeb3React } from 'hooks';
 import BannerImg from 'assets/img/homepage/banner.png';
 import MouseImg from 'assets/img/homepage/mouse.svg';
 import rewardBanner from 'assets/img/landingpage/reward_banner.svg';
@@ -18,48 +17,7 @@ import { useRewardData } from 'hooks/useReward';
 const Banner = ({ markets }) => {
   const lang = localStorage.getItem('language') || 'en';
 
-  const { chainId, requiredChainId } = useActiveWeb3React();
-  const web3 = useWeb3();
-
-  const [strkPrice, setStrkPrice] = useState(0);
-  const [ethPrice, setEthPrice] = useState(0);
-  const [totalReserve, setTotalReserve] = useState(0);
-
-  const { totalReserveReward, reserveApy } = useRewardData(
-    web3,
-    chainId || requiredChainId,
-    strkPrice,
-    ethPrice,
-    totalReserve
-  );
-
-  useEffect(() => {
-    if (markets?.markets) {
-      const strkMarket = markets.markets.find(
-        ele => ele.underlyingSymbol === 'STRK'
-      );
-      if (strkMarket) {
-        setStrkPrice(Number(strkMarket.tokenPrice));
-      }
-
-      const ethMarket = markets.markets.find(
-        ele => ele.underlyingSymbol === 'ETH'
-      );
-      if (ethMarket) {
-        setEthPrice(Number(ethMarket.tokenPrice));
-      }
-
-      let tempTotalReserve = new BigNumber(0);
-      markets.markets.forEach(ele => {
-        tempTotalReserve = tempTotalReserve.plus(
-          new BigNumber(ele.totalReserves || 0)
-            .div(new BigNumber(10).pow(ele.underlyingDecimal))
-            .times(ele.tokenPrice)
-        );
-      });
-      setTotalReserve(tempTotalReserve.toNumber());
-    }
-  }, [markets]);
+  const { totalReserveReward, reserveApy } = useRewardData();
 
   return (
     <div className="banner-homepage">
