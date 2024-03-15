@@ -150,6 +150,29 @@
           font-size: 24px;
           font-weight: bold;
         }
+
+        .load-wraper {
+          position: relative;
+          display: inline-flex;
+          height: 40px;
+          width: 100px;
+          background-color: #37323D;
+          overflow: hidden;
+          border-radius: 5px;
+          margin-bottom: -8px;
+        }
+  
+        .activity {
+          position: absolute;
+          left: -45%;
+          height: 40px;
+          width: 45%;
+          background-image: linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+          background-image: -moz-linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+          background-image: -webkit-linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+          animation: loading 1s infinite;
+          z-index: 1;
+        }
       }
   
       @media only screen and (max-width: 1280px) {
@@ -239,7 +262,7 @@
         display: inline-flex;
         height: 50px;
         width: 400px;
-        background-color: #107def;
+        background-color: #37323D;
         overflow: hidden;
         border-radius: 5px;
         margin-bottom: -8px;
@@ -262,7 +285,7 @@
         display: inline-flex;
         height: 50px;
         width: 50px;
-        background-color: #107def;
+        background-color: #37323D;
         overflow: hidden;
         border-radius: 5px;
         margin-bottom: -8px;
