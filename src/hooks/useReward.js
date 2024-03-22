@@ -21,12 +21,14 @@ export const useRewardData = () => {
 
     setTotalReserve(data.data.data.totalReservesUsd);
 
-    setReserveApy(
-      (Number(data.data.data.totalLockedUsd) > 0
-        ? (Number(data.data.data.totalReservesUsd) * 12 * 100) /
-          Number(data.data.data.totalLockedUsd)
-        : 0 + Number(data.data.data.baseApr) * 100) * 2
-    );
+    if (Number(data.data.data.totalLockedUsd) > 0) {
+      setReserveApy(
+        ((Number(data.data.data.totalReservesUsd) * 12 * 100) /
+          Number(data.data.data.totalLockedUsd) +
+          Number(data.data.data.baseApr) * 100) *
+          2
+      );
+    } else setReserveApy(Number(data.data.data.baseApr) * 100 * 2);
 
     setFetched(true);
   }, [slowRefresh]);
