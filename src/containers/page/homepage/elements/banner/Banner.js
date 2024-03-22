@@ -17,7 +17,7 @@ import { useRewardData } from 'hooks/useReward';
 const Banner = ({ markets }) => {
   const lang = localStorage.getItem('language') || 'en';
 
-  const { totalReserveReward, reserveApy } = useRewardData();
+  const { fetched, totalReserveReward, reserveApy } = useRewardData();
 
   return (
     <div className="banner-homepage">
@@ -58,7 +58,7 @@ const Banner = ({ markets }) => {
               <div className="label">
                 <FormattedMessage id="Prime_Reward_Pool" />
               </div>
-              {Number(totalReserveReward) === 0 ? (
+              {!fetched ? (
                 <div className="load-wraper">
                   <div className="activity" />
                 </div>
@@ -73,7 +73,7 @@ const Banner = ({ markets }) => {
               <div className="label">
                 <FormattedMessage id="Prime_APR" />
               </div>
-              {Number(reserveApy) === 0 ? (
+              {!fetched ? (
                 <div className="load-wraper">
                   <div className="activity" />
                 </div>
